@@ -4,26 +4,27 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>PastLeo</title>
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.19.3/css/semantic.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.0.0/semantic.min.css">
         <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="./site.css">
-        <style>
+            <link rel="stylesheet" type="text/css" href="http://cdn.knightlab.com/libs/timeline/latest/css/timeline.css">
+            <link rel="stylesheet" href="./site.css">
+            <style>
             .blur {
-              filter:url(#bluring);
-              /* ^ for Firefox */
-              -webkit-filter: blur(10px);  
-              /* ^ Webkit browsers */
-              filter: blur(10px);  
+            filter:url(#bluring);
+            /* ^ for Firefox */
+            -webkit-filter: blur(10px);
+            /* ^ Webkit browsers */
+            filter: blur(10px);
             }
-        </style>
-    </head>
-    <body>
-        <div class="background frame">
-            <video class="blur" style="min-width: 100%; min-height: 100%;" autoplay="true" loop="true" poster="//i.imgur.com/Me0njBOh.jpg" preload="auto" muted="muted" webkit-playsinline="">
-                <source src="//i.imgur.com/Me0njBO.webm" type="video/webm">
-                <source src="//i.imgur.com/Me0njBO.mp4" type="video/mp4">
-
-                <object style="width: 100%; height: auto;" type="application/x-shockwave-flash" data="//s.imgur.com/include/flash/gifplayer.swf?imgur_video=http://i.imgur.com/Me0njBO.mp4&amp;imgur_width=854&amp;imgur_height=480&amp;imgur_url=">
+            </style>
+        </head>
+        <body>
+            <div id="bg" class="background frame blur">
+                <img class="show on sm screen bg" src="http://i.imgur.com/Z1vEkDI.png" alt="">
+                <video class="show on lg screen bg" autoplay="true" loop="true" poster="//i.imgur.com/Me0njBOh.jpg" preload="auto" muted="muted" webkit-playsinline="">
+                    <source src="//i.imgur.com/Me0njBO.webm" type="video/webm">
+                    <source src="//i.imgur.com/Me0njBO.mp4" type="video/mp4">
+                    <object style="width: 100%; height: auto;" type="application/x-shockwave-flash" data="//s.imgur.com/include/flash/gifplayer.swf?imgur_video=http://i.imgur.com/Me0njBO.mp4&amp;imgur_width=854&amp;imgur_height=480&amp;imgur_url=">
                     <param name="movie" value="//s.imgur.com/include/flash/gifplayer.swf?imgur_video=http://i.imgur.com/Me0njBO.mp4&amp;imgur_width=854&amp;imgur_height=480">
                     <param name="allowscriptaccess" value="never">
                     <param name="flashvars" value="height=480&amp;width=854">
@@ -33,59 +34,197 @@
                     <param name="scale" value="scale">
                     <param name="salign" value="tl">
                     <param name="wmode" value="opaque">
-                </object>
-            </video>
-             <svg style="width: 100%; height: auto;" xmlns="http://www.w3.org/2000/svg" version="1.1">
-              <defs>
+                    </object>
+                </video>
+                <svg style="width: 100%; height: auto;" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
                 <filter id="bluring" x="0" y="0">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
                 </filter>
-              </defs>
-            </svg>
-        </div>
-        <div class="frame curtain">
-            <div class="masthead shadow page stripe">
-                <div class="ui page grid">
-                    <div class="column">
-                        <h1 class="ui massive center aligned birthday header">
-                        <i class="down arrow icon"></i>
-                        <div class="content">
-                            你好！我是我是過去式
+                </defs>
+                </svg>
+            </div>
+            <div class="frame curtain">
+                <div class="masthead shadow viewport-height stripe">
+                    <div class="ui page grid">
+                        <div class="column">
+                            <h1 class="ui center aligned massive header">
+                            邱冠喻
+                            <div class="sub header">PastLeo | 西瓜 | chgu82837</div>
+                            </h1>
+                            <img class="centerized ui medium circular image" src="http://i.imgur.com/X0BluE8.jpg">
                         </div>
-                        </h1>
+                    </div>
+                    <div class="short stripe"></div>
+                    <div class="ui page stackable three column grid">
+                        <div class="column">
+                            <h2 class="ui small header">
+                            <i class="home icon"></i>
+                            <div class="content">
+                                台灣、台北、台中
+                                <div class="sub header">Taiwan, Taipei, Taichung</div>
+                            </div>
+                            </h2>
+                        </div>
+                        <div class="column">
+                            <h2 class="ui small header">
+                            <i class="student icon"></i>
+                            <div class="content">
+                                板橋高中、中興大學
+                                <div class="sub header">Banqiao Senior High,<br/> Chung Hsing University</div>
+                            </div>
+                            </h2>
+                        </div>
+                        <div class="column">
+                            <h2 class="ui small header">
+                            <i class="suitcase icon"></i>
+                            <div class="content">
+                                學生會資訊部門
+                                <div class="sub header">IT department of Student Government</div>
+                            </div>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="masthead viewport-height stripe">
+                    <div class="ui page grid">
+                        <div class="column">
+                            <h1 class="ui blue center aligned massive inverted header">
+                            <i class="massive code icon"></i>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="ui green massive center aligned inverted header">資訊是我最重要的工具</div>
+                    <div class="short stripe"></div>
+                    <div class="ui two column middle aligned relaxed fitted stackable grid">
+                        <div class="column">
+                            <h2 class="ui center aligned header">
+                            <i class="book icon"></i>技能
+                            </h2>
+                        </div>
+                        <div class="column">
+                            <div class="ui divided list">
+                                <div class="item">
+                                    <i class="terminal icon"></i>
+                                    <div class="content">
+                                        <a class="header">C/C++, Python</a>
+                                        <div class="description">General purpose programming languages</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <i class="html5 icon"></i>
+                                    <div class="content">
+                                        <a class="header">HTML5, Javascript, CSS3</a>
+                                        <div class="description">Front-end technologies</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <i class="database icon"></i>
+                                    <div class="content">
+                                        <a class="header">PHP, MySQL</a>
+                                        <div class="description">Backend website technologies</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <i class="computer icon"></i>
+                                    <div class="content">
+                                        <a class="header">Linux, OSX, bash</a>
+                                        <div class="description">unix-like OS maintaining</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui stackable page grid">
+                        <div class="four wide column"></div>
+                        <div class="eight wide column">
+                            <div class="ui homebrew inverted segment">
+                                <p>對電腦的一切事物有興趣 (幾乎)，從電腦硬體、作業系統到程式、網頁設計，甚至家用遊戲主機和智慧型手機皆有涉略。</p>
+                                <p>小時候愛打電動，當時為了遊戲瘋狂從網路找尋豐富的相關資源，因此由電動漸漸踏入電腦網路世界。</p>
+                                <p>資質平庸，在一所普通的大學唸書，只是因緣際會能在學生會從事伺服器維護、網頁設計，也因此學習到許多。</p>
+                                <p># 2013/12/7</p>
+                            </div>
+                        </div>
+                        <div class="four wide column"></div>
+                    </div>
+                </div>
+                <div id="change_stage" class="masthead dark viewport-height stripe">
+                    <iframe src='timeline.html' width='100%' height='600px' frameborder='0'></iframe>
+                </div>
+                <div class="masthead viewport-height stripe">
+                    <div class="ui page grid">
+                        <div class="column">
+                            <div class="show on lg screen ui centerized relaxed horizontal list">
+                                <div class="item">
+                                    <i class="mail large icon"></i>
+                                    <div class="content">
+                                        <a class="header">chgu82837[at]gmail.com</a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <i class="facebook square large icon"></i>
+                                    <div class="content">
+                                        <a href="https://www.facebook.com/ChiuGuanYu" target="_blank" class="header">Facebook</a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <i class="github square large icon"></i>
+                                    <div class="content">
+                                        <a href="https://github.com/chgu82837" target="_blank" class="header">Github</a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <i class="smile large icon"></i>
+                                    <div class="content">
+                                        <a href="http://about.me/ChiuGuanYu" target="_blank" class="header">About.me</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="show on sm screen ui divided list">
+                              <div class="item">
+                                <i class="mail large icon"></i>
+                                <div class="content">
+                                  <a class="header">chgu82837[at]gmail.com</a>
+                                </div>
+                              </div>
+                              <div class="item">
+                                <i class="facebook square large icon"></i>
+                                <div class="content">
+                                  <a href="https://www.facebook.com/ChiuGuanYu" target="_blank" class="header">Facebook</a>
+                                </div>
+                              </div>
+                              <div class="item">
+                                <i class="github square large icon"></i>
+                                <div class="content">
+                                  <a href="https://github.com/chgu82837" target="_blank" class="header">Github</a>
+                                </div>
+                              </div>
+                              <div class="item">
+                                <i class="smile large icon"></i>
+                                <div class="content">
+                                  <a href="http://about.me/ChiuGuanYu" target="_blank" class="header">About.me</a>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="masthead stripe">
-                <div class="ui one column stackable page grid">
-                    <div class="center aligned column sixteen wide">
-                        <div class="column centerized cake-wrapper">
-                            <svg height="400" width="500">
-                            <defs>
-                            <filter id="f1" x="0" y="0">
-                            <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
-                            </filter>
-                            </defs>
-                            <ellipse cx="250" cy="245" rx="210" ry="45"
-                            style="fill:rgba(194, 194, 194, 1);" />
-                            <rect x="40" y="60" width="420" height="185" style="fill:rgba(194, 194, 194, 1);" />
-                            <ellipse cx="250" cy="60" rx="210" ry="45"
-                            style="fill:#DBDBDB;" />
-                            Sorry, your browser does not support inline SVG.
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.19.3/javascript/semantic.min.js"></script>
-        <script>
-            function main(){
-                
-            };
-
-            $(document).ready(main);
-        </script>
-    </body>
-</html>
+            <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.0.0/semantic.min.js"></script>
+            <script>
+            var refresh_inteval = false;
+            $(window).scroll(function(){
+                if(!refresh_inteval){
+                    if($(document).scrollTop() > $('#change_stage').position().top)
+                        $("#bg").removeClass('blur');
+                    else
+                        $('#bg').addClass('blur');
+                }
+                refresh_inteval = setTimeout(function(){
+                    refresh_inteval = false;
+                },200);
+            });
+            </script>
+        </body>
+    </html>

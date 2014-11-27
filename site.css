@@ -2,14 +2,26 @@
 .masthead.stripe{
     padding: 50px 0px;
 }
+.dark.stripe{
+    background: rgb(38, 38, 38);
+}
+.dark.stripe .ui.birthday.header{
+    color: white;
+}
 .shadow.stripe{
     background: rgba(0, 0, 0, 0.48);
 }
-.shadow.stripe .ui.birthday.header{
+.shadow.stripe .header{
+    color: white;
+}
+.shadow.stripe .header .sub.header{
     color: white;
 }
 .long.stripe{
     height: 200px;
+}
+.short.stripe{
+    height: 70px;
 }
 .real.long.stripe{
     height: 600px;
@@ -27,17 +39,8 @@
 /* header */
 @media (min-width: 800px){
     .ui.header.massive{
-        font-size: 5em;
+        font-size: 3em;
     }
-}
-
-.ui.birthday.header{
-    color: rgba(253, 255, 182, 1);
-    text-shadow: 0px 0px 20px rgba(53, 0, 0, 1);
-}
-.ui.birthday.header{
-    color: rgba(253, 255, 182, 1);
-    text-shadow: 0px 0px 20px rgba(53, 0, 0, 1);
 }
 
 /* frame */
@@ -67,39 +70,41 @@
     opacity: 0;
 }
 
-.page{
-    height: 100vh;
-    
+.viewport-height{
+    min-height: 100vh;
+}
+
+.bg{
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* segment */
+.ui.homebrew.inverted.segment{
+    background: black;
+    color: #46f69d !important;
+}
+
+/* rwd */
+@media (min-width: 800px){
+    .show.on.sm.screen{
+        display: none;
+    }
+}
+
+@media (max-width: 800px){
+    .show.on.lg.screen{
+        display: none;
+    }
 }
 
 /* body */
 body {
     margin: 0;
-    background: white;
+    background: black;
     transition: all 1s;
-    -webkit-animation: backeffect 5s infinite; /* Chrome, Safari, Opera */
-    animation: backeffect 5s infinite;
 }
-/* Chrome, Safari, Opera */
-@-webkit-keyframes backeffect {
-    0%   {background: rgba(215, 172, 172, 1);}
-    25%  {background: rgba(206, 215, 172, 1);}
-    50%  {background: rgba(172, 215, 206, 1);}
-    100% {background: rgba(215, 172, 172, 1);}
-}
-/* Standard syntax */
-@keyframes backeffect {
-    0%   {background: rgba(215, 172, 172, 1);}
-    25%  {background: rgba(206, 215, 172, 1);}
-    50%  {background: rgba(172, 215, 206, 1);}
-    100% {background: rgba(215, 172, 172, 1);}
-}
-
 /* font */
 body {
-  font-family: 'Satisfy', cursive;
-}
-
-.secret_dom.content{
-    font-family:"手札體-繁","微軟正黑體","標楷體","Times New Roman",Georgia,serif;
+  /*font-family: 'Satisfy', cursive;*/
 }
