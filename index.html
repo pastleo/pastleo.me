@@ -1,15 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Welcome to chgu82837.github.io</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>PastLeo</title>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.19.3/css/semantic.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="./site.css">
+        <style>
+            .blur {
+              filter:url(#bluring);
+              /* ^ for Firefox */
+              -webkit-filter: blur(10px);  
+              /* ^ Webkit browsers */
+              filter: blur(10px);  
+            }
+        </style>
+    </head>
+    <body>
+        <div class="background frame">
+            <video class="blur" style="min-width: 100%; min-height: 100%;" autoplay="true" loop="true" poster="//i.imgur.com/Me0njBOh.jpg" preload="auto" muted="muted" webkit-playsinline="">
+                <source src="//i.imgur.com/Me0njBO.webm" type="video/webm">
+                <source src="//i.imgur.com/Me0njBO.mp4" type="video/mp4">
 
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-</head>
-<body>
-	<div class="container">
-		<h1>Welcome to chgu82837.github.io</h1>
-		
-	</div>
-</body>
+                <object style="width: 100%; height: auto;" type="application/x-shockwave-flash" data="//s.imgur.com/include/flash/gifplayer.swf?imgur_video=http://i.imgur.com/Me0njBO.mp4&amp;imgur_width=854&amp;imgur_height=480&amp;imgur_url=">
+                    <param name="movie" value="//s.imgur.com/include/flash/gifplayer.swf?imgur_video=http://i.imgur.com/Me0njBO.mp4&amp;imgur_width=854&amp;imgur_height=480">
+                    <param name="allowscriptaccess" value="never">
+                    <param name="flashvars" value="height=480&amp;width=854">
+                    <param name="width" value="854">
+                    <param name="height" value="480">
+                    <param name="version" value="0">
+                    <param name="scale" value="scale">
+                    <param name="salign" value="tl">
+                    <param name="wmode" value="opaque">
+                </object>
+            </video>
+             <svg style="width: 100%; height: auto;" xmlns="http://www.w3.org/2000/svg" version="1.1">
+              <defs>
+                <filter id="bluring" x="0" y="0">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+                </filter>
+              </defs>
+            </svg>
+        </div>
+        <div class="frame curtain">
+            <div class="masthead shadow page stripe">
+                <div class="ui page grid">
+                    <div class="column">
+                        <h1 class="ui massive center aligned birthday header">
+                        <i class="down arrow icon"></i>
+                        <div class="content">
+                            你好！我是我是過去式
+                        </div>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="masthead stripe">
+                <div class="ui one column stackable page grid">
+                    <div class="center aligned column sixteen wide">
+                        <div class="column centerized cake-wrapper">
+                            <svg height="400" width="500">
+                            <defs>
+                            <filter id="f1" x="0" y="0">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+                            </filter>
+                            </defs>
+                            <ellipse cx="250" cy="245" rx="210" ry="45"
+                            style="fill:rgba(194, 194, 194, 1);" />
+                            <rect x="40" y="60" width="420" height="185" style="fill:rgba(194, 194, 194, 1);" />
+                            <ellipse cx="250" cy="60" rx="210" ry="45"
+                            style="fill:#DBDBDB;" />
+                            Sorry, your browser does not support inline SVG.
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.19.3/javascript/semantic.min.js"></script>
+        <script>
+            function main(){
+                
+            };
+
+            $(document).ready(main);
+        </script>
+    </body>
 </html>
