@@ -4,24 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>PastLeo</title>
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.0.0/semantic.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.6/semantic.min.css">
         <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
-            <link rel="stylesheet" type="text/css" href="http://cdn.knightlab.com/libs/timeline/latest/css/timeline.css">
-            <link rel="stylesheet" href="./site.css">
-            <style>
-            .blur {
-            filter:url(#bluring);
-            /* ^ for Firefox */
-            -webkit-filter: blur(10px);
-            /* ^ Webkit browsers */
-            filter: blur(10px);
-            }
-            </style>
+        <link rel="stylesheet" type="text/css" href="http://cdn.knightlab.com/libs/timeline/latest/css/timeline.css">
+        <link rel="stylesheet" href="./site.css">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+        <style>
+        .blur {
+        filter:url(#bluring);
+        /* ^ for Firefox */
+        -webkit-filter: blur(10px);
+        /* ^ Webkit browsers */
+        filter: blur(10px);
+        }
+        </style>
         </head>
         <body>
             <div id="bg" class="background frame blur">
-                <img class="show on sm screen bg" src="http://i.imgur.com/Z1vEkDI.png" alt="">
-                <video class="show on lg screen bg" autoplay="true" loop="true" poster="//i.imgur.com/Me0njBOh.jpg" preload="auto" muted="muted" webkit-playsinline="">
+                <img class="visible no md" src="http://i.imgur.com/Z1vEkDI.png" alt="">
+                <video class="visible having md" autoplay="true" loop="true" poster="//i.imgur.com/Me0njBOh.jpg" preload="auto" muted="muted" webkit-playsinline="">
                     <source src="//i.imgur.com/Me0njBO.webm" type="video/webm">
                     <source src="//i.imgur.com/Me0njBO.mp4" type="video/mp4">
                     <object style="width: 100%; height: auto;" type="application/x-shockwave-flash" data="//s.imgur.com/include/flash/gifplayer.swf?imgur_video=http://i.imgur.com/Me0njBO.mp4&amp;imgur_width=854&amp;imgur_height=480&amp;imgur_url=">
@@ -85,18 +86,35 @@
                             </h2>
                         </div>
                     </div>
+                    <div class="short stripe"></div>
+                    <div class="ui one column page grid">
+                        <div class="text-center contact column">
+                            <a href="mailto:chgu82837@gmail.com" target="_blank" class="ui green image label">
+                                <i class="mail icon"></i>
+                                <span class="visible having sm">chgu82837[at]gmail.com</span>
+                            </a>
+                            <a href="https://www.facebook.com/ChiuGuanYu" target="_blank" class="ui green label">
+                                <i class="facebook icon"></i>
+                                <span class="visible having sm">Facebook</span>
+                            </a>
+                            <a href="https://github.com/chgu82837" target="_blank" class="ui green label">
+                                <i class="github icon"></i>
+                                <span class="visible having sm">Github</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="masthead viewport-height stripe">
                     <div class="ui page grid">
                         <div class="column">
-                            <h1 class="ui blue center aligned massive inverted header">
+                            <h1 class="ui center aligned massive header">
                             <i class="massive code icon"></i>
                             </h1>
                         </div>
                     </div>
-                    <div class="ui green massive center aligned inverted header">資訊是我最重要的工具</div>
+                    <div class="ui green massive center aligned inverted header">工具人當這麼多年不是當假的</div>
                     <div class="short stripe"></div>
-                    <div class="ui two column middle aligned relaxed fitted stackable grid">
+                    <div class="ui two column middle aligned stackable page grid">
                         <div class="column">
                             <h2 class="ui center aligned header">
                             <i class="book icon"></i>技能
@@ -107,29 +125,36 @@
                                 <div class="item">
                                     <i class="terminal icon"></i>
                                     <div class="content">
-                                        <a class="header">C/C++, Python</a>
+                                        <a class="header">C/C++, Python, Java, NodeJS</a>
                                         <div class="description">General purpose programming languages</div>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <i class="html5 icon"></i>
                                     <div class="content">
-                                        <a class="header">HTML5, Javascript, CSS3</a>
+                                        <a class="header">HTML5, Javascript, CSS3, Ajax, jQuery</a>
                                         <div class="description">Front-end technologies</div>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <i class="database icon"></i>
                                     <div class="content">
-                                        <a class="header">PHP, MySQL</a>
+                                        <a class="header">PHP, MySQL, Postgresql</a>
                                         <div class="description">Backend website technologies</div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <i class="server icon"></i>
+                                    <div class="content">
+                                        <a class="header">Linux, Debian, Ubuntu, CentOS, OSX </a>
+                                        <div class="description">unix-like OS maintaining</div>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <i class="computer icon"></i>
                                     <div class="content">
-                                        <a class="header">Linux, OSX, bash</a>
-                                        <div class="description">unix-like OS maintaining</div>
+                                        <a class="header">PC 裝修、手機刷機等</a>
+                                        <div class="description">工具人必備</div>
                                     </div>
                                 </div>
                             </div>
@@ -143,6 +168,9 @@
                                 <p>小時候愛打電動，當時為了遊戲瘋狂從網路找尋豐富的相關資源，因此由電動漸漸踏入電腦網路世界。</p>
                                 <p>資質平庸，在一所普通的大學唸書，只是因緣際會能在學生會從事伺服器維護、網頁設計，也因此學習到許多。</p>
                                 <p># 2013/12/7</p>
+                                <p>不知不覺也即將邁入大學最後一年了，驚覺每天在做的事情都是傳承、把經驗和知識傳下去，讓學弟妹可以把在中興微微的資訊風氣之火繼續發揚下去。</p>
+                                <p>接觸開放原始碼的世界之後，除了受之幫助非常大，我也發現我非常喜歡這種精神，希望以後能夠為了這個社群付出我的心力，並使之更好</p>
+                                <p># 2015/4/10</p>
                             </div>
                         </div>
                         <div class="four wide column"></div>
@@ -152,80 +180,44 @@
                     <iframe src='timeline.html' width='100%' height='600px' frameborder='0'></iframe>
                 </div>
                 <div class="masthead viewport-height stripe">
-                    <div class="ui page grid">
-                        <div class="column">
-                            <div class="show on lg screen ui centerized relaxed horizontal list">
-                                <div class="item">
-                                    <i class="mail large icon"></i>
-                                    <div class="content">
-                                        <a class="header">chgu82837[at]gmail.com</a>
-                                    </div>
+                    <div class="ui page centered stackable grid">
+                        <div class="twelve wide column">
+                            <div class="ui terminal raised segment">
+                                <div class="ui terminal top attached label">作品展示介紹</div>
+                                <div id="terminal-container">
+                                    <p>Loading ...</p>
                                 </div>
-                                <div class="item">
-                                    <i class="facebook square large icon"></i>
-                                    <div class="content">
-                                        <a href="https://www.facebook.com/ChiuGuanYu" target="_blank" class="header">Facebook</a>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <i class="github square large icon"></i>
-                                    <div class="content">
-                                        <a href="https://github.com/chgu82837" target="_blank" class="header">Github</a>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <i class="smile large icon"></i>
-                                    <div class="content">
-                                        <a href="http://about.me/ChiuGuanYu" target="_blank" class="header">About.me</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="show on sm screen ui divided list">
-                              <div class="item">
-                                <i class="mail large icon"></i>
-                                <div class="content">
-                                  <a class="header">chgu82837[at]gmail.com</a>
-                                </div>
-                              </div>
-                              <div class="item">
-                                <i class="facebook square large icon"></i>
-                                <div class="content">
-                                  <a href="https://www.facebook.com/ChiuGuanYu" target="_blank" class="header">Facebook</a>
-                                </div>
-                              </div>
-                              <div class="item">
-                                <i class="github square large icon"></i>
-                                <div class="content">
-                                  <a href="https://github.com/chgu82837" target="_blank" class="header">Github</a>
-                                </div>
-                              </div>
-                              <div class="item">
-                                <i class="smile large icon"></i>
-                                <div class="content">
-                                  <a href="http://about.me/ChiuGuanYu" target="_blank" class="header">About.me</a>
-                                </div>
-                              </div>
                             </div>
                         </div>
                     </div>
+                    <div id="showcases" class="ui showcase page three column stackable grid" style="display:none;">
+                        <!-- Here will be filled with my works from google sheet -->
+                    </div>
                 </div>
+
+                <div class="masthead footer stripe">
+                    <div class="ui one column page grid">
+                        <div class="text-center column">
+                            <a href="mailto:chgu82837@gmail.com" target="_blank" class="ui green image label">
+                                <i class="mail icon"></i>
+                                <span class="visible having sm">chgu82837[at]gmail.com</span>
+                            </a>
+                            <a href="https://www.facebook.com/ChiuGuanYu" target="_blank" class="ui green label">
+                                <i class="facebook icon"></i>
+                                <span class="visible having sm">Facebook</span>
+                            </a>
+                            <a href="https://github.com/chgu82837" target="_blank" class="ui green label">
+                                <i class="github icon"></i>
+                                <span class="visible having sm">Github</span>
+                            </a>
+                        </div>
+                    </div>
+    			</div>
             </div>
             <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.0.0/semantic.min.js"></script>
-            <script>
-                var refresh_inteval = false;
-                $(window).scroll(function(){
-                    if(!refresh_inteval){
-                        if($(document).scrollTop() > $('#change_stage').position().top)
-                            $("#bg").removeClass('blur');
-                        else
-                            $('#bg').addClass('blur');
-                    }
-                    refresh_inteval = setTimeout(function(){
-                        refresh_inteval = false;
-                    },200);
-                });
-            </script>
+            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.6/semantic.min.js"></script>
+            <script type="text/javascript" src="jt2html.min.js"></script>
+            <script type="text/javascript" src="site.js"></script>
             <script>
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
