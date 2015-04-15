@@ -11,6 +11,12 @@
 .shadow.stripe .header .sub.header{
     color: white;
 }
+.dark.stripe .header{
+    color: white;
+}
+.dark.stripe .header .sub.header{
+    color: white;
+}
 .long.stripe{
     height: 200px;
 }
@@ -66,13 +72,19 @@ div.footer{
 .ui.hidable.hidden{
     opacity: 0;
 }
-
-.viewport-height{
-    min-height: 100vh;
+@media (min-width: 700px){
+    .viewport-height{
+        min-height: 100vh;
+    }
 }
-
 .text-center{
     text-align: center;
+}
+.hashable.header, .hashable.label{
+    cursor:pointer;
+}
+.hashable.header:hover{
+    color:#00b2f3;
 }
 
 /* contact labels */
@@ -88,11 +100,23 @@ div.footer{
     background: black;
     color: #46f69d !important;
 }
+
+/* murmur */
+.ui.header.murmur{
+    font-weight: bold;
+    text-shadow: 0 0 5px black;
+    font-family: "微軟正黑體";
+}
+
+/* showcases */
+#showcases{
+    text-shadow: 0px 0px 6px rgb(190, 255, 225);
+}
 .ui.terminal.segment{
     background: rgba(61, 61, 61, 0.85);
     height:400px;
     color:#72BA8B;
-    box-shadow: 0 0 0 1px rgba(121, 224, 232, 0.63),0 1px 4px 0 rgba(153, 197, 229, 1);
+    box-shadow: 0 0 0 1px rgba(121, 224, 232, 0.63);
     overflow: hidden;
 }
 .ui.terminal.label{
@@ -103,9 +127,29 @@ div.footer{
     background-color:#4DEF85;
     border-color:rgba(0,0,0,.15);
 }
+@-webkit-keyframes term_hightlight {
+    0% {color: #72BA8B;}
+    50% {color: white;}
+    100% {color: #72BA8B;}
+}
 
+@keyframes term_hightlight {
+    0% {color: #72BA8B;}
+    50% {color: white;}
+    100% {color: #72BA8B;}
+}
+.ui.terminal.segment .hightligh{
+    font-size: 1.4em;
+    -webkit-animation-name: term_hightlight;
+    -webkit-animation-duration: 2.5s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: term_hightlight;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+}
 .ui.terminal.segment p, .ui.terminal.segment a{
     font-family: 'Consolas', monospace;
+    font-weight: bold;
     font-size: 1em;
     display: block;
     margin-bottom: 0;
@@ -134,6 +178,16 @@ div.footer{
 .showcase .detail{
     display:none;
 }
+.showcase img.image{
+    margin-top: 5px !important;
+    margin-right: .25em;
+    display: inline-block;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px rgb(190, 255, 225);
+}
+
 
 /* rwd */
 @media (min-width: 700px){

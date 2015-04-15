@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.6/semantic.min.css">
         <link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="http://cdn.knightlab.com/libs/timeline/latest/css/timeline.css">
-        <link rel="stylesheet" href="./site.css">
+        <link rel="stylesheet" href="./site.css?1">
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
         <style>
         .blur {
@@ -46,10 +46,10 @@
                 </svg>
             </div>
             <div class="frame curtain">
-                <div class="masthead shadow viewport-height stripe">
+                <div id="index" class="masthead shadow viewport-height stripe">
                     <div class="ui page grid">
                         <div class="column">
-                            <h1 class="ui center aligned massive header">
+                            <h1 href="#index" class="ui center aligned massive hashable header">
                             邱冠喻
                             <div class="sub header">PastLeo | 西瓜 | chgu82837</div>
                             </h1>
@@ -104,19 +104,35 @@
                         </div>
                     </div>
                 </div>
-                <div class="masthead viewport-height stripe">
-                    <div class="ui page grid">
+                <div id="intro" class="masthead viewport-height stripe">
+                    <div class="ui stackable page grid">
+                        <div class="four wide column"></div>
+                        <div class="eight wide column">
+                            <div class="ui homebrew inverted segment">
+                                <p>對電腦的一切事物有興趣，從電腦硬體、作業系統以及網路到程式、網頁設計，甚至家用遊戲主機和智慧型手機皆有涉略。</p>
+                                <p>小時候愛打電動，當時為了遊戲瘋狂從網路找尋豐富的相關資源，因此由電動漸漸踏入電腦網路世界。</p>
+                                <p>目前就讀中興大學資訊工程系，因緣際會能在學生會擔任資訊部長，從事伺服器維護、網頁設計等工作。</p>
+                                <p># 2013/12/7</p>
+                                <p>即將邁入大學最後一年了，在社團裡做的事情都是傳承以及把經驗和知識傳下去，讓學弟妹可以把在中興微微的資訊風氣之火繼續發揚下去。</p>
+                                <p>接觸開放原始碼的世界之後，除了自己受到的幫助非常大，我也發現我非常喜歡這種 Open-minded 的《人人為我，我為人人》精神，更希望將來能夠為了這個社群付出我的心力，並使之更好。</p>
+                                <p># 2015/4/10</p>
+
+                            </div>
+                        </div>
+                        <div class="four wide column"></div>
+                    </div>
+                    <div id="skill" class="ui page grid">
                         <div class="column">
                             <h1 class="ui center aligned massive header">
                             <i class="massive code icon"></i>
                             </h1>
                         </div>
                     </div>
-                    <div class="ui green massive center aligned inverted header">工具人當這麼多年不是當假的</div>
+                    <div class="ui green massive center aligned inverted murmur header">工具人當這麼多年不是當假的</div>
                     <div class="short stripe"></div>
                     <div class="ui two column middle aligned stackable page grid">
                         <div class="column">
-                            <h2 class="ui center aligned header">
+                            <h2 href="#skill" class="ui center aligned hashable header">
                             <i class="book icon"></i>技能
                             </h2>
                         </div>
@@ -125,72 +141,86 @@
                                 <div class="item">
                                     <i class="terminal icon"></i>
                                     <div class="content">
-                                        <a class="header">C/C++, Python, Java, NodeJS</a>
+                                        <div class="header">C/C++, Python, Java, NodeJS</div>
                                         <div class="description">General purpose programming languages</div>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <i class="html5 icon"></i>
                                     <div class="content">
-                                        <a class="header">HTML5, Javascript, CSS3, Ajax, jQuery</a>
+                                        <div class="header">HTML5, Javascript, CSS3, Ajax, jQuery</div>
                                         <div class="description">Front-end technologies</div>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <i class="database icon"></i>
                                     <div class="content">
-                                        <a class="header">PHP, MySQL, Postgresql</a>
+                                        <div class="header">PHP, MySQL, Postgresql</div>
                                         <div class="description">Backend website technologies</div>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <i class="server icon"></i>
                                     <div class="content">
-                                        <a class="header">Linux, Debian, Ubuntu, CentOS, OSX </a>
+                                        <div class="header">Linux, Debian, Ubuntu, CentOS, OSX </div>
                                         <div class="description">unix-like OS maintaining</div>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <i class="computer icon"></i>
                                     <div class="content">
-                                        <a class="header">PC 裝修、手機刷機等</a>
+                                        <div class="header">PC 裝修、手機刷機等</div>
                                         <div class="description">工具人必備</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ui stackable page grid">
-                        <div class="four wide column"></div>
-                        <div class="eight wide column">
-                            <div class="ui homebrew inverted segment">
-                                <p>對電腦的一切事物有興趣 (幾乎)，從電腦硬體、作業系統到程式、網頁設計，甚至家用遊戲主機和智慧型手機皆有涉略。</p>
-                                <p>小時候愛打電動，當時為了遊戲瘋狂從網路找尋豐富的相關資源，因此由電動漸漸踏入電腦網路世界。</p>
-                                <p>資質平庸，在一所普通的大學唸書，只是因緣際會能在學生會從事伺服器維護、網頁設計，也因此學習到許多。</p>
-                                <p># 2013/12/7</p>
-                                <p>不知不覺也即將邁入大學最後一年了，驚覺每天在做的事情都是傳承、把經驗和知識傳下去，讓學弟妹可以把在中興微微的資訊風氣之火繼續發揚下去。</p>
-                                <p>接觸開放原始碼的世界之後，除了受之幫助非常大，我也發現我非常喜歡這種精神，希望以後能夠為了這個社群付出我的心力，並使之更好</p>
-                                <p># 2015/4/10</p>
-                            </div>
-                        </div>
-                        <div class="four wide column"></div>
-                    </div>
+
                 </div>
-                <div id="change_stage" class="masthead dark viewport-height stripe">
+                <div id="story" class="masthead dark viewport-height stripe">
                     <iframe src='timeline.html' width='100%' height='600px' frameborder='0'></iframe>
+                    <h2 href="#story" class="ui center aligned huge hashable header">
+                        ▲ My Story ▲
+                    </h2>
+                    <div class="short stripe"></div>
+                    <h2 href="#showcase" class="ui center aligned huge hashable header">
+                        ▼ Works Made By Me ▼
+                    </h2>
                 </div>
-                <div class="masthead viewport-height stripe">
+                <div id="showcase" class="masthead viewport-height stripe">
                     <div class="ui page centered stackable grid">
                         <div class="twelve wide column">
                             <div class="ui terminal raised segment">
-                                <div class="ui terminal top attached label">作品展示介紹</div>
+                                <div href="#showcase" class="ui terminal top attached hashable label">作品展示介紹</div>
                                 <div id="terminal-container">
-                                    <p>Loading ...</p>
+                                    <p class="hightligh">Loading ...</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="showcases" class="ui showcase page three column stackable grid" style="display:none;">
+                        <div class="column" style="display:none !important;">
+                            <h2 class="ui center aligned icon header">
+                                <i class="circular find icon"></i>
+                                使用說明
+                            </h2>
+                            <div class="ui animated divided text-center list">
+                                <div id="showcase-demo" class="item">
+                                    <img class="ui image" src="http://i.imgur.com/40PdrbW.png">
+                                    <div class="content">
+                                        <div class="header">
+                                            使用說明
+                                        </div>
+                                        <div class="detail">
+                                            <p>讀取完成 | Load completed.</p>
+                                            <p class="hightligh">從下方點選一個項目，這裡將詳細說明，或再往下滑一些...</p>
+                                            <p class="hightligh">Click on items below, here will bring up detailed infomation, or simply scroll down a little more</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Here will be filled with my works from google sheet -->
                     </div>
                 </div>
@@ -216,8 +246,9 @@
             </div>
             <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
             <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.6/semantic.min.js"></script>
+            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"></script>
             <script type="text/javascript" src="jt2html.min.js"></script>
-            <script type="text/javascript" src="site.js"></script>
+            <script type="text/javascript" src="site.js?1"></script>
             <script>
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

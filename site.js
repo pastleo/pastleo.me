@@ -1,23 +1,34 @@
 var debug;
 
+function goto(hash){ // hash need to be begun with '#'
+    var target = hash.split('/')[0]
+    var duration = Math.floor(Math.abs(jQuery(document).scrollTop() - jQuery(target).position().top)) + 10; // use how much pixels to move as the duration
+    jQuery('body').scrollTo(jQuery(target),duration);
+    setTimeout(function(){
+        window.location.hash = hash;
+    },duration);
+}
+
 jQuery(function(){
-    var refresh_inteval = false;
-    jQuery(window).scroll(function(){
-        if(!refresh_inteval){
-            if(jQuery(document).scrollTop() > jQuery('#change_stage').position().top)
-                jQuery("#bg").removeClass('blur');
-            else
-                jQuery('#bg').addClass('blur');
-        }
-        refresh_inteval = setTimeout(function(){
-            refresh_inteval = false;
-        },200);
+
+    if(window.location.hash){
+        setTimeout(function() {
+            goto(window.location.hash);
+        }, 1);
+    }
+
+    jQuery(".hashable").click(function(e){
+        goto(jQuery(this).attr('href'));
     });
 
     var terminal = jQuery('#terminal-container');
     var inteval;
-    function show_item(item){
-        clearInterval(inteval);
+    function show_item(item,to_term,callback){
+        to_term = to_term === undefined ? true : to_term;
+        callback = typeof callback != 'function' ? function(){} : callback;
+        if(inteval !== false)
+            clearInterval(inteval);
+
         terminal.empty();
         jQuery(".showing").removeClass("showing");
         var lines = item.addClass('showing').find('.detail').children();
@@ -28,6 +39,8 @@ jQuery(function(){
             if(j >= text.length){
                 if(i >= lines.length){
                     clearInterval(inteval);
+                    inteval = false;
+                    callback();
                     return;
                 }
                 cur = lines.eq(i).clone();
@@ -48,23 +61,58 @@ jQuery(function(){
             }
             cur.text(cur.text() + text.charAt(j));
             j++;
-        },30);
+        },20);
+
+        if(to_term)
+            goto('#showcase/' + item.attr('id'));
     }
+
+    var showcases = false;
+    var scroll_play = false;
 
     JT2html({
         body:'@{list}',
-        list:'<div class="column"><h2 class="ui center aligned icon header"><i class="circular @{icon} icon"></i>@{text}</h2><div class="ui animated text-center list">@{item}</div></div>',
-        item:'<div class="item"><img class="ui avatar image" src="@{img}"><div class="content"><div class="header">@{text}</div>@{detail}</div></div>',
+        list:'<div class="column"><h2 class="ui center aligned icon header"><i class="circular @{icon} icon"></i>@{text}</h2><div class="ui animated divided text-center list">@{item}</div></div>',
+        item:'<div id="@{id}" class="item"><img class="ui image" src="@{src}"><div class="content"><div class="header">@{text}</div>@{detail}</div></div>',
         detail:'<div class="detail">@{a}@{p}@{img}</div>',
         a:'<a href="@{href}" target="_blank">@{text}</a>@{a}@{p}@{img}',
         p:'<p>@{text}</p>@{a}@{p}@{img}',
-        img:'<img class="ui small right floated circular image" src="@{img}"></img>@{a}@{p}@{img}',
+        img:'<img class="ui small right floated circular image" src="@{src}"></img>@{a}@{p}@{img}',
     }).fromGS('https://spreadsheets.google.com/feeds/list/0Auxy7gVEXhIrdDd6LUphYmRkRXk0dmRXWUJVUHdsSVE/2/public/values?alt=json',function(html){
-        var showcases = jQuery("#showcases").empty().append(html).slideDown().find('.item:has(.detail)');
+        showcases = jQuery("#showcases").append(html).slideDown().find('.item:not(#showcase-demo):has(.detail)');
         showcases.click(function(){
+            scroll_play = false;
             show_item(jQuery(this));
         });
-        console.log([Math.floor((Math.random() * showcases.length)),showcases.length]);
-        show_item(showcases.eq(Math.floor((Math.random() * showcases.length))));
+        show_item(jQuery('#showcase-demo'),false,function(){
+            scroll_play = function(){
+                if(jQuery(document).scrollTop() >= jQuery('#showcase').position().top && scroll_play){
+                    scroll_play = false;
+                    var first_show = window.location.hash.split('/');
+                    first_show = first_show.length >= 2 ? jQuery("#" + first_show[1]) : showcases.eq(Math.floor((Math.random() * showcases.length)));
+                    show_item(first_show,false);
+                }
+            };
+            scroll_play();
+        });
+    });
+
+    function scroll_check(){
+        if(jQuery(document).scrollTop() >= jQuery('#story').position().top)
+            jQuery("#bg").removeClass('blur');
+        else
+            jQuery('#bg').addClass('blur');
+    }
+    scroll_check();
+
+    var refresh_inteval = false;
+    jQuery(window).scroll(function(){
+        if(!refresh_inteval){
+            scroll_check();
+            if(scroll_play) scroll_play();
+        }
+        refresh_inteval = setTimeout(function(){
+            refresh_inteval = false;
+        },150);
     });
 });
