@@ -179,7 +179,7 @@ div.footer{
     display:none;
 }
 .showcase img.image{
-    margin-top: 5px !important;
+    margin: 5px auto auto 15% !important;
     margin-right: .25em;
     display: inline-block;
     width: 2.5em;

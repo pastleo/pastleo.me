@@ -46,7 +46,6 @@ jQuery(function(){
         if(click_twice_noti_pop)
             click_twice_noti_pop.popup('destroy');
         if(jQuery(".showing").is(item)){
-            console.log(item);
             terminal.append(item.find('.detail').children().clone());
             click_twice_noti = false;
             return;
@@ -94,7 +93,7 @@ jQuery(function(){
 
     JT2html({
         body:'@{list}',
-        list:'<div class="column"><h2 class="ui center aligned icon header"><i class="circular @{icon} icon"></i>@{text}</h2><div class="ui animated divided text-center list">@{item}</div></div>',
+        list:'<div class="column"><h2 class="ui center aligned icon header"><i class="circular @{icon} icon"></i>@{text}</h2><div class="ui animated divided list">@{item}</div></div>',
         item:'<div id="@{id}" class="item"><img class="ui image" src="@{src}"><div class="content"><div class="header">@{text}</div>@{detail}</div></div>',
         detail:'<div class="detail">@{a}@{p}@{img}</div>',
         a:'<a href="@{href}" target="_blank">@{text}</a>@{a}@{p}@{img}',
