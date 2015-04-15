@@ -21,6 +21,19 @@ jQuery(function(){
         goto(jQuery(this).attr('href'));
     });
 
+    var click_twice_noti_pop = false;
+    var click_twice_noti = function(){
+        setTimeout(function(){
+            click_twice_noti_pop = jQuery('.showing');
+            click_twice_noti_pop.popup({
+                position : 'bottom center',
+                title    : '再按一次跳過動畫',
+                content  : 'Click again to skip the animation',
+            }).popup('show');
+            click_twice_noti = false;
+        },1500);
+    }
+
     var terminal = jQuery('#terminal-container');
     var inteval;
     function show_item(item,to_term,callback){
@@ -30,6 +43,15 @@ jQuery(function(){
             clearInterval(inteval);
 
         terminal.empty();
+        if(click_twice_noti_pop)
+            click_twice_noti_pop.popup('destroy');
+        if(jQuery(".showing").is(item)){
+            console.log(item);
+            terminal.append(item.find('.detail').children().clone());
+            click_twice_noti = false;
+            return;
+        }
+
         jQuery(".showing").removeClass("showing");
         var lines = item.addClass('showing').find('.detail').children();
         var i = 0, j = 0, text = "";
@@ -83,6 +105,7 @@ jQuery(function(){
         showcases.click(function(){
             scroll_play = false;
             show_item(jQuery(this));
+            if(click_twice_noti) click_twice_noti();
         });
         show_item(jQuery('#showcase-demo'),false,function(){
             scroll_play = function(){
