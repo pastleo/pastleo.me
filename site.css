@@ -51,12 +51,9 @@ div.footer{
     z-index: 2;
 }
 
-.background img{
-    height:100vh;
-}
-.background video{
-    min-width:100%;
+.background img, .background video{
     min-height:100vh;
+    min-width:100%;
 }
 
 /* misc */
