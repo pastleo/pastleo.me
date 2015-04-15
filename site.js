@@ -61,6 +61,8 @@ jQuery(function(){
                 if(i >= lines.length){
                     clearInterval(inteval);
                     inteval = false;
+                    if(click_twice_noti_pop)
+                        click_twice_noti_pop.popup('destroy');
                     callback();
                     return;
                 }
