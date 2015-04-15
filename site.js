@@ -113,6 +113,7 @@ jQuery(function(){
                     scroll_play = false;
                     var first_show = window.location.hash.split('/');
                     first_show = first_show.length >= 2 ? jQuery("#" + first_show[1]) : showcases.eq(Math.floor((Math.random() * showcases.length)));
+                    first_show = first_show.is('.item:not(#showcase-demo):has(.detail)') ? first_show : showcases.eq(Math.floor((Math.random() * showcases.length)));
                     show_item(first_show,false);
                 }
             };
