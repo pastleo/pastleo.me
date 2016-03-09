@@ -29,8 +29,12 @@
 .dark.stripe{
     background:rgb(38, 38, 38);
 }
-div.footer{
+.contact.stripe{
     background: linear-gradient(to bottom,rgba(255, 255, 255, 0),rgba(255, 255, 255, 0), black);
+}
+
+.footer.stripe {
+   background: black;
 }
 
 @media (max-width: 1050px){
@@ -199,6 +203,23 @@ div.footer{
     filter: blur(10px);
 }
 
+a.link {
+   color: white;
+   transition: color 0.5s;
+}
+a.nchuit.link:hover {
+   color: green;
+}
+a.nchusgit.link:hover {
+   color: cyan;
+}
+a.fixe-times-ruby.link:hover {
+   color: red;
+}
+
+.ui.left-padded.list {
+   padding-left: 5%;
+}
 
 /* rwd */
 @media (min-width: 700px){

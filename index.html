@@ -11,8 +11,8 @@
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
         </head>
         <body>
-            <div id="bg" class="background visible having md blur frame">
-                <video autoplay="true" loop="true" poster="//i.imgur.com/Me0njBOh.jpg" preload="auto" muted="muted" webkit-playsinline="">
+            <div id="bg" class="background blur frame">
+                <video class="visible having md" autoplay="true" loop="true" poster="//i.imgur.com/Me0njBOh.jpg" preload="auto" muted="muted" webkit-playsinline="">
                     <source src="//i.imgur.com/Me0njBO.webm" type="video/webm">
                     <source src="//i.imgur.com/Me0njBO.mp4" type="video/mp4">
                     <object style="width: 100%; height: auto;" type="application/x-shockwave-flash" data="//s.imgur.com/include/flash/gifplayer.swf?imgur_video=//i.imgur.com/Me0njBO.mp4&amp;imgur_width=854&amp;imgur_height=480&amp;imgur_url=">
@@ -27,6 +27,7 @@
                     <param name="wmode" value="opaque">
                     </object>
                 </video>
+                <img class="visible no md" src="//i.imgur.com/Z1vEkDI.png" alt="">
                 <svg style="width: 100%; height: auto;" xmlns="//www.w3.org/2000/svg" version="1.1">
                 <defs>
                 <filter id="bluring" x="0" y="0">
@@ -34,9 +35,6 @@
                 </filter>
                 </defs>
                 </svg>
-            </div>
-            <div class="background visible no md frame">
-                <img src="//i.imgur.com/Z1vEkDI.png" alt="">
             </div>
             <div class="frame curtain">
                 <div id="index" class="masthead shadow viewport-height stripe">
@@ -52,30 +50,25 @@
                     <div class="short stripe"></div>
                     <div class="ui page stackable three column grid">
                         <div class="column">
-                            <h2 class="ui small header">
-                            <i class="home icon"></i>
-                            <div class="content">
+                            <h2 class="ui center aligned icon small header">
+                                <i class="home icon"></i>
                                 台灣、台北、台中
                                 <div class="sub header">Taiwan, Taipei, Taichung</div>
-                            </div>
                             </h2>
                         </div>
                         <div class="column">
-                            <h2 class="ui small header">
-                            <i class="student icon"></i>
-                            <div class="content">
+                            <h2 class="ui center aligned icon small header">
+                                <i class="student icon"></i>
                                 板橋高中、中興大學
                                 <div class="sub header">Banqiao Senior High,<br/> Chung Hsing University</div>
-                            </div>
                             </h2>
                         </div>
                         <div class="column">
-                            <h2 class="ui small header">
-                            <i class="suitcase icon"></i>
-                            <div class="content">
-                                學生會資訊部門
-                                <div class="sub header">IT department of Student Government</div>
-                            </div>
+                            <h2 class="ui center aligned icon small header">
+                                <i class="suitcase icon"></i>
+                                <a class="nchusgit link" href="http://nchusg.org" target="-_blank">中興學生會</a>資訊部正副部長、<br />
+                                <a class="nchuit link" href="http://nchuit.cc" target="-_blank">中興資訊社</a>社長、<br />
+                                <a class="fixe-times-ruby link" href="http://5xruby.tw" target="_blank">五倍紅寶石</a>工讀生
                             </h2>
                         </div>
                     </div>
@@ -93,6 +86,10 @@
                             <a href="https://github.com/chgu82837" target="_blank" class="ui green label">
                                 <i class="github icon"></i>
                                 <span class="visible having sm">Github</span>
+                            </a>
+                            <a href="calendar.html" target="_blank" class="ui green label">
+                                <i class="calendar icon"></i>
+                                <span class="visible having sm">公開行事曆</span>
                             </a>
                         </div>
                     </div>
@@ -130,11 +127,11 @@
                             </h2>
                         </div>
                         <div class="column">
-                            <div class="ui divided list">
+                            <div class="ui divided left-padded list">
                                 <div class="item">
                                     <i class="terminal icon"></i>
                                     <div class="content">
-                                        <div class="header">C/C++, Python, Java, NodeJS</div>
+                                        <div class="header">C/C++, Python, Java, NodeJS, Ruby</div>
                                         <div class="description">General purpose programming languages</div>
                                     </div>
                                 </div>
@@ -146,10 +143,17 @@
                                     </div>
                                 </div>
                                 <div class="item">
+                                    <i class="html5 icon"></i>
+                                    <div class="content">
+                                        <div class="header">Ruby on Rails, Laravel, PHP, JSP</div>
+                                        <div class="description">Web server and frameworks</div>
+                                    </div>
+                                </div>
+                                <div class="item">
                                     <i class="database icon"></i>
                                     <div class="content">
-                                        <div class="header">PHP, MySQL, Postgresql</div>
-                                        <div class="description">Backend website technologies</div>
+                                        <div class="header">Postgresql, MySQL</div>
+                                        <div class="description">Database management</div>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -219,7 +223,7 @@
                     </div>
                 </div>
 
-                <div class="masthead footer stripe">
+                <div class="masthead contact stripe">
                     <div class="ui one column page grid">
                         <div class="text-center column">
                             <a href="mailto:chgu82837@gmail.com" target="_blank" class="ui green image label">
@@ -234,8 +238,14 @@
                                 <i class="github icon"></i>
                                 <span class="visible having sm">Github</span>
                             </a>
+                            <a href="calendar.html" target="_blank" class="ui green label">
+                                <i class="calendar icon"></i>
+                                <span class="visible having sm">公開行事曆</span>
+                            </a>
                         </div>
                     </div>
+    			</div>
+                <div class="masthead footer stripe">
     			</div>
             </div>
             <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
