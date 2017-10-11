@@ -1,0 +1,17 @@
+{
+  "name": "pastleo.me",
+  "homepage": "https://github.com/pastleo/pastleo.me",
+  "description": "PastLeoBlog",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "semantic": "^2.2.13"
+  }
+}
