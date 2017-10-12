@@ -1,0 +1,27 @@
+/* global */
+body {
+  background: rgb(39,40,34);
+  color: rgb(117,241,171);
+}
+
+/* space */
+.huge.vh.space {
+  height: 40vh;
+}
+.mid.vh.space {
+  height: 20vh;
+}
+.huge.px.space {
+  height: 200px;
+}
+.mid.px.space {
+  height: 100px;
+}
+.small.px.space {
+  height: 50px;
+}
+
+/* overwrite */
+.ui.pastleo.header {
+  color: rgb(117,241,171);
+}
