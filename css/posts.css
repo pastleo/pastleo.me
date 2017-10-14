@@ -1,7 +1,10 @@
 /* global */
+
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 body {
   background: rgb(39,40,34);
   color: rgb(117,241,171);
+  font-family: 'Source Code Pro', monospace;
 }
 
 /* space */
@@ -19,6 +22,14 @@ body {
 }
 .small.px.space {
   height: 50px;
+}
+.min.px.space {
+  height: 20px;
+}
+
+/* paragraph */
+.paragraph {
+  font-size: 18px;
 }
 
 /* overwrite */
