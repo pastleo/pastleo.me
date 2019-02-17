@@ -5,7 +5,7 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <title>PastLeo</title>
   <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'/>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+  <link href='https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css' rel='stylesheet'>
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>
   <link rel='stylesheet' href='./index.css?1'>
 </head>
@@ -17,7 +17,7 @@
     </video>
   </div>
   <div class='main layer'>
-    <section id='intro' class='py-12'>
+    <section id='intro' class='pt-12 pb-4'>
       <div class='max-w-md mx-auto flex'>
         <div id='logo' class='w-32 pl-2 flex flex-col justify-center'>
           <img class='hidden print:block max-w-full h-auto' src='https://i.imgur.com/w9CfmPE.png'>
@@ -27,27 +27,27 @@
           <h3>PastLeo / 西瓜 / chgu82837</h3>
           <div class='pt-1 sm:pt-3'>
             <a href='mailto:chgu82837@gmail.com' target='_blank' class='contact-button inline-block print:block'>
-              <i class="fas fa-envelope"></i>
+              <i class='fas fa-envelope'></i>
               <span class='hidden sm:inline-block print:hidden'>chgu82837[at]gmail.com</span>
               <span class='hidden print:inline'>chgu82837@gmail.com</span>
             </a>
-            <a href='https://pastleo.me' target='_blank' class='contact-button hidden print:block'>
-              <i class="fas fa-home"></i>
+            <a href='https://pastleo.me/#resume-opened' target='_blank' class='contact-button hidden print:block'>
+              <i class='fas fa-home'></i>
               <span class=''>https://pastleo.me</span>
             </a>
             <a href='https://github.com/pastleo' target='_blank' class='contact-button inline-block print:block'>
-              <i class="fab fa-github"></i>
+              <i class='fab fa-github'></i>
               <span class='hidden sm:inline-block print:hidden'>Github</span>
               <span class='hidden print:inline'>https://github.com/pastleo</span>
             </a>
             <br class='hidden sm:inline print:hidden'>
             <a href='https://www.linkedin.com/in/guan-yu-chiu-076833120/' target='_blank' class='contact-button inline-block print:block'>
-              <i class="fab fa-linkedin-in"></i>
+              <i class='fab fa-linkedin-in'></i>
               <span class='hidden sm:inline-block print:hidden'>LinkedIn</span>
               <span class='hidden print:inline'>https://www.linkedin.com/in/guan-yu-chiu-076833120/</span>
             </a>
             <a href='https://twitter.com/PastLeo' target='_blank' class='contact-button print:block'>
-              <i class="fab fa-twitter"></i>
+              <i class='fab fa-twitter'></i>
               <span class='hidden sm:inline-block print:hidden'>Twitter</span>
               <span class='hidden print:inline'>https://twitter.com/PastLeo</span>
             </a>
@@ -55,20 +55,272 @@
         </div>
       </div>
       <div class='max-w-lg mx-auto pt-6 px-2 text-center sm:flex print:hidden'>
-        <div class='sm:flex-1'>
+        <div class='sm:w-1/4 px-2'>
           <a target='_blank' href='https://en.wikipedia.org/wiki/Taiwan'>
             <img class='taiwan-img' src='img/taiwan.svg'>
             <h3>台灣人</h3>
           </a>
         </div>
         <div class='sm:flex-1'>
-          <h1 class='text-4xl mb-2'><i class="fas fa-graduation-cap"></i></h1>
-          <h4>中興大學資訊科學與工程學系</h4>
+          <a id='open-resume' href='#resume-opened'>
+            <div class='sm:flex'>
+              <div class='sm:flex-1 px-2'>
+                <h1 class='text-4xl mb-2'><i class='fas fa-suitcase'></i></h1>
+                <h4>五倍紅寶石 Rails/Full-stack 工程師</h4>
+              </div>
+              <div class='sm:flex-1 px-2'>
+                <h1 class='text-4xl mb-2'><i class='fas fa-graduation-cap'></i></h1>
+                <h4>中興大學資訊科學與工程學系</h4>
+              </div>
+            </div>
+            <p><i class='fas fa-angle-down mt-2 text-lg'></i></p>
+          </a>
         </div>
-        <div class='sm:flex-1'>
-          <h1 class='text-4xl mb-2'><i class="fas fa-suitcase"></i></h1>
-          <h4>五倍紅寶石 Rails/Full-stack 工程師</h4>
+      </div>
+    </section>
+    <section id='resume' class='overflow-hidden'>
+      <div class='max-w-lg mx-auto pt-4 pb-6 px-2'>
+        <div id='resume-story' class='w-4/5 sm:w-3/4 ml-auto border-solid border-black border-l'>
+          <h1 class='ml-3'><i class='fas fa-suitcase mr-2'></i>工作經歷</h1>
+          <div class='time-mark'>
+            <h5>2017/2 ~</h5>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <h2 class='mb-1'>
+              <a href='https://5xruby.tw' target='_blank'>五倍紅寶石</a>
+              Rails/Full-stack 工程師
+            </h2>
+            <div class='details ml-3'>
+              <h4 class='mr-3'>
+                <a href='https://www.quickbuy.jp/' target='_blank'>
+                  <i class="fas fa-mobile-alt"></i>
+                  QuickBuy 電商 App
+                </a>
+              </h4>
+              <h4 class='ml-3 screen:text-right'>
+                <a href='https://facebook.github.io/react-native/' target='_blank'>
+                  React Native
+                  <i class="fab fa-react"></i>
+                </a>
+              </h4>
+              <h4 class='ml-3 screen:text-right'>
+                <a href='https://rubyonrails.org/' target='_blank'>
+                  Ruby on Rails
+                  <i class="fas fa-gem"></i>
+                </a>
+              </h4>
+              <h4 class='mr-3'>
+                <a href='https://static.pastleo.me/2018-elixir-intro/altr-running.gif' target='_blank'>
+                  <i class="fas fa-database"></i>
+                  Database Migrator
+                </a>
+              </h4>
+              <h4 class='ml-3 screen:text-right'>
+                <a href='https://elixir-lang.org/' target='_blank'>
+                  Elixir
+                  <i class="fas fa-laptop-code"></i>
+                </a>
+              </h4>
+              <h4 class='mr-3'>
+                <a href='https://goshopmatic.com/sg/' target='_blank'>
+                  <i class="fas fa-store"></i>
+                  Shopmatic 電商平台
+                </a>
+              </h4>
+              <h4 class='ml-3 screen:text-right'>
+                <a href='https://reactjs.org/' target='_blank'>
+                  React
+                  <i class="fab fa-react"></i>
+                </a>
+              </h4>
+              <h4 class='ml-3 screen:text-right'>
+                <a href='https://rubyonrails.org/' target='_blank'>
+                  Ruby on Rails
+                  <i class="fas fa-gem"></i>
+                </a>
+              </h4>
+            </div>
+          </div>
+          <h1 class='ml-3'><i class='fas fa-graduation-cap mr-1'></i>教育背景</h1>
+          <div class='time-mark'>
+            <h5>2012 ~ <br class='inline sm:hidden' />2016</h5>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <h2 class='mb-1'>
+              <a href='https://www.nchu.edu.tw/' target='_blank'>
+                國立中興大學
+              </a>
+              <a href='http://www.cs.nchu.edu.tw/' target='_blank'>
+                資訊科學與工程學系
+              </a>
+            </h2>
+          </div>
+          <br />
+          <div class='time-mark'>
+            <h5>2009 ~ <br class='inline sm:hidden' />2012</h5>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <h2 class='mb-1'>
+              <a href='http://www.pcsh.ntpc.edu.tw/' target='_blank'>
+                新北市立板橋高級中學
+              </a>
+            </h2>
+          </div>
+          <h1 class='ml-3'><i class='fas fa-book mr-2'></i>技能</h1>
+          <div class='inline-block ml-3 w-5/6'>
+            <h2 class='mb-1'>
+              語言能力
+            </h2>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <div class='details ml-3'>
+              <h4 class='mr-3'>
+                <i class="fas fa-language"></i>
+                中文: 母語
+              </h4>
+            </div>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <div class='details ml-3'>
+              <h4 class='mr-3'>
+                <i class="fas fa-language"></i>
+                英文: 可進行日常會話，開會
+              </h4>
+            </div>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <h2 class='mb-1'>
+              IT 技術
+            </h2>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <div class='details ml-3'>
+              <h4 class='mr-3'>
+                <i class="fas fa-terminal"></i>
+                程式語言: Javascript, Ruby, Elixir
+              </h4>
+              <h4 class='mr-3'>
+                <i class="fab fa-html5"></i>
+                前端: React, Redux, CSS 以及建置工具
+              </h4>
+              <h4 class='mr-3'>
+                <i class="fas fa-server"></i>
+                Linux, Git, SQL
+              </h4>
+            </div>
+          </div>
+          <div class="pagebreak"></div>
+          <h1 class='ml-3'><i class='fas fa-users mr-2'></i>社群 / 社團</h1>
+          <div class='time-mark'>
+            <h5>2018/11</h5>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <div class='details ml-3'>
+              <h4 class='mr-3'>
+                <i class="fas fa-comment-dots"></i>
+                <a href='https://mopcon.org/2018/' target='_blank'>
+                  MOPCON 2018
+                </a>
+                演講
+              </h4>
+              <h4 class='ml-3 screen:text-right'>
+                <a href='https://mopcon.org/2018/speaker.php?id=4' target='_blank'>
+                  WebComponent &amp; lit-html 前端開發新選擇
+                </a>
+              </h4>
+            </div>
+          </div>
+          <br />
+          <div class='time-mark'>
+            <h5>2018/8</h5>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <div class='details ml-3'>
+              <h4 class='mr-3'>
+                <i class="fas fa-comment-dots"></i>
+                <a href='https://2018.coscup.org' target='_blank'>
+                  COSCUP 2018
+                </a>
+                演講
+              </h4>
+              <h4 class='ml-3 screen:text-right'>
+                <a href='https://2018.coscup.org/programs/full-archlinux/' target='_blank'>
+                  全面使用 archlinux 之旅
+                </a>
+              </h4>
+            </div>
+          </div>
+          <br />
+          <div class='time-mark'>
+            <h5>2018/4</h5>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <div class='details ml-3'>
+              <h4 class='mr-3'>
+                <i class="fas fa-comment-dots"></i>
+                <a href='https://2018.rubyconf.tw/' target='_blank'>
+                  Ruby &amp; Elixir Conf TW 2018
+                </a>
+                演講
+              </h4>
+              <h4 class='ml-3 screen:text-right'>
+                <a href='https://2018.rubyconf.tw/program#pastleo' target='_blank'>
+                  借用您半小時，請問有聽過 elixir 嗎？
+                </a>
+              </h4>
+            </div>
+          </div>
+          <br />
+          <div class='time-mark'>
+            <h5>2016/2</h5>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <div class='details ml-3'>
+              <h4 class='mr-3'>
+                <i class="fas fa-comment-dots"></i>
+                <a href='http://sitcon.org/2016/' target='_blank'>
+                  SITCON 2016
+                </a>
+                演講
+              </h4>
+              <h4 class='ml-3 screen:text-right'>
+                <a href='http://sitcon.org/2016/#target-schedule' target='_blank'>
+                  客製化我的開發環境並將它開源！
+                </a>
+              </h4>
+            </div>
+          </div>
+          <br />
+          <div class='time-mark'>
+            <h5>2015/8 ~ <br class='inline sm:hidden' />2016/8</h5>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <h2 class='mb-1'>
+              <a href='http://nchuit.cc/' target='_blank'>
+                中興大學資訊社
+              </a>
+              社長
+            </h2>
+          </div>
+          <br />
+          <div class='time-mark'>
+            <h5>2013/8 ~ <br class='inline sm:hidden' />2015/8</h5>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <h2 class='mb-1'>
+              <a href='http://nchusg.org/' target='_blank'>
+                中興大學學生會
+              </a>
+              資訊部
+            </h2>
+          </div>
         </div>
+      </div>
+    </section>
+    <section id='blog' class='py-6 print:hidden min-h-screen'>
+      <div class='max-w-lg mx-auto px-2'>
+        <h1>Hello blog!</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
       </div>
     </section>
   </div>
