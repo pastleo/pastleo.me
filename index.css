@@ -97,13 +97,13 @@ section#intro a:hover img.taiwan-img {
 /* resume section */
 @media screen {
   section#resume {
-    max-height: 0%;
+    max-height: 0vh;
     transition: max-height 1s;
     color: #000;
     background: #ffffff26;
   }
   section#resume.opened {
-    max-height: 100%;
+    max-height: 300vh;
   }
 }
 section#resume a {
@@ -167,6 +167,16 @@ section#resume a:hover {
     background: #2c2c2c;
     color: #6bde99;
   }
+}
+section#blog a {
+  color: #fff;
+}
+section#blog a:hover {
+  color: #6bde99;
+}
+section#blog a.post-title {
+  text-decoration: none;
+  color: unset;
 }
 
 .pagebreak { page-break-before: always; }
