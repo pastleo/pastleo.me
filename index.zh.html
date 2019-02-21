@@ -11,14 +11,14 @@
   <link rel='stylesheet' href='./index.css?1'>
 </head>
 <body>
-  <div id='bg' class='background blur layer print:hidden'>
-    <video id='background-video' loop='true' poster='//i.imgur.com/mQlU34Ih.png' preload='none' muted='muted' webkit-playsinline=''>
+  <div id='bg' class='background layer print:hidden'>
+    <video id='background-video' loop='true' poster='https://i.imgur.com/nG9dKsD.png' preload='none' muted='muted' webkit-playsinline=''>
       <source src='https://i.imgur.com/Me0njBO.webm' type='video/webm'>
       <source src='https://i.imgur.com/Me0njBO.mp4' type='video/mp4'>
     </video>
   </div>
   <div class='main layer'>
-    <section id='languages' class='absolute p-4 w-full text-right'>
+    <section id='languages' class='absolute p-4 w-full text-right print:hidden'>
       <a lang='zh' class='active' href='index.zh.html'>中</a>
       /
       <a lang='en' href='index.html'>EN</a>
@@ -26,7 +26,7 @@
     <section id='intro' class='pt-12 pb-4'>
       <div class='max-w-md mx-auto flex'>
         <div id='logo' class='w-32 pl-2 flex flex-col justify-center'>
-          <img class='hidden print:block max-w-full h-auto' src='https://i.imgur.com/w9CfmPE.png'>
+          <img alt='avatar' class='hidden print:block max-w-full h-auto' src='https://i.imgur.com/w9CfmPE.png'>
         </div>
         <div class='flex-1 pl-4 pr-2 screen:text-center flex flex-col justify-center'>
           <h1>邱冠喻</h1>
@@ -63,7 +63,7 @@
       <div class='max-w-lg mx-auto pt-6 px-2 text-center sm:flex print:hidden'>
         <div class='resume-brief sm:w-1/4 px-2'>
           <a target='_blank' href='https://en.wikipedia.org/wiki/Taiwan'>
-            <img class='taiwan-img' src='img/taiwan.svg'>
+            <img alt='taiwan' class='taiwan-img' src='img/taiwan.svg'>
             <h3>台灣人</h3>
           </a>
         </div>
@@ -71,11 +71,11 @@
           <a id='open-resume' href='#resume-opened'>
             <div class='resume-brief sm:flex'>
               <div class='sm:flex-1 px-2'>
-                <h1 class='text-4xl mb-2'><i class='fas fa-suitcase'></i></h1>
+                <h1><i class='fas fa-suitcase'></i></h1>
                 <h4>五倍紅寶石 Rails/Full-stack 工程師</h4>
               </div>
               <div class='sm:flex-1 px-2'>
-                <h1 class='text-4xl mb-2'><i class='fas fa-graduation-cap'></i></h1>
+                <h1><i class='fas fa-graduation-cap'></i></h1>
                 <h4>中興大學資訊科學與工程學系</h4>
               </div>
             </div>
@@ -92,67 +92,78 @@
             <h5>2017/2 ~</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <h2>
               <a href='https://5xruby.tw' target='_blank'>五倍紅寶石</a>
               Rails/Full-stack 工程師
             </h2>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <a href='https://www.quickbuy.jp/' target='_blank'>
                   <i class="fas fa-mobile-alt"></i>
                   QuickBuy 電商 App
                 </a>
               </h4>
-              <h4 class='ml-3 screen:text-right'>
+              <h4 class='ml-3'>
                 <a href='https://facebook.github.io/react-native/' target='_blank'>
                   React Native
-                  <i class="fab fa-react"></i>
                 </a>
               </h4>
-              <h4 class='ml-3 screen:text-right'>
+              <p class='ml-5'>
+                同時開發 Android / iOS 兩平台，讓客戶透過平台建立 QRCode 提供消費者簡單快速地掃描下單，為了團隊開發便利透過 Fastlane 建立一套從 git push 到 testflight / Google Play 的自動 CI/CD 流程
+              </p>
+              <h4 class='ml-3'>
                 <a href='https://rubyonrails.org/' target='_blank'>
                   Ruby on Rails
-                  <i class="fas fa-gem"></i>
                 </a>
               </h4>
-              <h4 class='mr-3'>
+              <p class='ml-5'>
+                從零開始的全新案子，使用 Rails 快速開發出電商 App 之 API server 以及後台，ActiveRecord / PostgreSQL / Devise / Doorkeeper / CarrierWave / ActiveAdmin
+              </p>
+              <h4>
                 <a href='https://static.pastleo.me/2018-elixir-intro/altr-running.gif' target='_blank'>
                   <i class="fas fa-database"></i>
                   Database Migrator
                 </a>
               </h4>
-              <h4 class='ml-3 screen:text-right'>
+              <h4 class='ml-3'>
                 <a href='https://elixir-lang.org/' target='_blank'>
                   Elixir
-                  <i class="fas fa-laptop-code"></i>
                 </a>
               </h4>
-              <h4 class='mr-3'>
+              <p class='ml-5'>
+                客戶網站客製化資料決定從 HTML 形式改成以 React 參數方式儲存，需要大量資料解析與轉換，Elixir 之 Funcional programming 使之容易測試, pattern matching 讓資料比對更容易，同時最後利用 Elixir concurrent 優勢監聽資料庫變動做 live migration 達到無下線網站大改版
+              </p>
+              <h4>
                 <a href='https://goshopmatic.com/sg/' target='_blank'>
                   <i class="fas fa-store"></i>
                   Shopmatic 電商平台
                 </a>
               </h4>
-              <h4 class='ml-3 screen:text-right'>
+              <h4 class='ml-3'>
                 <a href='https://reactjs.org/' target='_blank'>
-                  React
-                  <i class="fab fa-react"></i>
+                  React/Redux
                 </a>
               </h4>
-              <h4 class='ml-3 screen:text-right'>
+              <p class='ml-5'>
+                提供客戶簡單地透過平台開店，同時整合圖文並茂的樣板，讓客戶可以建立自己風格的網路商店，把網站管理界面重構成 React / Redux 使之更好維護，也改成透過 Webpacker / Webpack 建立一套整合 Rails 的工作流程
+              </p>
+              <h4 class='ml-3'>
                 <a href='https://rubyonrails.org/' target='_blank'>
                   Ruby on Rails
-                  <i class="fas fa-gem"></i>
                 </a>
               </h4>
+              <p class='ml-5'>
+                在團隊內以 feature 分工，每個人都會需要動到後端，一開始幫忙修修 Bug，重構前端成為 React SPA 形式時加入所需之 API，ActiveRecord / PostgreSQL / Redis / AASM / Rspec
+              </p>
             </div>
           </div>
+          <div class="pagebreak"></div>
           <h1 class='ml-3'><i class='fas fa-graduation-cap mr-1'></i>教育背景</h1>
           <div class='time-mark'>
             <h5>2012 ~ <br class='inline sm:hidden' />2016</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <h2>
               <a href='https://www.nchu.edu.tw/' target='_blank'>
                 國立中興大學
               </a>
@@ -166,7 +177,7 @@
             <h5>2009 ~ <br class='inline sm:hidden' />2012</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <h2>
               <a href='http://www.pcsh.ntpc.edu.tw/' target='_blank'>
                 新北市立板橋高級中學
               </a>
@@ -174,55 +185,60 @@
           </div>
           <h1 class='ml-3'><i class='fas fa-book mr-2'></i>技能</h1>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <h2>
               語言能力
             </h2>
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
-                <i class="fas fa-language"></i>
-                中文: 母語
-              </h4>
-            </div>
-          </div>
-          <div class='inline-block ml-3 w-5/6'>
-            <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-language"></i>
                 英文: 可進行日常會話，開會
               </h4>
             </div>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <div class='details ml-3'>
+              <h4>
+                <i class="fas fa-language"></i>
+                中文: 母語
+              </h4>
+            </div>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <h2>
               IT 技術
             </h2>
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-terminal"></i>
-                程式語言: Javascript, Ruby, Elixir
+                擅長之程式語言: Javascript, Ruby, Elixir
               </h4>
-              <h4 class='mr-3'>
+              <p class='ml-3'>
+                正在自學 Rust, 寫過 C/C++, Python, Java, PHP, Golang
+              </p>
+              <h4>
                 <i class="fab fa-html5"></i>
-                前端: React, Redux, CSS 以及建置工具
+                前端: React, Redux (Thunk)
               </h4>
-              <h4 class='mr-3'>
+              <p class='ml-3'>
+                HTML, Vanilla Javascript, jQuery, CSS, Boostrap, Webpack, Babel
+              </p>
+              <h4>
                 <i class="fas fa-server"></i>
-                Linux, Git, SQL
+                Linux, ArchLinux, Shell scripting, Docker, Git, PostgreSQL
               </h4>
             </div>
           </div>
-          <div class="pagebreak"></div>
           <h1 class='ml-3'><i class='fas fa-users mr-2'></i>社群 / 社團</h1>
           <div class='time-mark'>
             <h5>2018/11</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-comment-dots"></i>
                 <a href='https://mopcon.org/2018/' target='_blank'>
                   MOPCON 2018
@@ -242,7 +258,7 @@
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-comment-dots"></i>
                 <a href='https://2018.coscup.org' target='_blank'>
                   COSCUP 2018
@@ -262,7 +278,7 @@
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-comment-dots"></i>
                 <a href='https://2018.rubyconf.tw/' target='_blank'>
                   Ruby &amp; Elixir Conf TW 2018
@@ -282,7 +298,7 @@
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-comment-dots"></i>
                 <a href='http://sitcon.org/2016/' target='_blank'>
                   SITCON 2016
@@ -301,7 +317,7 @@
             <h5>2015/8 ~ <br class='inline sm:hidden' />2016/8</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <h2>
               <a href='http://nchuit.cc/' target='_blank'>
                 中興大學資訊社
               </a>
@@ -313,7 +329,7 @@
             <h5>2013/8 ~ <br class='inline sm:hidden' />2015/8</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <h2>
               <a href='http://nchusg.org/' target='_blank'>
                 中興大學學生會
               </a>
@@ -325,7 +341,9 @@
     </section>
     <section id='blog' class='py-6 print:hidden min-h-screen'>
       <div class='max-w-lg mx-auto px-2 py-6'>
-        <h1 class='mb-1 text-center'><pre>=== Blog Posts ===</pre></h1>
+        <h1 class='mb-1 text-center'>
+          <pre><span class='hidden sm:inline'>=== </span>Blog Posts<span class='hidden sm:inline'> ===</span></pre>
+        </h1>
         <a class='post-title block my-10' href='https://md.pastleo.me/lthgPae0S-6wK9-peUD47w' target='_blank'>
           <h1 class='mb-1'>MacOS homebrew for multiple users setup</h1>
           <h4 class='mb-3'>2019/2/12</h4>

@@ -114,13 +114,10 @@ section#intro a:hover img.taiwan-img {
 /* resume section */
 @media screen {
   section#resume {
-    max-height: 0vh;
-    transition: max-height 1s;
+    max-height: 0px;
+    transition: max-height 1.5s;
     color: #000;
     background: #ffffff26;
-  }
-  section#resume.opened {
-    max-height: 300vh;
   }
 }
 section#resume a {
@@ -133,17 +130,18 @@ section#resume a:hover {
 }
 
 #resume-story h1 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 #resume-story h2 {
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
 #resume-story h3, #resume-story h4 {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
-#resume-story h5, #resume-story h6 {
-  margin-bottom: 0.3rem;
+#resume-story h5, #resume-story h6, #resume-story p {
+  margin-bottom: 0.4rem;
+  font-size: 0.875rem;
 }
 #resume-story i.fab {
   font-weight: 100;
@@ -160,14 +158,6 @@ section#resume a:hover {
   right: 0;
   padding-right: 0.25rem;
   white-space: nowrap;
-}
-@media screen {
-  #resume-story .details > * {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    color: #2c2c2c;
-  }
 }
 @media print {
   #resume-story i.fab, #resume-story i.fas {

@@ -53,19 +53,30 @@ document.getElementById('logo').onclick = function() {
 }
 
 // resume toggling
+var resumeOpened = false;
+function setResumeHeight(height) {
+  document.getElementById('resume').setAttribute(
+    'style', 'max-height: ' + (height === undefined ? document.getElementById('resume-story').offsetHeight + 100 : height) + 'px ;'
+  )
+}
 function toggleResume(event) {
-  if (document.getElementById('resume').classList.contains('opened')) {
-    document.getElementById('resume').classList.remove('opened');
-    window.setParam('resume-opened', false);
-  } else {
-    document.getElementById('resume').classList.add('opened');
-    window.setParam('resume-opened', true);
+  resumeOpened = !resumeOpened;
+  if (resumeOpened) {
+    setResumeHeight();
     if (document.body.clientWidth > 1024) {
       document.getElementById('background-video').play();
+      document.getElementById('bg').classList.add('blur');
     }
+  } else {
+    setResumeHeight(0);
   }
+
+  window.setParam('resume-opened', resumeOpened);
   if (event) { event.preventDefault(); }
 }
+window.addEventListener("resize", function() {
+  if (resumeOpened) { setResumeHeight(); }
+});
 if (window.getParam('resume-opened')) {
   toggleResume();
 }

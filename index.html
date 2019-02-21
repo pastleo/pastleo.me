@@ -11,14 +11,14 @@
   <link rel='stylesheet' href='./index.css?1'>
 </head>
 <body>
-  <div id='bg' class='background blur layer print:hidden'>
-    <video id='background-video' loop='true' poster='//i.imgur.com/mQlU34Ih.png' preload='none' muted='muted' webkit-playsinline=''>
+  <div id='bg' class='background layer print:hidden'>
+    <video id='background-video' loop='true' poster='https://i.imgur.com/nG9dKsD.png' preload='none' muted='muted' webkit-playsinline=''>
       <source src='https://i.imgur.com/Me0njBO.webm' type='video/webm'>
       <source src='https://i.imgur.com/Me0njBO.mp4' type='video/mp4'>
     </video>
   </div>
   <div class='main layer'>
-    <section id='languages' class='absolute p-4 w-full text-right'>
+    <section id='languages' class='absolute p-4 w-full text-right print:hidden'>
       <a lang='zh' href='index.zh.html'>中</a>
       /
       <a lang='en' class='active' href='index.html'>EN</a>
@@ -26,7 +26,7 @@
     <section id='intro' class='pt-12 pb-4'>
       <div class='max-w-md mx-auto flex'>
         <div id='logo' class='w-32 pl-2 flex flex-col justify-center'>
-          <img class='hidden print:block max-w-full h-auto' src='https://i.imgur.com/w9CfmPE.png'>
+          <img alt='avatar' class='hidden print:block max-w-full h-auto' src='https://i.imgur.com/w9CfmPE.png'>
         </div>
         <div class='flex-1 pl-4 pr-2 screen:text-center flex flex-col justify-center'>
           <h1>Chiu Guan Yu</h1>
@@ -63,7 +63,7 @@
       <div class='max-w-lg mx-auto pt-6 px-2 text-center sm:flex print:hidden'>
         <div class='resume-brief sm:w-1/4 px-2'>
           <a target='_blank' href='https://en.wikipedia.org/wiki/Taiwan'>
-            <img class='taiwan-img' src='img/taiwan.svg'>
+            <img alt='taiwan' class='taiwan-img' src='img/taiwan.svg'>
             <h3>Taiwanese</h3>
           </a>
         </div>
@@ -93,67 +93,78 @@
             <h5>2017/2 ~</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <h2>
               Rails/Full-stack Engineer at
               <a href='https://5xruby.tw' target='_blank'>5xRuby</a>
             </h2>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <a href='https://www.quickbuy.jp/' target='_blank'>
                   <i class="fas fa-mobile-alt"></i>
                   QuickBuy E-commerce App
                 </a>
               </h4>
-              <h4 class='ml-3 screen:text-right'>
+              <h4 class='ml-3'>
                 <a href='https://facebook.github.io/react-native/' target='_blank'>
                   React Native
-                  <i class="fab fa-react"></i>
                 </a>
               </h4>
-              <h4 class='ml-3 screen:text-right'>
+              <p class='ml-5'>
+                For both Android and iOS, enabling clients to generate QRCode for customers to scan and buy quickly and easily, utilizing Fastlane in our CI/CD automation flow from git push to Testflight and Google Play
+              </p>
+              <h4 class='ml-3'>
                 <a href='https://rubyonrails.org/' target='_blank'>
                   Ruby on Rails
-                  <i class="fas fa-gem"></i>
                 </a>
               </h4>
-              <h4 class='mr-3'>
+              <p class='ml-5'>
+                New project from scratch, quickly development of App API server and backend management website, ActiveRecord / PostgreSQL / Devise / Doorkeeper / CarrierWave / ActiveAdmin
+              </p>
+              <h4>
                 <a href='https://static.pastleo.me/2018-elixir-intro/altr-running.gif' target='_blank'>
                   <i class="fas fa-database"></i>
                   Database Migrator
                 </a>
               </h4>
-              <h4 class='ml-3 screen:text-right'>
+              <h4 class='ml-3'>
                 <a href='https://elixir-lang.org/' target='_blank'>
                   Elixir
-                  <i class="fas fa-laptop-code"></i>
                 </a>
               </h4>
-              <h4 class='mr-3'>
+              <p class='ml-5'>
+                Customized website data decided to be changed from HTML format to React props, huge work of data parsing and converting was expected, Elixir's functional programming make it easizer to test and verify, pattern matching makes it easizer to compare data, finally Elixir's concurrent model made it easy to listen to database changes and having live migration to achieve no-downtime migration
+              </p>
+              <h4>
                 <a href='https://goshopmatic.com/sg/' target='_blank'>
                   <i class="fas fa-store"></i>
                   Shopmatic E-commerce Platform
                 </a>
               </h4>
-              <h4 class='ml-3 screen:text-right'>
+              <h4 class='ml-3'>
                 <a href='https://reactjs.org/' target='_blank'>
-                  React
-                  <i class="fab fa-react"></i>
+                  React/Redux
                 </a>
               </h4>
-              <h4 class='ml-3 screen:text-right'>
+              <p class='ml-5'>
+                Allow clients to have an online shop easily with content-rich templates that can be customized to fit clients' style, refactor to React / Redux makes it easizer to maintain, frontend workflow was also changed to Webpacker / Webpack to integrate with Rails
+              </p>
+              <h4 class='ml-3'>
                 <a href='https://rubyonrails.org/' target='_blank'>
                   Ruby on Rails
-                  <i class="fas fa-gem"></i>
                 </a>
               </h4>
+              <p class='ml-5'>
+                Jobs and works were assigned by feature which means everyone had a chance to touch backend, fixing bugs, prepare API for newly refactored SPA style React frontend, ActiveRecord / PostgreSQL / Redis / AASM / Rspec
+              </p>
             </div>
           </div>
+          <div class="pagebreak"></div>
           <h1 class='ml-3'><i class='fas fa-graduation-cap mr-1'></i>Education</h1>
           <div class='time-mark'>
             <h5>2012 ~ <br class='inline sm:hidden' />2016</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <h2>
               <a href='https://www.nchu.edu.tw/' target='_blank'>
                 National Chung Hsing University
               </a>
@@ -167,53 +178,58 @@
             <h5>2009 ~ <br class='inline sm:hidden' />2012</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <h2>
               <a href='http://www.pcsh.ntpc.edu.tw/' target='_blank'>
                 New Taipei Municipal Panchiao Senior High School
               </a>
             </h2>
           </div>
-          <div class="pagebreak"></div>
           <h1 class='ml-3'><i class='fas fa-book mr-2'></i>Skills</h1>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
-              Languages
+            <h2>
+              Languages Skills
             </h2>
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
-                <i class="fas fa-language"></i>
-                Chinese: native
-              </h4>
-            </div>
-          </div>
-          <div class='inline-block ml-3 w-5/6'>
-            <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-language"></i>
                 English: able to hold daily conversation and meeting
               </h4>
             </div>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <div class='details ml-3'>
+              <h4>
+                <i class="fas fa-language"></i>
+                Chinese: native
+              </h4>
+            </div>
+          </div>
+          <div class='inline-block ml-3 w-5/6'>
+            <h2>
               Information Technologies
             </h2>
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-terminal"></i>
-                Programming Languages: Javascript, Ruby, Elixir
+                Experienced Programming Languages: Javascript, Ruby, Elixir
               </h4>
-              <h4 class='mr-3'>
+              <p class='ml-3'>
+                Learning Rust, has written C/C++, Python, Java, PHP, Golang
+              </p>
+              <h4>
                 <i class="fab fa-html5"></i>
-                Frontend: React, Redux, CSS and build tools
+                Frontend: React, Redux (Thunk)
               </h4>
-              <h4 class='mr-3'>
+              <p class='ml-3'>
+                HTML, Vanilla Javascript, jQuery, CSS, Boostrap, Webpack, Babel
+              </p>
+              <h4>
                 <i class="fas fa-server"></i>
-                Linux, Git, SQL
+                Linux, ArchLinux, Shell scripting, Docker, Git, PostgreSQL
               </h4>
             </div>
           </div>
@@ -223,7 +239,7 @@
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-comment-dots"></i>
                 <a href='https://mopcon.org/2018/' target='_blank'>
                   MOPCON 2018
@@ -231,7 +247,7 @@
                 Speaker
               </h4>
               <h4 class='ml-3 screen:text-right'>
-                <a href='https://mopcon.org/2018/speaker.php?id=4&lang=en' target='_blank'>
+                <a href='https://mopcon.org/2018/speaker.php?id=4' target='_blank'>
                   WebComponent &amp; lit-html - another frontend implementation choice
                 </a>
               </h4>
@@ -243,7 +259,7 @@
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-comment-dots"></i>
                 <a href='https://2018.coscup.org' target='_blank'>
                   COSCUP 2018
@@ -263,7 +279,7 @@
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-comment-dots"></i>
                 <a href='https://2018.rubyconf.tw/' target='_blank'>
                   Ruby &amp; Elixir Conf TW 2018
@@ -283,7 +299,7 @@
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
-              <h4 class='mr-3'>
+              <h4>
                 <i class="fas fa-comment-dots"></i>
                 <a href='http://sitcon.org/2016/' target='_blank'>
                   SITCON 2016
@@ -302,7 +318,7 @@
             <h5>2015/8 ~ <br class='inline sm:hidden' />2016/8</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <h2>
               Director of
               <a href='http://nchuit.cc/' target='_blank'>
                 National Chung Hsing University Information Technologies Club
@@ -314,7 +330,7 @@
             <h5>2013/8 ~ <br class='inline sm:hidden' />2015/8</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
-            <h2 class='mb-1'>
+            <h2>
               Information Technologies Department of
               <a href='http://nchusg.org/' target='_blank'>
                 National Chung Hsing University Student Association
@@ -326,7 +342,9 @@
     </section>
     <section id='blog' class='py-6 print:hidden min-h-screen'>
       <div class='max-w-lg mx-auto px-2'>
-        <h1 class='mb-1 text-center'><pre>=== Blog Posts ===</pre></h1>
+        <h1 class='mb-1 text-center'>
+          <pre><span class='hidden sm:inline'>=== </span>Blog Posts<span class='hidden sm:inline'> ===</span></pre>
+        </h1>
         <a class='post-title block my-10' href='https://md.pastleo.me/lthgPae0S-6wK9-peUD47w' target='_blank'>
           <h1 class='mb-1'>MacOS homebrew for multiple users setup</h1>
           <h4 class='mb-3'>2019/2/12</h4>
