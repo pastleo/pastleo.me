@@ -5,6 +5,7 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <title>PastLeo</title>
   <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'/>
+  <meta name="Description" content="PastLeo 的部落格以及個人網站">
   <link href='https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css' rel='stylesheet'>
   <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>
   <link rel='stylesheet' href='./index.css?1'>
@@ -17,14 +18,19 @@
     </video>
   </div>
   <div class='main layer'>
+    <section id='languages' class='absolute p-4 w-full text-right'>
+      <a lang='zh' class='active' href='index.zh.html'>中</a>
+      /
+      <a lang='en' href='index.html'>EN</a>
+    </section>
     <section id='intro' class='pt-12 pb-4'>
       <div class='max-w-md mx-auto flex'>
         <div id='logo' class='w-32 pl-2 flex flex-col justify-center'>
           <img class='hidden print:block max-w-full h-auto' src='https://i.imgur.com/w9CfmPE.png'>
         </div>
         <div class='flex-1 pl-4 pr-2 screen:text-center flex flex-col justify-center'>
-          <h1>Chiu Guan Yu</h1>
-          <h3>PastLeo / Leo / chgu82837</h3>
+          <h1>邱冠喻</h1>
+          <h3>PastLeo / 西瓜 / chgu82837</h3>
           <div class='pt-1 sm:pt-3'>
             <a href='mailto:chgu82837@gmail.com' target='_blank' class='contact-button inline-block print:block'>
               <i class='fas fa-envelope'></i>
@@ -55,23 +61,22 @@
         </div>
       </div>
       <div class='max-w-lg mx-auto pt-6 px-2 text-center sm:flex print:hidden'>
-        <div class='sm:w-1/4 px-2'>
+        <div class='resume-brief sm:w-1/4 px-2'>
           <a target='_blank' href='https://en.wikipedia.org/wiki/Taiwan'>
             <img class='taiwan-img' src='img/taiwan.svg'>
-            <h3>Taiwanese</h3>
+            <h3>台灣人</h3>
           </a>
         </div>
         <div class='sm:flex-1'>
           <a id='open-resume' href='#resume-opened'>
-            <div class='sm:flex'>
+            <div class='resume-brief sm:flex'>
               <div class='sm:flex-1 px-2'>
                 <h1 class='text-4xl mb-2'><i class='fas fa-suitcase'></i></h1>
-                <h4>Rails/Full-stack Engineer at 5xRuby </h4>
+                <h4>五倍紅寶石 Rails/Full-stack 工程師</h4>
               </div>
               <div class='sm:flex-1 px-2'>
                 <h1 class='text-4xl mb-2'><i class='fas fa-graduation-cap'></i></h1>
-                <h4>National Chung Hsing University</h4>
-                <h4>Department of Computer Science and Engineering</h4>
+                <h4>中興大學資訊科學與工程學系</h4>
               </div>
             </div>
             <p><i class='fas fa-angle-down mt-2 text-lg'></i></p>
@@ -82,20 +87,20 @@
     <section id='resume' class='overflow-hidden'>
       <div class='max-w-lg mx-auto pt-4 pb-6 px-2'>
         <div id='resume-story' class='w-4/5 sm:w-3/4 ml-auto border-solid border-black border-l'>
-          <h1 class='ml-3'><i class='fas fa-suitcase mr-2'></i>Experience</h1>
+          <h1 class='ml-3'><i class='fas fa-suitcase mr-2'></i>工作經歷</h1>
           <div class='time-mark'>
             <h5>2017/2 ~</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <h2 class='mb-1'>
-              Rails/Full-stack Engineer at
-              <a href='https://5xruby.tw' target='_blank'>5xRuby</a>
+              <a href='https://5xruby.tw' target='_blank'>五倍紅寶石</a>
+              Rails/Full-stack 工程師
             </h2>
             <div class='details ml-3'>
               <h4 class='mr-3'>
                 <a href='https://www.quickbuy.jp/' target='_blank'>
                   <i class="fas fa-mobile-alt"></i>
-                  QuickBuy E-commerce App
+                  QuickBuy 電商 App
                 </a>
               </h4>
               <h4 class='ml-3 screen:text-right'>
@@ -125,7 +130,7 @@
               <h4 class='mr-3'>
                 <a href='https://goshopmatic.com/sg/' target='_blank'>
                   <i class="fas fa-store"></i>
-                  Shopmatic E-commerce Platform
+                  Shopmatic 電商平台
                 </a>
               </h4>
               <h4 class='ml-3 screen:text-right'>
@@ -142,17 +147,17 @@
               </h4>
             </div>
           </div>
-          <h1 class='ml-3'><i class='fas fa-graduation-cap mr-1'></i>Education</h1>
+          <h1 class='ml-3'><i class='fas fa-graduation-cap mr-1'></i>教育背景</h1>
           <div class='time-mark'>
             <h5>2012 ~ <br class='inline sm:hidden' />2016</h5>
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <h2 class='mb-1'>
               <a href='https://www.nchu.edu.tw/' target='_blank'>
-                National Chung Hsing University
+                國立中興大學
               </a>
               <a href='http://www.cs.nchu.edu.tw/' target='_blank'>
-                Department of Computer Science and Engineering
+                資訊科學與工程學系
               </a>
             </h2>
           </div>
@@ -163,22 +168,21 @@
           <div class='inline-block ml-3 w-5/6'>
             <h2 class='mb-1'>
               <a href='http://www.pcsh.ntpc.edu.tw/' target='_blank'>
-                New Taipei Municipal Panchiao Senior High School
+                新北市立板橋高級中學
               </a>
             </h2>
           </div>
-          <div class="pagebreak"></div>
-          <h1 class='ml-3'><i class='fas fa-book mr-2'></i>Skills</h1>
+          <h1 class='ml-3'><i class='fas fa-book mr-2'></i>技能</h1>
           <div class='inline-block ml-3 w-5/6'>
             <h2 class='mb-1'>
-              Languages
+              語言能力
             </h2>
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
               <h4 class='mr-3'>
                 <i class="fas fa-language"></i>
-                Chinese: native
+                中文: 母語
               </h4>
             </div>
           </div>
@@ -186,24 +190,24 @@
             <div class='details ml-3'>
               <h4 class='mr-3'>
                 <i class="fas fa-language"></i>
-                English: able to hold daily conversation and meeting
+                英文: 可進行日常會話，開會
               </h4>
             </div>
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <h2 class='mb-1'>
-              Information Technologies
+              IT 技術
             </h2>
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <div class='details ml-3'>
               <h4 class='mr-3'>
                 <i class="fas fa-terminal"></i>
-                Programming Languages: Javascript, Ruby, Elixir
+                程式語言: Javascript, Ruby, Elixir
               </h4>
               <h4 class='mr-3'>
                 <i class="fab fa-html5"></i>
-                Frontend: React, Redux, CSS and build tools
+                前端: React, Redux, CSS 以及建置工具
               </h4>
               <h4 class='mr-3'>
                 <i class="fas fa-server"></i>
@@ -211,7 +215,8 @@
               </h4>
             </div>
           </div>
-          <h1 class='ml-3'><i class='fas fa-users mr-2'></i>Community</h1>
+          <div class="pagebreak"></div>
+          <h1 class='ml-3'><i class='fas fa-users mr-2'></i>社群 / 社團</h1>
           <div class='time-mark'>
             <h5>2018/11</h5>
           </div>
@@ -222,11 +227,11 @@
                 <a href='https://mopcon.org/2018/' target='_blank'>
                   MOPCON 2018
                 </a>
-                Speaker
+                演講
               </h4>
               <h4 class='ml-3 screen:text-right'>
-                <a href='https://mopcon.org/2018/speaker.php?id=4&lang=en' target='_blank'>
-                  WebComponent &amp; lit-html - another frontend implementation choice
+                <a href='https://mopcon.org/2018/speaker.php?id=4' target='_blank'>
+                  WebComponent &amp; lit-html 前端開發新選擇
                 </a>
               </h4>
             </div>
@@ -242,11 +247,11 @@
                 <a href='https://2018.coscup.org' target='_blank'>
                   COSCUP 2018
                 </a>
-                Speaker
+                演講
               </h4>
               <h4 class='ml-3 screen:text-right'>
                 <a href='https://2018.coscup.org/programs/full-archlinux/' target='_blank'>
-                  Archlinux for daily usage
+                  全面使用 archlinux 之旅
                 </a>
               </h4>
             </div>
@@ -262,11 +267,11 @@
                 <a href='https://2018.rubyconf.tw/' target='_blank'>
                   Ruby &amp; Elixir Conf TW 2018
                 </a>
-                Speaker
+                演講
               </h4>
               <h4 class='ml-3 screen:text-right'>
                 <a href='https://2018.rubyconf.tw/program#pastleo' target='_blank'>
-                  Not familiar with Elixir? Let me do a simple intro in 30 minutes
+                  借用您半小時，請問有聽過 elixir 嗎？
                 </a>
               </h4>
             </div>
@@ -282,11 +287,11 @@
                 <a href='http://sitcon.org/2016/' target='_blank'>
                   SITCON 2016
                 </a>
-                Speaker
+                演講
               </h4>
               <h4 class='ml-3 screen:text-right'>
                 <a href='http://sitcon.org/2016/#target-schedule' target='_blank'>
-                  Customize my development environment and make it open-source!
+                  客製化我的開發環境並將它開源！
                 </a>
               </h4>
             </div>
@@ -297,10 +302,10 @@
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <h2 class='mb-1'>
-              Director of
               <a href='http://nchuit.cc/' target='_blank'>
-                National Chung Hsing University Information Technologies Club
+                中興大學資訊社
               </a>
+              社長
             </h2>
           </div>
           <br />
@@ -309,19 +314,89 @@
           </div>
           <div class='inline-block ml-3 w-5/6'>
             <h2 class='mb-1'>
-              Information Technologies Department of
               <a href='http://nchusg.org/' target='_blank'>
-                National Chung Hsing University Student Association
+                中興大學學生會
               </a>
+              資訊部
             </h2>
           </div>
         </div>
       </div>
     </section>
     <section id='blog' class='py-6 print:hidden min-h-screen'>
-      <div class='max-w-lg mx-auto px-2'>
-        <h1>Hello blog!</h1>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      <div class='max-w-lg mx-auto px-2 py-6'>
+        <h1 class='mb-1 text-center'><pre>=== Blog Posts ===</pre></h1>
+        <a class='post-title block my-10' href='https://md.pastleo.me/lthgPae0S-6wK9-peUD47w' target='_blank'>
+          <h1 class='mb-1'>MacOS homebrew for multiple users setup</h1>
+          <h4 class='mb-3'>2019/2/12</h4>
+        </a>
+        <p>
+          I was trying to setup a mac server for multiple users, here is some steps setting up for homebrew
+        </p>
+        <p class='mt-3'>
+          <a href='https://md.pastleo.me/lthgPae0S-6wK9-peUD47w' target='_blank'>Read more</a>
+        </p>
+        <a class='post-title block my-10' href='https://md.pastleo.me/DkpMWDCoQGyAR5KAKN70Og' target='_blank'>
+          <h1 class='mb-1'>Notes of creating an AUR package</h1>
+          <h4 class='mb-3'>2019/2/5</h4>
+        </a>
+        <p>
+          Just a note written down when creating an AUR package
+          <a href='https://aur.archlinux.org/packages/fix-bt-a2dp/' target='_blank'>fix-bt-a2dp</a>
+        </p>
+        <p class='mt-3'>
+          <a href='https://md.pastleo.me/DkpMWDCoQGyAR5KAKN70Og' target='_blank'>Read more</a>
+        </p>
+        <a class='post-title block my-10' href='https://md.pastleo.me/rs-wasm-glife' target='_blank'>
+          <h1 class='mb-1'>Webassembly - run native code on browser using Rust</h1>
+          <h4 class='mb-3'>2019/1/17</h4>
+        </a>
+        <p>
+          用 Rust 試玩 Webassembly 做個 Conway’s game of life
+        </p>
+        <p class='mt-3'>
+          <a href='https://md.pastleo.me/rs-wasm-glife' target='_blank'>Read more</a>
+        </p>
+        <a class='post-title block my-10' href='https://md.pastleo.me/experiment-webrtc' target='_blank'>
+          <h1 class='mb-1'>WebRTC - Real-Time Communications on the web</h1>
+          <h4 class='mb-3'>2018/9/14</h4>
+        </a>
+        <p>
+          大家應該都聽過 WebSocket，讓瀏覽器和伺服器兩者之間可以建立持久性的連接，並進行雙向數據傳輸；那 WebRTC 是什麼？
+        </p>
+        <p class='mt-3'>
+          <a href='https://md.pastleo.me/experiment-webrtc' target='_blank'>讓我們繼續看下去</a>
+        </p>
+        <a class='post-title block my-10' href='https://md.pastleo.me/litelement-webcomponent' target='_blank'>
+          <h1 class='mb-1'>LitElement - 像 React 一樣寫 WebComponent</h1>
+          <h4 class='mb-3'>2018/7/6</h4>
+        </a>
+        <p>
+          WebComponent, Web 自身改善 DOM 包裝方式的嘗試, 以 LitElement 當成範例
+        </p>
+        <p class='mt-3'>
+          <a href='https://md.pastleo.me/litelement-webcomponent' target='_blank'>Read more</a>
+        </p>
+        <a class='post-title block my-10' href='https://md.pastleo.me/tmux' target='_blank'>
+          <h1 class='mb-1'>tmux ，不只是 terminal multiplexer</h1>
+          <h4 class='mb-3'>2018/2/13</h4>
+        </a>
+        <p>
+          TMux, terminal multiplexer, 讓你在文字界面下可以開多個 tab, 但是他能做的比這個更多
+        </p>
+        <p class='mt-3'>
+          <a href='https://md.pastleo.me/tmux' target='_blank'>Read more</a>
+        </p>
+        <a class='post-title block my-10' href='https://md.pastleo.me/archlinux-setup-notes' target='_blank'>
+          <h1 class='mb-1'>Notes of setting up ArchLinux for daily use</h1>
+          <h4 class='mb-3'>Will keep updating</h4>
+        </a>
+        <p>
+          Kind of sorted out version of archlinux wiki for myself
+        </p>
+        <p class='mt-3'>
+          <a href='https://md.pastleo.me/archlinux-setup-notes' target='_blank'>Read more</a>
+        </p>
       </div>
     </section>
   </div>

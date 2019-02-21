@@ -60,6 +60,17 @@ body {
   }
 }
 
+section#languages {
+  color: #fff;
+}
+section#languages a {
+  color: #fff;
+  text-decoration: none;
+}
+section#languages a:hover, section#languages a.active {
+  color: #6bde99;
+}
+
 section#intro .contact-button {
   border-radius: .2857rem;
   margin-right: .5em;
@@ -83,6 +94,12 @@ section#intro .contact-button span {
 @media print {
   section#intro .contact-button span {
     text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 576px){
+  section#intro .resume-brief {
+    display: none;
   }
 }
 
