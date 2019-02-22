@@ -120,6 +120,11 @@ section#intro a:hover img.taiwan-img {
     background: #ffffff26;
   }
 }
+@media print {
+  section#resume {
+    max-height: 25565vh !important;
+  }
+}
 section#resume a {
   color: #2c2c2c;
   text-decoration: none;
