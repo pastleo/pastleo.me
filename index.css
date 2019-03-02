@@ -144,6 +144,10 @@ section#resume a:hover {
 #resume-story h3, #resume-story h4 {
   margin-bottom: 0.5rem;
 }
+#resume-story h3 > span, #resume-story h4 > span {
+  font-size: 0.8rem;
+  font-weight: 200;
+}
 #resume-story h5, #resume-story h6, #resume-story p {
   margin-bottom: 0.4rem;
   font-size: 0.875rem;
