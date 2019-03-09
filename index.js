@@ -56,17 +56,13 @@ document.getElementById('logo').onclick = function() {
 var resumeOpened = false;
 function setResumeHeight(height) {
   document.getElementById('resume').setAttribute(
-    'style', 'max-height: ' + (height === undefined ? document.getElementById('resume-story').offsetHeight + 100 : height) + 'px ;'
+    'style', 'max-height: ' + (height === undefined ? document.getElementById('resume-content').offsetHeight + 100 : height) + 'px ;'
   )
 }
 function toggleResume(event) {
   resumeOpened = !resumeOpened;
   if (resumeOpened) {
     setResumeHeight();
-    if (document.body.clientWidth > 1024) {
-      document.getElementById('background-video').play();
-      document.getElementById('bg').classList.add('blur');
-    }
   } else {
     setResumeHeight(0);
   }
