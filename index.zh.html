@@ -11,12 +11,7 @@
   <link rel='stylesheet' href='./index.css?1'>
 </head>
 <body>
-  <div id='bg' class='background layer print:hidden'>
-    <video id='background-video' loop='true' poster='https://i.imgur.com/nG9dKsD.png' preload='none' muted='muted' webkit-playsinline=''>
-      <source src='https://i.imgur.com/Me0njBO.webm' type='video/webm'>
-      <source src='https://i.imgur.com/Me0njBO.mp4' type='video/mp4'>
-    </video>
-  </div>
+  <div id='bg' class='background layer print:hidden'></div>
   <div class='main layer'>
     <section id='languages' class='absolute p-4 w-full text-right print:hidden'>
       <a lang='zh' class='active' href='index.zh.html'>中</a>
@@ -85,7 +80,7 @@
       </div>
     </section>
     <section id='resume' class='overflow-hidden'>
-      <div class='max-w-lg mx-auto pt-4 pb-6 px-2'>
+      <div id='resume-content' class='max-w-lg mx-auto pt-4 pb-6 px-2'>
         <div id='resume-story' class='w-4/5 sm:w-3/4 ml-auto border-solid border-black border-l'>
           <h1 class='ml-3'><i class='fas fa-suitcase mr-2'></i>工作經歷</h1>
           <div class='time-mark'>
@@ -104,7 +99,7 @@
                 </a>
               </h3>
               <h4 class='ml-3'>
-                帶領一個小團隊
+                帶領團隊
                 <span>
                   從零建立一個電商平台以及 App
                 </span>
