@@ -128,47 +128,47 @@ section#resume a:hover {
   text-decoration: none;
 }
 
-#resume-story h1 {
+.resume-story h1 {
   margin-top: 1.2rem;
   margin-bottom: 1.2rem;
 }
-#resume-story h2 {
+.resume-story h2 {
   margin-bottom: 0.8rem;
 }
-#resume-story h3, #resume-story h4 {
+.resume-story h3, .resume-story h4 {
   margin-bottom: 0.5rem;
 }
-#resume-story h3 > span, #resume-story h4 > span {
+.resume-story h3 > span, .resume-story h4 > span {
   font-size: 0.8rem;
   font-weight: 500;
 }
-#resume-story h5, #resume-story h6, #resume-story p {
+.resume-story h5, .resume-story h6, .resume-story p {
   margin-bottom: 0.4rem;
   font-size: 0.875rem;
 }
-#resume-story i.fab {
+.resume-story i.fab {
   font-weight: 100;
 }
-#resume-story .time-mark {
+.resume-story .time-mark {
   display: inline-block;
   position: relative;
   vertical-align: top;
   width: 0;
   height: 0;
 }
-#resume-story .time-mark > * {
+.resume-story .time-mark > * {
   position: absolute;
   right: 0;
   padding-right: 0.25rem;
   white-space: nowrap;
 }
-#resume-story article {
+.resume-story article {
   display: inline-block;
   margin-left: .75rem;
   width: 93%;
 }
 @media screen and (min-width: 576px){
-  #resume-story article {
+  .resume-story article {
     width: 95%;
   }
 }
