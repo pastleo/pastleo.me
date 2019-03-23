@@ -63,20 +63,17 @@
           </a>
         </div>
         <div class='sm:flex-1'>
-          <a id='open-resume' href='#resume-opened'>
-            <div class='resume-brief sm:flex'>
-              <div class='sm:flex-1 px-2'>
-                <h1 class='text-4xl mb-2'><i class='fas fa-suitcase'></i></h1>
-                <h4>Rails/Full-stack Engineer at 5xRuby </h4>
-              </div>
-              <div class='sm:flex-1 px-2'>
-                <h1 class='text-4xl mb-2'><i class='fas fa-graduation-cap'></i></h1>
-                <h4>National Chung Hsing University</h4>
-                <h4>Department of Computer Science and Engineering</h4>
-              </div>
+          <div class='resume-brief sm:flex'>
+            <div class='sm:flex-1 px-2'>
+              <h1 class='text-4xl mb-2'><i class='fas fa-suitcase'></i></h1>
+              <h4>Rails/Full-stack Engineer at 5xRuby </h4>
             </div>
-            <p><i class='fas fa-angle-down mt-2 text-lg'></i></p>
-          </a>
+            <div class='sm:flex-1 px-2'>
+              <h1 class='text-4xl mb-2'><i class='fas fa-graduation-cap'></i></h1>
+              <h4>National Chung Hsing University</h4>
+              <h4>Department of Computer Science and Engineering</h4>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -308,8 +305,14 @@
             </h3>
           </article>
         </div>
+        <hr class='h-px border-t border-solid border-black' />
         <div class='resume-story w-4/5 print:w-9/10 ml-auto border-solid border-black border-l mb-3'>
-          <h2 class='ml-3'><i class='fas fa-book mr-2'></i>Skills</h2>
+          <div class='left-title'>
+            <h2 class='ml-3 text-right'>
+              <i class='fas fa-book mr-2'></i>
+              Skills
+            </h2>
+          </div>
           <article>
             <h3>
               Languages Skills
@@ -359,18 +362,64 @@
           </article>
         </div>
         <div class="pagebreak"></div>
+        <div class='resume-story w-4/5 print:w-9/10 ml-auto border-solid border-black border-l mb-3 mt-6'>
+          <div class='left-title'>
+            <h2 class='ml-3 text-right'>
+              <i class='fas fa-rocket mr-2'></i>
+              Showcases
+            </h2>
+          </div>
+          <article>
+            <h3>
+              Blackswan E-sports event website
+            </h3>
+            <div class='details'>
+              <img class='showcase-banner mb-2' src='https://i.imgur.com/YZJIqmX.png' />
+              <h4 class='ml-3'>
+                An official website for E-sport event with fancy contest table and user interactions
+              </h4>
+              <h4 class='ml-3'>
+                Archived website: <a href='http://besg.pastleo.me/' target='_blank'>http://besg.pastleo.me/</a>
+              </h4>
+            </div>
+          </article>
+          <article>
+            <h3>
+              Website of Information Technologies Club
+            </h3>
+            <div class='details'>
+              <img class='showcase-banner mb-2' src='https://i.imgur.com/0FxHINJ.png' />
+              <h4 class='ml-3'>
+                A website allowing people to know our courses and events with a mini game on top of the website
+              </h4>
+              <h4 class='ml-3'>
+                Website: <a href='http://nchuit.cc/' target='_blank'>http://nchuit.cc/</a>
+              </h4>
+            </div>
+          </article>
+        </div>
+        <div class="pagebreak"></div>
         <div class='w-4/5 print:w-9/10 mx-auto mt-6 mb-2'>
           <h1 class='ml-6'><i class='fas fa-address-card mr-2'></i>Biography</h1>
         </div>
         <div class='w-4/5 print:w-9/10 m-auto py-4 print:py-0'>
           <p class='pb-2'>
-            loving open source and web technologies, I joined internship program of 5xruby.tw in 2015 to find more chance to be part of the community, I not only learned ruby on rails but also built a twitter live wall showing tweets with hashtag #rubyconftw in real time for RubyConf 2015. After graduation and military service, I began my career in 5xruby.tw solving all kinds of issues for many projects and cooperative partners.
+            loving open source and web technologies, I joined internship program of 5xruby.tw in 2015 to find more chance to be part of the community, the company is founded by community people who promote programming language ruby. I not only learned ruby on rails but also built a twitter live wall showing tweets with hashtag #rubyconftw in real time for RubyConf 2015. After graduation and military service, I began my career in 5xruby.tw solving all kinds of issues for many projects and cooperative partners.
           </p>
           <p class='pb-2'>
             My first experience of production-used react started to gain from Shopmatic, a full-featured E-commerce system including a what-you-see-is-what-you-get website editor. My job was to refactor merchant management interface to react, reducing tech-debt and making user experience better; In the team everyone should be able to do everything, this is why I still learned quite a lot things for ruby on rails.
           </p>
           <p class='pb-2'>
-            We had gone through a big migration converting merchant's customized website from just html to react, making it eazier to control and prevent editor bugs. During this huge change, I had a chance to use my newly learned language -- Elixir, 
+            During shopmatic project, we had gone through a big migration converting merchant's customized website from just html to react, making it eazier to control and prevent editor bugs. During this huge change, I had a chance to use my newly learned language -- Elixir. This programming language provides great tools for comparing data and executing jobs concurrently; I managed to migrate half million customized webpage within 20 minutes. My favorite part of this tool is live migration. this tool listens to database changes, it re-migrates data when migrated data by main process is changed by user, which ensures migrated data is always up-to-date, achieving no-down-time migration.
+          </p>
+          <p class='pb-2'>
+          Interested in all things about computer, I enjoy exploring open technologies from Linux, programming languages to the rapidly changing web. this is why I have things to share on posts and conferences. In 2018, my speaking topics are about <a href='https://2018.coscup.org/programs/full-archlinux/' target='_blank'>ArchLinux</a>, <a href='https://2018.rubyconf.tw/program#pastleo' target='_blank'>Elixir</a> and <a href='https://md.pastleo.me/litelement-webcomponent' target='_blank'>WebComponents</a>. <a href='https://md.pastleo.me/rs-wasm-glife'>Rust, Webassembly</a> and <a href='https://md.pastleo.me/experiment-webrtc' target='_blank'>WebRTC</a> are also my exploration shared via posts. I share my contribution back to the community like <a href='https://github.com/pastleo/qrcode.react/tree/feature/with-logo-and-download' target='_blank'>React QRCode component forked for logo and download features</a>, shell themes for <a href='https://github.com/pastleo/theme-PastFish' target='_blank'>fish</a> and <a href='https://github.com/pastleo/zsh-theme-past' target='_blank'>zsh</a> and even <a href='https://github.com/pastleo/fix-bt-a2dp' target='_blank'>workaround for bluetooth headset on ArchLinux</a>.
+          </p>
+          <p class='pb-2'>
+            My university life is the time I met open source community and web technology. Inspired by the power given by the web, I started to make websites for student activities. The most interesting among these websites is for an event "Blackswan E-sports games" in 2013. There is a specially-designed contest table in wheel shape allowing people to browse teams and plays with fancy animations and rich user interactions. After the time in student association, I was promoting web and open source techonologies, leading information technology club, helding courses teaching HTML, Javascript and making games for fun!
+          </p>
+          <p class='pb-2'>
+            In my childhood, I played video games a lot. To get information of games, I found internet very convenient, and immediately fascinated by these techonologies. While in elementary school, I took a class learning flash. playing games made by myself might be the most exciting thing for me. At the time a RPG game was made, actionscript is used for calculating health of characters and I was not even aware that it is programming already. From I was little I am what people calling as geek, able to spend weekends experimenting all kind of things about computer for leisure, like PC assembling, adjusting operation system setups or even Android custom firmware flashing.
           </p>
         </div>
       </div>

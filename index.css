@@ -109,26 +109,27 @@ section#intro a:hover img.taiwan-img {
 /* resume section */
 @media screen {
   section#resume {
-    max-height: 0px;
-    transition: max-height 1.5s;
     color: #000;
+  }
+  section#resume:not(.opened) {
+    display: none;
   }
 }
 @media print {
   section#resume {
-    max-height: 25565vh !important;
+    display: block;
   }
 }
 section#resume a {
-  color: #2c2c2c;
-  text-decoration: none;
+  color: #000;
+  text-decoration: underline;
 }
 section#resume a:hover {
   color: #6bde99;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
-.resume-story h1 {
+eresume-story h1 {
   margin-top: 1.2rem;
   margin-bottom: 1.2rem;
 }
@@ -149,18 +150,26 @@ section#resume a:hover {
 .resume-story i.fab {
   font-weight: 100;
 }
-.resume-story .time-mark {
+.resume-story .time-mark, .resume-story .left-title {
   display: inline-block;
   position: relative;
   vertical-align: top;
   width: 0;
   height: 0;
 }
-.resume-story .time-mark > * {
+.resume-story .time-mark > *, .resume-story .left-title > * {
   position: absolute;
   right: 0;
   padding-right: 0.25rem;
   white-space: nowrap;
+}
+.resume-story .left-title {
+  right: 0.5rem;
+  top: 0.5rem;
+}
+.resume-story .left-title > * {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
 .resume-story article {
   display: inline-block;
@@ -171,6 +180,10 @@ section#resume a:hover {
   .resume-story article {
     width: 95%;
   }
+}
+img.showcase-banner {
+  max-height: 200px;
+  border-top-right-radius: 10px;
 }
 
 /* blog section */
