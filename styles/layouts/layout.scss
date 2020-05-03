@@ -1,0 +1,34 @@
+.layout {
+  @media screen {
+    background: #2c2c2c;
+    background-image: url('../../assets/bg.jpg');
+    background-size: contain;
+    background-position: top right;
+    background-repeat: no-repeat;
+    &.bgFull {
+      background-size: cover;
+    }
+
+    color: #6bde99;
+    a:hover:not(.noHoverEffect) {
+      color: #ffffff;
+    }
+
+    height: 100%;
+    overflow: auto;
+  }
+
+  &.withContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container {
+    flex: 1;
+    padding: 1.5rem;
+
+    @media screen {
+      background: #2c2c2c;
+    }
+  }
+}

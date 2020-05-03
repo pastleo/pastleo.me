@@ -1,0 +1,19 @@
+@media screen {
+  .logo {
+    background-image: url('../../assets/avatar-hacker.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-origin: content-box;
+
+    &:hover img {
+      opacity: 0;
+    }
+    &.revealed {
+      background-image: url('../../assets/me.png');
+      img {
+        opacity: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import "~tailwindcss/dist/base.css";
+@import "~tailwindcss/dist/utilities.css";
+
+@media screen {
+  .screen\:text-center {
+    text-align: center;
+  }
+}
+
+@media print {
+  .print\:hidden {
+    display: none;
+  }
+
+  .print\:inline-block {
+    display: inline-block;
+  }
+
+  .print\:block {
+    display: block;
+  }
+
+  .print\:inline {
+    display: inline;
+  }
+}

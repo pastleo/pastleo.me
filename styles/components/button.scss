@@ -1,0 +1,15 @@
+.button {
+  border-radius: .2857rem;
+  margin-right: .5em;
+  white-space: nowrap;
+  margin-bottom: 0.25rem;
+  color: #2c2c2c;
+  cursor: pointer;
+}
+
+@media screen {
+  .button {
+    background-color: #6bde99;
+    padding: .15rem .25rem .05rem .35rem;
+  }
+}
