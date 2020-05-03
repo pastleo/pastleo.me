@@ -1,0 +1,53 @@
+{
+  "name": "pastleo.me",
+  "version": "0.0.1",
+  "description": "PastLeo's blog and intro website",
+  "main": "page/index.js",
+  "scripts": {
+    "dev": "next",
+    "lint": "eslint --fix .",
+    "build": "next build",
+    "start": "next start",
+    "export": "EXPORTING=true next export"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pastleo/pastleo.me.git"
+  },
+  "author": "PastLeo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pastleo/pastleo.me/issues"
+  },
+  "homepage": "https://github.com/pastleo/pastleo.me#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "@mdx-js/loader": "^1.6.1",
+    "@next/mdx": "^9.3.6",
+    "classnames": "^2.2.6",
+    "next": "^9.3.6",
+    "prism-react-renderer": "^1.1.0",
+    "prism-themes": "^1.4.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "tailwindcss": "^1.4.4"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.1.2",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "autoprefixer": "^9.7.6",
+    "babel-eslint": "^10.1.0",
+    "css-loader": "^3.5.3",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.8.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-optipng": "^7.1.0",
+    "next-compose-plugins": "^2.2.0",
+    "next-optimized-images": "^2.6.0",
+    "node-sass": "^4.14.0"
+  }
+}
