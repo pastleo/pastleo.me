@@ -1,0 +1,37 @@
+#intro {
+  @media screen {
+    background: #00000064;
+    color: #fff;
+
+    a:hover {
+      color: #6bde99;
+    }
+  }
+
+  position: relative;
+  #controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .logo {
+    width: 12rem;
+  }
+
+  .taiwan {
+    width: 2rem;
+    transform: rotate(8deg);
+    filter: grayscale(1) brightness(4);
+
+    @media print {
+      filter: grayscale(1);
+    }
+  }
+  @media screen {
+    a:hover .taiwan {
+      filter: contrast(50%) brightness(180%);
+    }
+  }
+}

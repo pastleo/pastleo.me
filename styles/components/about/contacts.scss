@@ -1,0 +1,18 @@
+.contacts {
+  .contactBtn {
+    &.block {
+      display: block;
+      text-align: left;
+    }
+    @media print {
+      display: block;
+      text-align: left;
+      text-decoration: underline;
+    }
+
+    & > span {
+      margin-left: .35rem;
+      font-weight: 600;
+    }
+  }
+}
