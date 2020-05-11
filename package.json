@@ -5,7 +5,8 @@
   "main": "page/index.js",
   "scripts": {
     "dev": "next",
-    "lint": "eslint --fix .",
+    "lintf": "eslint --fix .",
+    "lint": "eslint .",
     "build": "next build",
     "start": "next start",
     "export": "EXPORTING=true next export"
