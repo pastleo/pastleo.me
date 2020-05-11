@@ -1,13 +1,17 @@
-name: build and export
+name: build, export and deploy
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: push
+
+# secrets.ssh_config example:
+#   Host pastleo_me_host
+#     HostName x.x.x.x
+#     User xxx
+#
+# secrets.ssh_id_rsa should be filled with ssh private key content
+# secrets.ssh_known_hosts should be filled with key fingerprint of deploy target host
 
 jobs:
-  build:
+  build_export:
     runs-on: ubuntu-latest
 
     strategy:
@@ -20,6 +24,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: node_modules
     - run: npm install
     - run: npm run build
     - run: npm run export
@@ -28,3 +37,26 @@ jobs:
       with:
         name: out
         path: out
+  deploy:
+    if: github.ref == 'refs/heads/master'
+    needs: build_export
+    runs-on: ubuntu-latest
+    steps:
+    - run: mkdir -p ~/.ssh
+    - run: echo "$SSH_CONFIG" > ~/.ssh/config
+      env:
+        SSH_CONFIG: ${{ secrets.ssh_config }}
+    - run: echo "$SSH_ID_RSA" > ~/.ssh/id_rsa
+      env:
+        SSH_ID_RSA: ${{ secrets.ssh_id_rsa }}
+    - run: chmod 600 ~/.ssh/id_rsa
+    - run: echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+      env:
+        SSH_KNOWN_HOSTS: ${{ secrets.ssh_known_hosts }}
+    - name: download exported build
+      uses: actions/download-artifact@v1
+      with:
+        name: out
+    - run: ssh pastleo_me_host 'rm -rf ~/www/out && rm -rf ~/www/bak && mkdir -p ~/www/current'
+    - run: tar zc out | ssh pastleo_me_host "tar zx -C ~/www/"
+    - run: ssh pastleo_me_host 'mv ~/www/current ~/www/bak && mv ~/www/out ~/www/current'
