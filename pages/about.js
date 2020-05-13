@@ -58,7 +58,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className='min-h-full flex flex-col'>
+    <div className='min-h-screen flex flex-col'>
       <section id={styles.intro} className='p-6'>
         <div id={styles.controls} className='print:hidden flex justify-between p-2'>
           <BackToIndexLink className='p-3' />

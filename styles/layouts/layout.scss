@@ -1,12 +1,22 @@
 .layout {
   @media screen {
-    background: #2c2c2c;
-    background-image: url('../../assets/bg.jpg');
-    background-size: contain;
-    background-position: top right;
-    background-repeat: no-repeat;
+    &:before {
+      content: '';
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      z-index: -1;
+
+      background: #2c2c2c;
+      background-image: url('../../assets/bg.jpg');
+      background-size: contain;
+      background-position: top right;
+      background-repeat: no-repeat;
+    }
     &.bgFull {
-      background-size: cover;
+      &:before {
+        background-size: cover;
+      }
     }
 
     color: #6bde99;
@@ -14,8 +24,7 @@
       color: #ffffff;
     }
 
-    height: 100%;
-    overflow: auto;
+    min-height: 100vh;
   }
 
   &.withContainer {
