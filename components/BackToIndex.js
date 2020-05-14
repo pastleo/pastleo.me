@@ -5,7 +5,7 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 const BackToIndexLink = ({ className, children, size }) => (
   <Link href='/'>
-    <a className={classnames('inline-block', className)}>
+    <a title={children || 'back'} className={classnames('inline-block', className)}>
       <FontAwesomeIcon icon={faAngleLeft} size={size} />
       { children && (
         <span className='ml-3'>{ children }</span>

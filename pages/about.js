@@ -68,7 +68,7 @@ const About = () => {
         </div>
         { resumeMode || <h1 className='text-center font-bold text-2xl pt-4'>PastLeo | 西瓜</h1> }
         <div className='max-w-2xl mx-auto py-5 flex justify-center items-center'>
-          <Logo className={styles.logo} />
+          <Logo className={styles.logo} forcerRvealed={resumeMode} />
           { resumeMode && (
             <div className='flex-1 flex flex-col content-center justify-center p-4 hidden md:block print:block'>
               <h1 className='font-bold text-2xl pb-4'>PastLeo | 西瓜</h1>
@@ -78,7 +78,7 @@ const About = () => {
         </div>
         <div className='max-w-lg mx-auto flex text-center print:hidden'>
           <div className='flex-1'>
-            <a target='_blank' href='https://en.wikipedia.org/wiki/Taiwan'>
+            <a target='_blank' href='https://en.wikipedia.org/wiki/Taiwan' rel='noopener noreferrer'>
               <img alt='taiwan' className={classnames(styles.taiwan, 'mx-auto')} src={taiwanSvgSrc} />
               <h3>{ i18n.taiwanese[locale] }</h3>
             </a>

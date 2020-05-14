@@ -1,4 +1,6 @@
 .postWrapper {
+  overflow-x: auto;
+
   h1, h2, h3, h4, h5, h6 {
     color: #fff;
   }
@@ -64,7 +66,7 @@
   }
   blockquote {
     padding: 0 1em;
-    color: #5d9875;
+    color: #7f9e8c;
     border-left: .25em solid #4a4a4a;
   }
 }
