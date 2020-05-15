@@ -1,25 +1,6 @@
 .layout {
   @media screen {
-    &:before {
-      content: '';
-      width: 100vw;
-      height: 100vh;
-      position: fixed;
-      z-index: -1;
-
-      background: #2c2c2c;
-      background-image: url('../../assets/bg.jpg');
-      background-size: contain;
-      background-position: top right;
-      background-repeat: no-repeat;
-    }
-    &.bgFull {
-      &:before {
-        background-size: cover;
-      }
-    }
-
-    color: #6bde99;
+    color: $theme-color;
     a:hover:not(.noHoverEffect) {
       color: #ffffff;
     }

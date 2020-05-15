@@ -1,9 +1,11 @@
 import classnames from 'classnames';
 
+import Background from '../components/Background.js';
 import styles from '../styles/layouts/layout.scss';
 
 const EmptyLayout = ({ children }) => (
-  <div className={classnames(styles.layout, styles.bgFull)}>
+  <div className={styles.layout}>
+    <Background />
     { children }
   </div>
 );
