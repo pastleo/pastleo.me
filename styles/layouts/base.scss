@@ -3,12 +3,7 @@ body {
 }
 
 @media screen {
-  html, body {
-    height: 100%;
+  html {
     font-size: 18px;
-
-    & > div {
-      height: 100%;
-    }
-  } 
+  }
 }

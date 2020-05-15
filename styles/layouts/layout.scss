@@ -1,21 +1,11 @@
 .layout {
   @media screen {
-    background: #2c2c2c;
-    background-image: url('../../assets/bg.jpg');
-    background-size: contain;
-    background-position: top right;
-    background-repeat: no-repeat;
-    &.bgFull {
-      background-size: cover;
-    }
-
-    color: #6bde99;
+    color: $theme-color;
     a:hover:not(.noHoverEffect) {
       color: #ffffff;
     }
 
-    height: 100%;
-    overflow: auto;
+    min-height: 100vh;
   }
 
   &.withContainer {

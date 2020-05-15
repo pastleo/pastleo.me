@@ -1,4 +1,8 @@
 nav.navbar {
   background: #00000091;
   color: #fff;
+
+  .logo {
+    border: 1px solid $theme-color;
+  }
 }
