@@ -7,8 +7,8 @@ section.resumeContent {
     .gradient {
       height: 50px;
       margin-top: -50px;
-			background: rgb(255,255,255);
-			background: linear-gradient(0deg, #ffffff32 0%, #ffffff00 100%);
+      background: rgb(255,255,255);
+      background: linear-gradient(0deg, #ffffff32 0%, #ffffff00 100%);
     }
   }
 
@@ -17,7 +17,7 @@ section.resumeContent {
     text-decoration: underline;
 
     &:hover {
-      color: #6bde99;
+      color: $theme-color;
       text-decoration: underline;
     }
   }

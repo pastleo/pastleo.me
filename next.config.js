@@ -50,6 +50,9 @@ module.exports = withPlugins([
       importLoaders: 1,
       localIdentName: isDev ? '[path][name]___[local]' : '[hash:base64:6]',
     },
+    sassLoaderOptions: {
+      prependData: '@import "styles/_global.scss";',
+    },
   }],
   [optimizedImages, {}],
 ], {
