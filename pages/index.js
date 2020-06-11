@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import Link from 'next/link';
 
-import styles from '../styles/pages/index.scss';
+import PostBanner from '../components/PostBanner.js';
 
 import withLayout from '../layouts/index.js';
 import HomeLayout, { styles as layoutStyles } from '../layouts/HomeLayout.js';
@@ -10,10 +10,8 @@ const Index = ({ posts }) => (
   <>
     { posts.map(post => (
       <Link key={post.slug} href={`/posts/${post.slug}`}>
-        <a className={classnames(styles.postLink, layoutStyles.noHoverEffect, 'block max-w-screen-lg mx-auto py-5 no-hover-effect')}>
-          <h1 className={classnames(styles.title, 'text-3xl font-bold my-3')}>{ post.options.title }</h1>
-          <p>{ post.options.createdAt }</p>
-          <p className='text-lg my-1'>{ post.options.description }</p>
+        <a className={layoutStyles.noHoverEffect}>
+          <PostBanner {...post.options} titleClassName='text-3xl' />
         </a>
       </Link>
     )) }
