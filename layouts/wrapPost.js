@@ -49,8 +49,13 @@ const components = {
 
 const PostWrapper = ({ children, options: { description, ...bannerOptions } }) => (
   <MDXProvider components={components}>
-    <div className='max-w-screen-lg mx-auto'>
-      <PostBanner {...bannerOptions} titleClassName='text-4xl' keepLineActive />
+    <div className='break-words max-w-screen-lg mx-auto'>
+      <PostBanner
+        {...bannerOptions}
+        contentClassName={bannerOptions.thumbnail && 'p-5'}
+        titleClassName='text-4xl'
+        keepLineActive
+      />
       <div className={styles.postWrapper}>
         { children }
       </div>

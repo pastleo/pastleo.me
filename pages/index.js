@@ -11,7 +11,7 @@ const Index = ({ posts }) => (
     { posts.map(post => (
       <Link key={post.slug} href={`/posts/${post.slug}`}>
         <a className={layoutStyles.noHoverEffect}>
-          <PostBanner {...post.options} titleClassName='text-3xl' />
+          <PostBanner {...post.options} className='my-5' contentClassName='p-5' titleClassName='text-3xl' />
         </a>
       </Link>
     )) }

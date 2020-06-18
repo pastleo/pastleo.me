@@ -6,7 +6,7 @@ import styles from '../styles/components/post-banner.scss';
 
 const PostBanner = ({
   title, createdAt, description, thumbnail,
-  titleClassName, keepLineActive,
+  className, contentClassName, titleClassName, keepLineActive,
 }) => {
   const [imageEnabled, setImageEnabled] = useState(false);
   useEffect(() => {
@@ -23,7 +23,7 @@ const PostBanner = ({
   return (
     <div
       className={
-        classnames(styles.postBanner, 'relative max-w-screen-lg mx-auto m-5')
+        classnames(styles.postBanner, 'relative max-w-screen-lg mx-auto', className)
       }
     >
       { imageEnabled && (
@@ -36,8 +36,9 @@ const PostBanner = ({
       <div
         className={
           classnames(
-            styles.content, 'p-5',
-            { 'pt-32': !!thumbnail, [styles.thumbnailLoaded]: imageLoaded }
+            styles.content,
+            { 'pt-32': !!thumbnail, [styles.thumbnailLoaded]: imageLoaded },
+            contentClassName
           )
         }
       >
