@@ -1,0 +1,48 @@
+.postBanner {
+  .thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    opacity: 0;
+    transition: opacity 1s;
+
+    &.loaded {
+      opacity: 1;
+    }
+  }
+
+  .content {
+    position: relative;
+    background-color: #0000;
+    transition: background 0.8s;
+
+    word-break: break-word;
+
+    &.thumbnailLoaded {
+      background-color: #000000a8;
+    }
+  }
+
+  .title {
+    color: white;
+
+    &:after {
+      content: ' ';
+      display: block;
+      height: 1px;
+      width: 0%;
+
+      transition: width 0.5s;
+    }
+  }
+  &:hover .title, .title.keepLineActive {
+    &:after {
+      background: white;
+      width: 100%;
+    }
+  }
+}

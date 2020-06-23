@@ -8,7 +8,7 @@ const HtmlHead = ({ options }) => (
     <meta key='description' name='Description' content='Blog, Introduction and Homepage of PastLeo' />
     <link key='favicon' rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
     <meta key='viewport' name='viewport' content='width=device-width, initial-scale=1' />
-    <meta key='og:image' name='og:image' content={ogImageSrc} />
+    <meta key='og:image' name='og:image' content={options.thumbnail || ogImageSrc} />
   </Head>
 );
 

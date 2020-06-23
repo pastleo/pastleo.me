@@ -39,6 +39,12 @@
       color: #fff
     }
   }
+  code {
+    padding: 0.2em 0.4em;
+    font-size: 90%;
+    background-color: rgba(136, 136, 136, 0.34);
+    border-radius: 5px;
+  }
   img, video {
     max-width: 60%;
     margin: 1rem auto;
@@ -46,7 +52,7 @@
   ul, ol {
     margin: 1rem 2rem;
     ul, ol {
-      margin: 0 2rem;
+      margin: 0 0 0 2rem;
     }
   }
   ul {

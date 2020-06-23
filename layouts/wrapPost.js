@@ -3,6 +3,8 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import classnames from 'classnames';
 
 import withLayout from './index.js';
+
+import PostBanner from '../components/PostBanner.js';
 import BackToIndexLink from '../components/BackToIndex.js';
 
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
@@ -45,10 +47,18 @@ const components = {
   a: Link,
 };
 
-const PostWrapper = ({ children }) => (
+const PostWrapper = ({ children, options: { description, ...bannerOptions } }) => (
   <MDXProvider components={components}>
-    <div className={classnames(styles.postWrapper, 'max-w-screen-lg mx-auto')}>
-      { children }
+    <div className='break-words max-w-screen-lg mx-auto'>
+      <PostBanner
+        {...bannerOptions}
+        contentClassName={bannerOptions.thumbnail && 'p-5'}
+        titleClassName='text-4xl'
+        keepLineActive
+      />
+      <div className={styles.postWrapper}>
+        { children }
+      </div>
     </div>
     <div className='p-3 text-center'>
       <BackToIndexLink className='p-3'>Back</BackToIndexLink>
