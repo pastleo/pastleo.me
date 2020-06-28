@@ -4,11 +4,11 @@ import classnames from 'classnames';
 
 import withLayout from './index.js';
 
-import PostBanner from '../components/PostBanner.js';
-import BackToIndexLink from '../components/BackToIndex.js';
-
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
 import styles from '../styles/layouts/post-wrapper.scss';
+
+import PostBanner from '../components/PostBanner.js';
+import BackToIndexLink from '../components/BackToIndex.js';
 
 const CodeBlock = ({ children, className }) => {
   const languageClassNameMatched = (className || '').match(/language-(\w+)/);
