@@ -3,10 +3,10 @@ import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
-import { genHref } from '../lib/posts.js';
+import { genLinkProps } from '../lib/posts.js';
 
 const PageLink = ({ page, title, children }) => (
-  <Link href={genHref({ page })}>
+  <Link {...genLinkProps({ page })}>
     <a title={title}>{ children }</a>
   </Link>
 );

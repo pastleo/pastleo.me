@@ -38,13 +38,7 @@ export const getStaticPaths = async() => {
   const posts = await import('../../lib/node/posts.js');
   return {
     paths: [
-      ...(
-        Array(await posts.totalPages()).fill().map(
-          (_, page) => (
-            { params: { q: posts.genQuery({ page }) } }
-          )
-        )
-      ),
+      ...(await posts.genQueryPaths()),
     ],
     fallback: false,
   };
