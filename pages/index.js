@@ -1,20 +1,24 @@
 import classnames from 'classnames';
 import Link from 'next/link';
 
-import PostBanner from '../components/PostBanner.js';
-
 import withLayout from '../layouts/index.js';
 import HomeLayout, { styles as layoutStyles } from '../layouts/HomeLayout.js';
 
-const Index = ({ posts }) => (
+import PostBanner from '../components/PostBanner.js';
+import Pagination from '../components/Pagination.js';
+
+const currentPage = 0;
+
+const Index = ({ posts, totalPages }) => (
   <>
     { posts.map(post => (
-      <Link key={post.slug} href={`/posts/${post.slug}`}>
+      <Link key={post.slug} href={`/post/${post.slug}`}>
         <a className={layoutStyles.noHoverEffect}>
           <PostBanner {...post.options} className='my-5' contentClassName='p-5' titleClassName='text-3xl' />
         </a>
       </Link>
     )) }
+    <Pagination currentPage={currentPage} totalPages={totalPages} />
   </>
 );
 
@@ -23,11 +27,11 @@ export default withLayout({
 })(Index);
 
 export const getStaticProps = async() => {
-  const { getPosts } = await import('../node/posts.js');
-  const posts = await getPosts();
+  const posts = await import('../lib/node/posts.js');
   return {
     props: {
-      posts,
+      posts: await posts.page(currentPage),
+      totalPages: await posts.totalPages(),
     },
   };
 };
