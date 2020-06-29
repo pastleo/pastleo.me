@@ -24,7 +24,7 @@ const Pagination = ({ currentPage, totalPages, className }) => (
         <Separator />
       </>
     ) }
-    { currentPage + 1 }
+    { totalPages > 1 && currentPage + 1 }
     { (currentPage < totalPages - 1) && (
       <>
         <Separator />
