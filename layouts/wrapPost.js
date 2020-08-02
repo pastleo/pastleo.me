@@ -10,6 +10,15 @@ import styles from '../styles/layouts/post-wrapper.scss';
 import PostBanner from '../components/PostBanner.js';
 import BackToIndexLink from '../components/BackToIndex.js';
 
+const getHost = url => {
+  try {
+    const urlParsed = new URL(url);
+    return urlParsed.host;
+  } catch (e) {
+    return '';
+  }
+};
+
 const CodeBlock = ({ children, className }) => {
   const languageClassNameMatched = (className || '').match(/language-(\w+)/);
   if (!languageClassNameMatched) {
@@ -42,9 +51,22 @@ const Link = ({ children, href }) => (
   </a>
 );
 
+const Iframe = props => {
+  const srcHost = getHost(props.src);
+  if (srcHost.match(/youtube\.com$/)) {
+    return (
+      <div className={styles.videoContainer}>
+        <iframe {...props}></iframe>
+      </div>
+    );
+  }
+  return <iframe {...props}></iframe>;
+};
+
 const components = {
   code: CodeBlock,
   a: Link,
+  iframe: Iframe,
 };
 
 const PostWrapper = ({ children, options: { description, ...bannerOptions } }) => (
