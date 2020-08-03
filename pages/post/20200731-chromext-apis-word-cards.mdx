@@ -8,7 +8,7 @@ export const options = {
 
 export default wrapPost;
 
-大家是否有在使用瀏覽器 擴充套件 呢？筆者已經使用 [uBlock](https://github.com/gorhill/uBlock) 這款開源的廣告阻擋器多年囉，但是一直以來都不知道瀏覽器擴充套件是如何製作以及其可取用的 API 為何，前陣子花了點時間研究一下，才發現在 Chrome/Chromium 上開發擴充套件竟然是如此的簡單，而且可取用的 API 跟在 Web 上也完全不是同一個檔次，今天就來看看這些東西，順便找些場景來應用
+大家是否有在使用瀏覽器『擴充套件』呢？筆者已經使用 [uBlock](https://github.com/gorhill/uBlock) 這款開源的廣告阻擋器多年囉，但是一直以來都不知道瀏覽器擴充套件是如何製作以及其可取用的 API 為何，前陣子花了點時間研究一下，才發現在 Chrome/Chromium 上開發擴充套件竟然是如此的簡單，而且可取用的 API 跟在 Web 上也完全不是同一個檔次，今天就來看看這些東西，順便找些場景來應用。
 
 ## 如何建立，並開始開發 chrome 擴充套件
 
@@ -94,8 +94,7 @@ chrome.runtime.onInstalled.addListener(() => {
 })
 ```
 
-重整更新之後可以看到 `Inspect views
-background page` 出現了，點下去就是熟悉的 Chrome DevTools:
+重整更新之後可以看到 `Inspect views background page` 出現了，點下去就是熟悉的 Chrome DevTools:
 
 ![](https://i.imgur.com/bMJfVqJ.png)
 
@@ -158,7 +157,7 @@ fetch('https://www.ptt.cc/bbs/mobilesales/index.html')
 }
 ```
 
-那麼接下來的問題就是如何從 html 中找到要找的資料，筆者使用 [DOMParser](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser)，接著就可以用 Web/DOM API 享受找元素的方便性（例如 `querySelector`），迅速找到 mobilesales 最新的文章標題
+那麼接下來的問題就是如何從 html 中找到要找的資料，筆者使用 [DOMParser](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser)，接著就可以用 Web/DOM API 享受找元素的方便性（例如 `querySelector`），迅速找到 mobilesales 最新的文章標題。
 
 ### 資料儲存功能
 
@@ -179,7 +178,7 @@ chrome.storage.local.set({ key: value }, callback)
 chrome.storage.local.get('key', result => { console.log(result.key) })
 ```
 
-這組 API 是非同步的，所以需要 callback 來接，筆者看到這就立刻用 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 包起來接下來就能用 async/await 寫更漂亮的語法
+這組 API 是非同步的，所以需要 callback 來接，筆者看到這就立刻用 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 包起來接下來就能用 async/await 寫更漂亮的語法。
 
 
 ### 通知功能
@@ -215,10 +214,10 @@ chrome.notifications.create('reminder', {
 
 * 在瀏覽中的網頁上執行指定的 Javascript
   * 而且可以存取到頁面上的 BOM/DOM、擴充套件 API
-* 點選擴充套件icon 有個 popup
+* 點選擴充套件 icon 有個 popup
 * 打開並顯示一個複習頁面
 
-當然還是需要資料儲存功能，上面已經提過就不再提，這部份最有趣的部份就是 `在瀏覽中的網頁上執行指定的 Javascript`，也就是在別人的網站上執行自己寫的 Javascript
+當然還是需要資料儲存功能，上面已經提過就不再提，這部份最有趣的部份就是 `在瀏覽中的網頁上執行指定的 Javascript`，也就是在別人的網站上執行自己寫的 Javascript。
 
 ### 在瀏覽中的網頁上執行指定的 Javascript
 
@@ -236,7 +235,7 @@ chrome.notifications.create('reminder', {
 }
 ```
 
-照這樣設定，在瀏覽任何網頁時都會在上面執行 `contentScript.js`，我們就可以所有網站加上我們自己想要的行為
+照這樣設定，在瀏覽任何網頁時都會在上面執行 `contentScript.js`，我們就可以所有網站加上我們自己想要的行為。
 
 #### 關於 `contentScript.js`
 
@@ -288,7 +287,7 @@ document.addEventListener('click', event => {
 
 接下來內容排版、行為實做就是一般靜態網頁的開發，唯一的差別就是多了擴充套件 API 可以使用，像是上面提到的 [storage API](https://developer.chrome.com/extensions/storage)
 
-擴充套件的所有資源都有一個特定的 URL 可以連到，透過 `chrome.runtime.getURL('review.html')` 得到擴充套件內 `review.html` 的 URL，然後在 popup html 內加入一個按鈕來開啟這個 URL
+擴充套件的所有資源都有一個特定的 URL 可以連到，透過 `chrome.runtime.getURL('review.html')` 得到擴充套件內 `review.html` 的 URL，然後在 popup html 內加入一個按鈕來開啟這個 URL。
 
 > 想知道 `chrome.runtime` 還有什麼 API 可用？請參考[官方文件](https://developer.chrome.com/擴充套件s/runtime)
 
