@@ -1,23 +1,38 @@
 import { MDXProvider } from '@mdx-js/react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import classnames from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAnchor } from '@fortawesome/free-solid-svg-icons';
 
 import withLayout from './index.js';
 
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
 import styles from '../styles/layouts/post-wrapper.scss';
 
+import { getHost, extractTextContent } from '../lib/postContentUtils.js';
+
 import PostBanner from '../components/PostBanner.js';
 import BackToIndexLink from '../components/BackToIndex.js';
 
-const getHost = url => {
-  try {
-    const urlParsed = new URL(url);
-    return urlParsed.host;
-  } catch (e) {
-    return '';
-  }
+const Heading = tag => ({ children }) => {
+  const textContent = extractTextContent(children);
+  return React.createElement(
+    tag,
+    { id: textContent },
+    children,
+    (
+      <a className={classnames(styles.anchor, 'ml-1')} href={`#${textContent}`}>
+        <FontAwesomeIcon icon={faAnchor} size='sm' />
+      </a>
+    )
+  );
 };
+
+const Link = ({ children, href }) => (
+  <a href={href} target='_blank' rel='noopener noreferrer'>
+    { children }
+  </a>
+);
 
 const CodeBlock = ({ children, className }) => {
   const languageClassNameMatched = (className || '').match(/language-(\w+)/);
@@ -45,12 +60,6 @@ const CodeBlock = ({ children, className }) => {
   );
 };
 
-const Link = ({ children, href }) => (
-  <a href={href} target='_blank' rel='noopener noreferrer'>
-    { children }
-  </a>
-);
-
 const Iframe = props => {
   const srcHost = getHost(props.src);
   if (srcHost.match(/youtube\.com$/)) {
@@ -64,8 +73,14 @@ const Iframe = props => {
 };
 
 const components = {
-  code: CodeBlock,
+  h1: Heading('h1'),
+  h2: Heading('h2'),
+  h3: Heading('h3'),
+  h4: Heading('h4'),
+  h5: Heading('h5'),
+  h6: Heading('h6'),
   a: Link,
+  code: CodeBlock,
   iframe: Iframe,
 };
 
