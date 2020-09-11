@@ -13,7 +13,7 @@ const Index = ({ posts, totalPages }) => (
   <>
     { posts.map(post => (
       <Link key={post.slug} href={`/post/${post.slug}`}>
-        <a className={layoutStyles.noHoverEffect}>
+        <a className={classnames('block max-w-screen-lg mx-auto', layoutStyles.noHoverEffect)}>
           <PostBanner {...post.options} className='my-5' contentClassName='p-5' titleClassName='text-3xl' />
         </a>
       </Link>

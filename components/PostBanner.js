@@ -23,7 +23,7 @@ const PostBanner = ({
   return (
     <div
       className={
-        classnames(styles.postBanner, 'relative max-w-screen-lg mx-auto', className)
+        classnames(styles.postBanner, 'relative', className)
       }
     >
       { imageEnabled && (
