@@ -1,14 +1,11 @@
-name: build, export and deploy
+name: '[Main] lint, build_export and deploy'
 
 on: push
 
-# secrets.ssh_config example:
-#   Host pastleo_me_host
-#     HostName x.x.x.x
-#     User xxx
-#
-# secrets.ssh_id_rsa should be filled with ssh private key content
-# secrets.ssh_known_hosts should be filled with key fingerprint of deploy target host
+# secrets:
+#   GCP_PROJECT_ID: id of the GCP project
+#   GCP_SA_KEY: json of service account's to access the GCP bucket
+#   GCP_BUCKET_NAME: GCP bucket name (object storage)
 
 jobs:
   lint:
