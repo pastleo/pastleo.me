@@ -1,0 +1,240 @@
+import wrapPost from '../../layouts/wrapPost.js';
+
+export const options = {
+  title: 'tmux - 終端機內的多重視窗',
+  thumbnail: 'https://i.imgur.com/puj4D96h.jpg',
+  createdAt: '2020/10/25',
+};
+
+export default wrapPost;
+
+> 本文由 2018/2/13 發表之 [https://5xruby.tw/posts/tmux/](https://5xruby.tw/posts/tmux/) 修改而來
+
+![single_terminal](https://i.imgur.com/fXfyzSf.png)
+
+有在用終端機操作的人，肯定都多少會需要『兩個以上終端機』來操作的狀況，如果什麼都不知道的人可能會直接開新視窗：
+
+![two_terminals](https://i.imgur.com/pwEjdUy.png)
+
+然後就很有可能會變成這樣：
+
+![so_much_terminals](https://i.imgur.com/lxIBctj.png)
+
+其實不是不好，只是覺得亂；在 mac 上可以用 `⌘ + t` 開新 tab ：
+
+![terminal_with_tabs](https://i.imgur.com/AA48P2d.png)
+
+現今大多的終端機軟體功能也都蠻齊全的，但是這不是今天的主題，今天的主題是 `tmux`
+
+## `tmux` 是啥？
+
+[根據 `tmux` 自己的官方 manual](http://man.openbsd.org/OpenBSD-current/man1/tmux.1) ， `tmux` 是個 `terminal multiplexer`，透過各個作業系統的套件管理器應該都能裝，例如 [macOS 上的 homebrew](https://formulae.brew.sh/formula/tmux)、[archlinux 的 pacman](https://www.archlinux.org/packages/community/x86_64/tmux/) 等
+
+安裝完成後，`tmux` 其實是個 executable ，就跟 `ls`, `cp` 一樣，下 `tmux` 就會跑起來，它會幫你在 `tmux` 裡面再啟動多個 shell 環境，跟 GUI 多視窗、多 tab 比起來是 multiplex 的部分從 GUI 變成在終端機裡面：
+
+![tmux_hello](https://i.imgur.com/6iEBe3z.png)
+
+從這張擷圖來看，就是多了一個文字介面的 tab ，在 vim 開 tab 也是類似的感覺
+
+## `tmux` 基本操作
+
+```shell
+tmux # 啟動 tmux 建立一個 session
+exit # 離開
+```
+
+你會看到 `[exited]` ，只是[先確保大家知道怎麼離開](https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/)，一個 `session` 內所有的 shell 都結束那這個 `session` 也就隨之結束
+
+### Prefix & attach/detach
+
+因為一般的 key 必須送進 tmux 裏頭的 shell 或是應用程式，必須先打一個很特殊的 prefix 字元，接下來 tmux 就知道接下來的字元是給 tmux 的指令， tmux 預設 prefix 是 `Ctrl-b`（表示同時按下 `Ctrl` 以及 `b`）
+
+```shell
+tmux # 再啟動一次 tmux
+ls # 隨便做點事
+# 打 Ctrl-b 然後 d
+```
+
+你會看到 `[detached (from session 0)]`，這個指令可以把 `session` 放到背景去，`session` 內的 shell 跟工作狀態就像被收起來了，而且你隨時可以回來 attach 上去：
+
+```shell
+tmux a # attatch
+```
+
+就回到原本的 `session` ，透過這個功能，ssh 到 server 進行操作或甚至開發的工作進度都可以透過這個方法完美保存，而且網路斷線的時候也只是 detatch 而已，之後再連回去就好
+
+![start tmux and detatch](https://media.giphy.com/media/3o752fGYlNgnr92oMw/giphy.gif)
+
+
+### 開啟新分頁以及切換
+
+在 tmux 把分頁稱為 `window`，以下 `Ctrl-b c` 表示同時按下 `Ctrl` 以及 `b` 作為 prefix，接著按一下 `c`
+
+* `Ctrl-b c`: 開新分頁 / `window`
+* `Ctrl-b n`: 切換到下一個分頁 / `window`
+* `Ctrl-b p`: 切換到前一個分頁 / `window`
+
+tmux 的一個 `session` 可以有多個 `window`，是全畫面的；同時也可以分割畫面，tmux 稱這個動作為 `split-window`，會產生 `pane`
+
+* `Ctrl-b %`: 左右分割畫面
+* `Ctrl-b "`: 上下分割畫面
+* `Ctrl-b o`: 切換 `pane`
+
+## 客製化的 tmux 設定
+
+tmux 可以透過在家目錄下放置 `.tmux.conf` 來做各式各樣的設定，從 prefix, key mapping 到顯示風格都可以改，我就自己加入了不少設定來符合我的使用需求：
+
+[https://github.com/pastleo/dotSetting/blob/master/home/.tmux.conf](https://github.com/pastleo/dotSetting/blob/master/home/.tmux.conf)
+
+第一個設定就是 prefix，我的 prefix 是 `Ctrl-a` ，因為我把 `Cap lock` 弄成 `Ctrl` 鍵，這樣 `Ctrl + a` 就變得非常好按，所以上面寫的 detatch 就從 `Ctrl-b d` 變成 `Ctrl-a d`，開新分頁從 `Ctrl-b c` 變成 `Ctrl-a c` ...以此類推
+
+> 其實 `Ctrl + a` 是一個更古老的 terminal mutiplexer - [screen](https://www.gnu.org/software/screen/manual/screen.html) 的 prefix ，但是因為 screen 功能比較少所以後來看到 tmux 就立刻切過來用了
+
+狀態那行我也進行了修改，大概看起來像是這樣：
+
+![pastleo_tmux_hello](https://i.imgur.com/Iu1LqPi.png)
+
+### 整套 tmux navigation 的 vim 化
+
+tmux 預設的 navigation 按法有點難記，所以我自己設定了：
+
+* `<prefix> h` / `Ctrl-h`: 切換到前一個 window
+* `<prefix> j` / `Ctrl-j`: 切換到下一個 pane
+* `<prefix> k` / `Ctrl-k`: 切換到前一個 pane
+* `<prefix> l` / `Ctrl-l`: 切換到下一個 window
+
+有發現什麼嗎？如果熟悉 vim 的移動方式，這些就變得很好記：
+
+```
+ <prefix> or Ctrl-
+   k --- previous pane
+ h   l --- previous window / next window
+   j --- next pane
+```
+
+除此之外，我讓 `Ctrl-h/j/k/l` 就直接動作，不需要輸入 prefix ，這樣使用起來就更加快速
+
+![navigate in tmux](https://media.giphy.com/media/xULW8nPULsJwzWiZMY/giphy.gif)
+
+> 除了最常用的 navigation 我使用了 `hjkl` 移動的方式之外，移動(reorder) panes, windows 以及分割線等操作我也用了 `hjkl` 搭配不同組合鍵來方便我記憶
+
+## 往上捲： `copy-mode`
+
+一般的終端機應用程式都可往上捲，而在 tmux 內需要用 `copy-mode` 來往上看離開視野的 stdout
+
+```
+<prefix> [
+```
+
+就會進入 `copy-mode` ，這個瞬間整個 stdout 會變成一個文字檔供你閱覽，預設用一般的鍵盤上下左右移動 cursor 或是 `PageUp`, `PageDown` 捲動，按下 `q` 離開這個模式
+
+### `copy-mode-vi`
+
+在我的設定檔中， `Ctrl-v` 就可以啟動 `copy-mode` ，而且還有這行設定：
+
+```
+setw -g mode-keys vi
+```
+
+這樣 tmux 的 `copy-mode` 使用 `copy-mode-vi` 的 keymapping ，我想看到這邊應該可以想的到：
+
+* `J` / `K` 捲動
+* `q` 可以想成 less 的離開
+* `/` 向下搜尋、 `?` 向上搜尋
+* 用 `hjkl` 移動 cursor
+* `e`, `w`, `b` 就跟 vi 一樣，以 word 為單位移動
+
+### 可是移動 cursor 可以幹嘛？不是只要捲動就好了嗎？
+
+我想這也是為什麼叫做 `copy-mode` 的原因，在使用 `copy-mode-vi` 的狀況下：
+
+1. 移動 cursor
+2. 按下 `Space` 開始選擇
+3. 移動 cursor
+4. 按下 `Enter` 複製
+5. `<prefix> ]` 貼上，到 stdin
+
+不過用 `Space` 跟 `Enter` 不夠 vim，所以我也補上幾行設定，過程就變成：
+
+1. 移動 cursor
+2. 按下 `v` 開始選擇 (`V` 選擇整行倒是預設就支援不知道為啥)
+3. 移動 cursor
+4. 按下 `y` 複製
+5. `Ctrl-p` 貼上，到 stdin
+
+其實這是我最喜歡的 tmux 功能了，在純文字世界工作的時候有時候就是需要去複製文字到另外一個 tmux window/pane，這時候就要把手離開鍵盤到滑鼠或是觸控板上去點你要複製的文字，喔對你可能還要先找到你鼠標在哪，在 tmux 裡其實你可能可以完全不用滑鼠來複製文字，舉例來說，有個 [用 git 繪製的捷運路線 repository](https://github.com/othree/taipei-mrt.git):
+
+```
+$ git log --graph --oneline --decorate --all
+
+...
+| * | ca0b1f4 (tag: 中山國中) 中山國中
+| | | * c13ea61 (HEAD -> orange-b, tag: 蘆洲, origin/orange-b) 蘆洲
+| | | * 5bbbaab (tag: 三民高中) 三民高中
+| | | * dc52586 (tag: 徐匯中學) 徐匯中學
+...
+* | | |   761cd5f (tag: 中山) 中山
+|\ \ \ \
+| |_|/ /
+|/| | |
+| * | | 91631c6 (tag: 北門) 北門
+* | | |   e934518 (tag: 台北車站) 台北車站
+|\ \ \ \
+...
+```
+
+我想要 checkout 到 `台北車站` ，我可以快速地
+
+1. `Ctrl-v` 進入 `copy-mode`
+2. `hjkl`, `e`, `w`, `b` 到達要選取的 sha (或是 `台北車站` 這幾個字，有時候 tag 也不短)
+3. `v` 開始選取
+4. `e` / `w` / `b` 選取
+5. `y` 複製
+6. `q` 離開 `copy-mode`
+7. 輸入 `git checkout `
+8. `Ctrl-p` 貼上
+
+就得到
+
+```
+$ git checkout e934518
+```
+
+![copy-mode-vi](https://media.giphy.com/media/xULW8NPylIALGCCQ6c/giphy.gif)
+
+> tmux 複製多行也是沒問題的，所以也可以拿來複製大量複雜的文字，大概需要注意的就是 tmux 的剪貼簿是跟系統剪貼簿沒有任何關係的，只能在 tmux 中使用，網路上也有人提供打通的方法
+
+### 滑鼠 / `mouse`
+
+tmux 預設不會接收滑鼠事件，而且其他人不見得知道如何捲動 tmux，這點對於教學或是與同事討論事情時會造成一定程度的困擾；幸好 tmux 其實是可以接收滑鼠事件的：
+
+```
+set -g mouse on
+```
+
+這樣可以透過滑鼠滾輪進入 `copy-mode`，並且透過滑鼠滾輪來捲動，而且就算 tmux 下跑著 vim 接收滑鼠事件，tmux 也能偵測到並且把事件傳下去而非自己接收下來；但是如果要用滑鼠複製文字到其他 GUI 應用程式（例如 Chrome）的時候就變成比較麻煩了，`mouse on` 會導致滑鼠事件被吃掉導致沒辦法選取文字，經過一番自我來回之後我弄出這樣的流程：
+
+* 平時 `mouse on`
+* 透過 `Ctrl-v` 進入 `copy-mode` 也同時 `mouse off`
+* 如果需要，在 `copy-mode` 用 `JK` 捲動，接著用滑鼠選取文字複製下來
+* 按 `q` 離開 `copy-mode`，同時 `mouse on` 回復正常
+
+這樣一來既可以用滑鼠滾輪捲動 tmux 內的視窗，要的時候也可以用滑鼠選取文字，同時滿足兩種狀況
+
+> 有想過是否要打通 tmux 與桌面環境的剪貼簿，但這個還會有每個作業系統剪貼簿不同的問題，而且如果是要貼在其他 GUI 應用程式，那接下來也是免不了去使用滑鼠，所以就還是決定用滑鼠複製
+
+## tmux 一些小知識
+
+### 有哪些 keybindings?
+
+可以用 `<prefix> ?` 列出目前的 keybindings ，而且這邊的格式就是設定檔的格式，對哪個不爽就複製下去貼到設定檔 `~/.tmux.conf` 改就好，當然也請參考 [tmux man page](http://man.openbsd.org/OpenBSD-current/man1/tmux.1)
+
+### 如果有兩個使用者 attacth 同一個 `session` 會發生甚麼事？
+
+完全不會掛掉！兩邊會完全同步，而且都可以~~輸入東西、操作~~互相干擾，甚至 client window 不一樣大也考慮到了：
+
+![multi user attacthed and as for keybindings](https://media.giphy.com/media/3o752d5hz1ljQD1K4E/giphy.gif)
+
+---
+
+使用 tmux 多年，現在已經成為我工作流程中不可或缺的工具之一了，以上是我個人的一些使用心得跟大家分享，如果覺得有趣，不妨試試看 tmux，甚至客製出一個自己的 tmux!
