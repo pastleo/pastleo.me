@@ -1,0 +1,136 @@
+import wrapPost from '../../layouts/wrapPost.js';
+
+export const options = {
+  title: 'WebRTC - Peer-to-peer, Real-time Communications on the web',
+  thumbnail: 'https://i.imgur.com/JNc9fGYh.jpg',
+  createdAt: '2020/11/30',
+};
+
+export default wrapPost;
+
+> 本篇由 2018/9/14 撰寫之 [https://5xruby.tw/posts/webrtc/](https://5xruby.tw/posts/webrtc/) 修改而來
+
+雖然本文主題是 WebRTC，在切入之前先來提一下應該比較多人聽過的 WebSocket， WebSocket 是 http 協定的提昇，讓瀏覽器和伺服器連線之後保持連線狀態，並進行雙向數據傳輸；而 WebRTC 可以讓瀏覽器與瀏覽器直接連線，不僅提供 Data channel 傳送資料，甚至可以做 video/audio 串流，一直以來筆者對這種運作在終端使用者上的東西很感興趣，有興趣的朋友不妨了解一下
+
+## WebRTC 連線建立
+
+WebRTC 為了讓 Client 直接連線，必須要克服 NAT 等等網路架構的問題，連線的方式可說是蠻複雜的，我把它大致分成兩個步驟：
+
+* signaling: 使用 [Session Description Protocol，SDP](http://en.wikipedia.org/wiki/Session_Description_Protocol) 交換雙方網路架構以及軟硬體功能
+    * 連線方提供 `offer SDP`，被連線方收到後回傳 `answer SDP`
+    * 雙方了解互相的狀況之後便可進行到下個步驟
+* [互動式連結建立 Interactive Connectivity Establishment，簡稱 ICE](https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment)
+    * 在這個階段雙方會『討論』要用什麼方式進行連線，要如何穿越 NAT 等等
+    * 完成之後直接連線就完成，雙方就可以直接對傳資料
+
+## 不過，傳送 SDP 以及 ICE 資料要怎麼傳輸？
+
+很不幸的，WebRTC 並沒有包含這個部份，開發者必須自己想辦法，直覺地想其實就是需要一個提供 WebSocket 服務的伺服器來幫忙
+
+## 示範：做個簡單的聊天室
+
+為了實驗 WebRTC，我打算做一個最簡單的雙人通話聊天室，透過 [Elixir Phoenix](https://phoenixframework.org/) 實做一個交換 SDP, ICE 用的 Server，並且佈署到 heroku 上面：
+
+### [https://webrtc-phx.herokuapp.com/](https://webrtc-phx.herokuapp.com/)
+
+請使用兩個配備現代瀏覽器的裝置打開此網站，在上面 `your name` 以及 `peer name` 輸入自己以及對方的名字，按下 `Connect` 後會開始嘗試建立連線，成功時 `message` 輸入框會呈現綠色表示連線成功
+
+> 如果無法連線，有可能是瀏覽器/裝置本身不支援 WebRTC，或是網路條件就是無法讓兩台裝置連線，這個 DEMO 僅設定了 `STUN`，下方 `STUN & TURN` 有簡單講解連線原理
+
+連線成功之後就可以進行文字聊天；如果要進一步視訊通話，按下 `Call`、接受 webcam 請求並選擇錄影/錄音裝置開始串流到對方裝置，整個跑起來大概像是這樣：
+
+![demo screenshot](https://i.imgur.com/f40cEZm.png)
+
+> 專案原始碼 Repository: [https://github.com/pastleo/webrtc-phx](https://github.com/pastleo/webrtc-phx/tree/aacea8902b23409b9e4706f3badad70802494d6c)
+
+## 實做解析
+
+為了方便了解其中的流程，我在 Javascript 中加入了很多 `console.log` 來方便解析
+
+* [Client 端 javascript](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js)
+* [Server 端 phoenix websocket channel](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/lib/webrtc_phx_web/channels/handshake_channel.ex)
+
+Javascript 部份大量使用 callback，不容易看出相依狀況以及順序，我整理成大概的順序如下：
+
+#### A. [`initAndConnectPhxChannel`](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js#L41)
+
+使用者輸入完自己跟對方的名字之後按下 `Connect` 按鈕，執行 `initAndConnectPhxChannel()`
+
+1. 首先透過 `phxSocket.channel("handshake:" + myName, {})` 以及 `phxChannel.join()` 加入名為 `"handshake:" + myName` 的 phoenix channel
+2. `phxChannel.on("offer", prepareAnswerAndPush);`，設定收到 `offer SDP` 時進行回覆
+3. 成功加入 phoenix channel 之後直接呼叫 `offerAndPush()`
+
+#### B. [`offerAndPush`](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js#L90)
+
+1. 如果 WebRTC instance 尚未建立，先建立 WebRTC instance: `new RTCPeerConnection();`
+2. 如果 data channel 尚未建立，先建立 WebRTC data channel: `rtcConnection.createDataChannel("msg");`；不先建立的話 WebRTC instance 會不知道要建立的連線需具備什麼條件，接下來的 `offer` 就無法產生成正確需要的樣子
+3. 使用 `rtcConnection.createOffer()` 建立 `offer SDP`
+4. 請 WebRTC instance 使用剛才產生的 `offer SDP`: `rtcConnection.setLocalDescription(offer);`
+5. `phxChannel.push("offer", { ... })` 把 `offer SDP` 透過剛剛加入的 phoenix channel 傳送出去
+
+這個 `offer SDP` 有點像是一個邀請函，包含了軟硬體能做什麼、網路狀況等資訊；這邊設計第二個按下 `Connect` 按鈕的使用者傳送出去的 offer 才會被傳送到對方，第一個按下的會因為對方還沒按下 `Connect` 尚未加入 phoenix channel 而沒收到 offer
+
+#### C. [`prepareAnswerAndPush`](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js#L115)
+
+第一個按下 `Connect` 按鈕的使用者傳送出去的 offer 不會被傳送到對方，因此就成了 `被連接者`；當第二個按下 `Connect` 按鈕的使用者把 `offer SDP` 傳過來之時會由 `prepareAnswerAndPush` 進行回覆
+
+1. 如果 WebRTC instance 尚未建立，先建立 WebRTC instance: `new RTCPeerConnection();`
+2. 把對方的邀請 `offer SDP` 邀請函設定到 WebRTC instance 中：`rtcConnection.setRemoteDescription(remoteOffer);` 
+3. 產生答覆 `answer SDP`: `rtcConnection.createAnswer()`
+4. 請 WebRTC instance 使用剛才產生的 `answer SDP`: `rtcConnection.setLocalDescription(offer);`
+5. `phxChannel.push("answer", { ... })` 把 `answer SDP` 透過剛剛加入的 phoenix channel 傳送出去
+
+> 這邊有個 `rtcConnection.signalingState` 的判定，是因為 iOS safari 已經發出 `offer SDP` 時狀態處於 `have-local-offer`，這時如果對方也發出 `offer SDP` 過來要 `setRemoteDescription(offer)` 會出錯
+
+#### D. [`useAnswer`](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js#L141)
+
+第二個按下 `Connect` 按鈕的使用者收到 `answer SDP`，使用 `rtcConnection.setRemoteDescription(answer);` 設定到 WebRTC instance，接下來就可以開始進行 ICE
+
+#### E. [`pushIceCandidate`](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js#L153)
+
+當瀏覽器**想到**可能可以的連接方式時，就會執行 `rtcConnection.onicecandidate`，我們這邊設定成 `pushIceCandidate()`，而要做的事情很簡單，就是透過 phoenix channel 把 ICE 送到對方： `phxChannel.push("ice", { ... });`
+
+#### F. [`useIceCandidate`](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js#L166)
+
+當對方瀏覽器**想到**可能可以的連接方式時把 ICE 送過來，就用 `rtcConnection.addIceCandidate(ice);` 設定到 WebRTC instance
+
+#### 透過 `oniceconnectionstatechange` 確認完成連線建立
+
+步驟 E. `pushIceCandidate` 以及 F. `useIceCandidate` 會來回數次
+
+WebRTC instance 連線狀態改變時 `rtcConnection.oniceconnectionstatechange` 會被呼叫，這邊設定成 [`rtcConnectionChanged()`](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js#L175)，如果是連線成功，`rtcConnection.iceConnectionState` 就會是 `connected` 或是 `completed`，這時就可以開始使用 data channel 傳送文字訊息：
+
+* 送資料：`rtcChannel.send(target.value);`
+* 收到資料的時候 `rtcChannel.onmessage` 會被呼叫
+
+## STUN & TURN
+
+`new RTCPeerConnection()` 不設定任何東西的情況下在同個區域網路內兩台電腦可以透過這個流程全自動連線，但看起來只要一出 NAT 就完全連不到了...
+
+透過 `new RTCPeerConnection({ iceServers: [{urls: '...'}]})` 可以設定 [STUN server](https://en.wikipedia.org/wiki/STUN)，測了一下，分別在 NAT 後面的兩個裝置也可以連線了！在 ICE 過程中，應該是用 [UDP hole punching](https://en.wikipedia.org/wiki/UDP_hole_punching) 打破 NAT 的限制，但是需要 [STUN server](https://en.wikipedia.org/wiki/STUN) 幫忙建立連線，只有連線建立初期需要這個 server 幫忙，[想要詳細了解流程可以看一下 Wiki](https://en.wikipedia.org/wiki/UDP_hole_punching#Flow)，其實比想像中還要不黑魔法
+
+[UDP hole punching](https://en.wikipedia.org/wiki/UDP_hole_punching) 並不是所有的 NAT 都能夠穿，例如 symetric NAT 就不行，要解決更複雜狀況的時候其實就是透過 [TURN Server](https://zh.wikipedia.org/wiki/TURN) relay 所有的 traffic 了，可以想像的到這個 server 的負擔會比 [STUN server](https://en.wikipedia.org/wiki/STUN) 重非常多...
+
+## Video and/or Audio 通話
+
+按下 `Call` 按鈕之後會一路：
+
+1. [`askUserMediaPermission()`](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js#L213) 請求使用 webcam 的權限
+2. [`selectAndgetUserMediaStream()`](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js#L232) 選擇 video/audio 裝置並取得 userMediaStream
+
+然後透過 [`rtcConnection.addTrack(track, userMediaStream)`](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js#L288) 把 video/audio 串流放入 WebRTC instance，接著因為連線所需的條件改變了，需要呼叫 `offerAndPush()` 重新開始 signaling, ICE
+
+### video/audio 串流的接收方
+
+重新開始 signaling, ICE 完成之後，`rtcConnection.ontrack` 會被呼叫，這邊設定成 [`receiveRemoteStream()`](https://github.com/pastleo/webrtc-phx/blob/aacea8902b23409b9e4706f3badad70802494d6c/assets/js/app.js#L314)，但是因為 track 可能有很多個，`receiveRemoteStream()` 也就會被呼叫數次，這邊就設定 750ms 後如果沒有收到更多 track 才把串流放到 `<video></video>` 元素中播放: `peerMediaVideo.srcObject = stream;`
+
+## 稍微玩一下 & 結論
+
+我把這個佈署到 heroku 上面玩了一下，也針對 iOS safari 修正一些問題，目前看來至少幾個平台在撰文時間的最新版都可以用：
+
+* Firefox 83 跟 Chrome 87 可以互相連線、視訊
+* Android Chrome 86 (Android 11) 與 iOS/iPad OS 14 safari 可以互相連線、視訊
+
+詳細的相容性請見 [caniuse.com](https://caniuse.com/#search=webrtc)，網路限制的部份在 [STUN server](https://en.wikipedia.org/wiki/STUN) 幫助下，跟朋友在不同區網可以連線，透過手機網路也沒問題，兩端都是手機網路也 OK，只是在企業網路中常見的 symetric NAT 就不行了，這時候會需要 TURN server 來幫助
+
+不只有限定在聊天室這樣的應用，以後如果有瀏覽器之間直接傳送資料的需求，像是多人連線遊戲之類的，就可以來好好利用他的 data channel，想像一下覺得可以省下不少 WebSocket 伺服器的流量呢
