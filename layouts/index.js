@@ -9,26 +9,20 @@ import HtmlHead from '../components/HtmlHead.js';
 
 import ContentLayout from './ContentLayout.js';
 
-import { useGA } from '../lib/ga.js';
-
 import '../styles/layouts/base.scss';
 
 export const withLayout = (options = {}) => PageComponent => {
   const Layout = options.Layout || ContentLayout;
 
   const Component = (
-    props => {
-      useGA('UA-57274726-1');
-
-      return (
-        <>
-          <HtmlHead options={{ ...options, ...props.options }} />
-          <Layout>
-            <PageComponent {...props} />
-          </Layout>
-        </>
-      );
-    }
+    props => (
+      <>
+        <HtmlHead options={{ ...options, ...props.options }} />
+        <Layout>
+          <PageComponent {...props} />
+        </Layout>
+      </>
+    )
   );
 
   const getInitialProps = options.getInitialProps || PageComponent.getInitialProps;

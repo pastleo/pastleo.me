@@ -2,8 +2,21 @@ import Head from 'next/head';
 
 import ogImageSrc from '../assets/og-image.jpg';
 
+const GA_ID = 'G-YTX00MDT79';
+const GA_GTAG_SRC = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+const GA_GTAG_SCRIPT = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '${GA_ID}');
+`;
+
 const HtmlHead = ({ options }) => (
   <Head>
+    <script async src={GA_GTAG_SRC} />
+    <script dangerouslySetInnerHTML={{ __html: GA_GTAG_SCRIPT }} />
+
     <title key='title'>{ options.title || 'PastLeo' }</title>
     <meta key='description' name='Description' content='Blog, Introduction and Homepage of PastLeo' />
     <link key='favicon' rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
