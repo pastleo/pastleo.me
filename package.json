@@ -4,7 +4,7 @@
   "description": "PastLeo's blog and intro website",
   "main": "page/index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p ${PORT:-3000}",
     "lintf": "eslint --fix .",
     "lint": "eslint .",
     "build": "next build",
