@@ -22,7 +22,7 @@ const Posts = ({ posts, currentPage, totalPages }) => (
 
 export default withLayout()(Posts);
 
-export const getStaticProps = async({ params: { q: query } }) => {
+export const getStaticProps = async ({ params: { q: query } }) => {
   const posts = await import('../../lib/node/posts.js');
   const { page } = posts.parseQuery(query);
   return {
@@ -34,7 +34,7 @@ export const getStaticProps = async({ params: { q: query } }) => {
   };
 };
 
-export const getStaticPaths = async() => {
+export const getStaticPaths = async () => {
   const posts = await import('../../lib/node/posts.js');
   return {
     paths: [

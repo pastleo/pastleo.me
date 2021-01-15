@@ -26,7 +26,7 @@ export default withLayout({
   Layout: HomeLayout,
 })(Index);
 
-export const getStaticProps = async() => {
+export const getStaticProps = async () => {
   const posts = await import('../lib/node/posts.js');
   return {
     props: {
