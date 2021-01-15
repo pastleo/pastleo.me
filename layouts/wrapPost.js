@@ -60,6 +60,12 @@ const CodeBlock = ({ children, className }) => {
   );
 };
 
+const Table = ({ children }) => (
+  <div className={styles.tableContainer}>
+    <table>{ children }</table>
+  </div>
+);
+
 const Iframe = props => {
   const srcHost = getHost(props.src);
   if (srcHost.match(/youtube\.com$/)) {
@@ -81,6 +87,7 @@ const components = {
   h6: Heading('h6'),
   a: Link,
   code: CodeBlock,
+  table: Table,
   iframe: Iframe,
 };
 

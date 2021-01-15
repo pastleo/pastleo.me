@@ -36,7 +36,7 @@ module.exports = withPlugins([
                 pattern => sourceInputFileName.search(pattern) >= 0
               ) ? [sourceInputFileName] : purgecssContents
             ),
-            whitelist: ['html', 'body', 'h6', 'blockquote'],
+            whitelist: ['html', 'body', 'h6', 'blockquote', 'table', 'thead', 'tbody', 'th', 'tr', 'td'],
             defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
           }),
           cssnanoPostcssPlugin({ preset: 'default' }),

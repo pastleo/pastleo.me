@@ -10,16 +10,16 @@ import Pagination from '../components/Pagination.js';
 const currentPage = 0;
 
 const Index = ({ posts, totalPages }) => (
-  <>
+  <div className='max-w-screen-lg mx-auto'>
     { posts.map(post => (
       <Link key={post.slug} href={`/post/${post.slug}`}>
-        <a className={classnames('block max-w-screen-lg mx-auto', layoutStyles.noHoverEffect)}>
+        <a className={layoutStyles.noHoverEffect}>
           <PostBanner {...post.options} className='my-5' contentClassName='p-5' titleClassName='text-3xl' />
         </a>
       </Link>
     )) }
     <Pagination currentPage={currentPage} totalPages={totalPages} />
-  </>
+  </div>
 );
 
 export default withLayout({

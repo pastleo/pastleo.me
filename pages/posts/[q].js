@@ -8,7 +8,7 @@ import PostBanner from '../../components/PostBanner.js';
 import Pagination from '../../components/Pagination.js';
 
 const Posts = ({ posts, currentPage, totalPages }) => (
-  <>
+  <div className='max-w-screen-lg mx-auto'>
     { posts.map(post => (
       <Link key={post.slug} href={`/post/${post.slug}`}>
         <a className={layoutStyles.noHoverEffect}>
@@ -17,7 +17,7 @@ const Posts = ({ posts, currentPage, totalPages }) => (
       </Link>
     )) }
     <Pagination currentPage={currentPage} totalPages={totalPages} />
-  </>
+  </div>
 );
 
 export default withLayout()(Posts);
