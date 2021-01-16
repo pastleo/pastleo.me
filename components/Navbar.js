@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import classnames from 'classnames';
 
-import styles from '../styles/components/navbar.scss';
+import styles from '../styles/components/navbar.module.scss';
 
 import avatarWebpSrc from '../assets/logo/avatar-hacker.jpg?webp';
 import avatarJpgSrc from '../assets/logo/avatar-hacker.jpg';

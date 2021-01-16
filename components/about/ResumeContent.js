@@ -9,7 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faHtml5 } from '@fortawesome/free-brands-svg-icons';
 
-import styles from '../../styles/components/about/resume-content.scss';
+import styles from '../../styles/components/about/resume-content.module.scss';
 
 const ResumeContent = ({ locale }) => (locale === 'en' && (
   <section className={classnames(styles.resumeContent)}>

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 
 import classnames from 'classnames';
 
-import styles from '../styles/components/post-banner.scss';
+import styles from '../styles/components/post-banner.module.scss';
 
 const PostBanner = ({
   title, createdAt, description, thumbnail,
@@ -38,14 +38,14 @@ const PostBanner = ({
           classnames(
             styles.content,
             { 'pt-32': !!thumbnail, [styles.thumbnailLoaded]: imageLoaded },
-            contentClassName
+            contentClassName,
           )
         }
       >
         <h1 className={
           classnames(
             styles.title, 'font-bold my-3', titleClassName,
-            { [styles.keepLineActive]: keepLineActive }
+            { [styles.keepLineActive]: keepLineActive },
           )
         }>
           { title }

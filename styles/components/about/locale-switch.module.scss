@@ -3,6 +3,6 @@
     cursor: pointer;
   }
   .active {
-    color: $theme-color;
+    color: var(--theme-color);
   }
 }

@@ -14,7 +14,7 @@ import CodeTyper from '../components/about/CodeTyper.js';
 import Contacts from '../components/about/Contacts.js';
 import ResumeContent from '../components/about/ResumeContent.js';
 
-import styles from '../styles/pages/about.scss';
+import styles from '../styles/pages/about.module.scss';
 
 import taiwanSvgSrc from '../assets/taiwan.svg';
 

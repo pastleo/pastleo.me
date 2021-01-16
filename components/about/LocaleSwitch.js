@@ -1,6 +1,7 @@
+import React from 'react';
 import classnames from 'classnames';
 
-import styles from '../../styles/components/about/locale-switch.scss';
+import styles from '../../styles/components/about/locale-switch.module.scss';
 
 const LocaleSwitch = ({ locales, locale, setLocale }) => (
   <span className={styles.localeSwitch}>

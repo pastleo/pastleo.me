@@ -7,7 +7,7 @@
     a.anchor {
       display: none;
       font-size: 64%;
-      color: $theme-color;
+      color: var(--theme-color);
     }
     &:hover {
       a.anchor {
