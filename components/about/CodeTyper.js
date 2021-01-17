@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 const TYPING_INTERVAL = 48;
 
-import styles from '../../styles/components/about/code-typer.scss';
+import styles from '../../styles/components/about/code-typer.module.scss';
 
 const Line = ({ line, typingLineIndex, lineIndex, onLineFinished }) => {
   const [length, setLength] = useState(0);

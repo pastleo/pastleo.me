@@ -1,3 +1,4 @@
+import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import classnames from 'classnames';
@@ -7,7 +8,7 @@ import { faAnchor } from '@fortawesome/free-solid-svg-icons';
 import withLayout from './index.js';
 
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
-import styles from '../styles/layouts/post-wrapper.scss';
+import styles from '../styles/layouts/post-wrapper.module.scss';
 
 import { getHost, extractTextContent } from '../lib/postContentUtils.js';
 
@@ -24,7 +25,7 @@ const Heading = tag => ({ children }) => {
       <a className={classnames(styles.anchor, 'ml-1')} href={`#${textContent}`}>
         <FontAwesomeIcon icon={faAnchor} size='sm' />
       </a>
-    )
+    ),
   );
 };
 

@@ -1,6 +1,6 @@
 .layout {
   @media screen {
-    color: $theme-color;
+    color: var(--theme-color);
     a:hover:not(.noHoverEffect) {
       color: #ffffff;
     }

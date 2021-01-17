@@ -5,7 +5,7 @@ import { faGithub, faLinkedinIn, faTwitter, faFacebook } from '@fortawesome/free
 
 import Button from '../Button.js';
 
-import styles from '../../styles/components/about/contacts.scss';
+import styles from '../../styles/components/about/contacts.module.scss';
 
 const Contacts = ({ className, block }) => (
   <div className={classnames(styles.contacts, 'text-center', className)}>

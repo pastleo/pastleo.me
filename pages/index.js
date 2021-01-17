@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import Link from 'next/link';
 
 import withLayout from '../layouts/index.js';

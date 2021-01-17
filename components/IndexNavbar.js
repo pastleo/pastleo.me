@@ -7,7 +7,7 @@ import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import Logo from '../components/Logo.js';
 import Button from '../components/Button.js';
 
-import styles from '../styles/components/index-navbar.scss';
+import styles from '../styles/components/index-navbar.module.scss';
 
 const Navbar = () => (
   <nav className={classnames(styles.indexNavbar, 'py-6')}>

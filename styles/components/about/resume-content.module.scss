@@ -17,7 +17,7 @@ section.resumeContent {
     text-decoration: underline;
 
     &:hover {
-      color: $theme-color;
+      color: var(--theme-color);
       text-decoration: underline;
     }
   }

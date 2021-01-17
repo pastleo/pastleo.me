@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 
-import styles from '../styles/components/background.scss';
+import styles from '../styles/components/background.module.scss';
 
 import bgWebpSrc from '../assets/bg.jpg?webp';
 import bgJpgSrc from '../assets/bg.jpg';

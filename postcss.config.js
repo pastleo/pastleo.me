@@ -1,5 +1,24 @@
-/*
- * NextJs enables PostCSS only if this file exists:
- * https://github.com/zeit/next-plugins/blob/2ecdb6858f322f8bfd9e881875c87741fb108987/packages/next-css/css-loader-config.js#L65
- */
-module.exports = {};
+module.exports = {
+  plugins: {
+    tailwindcss: {
+      future: {
+        removeDeprecatedGapUtilities: true,
+        purgeLayersByDefault: true,
+      },
+      purge: [
+        './components/**/*.js',
+        './layouts/**/*.js',
+        './pages/**/*.js',
+      ],
+      darkMode: false, // or 'media' or 'class'
+      theme: {
+        extend: {},
+      },
+      variants: {
+        extend: {},
+      },
+      plugins: [],
+    },
+    autoprefixer: {},
+  },
+};

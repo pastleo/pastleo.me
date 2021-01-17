@@ -9,7 +9,7 @@
 
 @media screen {
   .button {
-    background-color: $theme-color;
+    background-color: var(--theme-color);
     padding: .15rem .25rem .05rem .35rem;
   }
 }

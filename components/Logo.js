@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import classnames from 'classnames';
 
-import styles from '../styles/components/logo.scss';
+import styles from '../styles/components/logo.module.scss';
 
 import hackerWebpSrc from '../assets/logo/avatar-hacker.jpg?webp';
 import hackerJpgSrc from '../assets/logo/avatar-hacker.jpg';
