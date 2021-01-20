@@ -7,7 +7,7 @@ import { genLinkProps } from '../lib/posts.js';
 
 const PageLink = ({ page, title, children }) => (
   <Link {...genLinkProps({ page })}>
-    <a title={title}>{ children }</a>
+    <a className='hover:text-white' title={title}>{ children }</a>
   </Link>
 );
 

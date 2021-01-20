@@ -1,24 +1,10 @@
-.layout {
-  @media screen {
-    color: var(--theme-color);
-    a:hover:not(.noHoverEffect) {
-      color: #ffffff;
-    }
-
-    min-height: 100vh;
-  }
-
-  &.withContainer {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .container {
-    flex: 1;
-    padding: 1.5rem;
-
-    @media screen {
-      background: #2c2c2c;
+@media screen {
+  .layout {
+    .container {
+      padding: 1.5rem;
+      min-height: 100vh;
+      color: var(--theme-color);
+      background: var(--background-color);
     }
   }
 }

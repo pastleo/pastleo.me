@@ -93,22 +93,22 @@ const components = {
 };
 
 const PostWrapper = ({ children, options: { description, ...bannerOptions } }) => (
-  <MDXProvider components={components}>
-    <div className='break-words max-w-screen-lg mx-auto'>
-      <PostBanner
-        {...bannerOptions}
-        contentClassName={bannerOptions.thumbnail && 'p-5'}
-        titleClassName='text-4xl'
-        keepLineActive
-      />
+  <div className='break-words max-w-screen-lg mx-auto'>
+    <PostBanner
+      {...bannerOptions}
+      contentClassName={bannerOptions.thumbnail && 'p-5'}
+      titleClassName='text-4xl'
+      keepLineActive
+    />
+    <MDXProvider components={components}>
       <div className={styles.postWrapper}>
         { children }
       </div>
-    </div>
-    <div className='p-3 text-center'>
+    </MDXProvider>
+    <div className='py-3 text-center'>
       <BackToIndexLink className='p-3'>Back</BackToIndexLink>
     </div>
-  </MDXProvider>
+  </div>
 );
 
 export default withLayout()(PostWrapper);

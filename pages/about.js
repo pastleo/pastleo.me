@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 
 import withLayout from '../layouts/index.js';
-import EmptyLayout from '../layouts/EmptyLayout.js';
+import BackgroundLayout from '../layouts/BackgroundLayout.js';
 
 import BackToIndexLink from '../components/BackToIndex.js';
 import Logo from '../components/Logo.js';
@@ -110,5 +110,5 @@ const About = () => {
 };
 
 export default withLayout({
-  Layout: EmptyLayout,
+  Layout: BackgroundLayout,
 })(About);

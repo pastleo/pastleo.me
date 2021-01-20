@@ -1,13 +1,11 @@
 import classnames from 'classnames';
 
-import Background from '../components/Background.js';
 import IndexNavbar from '../components/IndexNavbar.js';
 
 import styles from '../styles/layouts/layout.module.scss';
 
 const HomeLayout = ({ children }) => (
-  <div className={classnames(styles.layout, styles.withContainer)}>
-    <Background />
+  <div className={styles.layout}>
     <IndexNavbar />
     <div className={styles.container}>
       { children }
