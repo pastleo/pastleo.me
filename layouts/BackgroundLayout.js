@@ -1,12 +1,16 @@
 import classnames from 'classnames';
 
+import Background from '../components/Background.js';
+
 import styles from '../styles/layouts/background.module.scss';
-import backgroundClassName from '../styles/components/background.js';
 
 const BackgroundLayout = ({ children }) => (
-  <div className={classnames(styles.layout, backgroundClassName, 'bg-fixed bg-right-top')}>
-    { children }
-  </div>
+  <>
+    <Background className='fixed object-right-top' />
+    <div className={styles.layout}>
+      { children }
+    </div>
+  </>
 );
 
 export default BackgroundLayout;
