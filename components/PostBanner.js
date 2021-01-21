@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-
 import classnames from 'classnames';
+
+import ExternalImage from '../components/ExternalImage.js';
 
 import styles from '../styles/components/post-banner.module.scss';
 
@@ -27,7 +28,7 @@ const PostBanner = ({
       }
     >
       { imageEnabled && (
-        <img
+        <ExternalImage
           src={thumbnail}
           className={classnames(styles.thumbnail, { [styles.loaded]: imageLoaded })}
           onLoad={onImageLoaded}

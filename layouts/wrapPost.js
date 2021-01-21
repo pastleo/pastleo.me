@@ -5,6 +5,8 @@ import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnchor } from '@fortawesome/free-solid-svg-icons';
 
+import ExternalImage from '../components/ExternalImage.js';
+
 import withLayout from './index.js';
 
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
@@ -89,6 +91,7 @@ const components = {
   a: Link,
   code: CodeBlock,
   table: Table,
+  img: ExternalImage,
   iframe: Iframe,
 };
 
