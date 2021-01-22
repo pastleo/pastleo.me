@@ -16,6 +16,9 @@ module.exports = {
           zIndex: {
             '-1': '-1',
           },
+          colors: {
+            'background-avg': 'var(--background-avg-color)',
+          },
         },
       },
       variants: {
