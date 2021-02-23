@@ -1,10 +1,7 @@
 module.exports = {
   plugins: {
     tailwindcss: {
-      future: {
-        removeDeprecatedGapUtilities: true,
-        purgeLayersByDefault: true,
-      },
+      future: {},
       purge: [
         './components/**/*.js',
         './layouts/**/*.js',
