@@ -111,4 +111,5 @@ const About = () => {
 
 export default withLayout({
   Layout: BackgroundLayout,
+  title: 'PastLeo | 關於我',
 })(About);
