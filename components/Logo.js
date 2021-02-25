@@ -1,52 +1,53 @@
 import { useState } from 'react';
 import classnames from 'classnames';
 
+import Img from 'react-optimized-image';
+
 import styles from '../styles/components/logo.module.scss';
 
-import hackerWebpSrc from '../assets/logo/avatar-hacker.jpg?webp';
-import hackerJpgSrc from '../assets/logo/avatar-hacker.jpg';
-import avatarWebpSrc from '../assets/logo/avatar.jpg?webp';
-import avatarJpgSrc from '../assets/logo/avatar.jpg';
-import speakerWebpSrc from '../assets/logo/speaker.jpg?webp';
-import speakerJpgSrc from '../assets/logo/speaker.jpg';
+import avatarSrc from '../assets/logo/avatar.jpg';
+import hackerSrc from '../assets/logo/avatar-hacker.jpg';
+import speakerSrc from '../assets/logo/speaker.jpg';
 
-const srcSets = {
-  normal: {
-    webp: hackerWebpSrc,
-    jpg: hackerJpgSrc,
-  },
-  hover: {
-    webp: avatarWebpSrc,
-    jpg: avatarJpgSrc,
-  },
-  revealed: {
-    webp: speakerWebpSrc,
-    jpg: speakerJpgSrc,
-  },
-};
+const NormalLogoImg = props => (
+  <Img
+    src={avatarSrc} webp
+    className={classnames(styles.normal, 'rounded-full')}
+    {...props}
+  />
+);
+const HackerLogoImg = props => (
+  <Img
+    src={hackerSrc} webp
+    className={classnames(styles.hacker, 'rounded-full')}
+    {...props}
+  />
+);
+const SpeakerLogoImg = props => (
+  <Img
+    src={speakerSrc} webp
+    className={classnames(styles.speaker, 'rounded-full')}
+    {...props}
+  />
+);
 
-const Logo = ({ className, forcerRvealed }) => {
+const Logo = ({ className, width, forcedRvealed }) => {
   const [revealed, setRevealed] = useState(false);
-  const [hover, setHover] = useState(false);
-
-  const srcSetKey = (forcerRvealed || revealed) ? 'revealed' : (hover ? 'hover' : 'normal');
+  const widthProps = { width, height: width };
 
   return (
     <div
-      className={classnames(styles.logo, className)}
+      className={
+        classnames(
+          styles.logo, className,
+          { [styles.revealed]: revealed || forcedRvealed },
+        )
+      }
       onClick={() => setRevealed(r => !r)}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
     >
-      <picture>
-        <source srcSet={srcSets[srcSetKey].webp} type='image/webp' />
-        <source srcSet={srcSets[srcSetKey].jpg} type='image/jpeg' />
-        <img
-          alt='logo'
-          src={srcSets[srcSetKey].jpg}
-          className={classnames(styles.img, 'max-w-full max-h-full rounded-full border')}
-        />
-      </picture>
+      <NormalLogoImg alt='logo' {...widthProps} />
+      <HackerLogoImg {...widthProps} />
+      <SpeakerLogoImg {...widthProps} />
     </div>
   );
 };

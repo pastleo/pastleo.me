@@ -68,7 +68,7 @@ const About = () => {
         </div>
         { resumeMode || <h1 className='text-center font-bold text-2xl pt-4'>PastLeo | 西瓜</h1> }
         <div className='max-w-2xl mx-auto py-5 flex justify-center items-center'>
-          <Logo className={styles.logo} forcerRvealed={resumeMode} />
+          <Logo width='216' forcedRvealed={resumeMode} />
           { resumeMode && (
             <div className='flex-1 flex flex-col content-center justify-center p-4 hidden md:block print:block'>
               <h1 className='font-bold text-2xl pb-4'>PastLeo | 西瓜</h1>

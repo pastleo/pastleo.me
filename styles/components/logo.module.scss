@@ -1,5 +1,28 @@
 .logo {
-  img.img {
+  position: relative;
+
+  .normal {
     border: 1px solid var(--theme-color);
+  }
+  .hacker {
+    border: 1px solid #2d2d2d;
+  }
+  .speaker {
+    border: 1px solid #ffffff;
+  }
+  .hacker, .speaker {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &:hover .hacker {
+    opacity: 1;
+  }
+  &.revealed .speaker {
+    opacity: 1;
   }
 }

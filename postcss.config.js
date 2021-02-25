@@ -14,6 +14,7 @@ module.exports = {
             '-1': '-1',
           },
           colors: {
+            'theme': 'var(--theme-color)',
             'background-avg': 'var(--background-avg-color)',
           },
         },
