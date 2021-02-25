@@ -21,11 +21,6 @@ export const withLayout = (options = {}) => PageComponent => {
     )
   );
 
-  const getInitialProps = options.getInitialProps || PageComponent.getInitialProps;
-  if (getInitialProps) {
-    Component.getInitialProps = getInitialProps;
-  }
-
   return Component;
 };
 
