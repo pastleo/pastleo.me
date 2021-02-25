@@ -65,6 +65,6 @@ jobs:
         project_id: ${{ secrets.GCP_PROJECT_ID }}
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         export_default_credentials: true
-    - run: gsutil -m rsync -r out/ "gs://${GCP_BUCKET_NAME}/"
+    - run: gsutil -m rsync -r -d out/ "gs://${GCP_BUCKET_NAME}/"
       env:
         GCP_BUCKET_NAME: ${{ secrets.GCP_BUCKET_NAME }}
