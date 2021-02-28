@@ -111,8 +111,10 @@ TailwindCSS 的部份，可以透過其 PostCSS 之 plugin 進行客製化，主
 網站內容開發大部分就是一般 React app 的開發，React 提供的功能或是別人寫好的 React 套件應該都可以使用，這邊提幾點 Next.js 下寫 React 筆者所觀察到的：
 
 * 因為 `pages` 是各個頁面的進入點，大多數 Next.js 的範例專案都會開一個 `components` 資料夾來放共用的 component 
-* server-side rendering 就像是把 page component 以及其『呼叫』的 component 當成 function 執行下去（如果是 functional component 應該蠻好理解的，而且大家現今新寫的應該都是 functional component 吧），忽略所有 callback 把 react tree 展開獲得的 HTML 作為結果
-  * 因此應該可以想像的到，`useState()`, `return <div />` 會在 server-side 上發生，但是 `useEffect(fn)` 的 `fn` 並不會在 server-side 上執行，用這樣的思維去思考比較容易知道 server-side 會執行到什麼程度，瀏覽器或爬蟲收到的 HTML 會長到哪裡
+* server-side rendering 就像是把 page component 以及其『呼叫』的 component 當成 function 執行下去，整個 react components tree 展開到每個 node 都 return JSX 完畢，就把獲得的 HTML 作為結果回傳
+  * 因此，`useState()`, `return <div />` 會在 server-side 上發生，但是 `useEffect(fn)` 的 `fn` 並不會在 server-side 上執行，用這樣的思維去思考比較容易知道 server-side 會執行到什麼程度，瀏覽器或爬蟲收到的 HTML 會長到哪裡
+
+> server-side rendering 把 component 當成 function 執行的部份，如果是 functional component 應該蠻好理解的，而且大家現今新寫的應該都是 functional component 吧
 
 ## Image Assets
 
