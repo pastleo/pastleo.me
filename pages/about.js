@@ -51,10 +51,12 @@ const About = () => {
   const [locale, setLocale] = useState('zh');
   const [resumeMode, setResumeMode] = useState(false);
 
-  const toggleResumeMode = useCallback(() => setResumeMode(r => !r), []);
+  const keyupToggleResumeMode = useCallback(e => (
+    e.keyCode === 82 && setResumeMode(r => !r)
+  ), []);
   useEffect(() => {
-    document.addEventListener('keypress', toggleResumeMode);
-    return () => document.removeEventListener('keypress', toggleResumeMode);
+    document.addEventListener('keyup', keyupToggleResumeMode);
+    return () => document.removeEventListener('keyup', keyupToggleResumeMode);
   }, []);
 
   return (

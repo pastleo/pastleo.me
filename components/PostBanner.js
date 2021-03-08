@@ -29,6 +29,7 @@ const PostBanner = ({
     >
       { imageEnabled && (
         <ExternalImage
+          alt=''
           src={thumbnail}
           className={classnames(styles.thumbnail, { [styles.loaded]: imageLoaded })}
           onLoad={onImageLoaded}
@@ -38,7 +39,7 @@ const PostBanner = ({
         className={
           classnames(
             styles.content,
-            { 'pt-32': !!thumbnail, [styles.thumbnailLoaded]: imageLoaded },
+            { 'md:pt-32': !!thumbnail },
             contentClassName,
           )
         }

@@ -100,7 +100,7 @@ const PostWrapper = ({ children, options: { description, ...bannerOptions } }) =
     <PostBanner
       {...bannerOptions}
       contentClassName={bannerOptions.thumbnail && 'p-5'}
-      titleClassName='text-4xl'
+      titleClassName='text-2xl md:text-4xl'
       keepLineActive
     />
     <MDXProvider components={components}>

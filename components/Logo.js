@@ -12,6 +12,7 @@ import speakerSrc from '../assets/logo/speaker.jpg';
 const NormalLogoImg = props => (
   <Img
     src={avatarSrc} webp
+    alt='avatar, logo'
     className={classnames(styles.normal, 'rounded-full')}
     {...props}
   />
@@ -19,6 +20,7 @@ const NormalLogoImg = props => (
 const HackerLogoImg = props => (
   <Img
     src={hackerSrc} webp
+    alt=''
     className={classnames(styles.hacker, 'rounded-full')}
     {...props}
   />
@@ -26,6 +28,7 @@ const HackerLogoImg = props => (
 const SpeakerLogoImg = props => (
   <Img
     src={speakerSrc} webp
+    alt=''
     className={classnames(styles.speaker, 'rounded-full')}
     {...props}
   />

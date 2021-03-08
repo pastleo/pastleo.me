@@ -13,7 +13,7 @@ const Index = ({ posts, totalPages }) => (
     { posts.map(post => (
       <Link key={post.slug} href={`/post/${post.slug}`}>
         <a>
-          <PostBanner {...post.options} className='my-5' contentClassName='p-5' titleClassName='text-3xl' />
+          <PostBanner {...post.options} className='my-5' contentClassName='p-5' titleClassName='text-xl md:text-3xl' />
         </a>
       </Link>
     )) }
