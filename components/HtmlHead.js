@@ -22,6 +22,8 @@ const HtmlHead = ({ options }) => (
     <link key='favicon' rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
     <meta key='viewport' name='viewport' content='width=device-width, initial-scale=1' />
     <meta key='og:image' name='og:image' content={options.thumbnail || ogImageSrc} />
+
+    <link rel='alternate' type='application/rss+xml' href='/feed.xml' />
   </Head>
 );
 
