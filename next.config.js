@@ -4,7 +4,7 @@ const withMDX = require('@next/mdx');
 const optimizedImages = require('next-optimized-images');
 
 const detectFrontmatter = require('remark-frontmatter');
-const extractFrontmatter = require('./lib/node/extractFrontmatter.js');
+const extractFrontmatter = require('./lib/cjs/extractFrontmatter.js');
 
 module.exports = withPlugins([
   [withMDX({

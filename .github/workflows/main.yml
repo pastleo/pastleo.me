@@ -42,6 +42,7 @@ jobs:
         key: node-modules-${{ hashFiles('**/package-lock.json') }}
     - run: npm install
     - run: npm run build
+    - run: npm run rss
     - run: npm run export
     - name: upload exported build
       uses: actions/upload-artifact@v1
