@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pastleo.me/sitemap.xml
