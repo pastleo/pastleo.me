@@ -32,3 +32,6 @@ yarn-error.log*
 
 # RSS feed artifact
 public/feed.xml
+
+# Sitemap artifact
+public/sitemap.xml
