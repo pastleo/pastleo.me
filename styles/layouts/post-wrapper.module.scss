@@ -57,7 +57,9 @@
     border-radius: 5px;
   }
   img, video {
-    max-width: 60%;
+    @media screen and (min-width: 768px) {
+      max-width: 60%;
+    }
     margin: 1rem auto;
   }
   ul, ol {
