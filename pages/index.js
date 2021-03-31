@@ -6,6 +6,8 @@ import HomeLayout from '../layouts/HomeLayout.js';
 import PostBanner from '../components/PostBanner.js';
 import Pagination from '../components/Pagination.js';
 
+import * as postsData from '../lib/node/posts.js';
+
 const currentPage = 0;
 
 const Index = ({ posts, totalPages }) => (
@@ -25,12 +27,9 @@ export default withLayout({
   Layout: HomeLayout,
 })(Index);
 
-export const getStaticProps = async () => {
-  const posts = await import('../lib/node/posts.js');
-  return {
-    props: {
-      posts: await posts.page(currentPage),
-      totalPages: await posts.totalPages(),
-    },
-  };
-};
+export const getStaticProps = async () => ({
+  props: {
+    posts: await postsData.page(currentPage),
+    totalPages: await postsData.totalPages(),
+  },
+});

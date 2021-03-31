@@ -1,10 +1,11 @@
-import classnames from 'classnames';
 import Link from 'next/link';
 
 import withLayout from '../../layouts/index.js';
 
 import PostBanner from '../../components/PostBanner.js';
 import Pagination from '../../components/Pagination.js';
+
+import * as postsData from '../../lib/node/posts.js';
 
 const Posts = ({ posts, currentPage, totalPages }) => (
   <div className='max-w-screen-lg mx-auto'>
@@ -22,23 +23,19 @@ const Posts = ({ posts, currentPage, totalPages }) => (
 export default withLayout()(Posts);
 
 export const getStaticProps = async ({ params: { q: query } }) => {
-  const posts = await import('../../lib/node/posts.js');
-  const { page } = posts.parseQuery(query);
+  const { page } = postsData.parseQuery(query);
   return {
     props: {
-      posts: await posts.page(page),
+      posts: await postsData.page(page),
       currentPage: page,
-      totalPages: await posts.totalPages(),
+      totalPages: await postsData.totalPages(),
     },
   };
 };
 
-export const getStaticPaths = async () => {
-  const posts = await import('../../lib/node/posts.js');
-  return {
-    paths: [
-      ...(await posts.genQueryPaths()),
-    ],
-    fallback: false,
-  };
-};
+export const getStaticPaths = async () => ({
+  paths: [
+    ...(await postsData.genQueryPaths()),
+  ],
+  fallback: false,
+});
