@@ -31,8 +31,12 @@ const Heading = tag => ({ children }) => {
   );
 };
 
-const Link = ({ children, href }) => (
+const Link = ({ children, href }) => href.match(/^https?:\/\//) ? (
   <a href={href} target='_blank' rel='noopener noreferrer'>
+    { children }
+  </a>
+) : (
+  <a href={href}>
     { children }
   </a>
 );

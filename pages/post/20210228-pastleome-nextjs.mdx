@@ -1,15 +1,26 @@
 ---
-title: Next.js 建置的 pastleo.me - React static-site generator, Tailwindcss
+title: Next.js 建置的 pastleo.me ❶ - React static-site generator, Tailwindcss
 thumbnail: https://i.imgur.com/D0FhUpoh.jpg
 createdAt: 2021/02/28
 layout: ../../layouts/wrapPost.js
 ---
 
-[Next.js](https://nextjs.org/) 是一個使用 [React](https://reactjs.org/) 渲染（或是說，生成 html）的 web framework，最大的特色是 server-side rendering，筆者於 2020/3 打掉重練的 [pastleo.me](https://pastleo.me) 選擇使用 Next.js 製作，CSS/styling 部份採用 [tailwindcss](https://tailwindcss.com/)
+大家好，大家都叫我西瓜，你現在看到的是 [Next.js](https://nextjs.org/) 系列文章的第一篇。[Next.js](https://nextjs.org/) 是一個使用 [React](https://reactjs.org/) 渲染的 web framework，並使網頁在從伺服器送出時就先渲染好，可選擇使用 server-side rendering 或是 static-site generating。筆者使用 [React](https://reactjs.org/) 開發多年，於 2020/3 打掉重練的 [pastleo.me](https://pastleo.me) 選擇使用 [Next.js](https://nextjs.org/) 製作，這邊把這些時間使用的心得寫下來，如果你對 [React](https://reactjs.org/) 有基本的了解，希望這系列文章能讓你了解 [Next.js](https://nextjs.org/) 的機制以及使用方式
 
 #### [pastleo.me](https://pastleo.me) 原始碼：[https://github.com/pastleo/pastleo.me](https://github.com/pastleo/pastleo.me)
 
-這邊就來介紹一下這些時間在 `pastleo.me` 使用 Next.js 的心得
+本系列文章分成兩篇，章節架構如下：
+
+* 第一篇（本篇）：React static-site generator, Tailwindcss
+  * [Next.js 基礎專案架構](#Next.js%20基礎專案架構)
+  * [Server-side rendering, static site generator](#Server-side%20rendering,%20static%20site%20generator)
+  * [Next.js CSS/SCSS module, Tailwindcss + purgecss](#CSS/SCSS%20module,%20Tailwindcss%20+%20purgecss)
+  * [React development & life-cycle](#React%20development%20&%20life-cycle)
+  * [Image Assets](#Image%20Assets)
+  * [Deployment](#Deployment)
+* [第二篇：Data Fetching & Markdown 部落格](/post/20210331-pastleome-nextjs-md-blog)
+  * [Data fetching](/post/20210331-pastleome-nextjs-md-blog#Data%20fetching)
+  * [Markdown 部落格](/post/20210331-pastleome-nextjs-md-blog#Markdown%20部落格)
 
 ## Next.js 基礎專案架構
 
