@@ -5,7 +5,7 @@ createdAt: 2021/03/31
 layout: ../../layouts/wrapPost.js
 ---
 
-大家好，大家都叫我西瓜，你現在看到的是 [Next.js](https://nextjs.org/) 系列文章的第二篇。[Next.js](https://nextjs.org/) 是一個使用 [React](https://reactjs.org/) 渲染的 web framework，並使網頁在從伺服器送出時就先渲染好，可選擇使用 server-side rendering 或是 static-site generating。筆者使用 [React](https://reactjs.org/) 開發多年，於 2020/3 打掉重練的 [pastleo.me](https://pastleo.me) 選擇使用 [Next.js](https://nextjs.org/) 製作，這邊把這些時間使用的心得寫下來，如果你對 [React](https://reactjs.org/) 有基本的了解，希望這系列文章能讓你了解 [Next.js](https://nextjs.org/) 的機制以及使用方式
+大家好，大家都叫我西瓜，你現在看到的是 [Next.js](https://nextjs.org/) 系列文章的第二篇。[Next.js](https://nextjs.org/) 是一個使用 [React](https://reactjs.org/) 渲染的 web framework，並使網頁在從伺服器送出時就先渲染好，可選擇使用 server-side rendering 或是 static-site generating。筆者使用 [React](https://reactjs.org/) 開發多年，本部落格選擇使用 [Next.js](https://nextjs.org/) 製作，這邊把使用的心得寫下來，如果你對 [React](https://reactjs.org/) 有基本的了解，希望這系列文章能讓你了解 [Next.js](https://nextjs.org/) 的機制以及使用方式
 
 #### [pastleo.me](https://pastleo.me) 原始碼：[https://github.com/pastleo/pastleo.me](https://github.com/pastleo/pastleo.me)
 
@@ -129,7 +129,7 @@ export async function getServerSideProps(context) {
 
 ## Markdown 部落格
 
-[Markdown](https://zh.wikipedia.org/wiki/Markdown) 是一種軟體工程文件或文章常用的格式，[pastleo.me](https://pastleo.me) 部落格內容就以一篇文章為一個 markdown `.md` 檔的方式放置在 [`pages/post`](https://github.com/pastleo/pastleo.me/tree/6d5078f32e948451ffec83b1a5307e227255d1c3/pages/post)，接下來介紹要如何讓 Next.js 使用這些 `.md` 建構出部落格網站
+[Markdown](https://zh.wikipedia.org/wiki/Markdown) 是一種軟體工程文件或文章常用的格式，[pastleo.me](https://pastleo.me) 部落格內容就以一篇文章為一個 markdown 檔案的方式放置在 [`pages/post`](https://github.com/pastleo/pastleo.me/tree/6d5078f32e948451ffec83b1a5307e227255d1c3/pages/post)，接下來介紹要如何讓 Next.js 使用 markdown 作為文章格式建構部落格功能
 
 在 Next.js 官方部落格上有一篇文章也是在介紹 [Next.js markdown 部落格](https://nextjs.org/blog/markdown)，大概有三種方法：
 
@@ -149,7 +149,7 @@ export async function getServerSideProps(context) {
 
 ### Layout, Component 客製化
 
-筆者一開始選擇使用 MDX 是因為可以提供比較好的客製化，像是直接針對 markdown 的各個元件進行 react component 的覆寫，除了 CSS style 之外，甚至可以用 react 實做互動功能，像是[component 客製化官方文件](https://mdxjs.com/getting-started/#working-with-components)使用 `components` 的 `props` 直接指定 markdown 內容各個元件所應使用的 react component:
+筆者一開始選擇使用 MDX 是因為可以提供比較好的客製化，像是直接針對 markdown 的各個元件進行 react component 的覆寫，除了 CSS style 之外，甚至可以用 react 實做互動功能，像是 [component 客製化官方文件](https://mdxjs.com/getting-started/#working-with-components)使用 `components` 的 `props` 直接指定 markdown 內容各個元件所應使用的 react component:
 
 ```jsx
 <Hello
@@ -162,7 +162,7 @@ export async function getServerSideProps(context) {
 />
 ```
 
-不過從 MDX 官方文件看起來作者預期的使用方式是由更上層（例如 `App.js`）`import` `.mdx` 檔案使用，我們這邊每個 `.mdx` 現在就等同一個頁面 component，幸好 [MDX 也有提供方法讓我們複寫 wrapper（在我們這邊的情境就是 Layout）](https://mdxjs.com/getting-started/#default-exports)，在 `.mdx` 檔案中 `export default MdxLayout` 就會讓 `MdxLayout` 覆寫掉預設的 wrapper
+關於 layout 部份，從 MDX 官方文件看起來作者預期的使用方式是由上層 component 作為 layout，並且 import `.mdx` 檔案使用，但是依照本文的使用方式每個 `.mdx` 就是一個個的頁面 component，這些 `.mdx` 幾乎就是就是最上層的 component，幸好 [MDX 也有提供方法覆寫 wrapper](https://mdxjs.com/getting-started/#default-exports) 讓我們可以客製化 layout：在 `.mdx` 檔案中 `export default MdxLayout` 就會讓 `MdxLayout` 覆寫掉預設的 wrapper
 
 接著就是設計、刻板、實做出這個 `MdxLayout`，有興趣可以參考筆者的 [wrapPost.js](https://github.com/pastleo/pastleo.me/blob/6d5078f32e948451ffec83b1a5307e227255d1c3/layouts/wrapPost.js)
 
@@ -177,12 +177,12 @@ thumbnail: https://i.imgur.com/D0FhUpoh.jpg
 ---
 ```
 
-一個檔案內容最上方的 `---` 包著 YAML，這樣的語法似乎叫做 front-matter，常常拿來寫標題、縮圖等 metadata；在部落格系統的每篇 `.mdx` 文章當然也會有 metadata 的需求，根據 [MDX 官方文件](https://mdxjs.com/getting-started/#exports)的做法，我們要在 `.mdx` 裡頭寫 `export const metadata = { ... }`，然後讓 `MdxLayout` 或其他 component 使用，這樣一來每個 `.mdx` 就有不少 javascript 混在裡面：
+一個檔案內容最上方的 `---` 包著 YAML，這樣的語法似乎叫做 front-matter，常常拿來寫標題、縮圖等 metadata；在部落格系統的每篇 `.mdx` 文章當然也會有 metadata 的需求，根據 [MDX 官方文件](https://mdxjs.com/getting-started/#exports)的做法，我們要在 `.mdx` 裡頭寫 `export const metadata = { ... }`，然後讓 `MdxLayout` 或其他 component 使用，雖然就達成所需要的目標了，不過加上上面的 layout, component 覆寫，每個 `.mdx` 就有不少 javascript 混在裡面：
 
 ```
 import MDdxLayout from '../layouts/wrapPost.js'
 
-export const options = {
+export const metadata = {
   title: 'Page Title',
   description: 'This is a page description',
 }
