@@ -28,12 +28,12 @@ const i18n = {
   },
   quotes: {
     zh: [
-      '興趣使然的軟體工程師，對電腦的一切事物有興趣，從電腦硬體、作業系統以及網路到程式、網站前後端',
-      '有朝一日會弄個遊戲平台讓大家一起遊玩創造力',
+      '興趣使然的軟體工程師，對資訊科技的一切事物有興趣，從電腦硬體、作業系統、網路到網站前後端、應用程式之技術',
+      '喜歡有趣的互動體驗以及創造的過程，因此開發讓大家一起遊玩創造力的遊戲平台',
     ],
     en: [
-      'Loving exploring things about computer, from hardware, operating system, the web, to programming',
-      'Will create game where people explore creativities',
+      'Interested in exploring things about computer, from hardware, operating system, Internet to technologies building frontend/backend of web and applications',
+      'Loving intriguing interactive experience and process of creating, I develop game where people explore creativity',
     ],
   },
   back: {
