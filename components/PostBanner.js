@@ -14,7 +14,7 @@ const PostBanner = ({
     if (thumbnail) {
       setImageEnabled(true);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [imageLoaded, setImageLoaded] = useState(false);
   const onImageLoaded = useCallback(() => {

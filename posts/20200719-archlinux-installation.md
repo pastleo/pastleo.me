@@ -2,7 +2,6 @@
 title: ArchLinux 2020 安裝筆記
 thumbnail: https://i.imgur.com/kuaCP4Ph.jpg
 createdAt: 2020/07/19
-layout: ../../layouts/wrapPost.js
 ---
 
 ## 基本上請照著官方教學做： https://wiki.archlinux.org/index.php/installation_guide

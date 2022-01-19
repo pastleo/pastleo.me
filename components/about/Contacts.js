@@ -29,11 +29,11 @@ const Contacts = ({ className, block }) => (
         <span className='hidden print:inline'>https://github.com/pastleo</span>
       </Button>
     </a>
-    <a title='linkedin' href='https://www.linkedin.com/in/guan-yu-chiu-076833120/' target='_blank' rel='noopener noreferrer'>
+    <a title='linkedin' href='https://www.linkedin.com/in/pastleo/' target='_blank' rel='noopener noreferrer'>
       <Button className={classnames(styles.contactBtn, { [styles.block]: block })}>
         <FontAwesomeIcon icon={faLinkedinIn} size='lg' />
         <span className='hidden sm:inline-block print:hidden'>LinkedIn</span>
-        <span className='hidden print:inline'>https://www.linkedin.com/in/guan-yu-chiu-076833120/</span>
+        <span className='hidden print:inline'>https://www.linkedin.com/in/pastleo/</span>
       </Button>
     </a>
     <a title='twitter' href='https://twitter.com/PastLeo' target='_blank' rel='noopener noreferrer'>
