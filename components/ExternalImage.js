@@ -13,7 +13,7 @@ const IMGUR_SRC_REGEX = /https:\/\/i.imgur.com\/(\w+h)\.(\w+)/;
  * webp thumbnail: https://i.imgur.com/p8ZNmYrh.webp
  */
 
-const ExternalImage = memoComponent(({ src, ...props }) => {
+const ExternalImage = memoComponent(({ src, alt, ...props }) => {
   const imgurMatched = src.match(IMGUR_SRC_REGEX);
 
   if (imgurMatched && EXT_TO_MIME_TYPES[imgurMatched[2]]) {
@@ -21,13 +21,13 @@ const ExternalImage = memoComponent(({ src, ...props }) => {
       <picture>
         <source srcSet={`https://i.imgur.com/${imgurMatched[1]}.webp`} type='image/webp' />
         <source srcSet={src} type={EXT_TO_MIME_TYPES[imgurMatched[2]]} />
-        <img src={src} {...props} />
+        <img src={src} alt={alt} {...props} />
       </picture>
     );
   }
 
   return (
-    <img src={src} {...props} />
+    <img src={src} alt={alt} {...props} />
   );
 });
 

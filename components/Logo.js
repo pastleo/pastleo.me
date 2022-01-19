@@ -1,34 +1,32 @@
 import { useState } from 'react';
 import classnames from 'classnames';
 
-import Img from 'react-optimized-image';
-
 import styles from '../styles/components/logo.module.scss';
 
-import avatarSrc from '../assets/logo/avatar.jpg';
-import hackerSrc from '../assets/logo/avatar-hacker.jpg';
-import speakerSrc from '../assets/logo/speaker.jpg';
+import avatarJpg from '../assets/logo/avatar.jpg';
+import hackerJpg from '../assets/logo/avatar-hacker.jpg';
+import speakerJpg from '../assets/logo/speaker.jpg';
 
 const NormalLogoImg = props => (
-  <Img
-    src={avatarSrc} webp
+  <img
+    src={avatarJpg}
     alt='avatar, logo'
     className={classnames(styles.normal, 'rounded-full')}
     {...props}
   />
 );
 const HackerLogoImg = props => (
-  <Img
-    src={hackerSrc} webp
-    alt=''
+  <img
+    src={hackerJpg}
+    alt='avatar, hacker'
     className={classnames(styles.hacker, 'rounded-full')}
     {...props}
   />
 );
 const SpeakerLogoImg = props => (
-  <Img
-    src={speakerSrc} webp
-    alt=''
+  <img
+    src={speakerJpg}
+    alt='avatar, speaker'
     className={classnames(styles.speaker, 'rounded-full')}
     {...props}
   />
@@ -48,7 +46,7 @@ const Logo = ({ className, width, forcedRvealed }) => {
       }
       onClick={() => setRevealed(r => !r)}
     >
-      <NormalLogoImg alt='logo' {...widthProps} />
+      <NormalLogoImg {...widthProps} />
       <HackerLogoImg {...widthProps} />
       <SpeakerLogoImg {...widthProps} />
     </div>

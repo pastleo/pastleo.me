@@ -1,22 +1,23 @@
 const withPlugins = require('next-compose-plugins');
-
-const withMDX = require('@next/mdx');
 const optimizedImages = require('next-optimized-images');
 
-const detectFrontmatter = require('remark-frontmatter');
-const extractFrontmatter = require('./lib/cjs/extractFrontmatter.js');
-
 module.exports = withPlugins([
-  [withMDX({
-    extension: /\.mdx?$/,
-    options: {
-      remarkPlugins: [
-        [detectFrontmatter, ['yaml']],
-        extractFrontmatter,
-      ],
-    },
-  })],
   [optimizedImages, {}],
 ], {
-  pageExtensions: ['js', 'mdx'],
+  reactStrictMode: true,
+  images: {
+    disableStaticImages: true,
+  },
+
+  // https://github.com/vercel/next.js/issues/17806#issuecomment-913437792
+  webpack: config => {
+    config.module.rules.push({
+      test: /\.js$/,
+      type: 'javascript/auto',
+      resolve: {
+        fullySpecified: false,
+      },
+    });
+    return config;
+  },
 });

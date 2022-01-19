@@ -2,7 +2,6 @@
 title: Next.js 建置的 pastleo.me ❷ - Data Fetching & Markdown 部落格
 thumbnail: https://i.imgur.com/41yJyuQh.jpg
 createdAt: 2021/03/31
-layout: ../../layouts/wrapPost.js
 ---
 
 大家好，大家都叫我西瓜，你現在看到的是 [Next.js](https://nextjs.org/) 系列文章的第二篇。[Next.js](https://nextjs.org/) 是一個使用 [React](https://reactjs.org/) 渲染的 web framework，並使網頁在從伺服器送出時就先渲染好，可選擇使用 server-side rendering 或是 static-site generating。筆者使用 [React](https://reactjs.org/) 開發多年，本部落格選擇使用 [Next.js](https://nextjs.org/) 製作，這邊把使用的心得寫下來，如果你對 [React](https://reactjs.org/) 有基本的了解，希望這系列文章能讓你了解 [Next.js](https://nextjs.org/) 的機制以及使用方式

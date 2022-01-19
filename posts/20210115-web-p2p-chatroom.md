@@ -2,7 +2,6 @@
 title: 在 Web 上建構半分散式網路、聊天室 - 使用 WebRTC & WebSocket
 thumbnail: https://i.imgur.com/VjtceVUh.jpg
 createdAt: 2021/01/15
-layout: ../../layouts/wrapPost.js
 ---
 
 > 本篇由 2019/9/7 撰寫之 [https://5xruby.tw/posts/webrtc-unnamed-netowrk-chatroom/](https://5xruby.tw/posts/webrtc-unnamed-netowrk-chatroom/) 修改而來
@@ -15,11 +14,11 @@ layout: ../../layouts/wrapPost.js
 
 如何建立/加入群組：
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ywDQOYW79dU" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+https://youtu.be/ywDQOYW79dU
 
 聊天室使用以及 YOUTUBE 同步播放教學：
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kogpQkkBlGY" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+https://youtu.be/kogpQkkBlGY
 
 接下來是這個聊天室的連線框架（下面稱為 `unnamed-network`）的心路歷程，也是 [COSCUP 2019 WebRTC 半分散網路的投影片](https://md.pastleo.me/p/webrtc-network-coscup2019-talk#/) 整理出來的結果
 

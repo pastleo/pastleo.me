@@ -14,13 +14,13 @@ const Line = ({ line, typingLineIndex, lineIndex, onLineFinished }) => {
       setLength(l => l + 1);
     }, TYPING_INTERVAL);
     return () => clearInterval(interval);
-  }, [line, typingLineIndex]);
+  }, [lineIndex, typingLineIndex]);
 
   useEffect(() => {
     if (length >= line.length) {
       onLineFinished();
     }
-  }, [line, length]);
+  }, [line, length, onLineFinished]);
 
   return length > 0 && <pre className='whitespace-normal my-1'>{ line.substr(0, length) }</pre>;
 };

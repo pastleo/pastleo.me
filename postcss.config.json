@@ -1,0 +1,26 @@
+{
+  "plugins": {
+    "tailwindcss": {
+      "future": {},
+      "content": [
+        "./components/**/*.js",
+        "./layouts/**/*.js",
+        "./pages/**/*.js"
+      ],
+      "theme": {
+        "extend": {
+          "zIndex": {
+            "-1": "-1"
+          },
+          "colors": {
+            "theme": "var(--theme-color)",
+            "background-avg": "var(--background-avg-color)"
+          }
+        }
+      },
+      "plugins": []
+    },
+    "autoprefixer": {}
+  }
+}
+

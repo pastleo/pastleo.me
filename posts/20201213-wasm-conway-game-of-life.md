@@ -2,7 +2,6 @@
 title: Trying Webassembly in Rust
 thumbnail: https://i.imgur.com/1cpiWK3h.jpg
 createdAt: 2020/12/13
-layout: ../../layouts/wrapPost.js
 ---
 
 > 本篇由 2019/1/17 撰寫之 [https://5xruby.tw/posts/webassembly-run-native-code-on-browser-using-rust/](https://5xruby.tw/posts/webassembly-run-native-code-on-browser-using-rust/) 修改而來
@@ -197,7 +196,7 @@ rustup run stable wasm-pack build
 
 Repository: [https://github.com/pastleo/rs-wasm-glife/](https://github.com/pastleo/rs-wasm-glife/)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6PRM-iyNo80" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+https://youtu.be/6PRM-iyNo80
 
 > 蠻好玩的，我可以玩很久
 

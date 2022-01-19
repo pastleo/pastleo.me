@@ -2,7 +2,6 @@
 title: PTT新貼文提醒、單字蒐集 Chrome 擴充套件？一同窺探有哪些強大的 API 可以使用
 thumbnail: https://i.imgur.com/mZexgX2h.jpg
 createdAt: 2020/07/31
-layout: ../../layouts/wrapPost.js
 ---
 
 大家是否有在使用瀏覽器『擴充套件』呢？筆者已經使用 [uBlock](https://github.com/gorhill/uBlock) 這款開源的廣告阻擋器多年囉，但是一直以來都不知道瀏覽器擴充套件是如何製作以及其可取用的 API 為何，前陣子花了點時間研究一下，才發現在 Chrome/Chromium 上開發擴充套件竟然是如此的簡單，而且可取用的 API 跟在 Web 上也完全不是同一個檔次，今天就來看看這些東西，順便找些場景來應用。
@@ -290,7 +289,7 @@ document.addEventListener('click', event => {
 
 同樣地筆者也進行一些改良，簡易字卡蒐集小工具就這樣完成囉：
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NL5ajwr88Yw" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+https://youtu.be/NL5ajwr88Yw
 
 完整程式碼請見 Github repo: [https://github.com/pastleo/word-cards-chromext](https://github.com/pastleo/word-cards-chromext)
 
