@@ -5,7 +5,7 @@ import withLayout from '../../layouts/index.js';
 
 import PostBanner from '../../components/PostBanner.js';
 import PostContent, { components } from '../../components/PostContent.js';
-import BackToIndexLink from '../../components/BackToIndex.js';
+import Back from '../../components/Back.js';
 
 import * as postsData from '../../lib/node/posts.js';
 
@@ -28,7 +28,7 @@ const Post = ({ content, options: { description, ...bannerOptions } }) => (
     </PostContent>
 
     <div className='py-3 text-center'>
-      <BackToIndexLink className='p-3'>Back</BackToIndexLink>
+      <Back className='p-3'>Back</Back>
     </div>
   </div>
 );

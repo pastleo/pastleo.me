@@ -5,4 +5,8 @@
   .logo {
     border: 1px solid var(--theme-color);
   }
+
+  a:hover {
+    color: var(--theme-color);
+  }
 }

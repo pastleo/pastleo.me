@@ -5,33 +5,26 @@ import {
   faSuitcase, faMobileAlt, faStore, faUser,
   faCommentDots, faGraduationCap, faBook,
   faLanguage, faTerminal, faGem, faServer,
-  faRocket, faAddressCard,
 } from '@fortawesome/free-solid-svg-icons';
 import { faHtml5 } from '@fortawesome/free-brands-svg-icons';
 
 import styles from '../../styles/components/about/resume-content.module.scss';
+import { resumeModeBlock } from '../../styles/resume.module.scss';
 
-const ResumeContent = ({ locale }) => (locale === 'en' && (
-  <section className={classnames(styles.resumeContent)}>
-    <div className={styles.gradient} />
-    <div className='max-w-3xl mx-auto pt-4 pb-6 px-2'>
-      <div className='w-4/5 print:w-9/10 m-auto py-4 print:py-0'>
-        <p className='pb-2'>
-          Currently working for 5xruby.tw as my first job, my experience and skills have been building up quickly to develop software for business. With rich experience about frontend and React development for 2 years, now I am leading a team building an E-commerce platform, and it has received very positive feedback from our cooperative partner.
-        </p>
-        <p className='pb-2'>
-          As part of the open source community, I have contributed my exploration of the web and open source technologies through 4 conference talks and patches to open source projects.
-        </p>
-      </div>
-      <div className={classnames(styles.pagebreak, 'w-4/5 print:w-9/10 mx-auto mb-4')}>
-        <h1 className='text-3xl font-bold ml-6'>
+import { i18n } from '../../lib/i18n.js';
+
+const ResumeContent = ({ locale }) => (
+  <section className={classnames(styles.resumeContent, resumeModeBlock)}>
+    <div className='max-w-3xl mx-auto pt-12 pb-6 px-2'>
+      <div className={classnames('w-4/5 print:w-9/10 ml-auto mb-4')}>
+        <h1 className='text-3xl font-bold ml-n3.5'>
           <FontAwesomeIcon icon={faSuitcase} className='mr-2' />
-          Experience
+          { i18n.experienceTitle[locale] }
         </h1>
       </div>
-      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto border-solid border-black border-l mb-3')}>
+      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
         <div className={styles.timeMark}>
-          <h5>2017/2 ~</h5>
+          <span>2017/2 ~ <br className='inline sm:hidden' />2021/2</span>
         </div>
         <article>
           <h2 className='font-bold text-2xl'>
@@ -100,7 +93,7 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
           </div>
         </article>
       </div>
-      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto border-solid border-black border-l mb-3')}>
+      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
         <h2 className='font-bold text-2xl ml-3'>
           <FontAwesomeIcon icon={faUser} className='mr-2' />
           Community
@@ -213,7 +206,7 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
           </h4>
         </article>
       </div>
-      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto border-solid border-black border-l mb-3')}>
+      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
         <h2 className='font-bold text-2xl ml-3'>
           <FontAwesomeIcon icon={faGraduationCap} className='mr-1' />
           Education
@@ -243,14 +236,15 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
           </h3>
         </article>
       </div>
-      <hr className='h-px border-t border-solid border-black' />
-      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto border-solid border-black border-l mb-3')}>
-        <div className={styles.leftTitle}>
-          <h2 className='font-bold text-2xl ml-3 text-right'>
-            <FontAwesomeIcon icon={faBook} className='mb-2 ml-2 mt-2' />
+
+
+      <div className={classnames('w-4/5 print:w-9/10 ml-auto mb-4')}>
+        <h1 className='text-3xl font-bold ml-n3.5'>
+          <FontAwesomeIcon icon={faBook} className='mr-2' />
             Skills
-          </h2>
-        </div>
+        </h1>
+      </div>
+      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
         <article>
           <h3 className='text-xl'>
             Languages Skills
@@ -301,6 +295,6 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
       </div>
     </div>
   </section>
-));
+);
 
 export default ResumeContent;

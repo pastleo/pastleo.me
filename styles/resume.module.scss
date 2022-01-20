@@ -1,0 +1,28 @@
+.resumeModeBlock, .resumeModeInline {
+  display: none;
+}
+.normalModeMinHScreen {
+  min-height: 100vh;
+}
+
+@mixin resumeMode {
+  .normalModeMinHScreen {
+    min-height: auto;
+  }
+  .resumeModeHidden {
+    display: none;
+  }
+  .resumeModeBlock {
+    display: block;
+  }
+  .resumeModeInline {
+    display: inline;
+  }
+}
+
+@media print {
+  @include resumeMode;
+}
+.resumeMode {
+  @include resumeMode;
+}
