@@ -3,7 +3,6 @@ name: '[Main] lint, build_export and deploy'
 on: push
 
 # secrets:
-#   GCP_PROJECT_ID: id of the GCP project
 #   GCP_SA_KEY: json of service account's to access the GCP bucket
 #   GCP_BUCKET_NAME: GCP bucket name (object storage)
 
