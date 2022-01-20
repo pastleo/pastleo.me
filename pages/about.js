@@ -57,7 +57,7 @@ const About = () => {
   useEffect(() => {
     document.addEventListener('keyup', keyupToggleResumeMode);
     return () => document.removeEventListener('keyup', keyupToggleResumeMode);
-  }, []);
+  }, [keyupToggleResumeMode]);
 
   return (
     <div className='min-h-screen flex flex-col'>

@@ -36,11 +36,11 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
         <article>
           <h2 className='font-bold text-2xl'>
             { 'Rails/Full-stack Engineer at ' }
-            <a href='https://5xruby.tw' target='_blank'>5xRuby</a>
+            <a href='https://5xruby.tw' target='_blank' rel='noreferrer'>5xRuby</a>
           </h2>
           <div className='details ml-3'>
             <h3 className='text-xl'>
-              <a href='https://www.quickbuy.jp/' target='_blank'>
+              <a href='https://www.quickbuy.jp/' target='_blank' rel='noreferrer'>
                 <FontAwesomeIcon icon={faMobileAlt} className='mr-1 print:hidden' />
                 QuickBuy E-commerce Platform and App
               </a>
@@ -70,7 +70,7 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
               </span>
             </h4>
             <h3 className='text-xl'>
-              <a href='https://goshopmatic.com/sg/' target='_blank'>
+              <a href='https://goshopmatic.com/sg/' target='_blank' rel='noreferrer'>
                 <FontAwesomeIcon icon={faStore} className='mr-1 print:hidden' />
                 Shopmatic E-commerce Platform
               </a>
@@ -111,13 +111,13 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
         <article>
           <h4>
             <FontAwesomeIcon icon={faCommentDots} className='mr-1 print:hidden' />
-            <a href='https://mopcon.org/2018/' target='_blank'>
+            <a href='https://mopcon.org/2018/' target='_blank' rel='noreferrer'>
               MOPCON 2018
             </a>
             Speaker
           </h4>
           <h4 className='ml-3 screen:text-right'>
-            <a href='https://mopcon.org/2018/speaker.php?id=4' target='_blank'>
+            <a href='https://mopcon.org/2018/speaker.php?id=4' target='_blank' rel='noreferrer'>
               WebComponent &amp; lit-html - another frontend implementation choice
             </a>
           </h4>
@@ -129,13 +129,13 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
         <article>
           <h4>
             <FontAwesomeIcon icon={faCommentDots} className='mr-1 print:hidden' />
-            <a href='https://2018.coscup.org' target='_blank'>
+            <a href='https://2018.coscup.org' target='_blank' rel='noreferrer'>
               COSCUP 2018
             </a>
             Speaker
           </h4>
           <h4 className='ml-3 screen:text-right'>
-            <a href='https://2018.coscup.org/programs/full-archlinux/' target='_blank'>
+            <a href='https://2018.coscup.org/programs/full-archlinux/' target='_blank' rel='noreferrer'>
               Archlinux for daily usage
             </a>
           </h4>
@@ -147,13 +147,13 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
         <article>
           <h4>
             <FontAwesomeIcon icon={faCommentDots} className='mr-1 print:hidden' />
-            <a href='https://2018.rubyconf.tw/' target='_blank'>
+            <a href='https://2018.rubyconf.tw/' target='_blank' rel='noreferrer'>
               Ruby &amp; Elixir Conf TW 2018
             </a>
             Speaker
           </h4>
           <h4 className='ml-3 screen:text-right'>
-            <a href='https://2018.rubyconf.tw/program#pastleo' target='_blank'>
+            <a href='https://2018.rubyconf.tw/program#pastleo' target='_blank' rel='noreferrer'>
               Not familiar with Elixir? Let me do a simple intro in 30 minutes
             </a>
           </h4>
@@ -165,13 +165,13 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
         <article>
           <h4>
             <FontAwesomeIcon icon={faCommentDots} className='mr-1 print:hidden' />
-            <a href='http://sitcon.org/2016/' target='_blank'>
+            <a href='http://sitcon.org/2016/' target='_blank' rel='noreferrer'>
               SITCON 2016
             </a>
             Speaker
           </h4>
           <h4 className='ml-3 screen:text-right'>
-            <a href='http://sitcon.org/2016/#target-schedule' target='_blank'>
+            <a href='http://sitcon.org/2016/#target-schedule' target='_blank' rel='noreferrer'>
               Customize my development environment and make it open-source!
             </a>
           </h4>
@@ -183,7 +183,7 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
         <article>
           <h3 className='text-xl'>
             Director of
-            <a href='http://nchuit.cc/' target='_blank'>
+            <a href='http://nchuit.cc/' target='_blank' rel='noreferrer'>
               National Chung Hsing University Information Technologies Club
             </a>
           </h3>
@@ -201,7 +201,7 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
         <article>
           <h3 className='text-xl'>
             Information Technologies Department of
-            <a href='http://nchusg.org/' target='_blank'>
+            <a href='http://nchusg.org/' target='_blank' rel='noreferrer'>
               National Chung Hsing University Student Association
             </a>
           </h3>
@@ -223,10 +223,10 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
         </div>
         <article>
           <h3 className='text-xl'>
-            <a href='https://www.nchu.edu.tw/' target='_blank'>
+            <a href='https://www.nchu.edu.tw/' target='_blank' rel='noreferrer'>
               National Chung Hsing University
             </a>
-            <a href='http://www.cs.nchu.edu.tw/' target='_blank'>
+            <a href='http://www.cs.nchu.edu.tw/' target='_blank' rel='noreferrer'>
               Department of Computer Science and Engineering
             </a>
           </h3>
@@ -237,7 +237,7 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
         </div>
         <article>
           <h3 className='text-xl'>
-            <a href='http://www.pcsh.ntpc.edu.tw/' target='_blank'>
+            <a href='http://www.pcsh.ntpc.edu.tw/' target='_blank' rel='noreferrer'>
               New Taipei Municipal Panchiao Senior High School
             </a>
           </h3>
@@ -298,32 +298,6 @@ const ResumeContent = ({ locale }) => (locale === 'en' && (
             </h4>
           </div>
         </article>
-      </div>
-      <div className={classnames(styles.pagebreak, 'w-4/5 print:w-9/10 mx-auto mt-6 mb-2')}>
-        <h1 className='text-3xl font-bold ml-6'>
-          <FontAwesomeIcon icon={faAddressCard} className='mr-2' />
-          Biography
-        </h1>
-      </div>
-      <div className='w-4/5 print:w-9/10 m-auto py-4 print:py-0'>
-        <p className='pb-2'>
-          Loving open source and web technologies, I joined internship program of 5xruby.tw in 2015 to find more chance to be part of the community. The company is founded by active community members who devote to promote Ruby programming language in Taiwan. I not only learned Ruby on Rails but also built a twitter live wall showing tweets with hashtag #rubyconftw in real time for RubyConf 2015. After graduation and military service, I began my career in 5xruby.tw solving all kinds of issues for many projects and cooperative partners.
-        </p>
-        <p className='pb-2'>
-          My first experience of production-used React started to gain from Shopmatic, a full-featured E-commerce platform including a what-you-see-is-what-you-get website editor. My job was to refactor merchant management interface to React, reducing tech-debt and making user experience better; Since the tech team behind Shopmatic has a philosophy that everyone in the team should be able to cover with others as much as they can, I still learned a lot about Ruby on Rails in this project.
-        </p>
-        <p className='pb-2'>
-          During Shopmatic project, we had gone through a big migration converting merchant's customized website from HTML to React, making it easier to control and prevent editor bugs. For this huge change, I had a chance to use programming language that I just learned -- Elixir. This programming language provides great tools for comparing data and executing jobs concurrently; I managed to migrate half million customized webpage within 20 minutes; My favorite part of this migration is that it listens to database changes. By doing so, data changed by user can be detected and re-migrated in real time, which ensures migrated data is always up-to-date, achieving no-down-time migration.
-        </p>
-        <p className='pb-2'>
-        Interested in all things about computer, I enjoy exploring open technologies from Linux, programming languages to the rapidly changing web. This is why I have things to share on posts and conferences. In 2018, my speaking topics are about <a href='https://2018.coscup.org/programs/full-archlinux/' target='_blank'>ArchLinux</a>, <a href='https://2018.rubyconf.tw/program#pastleo' target='_blank'>Elixir</a> and <a href='https://md.pastleo.me/litelement-webcomponent' target='_blank'>WebComponents</a>. <a href='https://md.pastleo.me/rs-wasm-glife'>Rust, Webassembly</a> and <a href='https://md.pastleo.me/experiment-webrtc' target='_blank'>WebRTC</a> are also my exploration shared via posts. I share my contribution back to the community like <a href='https://github.com/pastleo/qrcode.react/tree/feature/with-logo-and-download' target='_blank'>React QRCode component forked for logo and download features</a>, shell themes for <a href='https://github.com/pastleo/theme-PastFish' target='_blank'>fish</a> and <a href='https://github.com/pastleo/zsh-theme-past' target='_blank'>zsh</a> and even <a href='https://github.com/pastleo/fix-bt-a2dp' target='_blank'>workaround for bluetooth headset on ArchLinux</a>.
-        </p>
-        <p className='pb-2'>
-          My university life is the time I met open source community and web technology. Inspired by the power given by the web, I started to make websites for student activities. The most interesting among these websites is for an event "Blackswan E-sports games" in 2013. There is a specially-designed contest table in wheel shape allowing people to browse teams and plays with fancy animations and rich user interactions. After the time in student association, I was promoting web and open source technologies, leading information technology club, helding courses teaching HTML, Javascript and making games for fun!
-        </p>
-        <p className='pb-2'>
-          In my childhood, I played video games a lot. To get information of games, I found internet very convenient, and immediately fascinated by these technologies. While in elementary school, I took a course learning Adobe Flash. Playing a game made by myself might be the most exciting thing for me. At the time a RPG game was made, ActionScript is used for calculating health of characters and I didn't realize that it is programming; From I was little I am what people calling as geek, able to spend weekends experimenting all kind of things about computer for leisure, like PC assembling, adjusting operation system setups or even Android custom firmware flashing.
-        </p>
       </div>
     </div>
   </section>
