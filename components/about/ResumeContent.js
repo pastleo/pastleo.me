@@ -1,12 +1,11 @@
+import React from 'react';
 import classnames from 'classnames';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faSuitcase, faMobileAlt, faStore, faUser,
-  faCommentDots, faGraduationCap, faBook,
-  faLanguage, faTerminal, faGem, faServer,
+  faSuitcase, faAward, faCommentDots, faGraduationCap, faBook, faFolderOpen,
+  faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
-import { faHtml5 } from '@fortawesome/free-brands-svg-icons';
 
 import styles from '../../styles/components/about/resume-content.module.scss';
 import { resumeModeBlock } from '../../styles/resume.module.scss';
@@ -17,284 +16,243 @@ const ResumeContent = ({ locale }) => (
   <section className={classnames(styles.resumeContent, resumeModeBlock)}>
     <div className='max-w-3xl mx-auto pt-12 pb-6 px-2'>
       <div className={classnames('w-4/5 print:w-9/10 ml-auto mb-4')}>
-        <h1 className='text-3xl font-bold ml-n3.5'>
+        <h3 className='text-3xl font-bold ml-n3.5'>
           <FontAwesomeIcon icon={faSuitcase} className='mr-2' />
           { i18n.experienceTitle[locale] }
-        </h1>
+        </h3>
       </div>
       <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
-        <div className={styles.timeMark}>
-          <span>2017/2 ~ <br className='inline sm:hidden' />2021/2</span>
-        </div>
-        <article>
-          <h2 className='font-bold text-2xl'>
-            { 'Rails/Full-stack Engineer at ' }
-            <a href='https://5xruby.tw' target='_blank' rel='noreferrer'>5xRuby</a>
-          </h2>
-          <div className='details ml-3'>
-            <h3 className='text-xl'>
-              <a href='https://www.quickbuy.jp/' target='_blank' rel='noreferrer'>
-                <FontAwesomeIcon icon={faMobileAlt} className='mr-1 print:hidden' />
-                QuickBuy E-commerce Platform and App
-              </a>
-            </h3>
-            <h4 className='ml-3'>
-              Project lead:
+        { i18n.experience[locale].map((exp, i) => (
+          <React.Fragment key={i}>
+            <div className={styles.timeMark}>
               <span>
-                leading the team building a MVP in 3 months while communicating and working with foreign partner
+                { exp.from }
+                { exp.to && (
+                  <>
+                    { ' ~ ' }
+                    <br className='inline sm:hidden' />
+                    { exp.to }
+                  </>
+                ) }
               </span>
-            </h4>
-            <h4 className='ml-3'>
-              Improve user experience of E-commerce App:
-              <span>
-                developing for both Android and iOS based on React native
-              </span>
-            </h4>
-            <h4 className='ml-3'>
-              Setup App build automation and save time for the team:
-              <span>
-                CI/CD flow from git push to Testflight and Google Play within 20 minutes using fastlane
-              </span>
-            </h4>
-            <h4 className='ml-3'>
-              Improve management site of the E-commerce platform:
-              <span>
-                developing Ruby on Rails application with React frontend
-              </span>
-            </h4>
-            <h3 className='text-xl'>
-              <a href='https://goshopmatic.com/sg/' target='_blank' rel='noreferrer'>
-                <FontAwesomeIcon icon={faStore} className='mr-1 print:hidden' />
-                Shopmatic E-commerce Platform
-              </a>
-            </h3>
-            <h4 className='ml-3'>
-              Successfully complete a complex migration without any downtime:
-              <br />
-              <span>
-                converting half million customized webpage data to change from HTML format to React props. Utilizing Elixir, it can be done in 20 minutes and re-migrate data changed by user
-              </span>
-            </h4>
-            <h4 className='ml-3'>
-              Boost frontend maintainability and user experience:
-              <span>
-                rewriting rich-user-interaction pages using React
-              </span>
-            </h4>
-            <h4 className='ml-3'>
-              Modernize frontend assets bundling, making development and deployment less heavy:
-              <span>
-                integrating frontend workflow such as webpack with Rails, reducing compiling time from 20+ minutes to 5 minutes
-              </span>
-            </h4>
-            <h4 className='ml-3'>
-              Improve and maintain backend of E-commerce platform
-            </h4>
-          </div>
-        </article>
-      </div>
-      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
-        <h2 className='font-bold text-2xl ml-3'>
-          <FontAwesomeIcon icon={faUser} className='mr-2' />
-          Community
-        </h2>
-        <div className={styles.timeMark}>
-          <h5>2018/11</h5>
-        </div>
-        <article>
-          <h4>
-            <FontAwesomeIcon icon={faCommentDots} className='mr-1 print:hidden' />
-            <a href='https://mopcon.org/2018/' target='_blank' rel='noreferrer'>
-              MOPCON 2018
-            </a>
-            Speaker
-          </h4>
-          <h4 className='ml-3 screen:text-right'>
-            <a href='https://mopcon.org/2018/speaker.php?id=4' target='_blank' rel='noreferrer'>
-              WebComponent &amp; lit-html - another frontend implementation choice
-            </a>
-          </h4>
-        </article>
-        <br />
-        <div className={styles.timeMark}>
-          <h5>2018/8</h5>
-        </div>
-        <article>
-          <h4>
-            <FontAwesomeIcon icon={faCommentDots} className='mr-1 print:hidden' />
-            <a href='https://2018.coscup.org' target='_blank' rel='noreferrer'>
-              COSCUP 2018
-            </a>
-            Speaker
-          </h4>
-          <h4 className='ml-3 screen:text-right'>
-            <a href='https://2018.coscup.org/programs/full-archlinux/' target='_blank' rel='noreferrer'>
-              Archlinux for daily usage
-            </a>
-          </h4>
-        </article>
-        <br />
-        <div className={styles.timeMark}>
-          <h5>2018/4</h5>
-        </div>
-        <article>
-          <h4>
-            <FontAwesomeIcon icon={faCommentDots} className='mr-1 print:hidden' />
-            <a href='https://2018.rubyconf.tw/' target='_blank' rel='noreferrer'>
-              Ruby &amp; Elixir Conf TW 2018
-            </a>
-            Speaker
-          </h4>
-          <h4 className='ml-3 screen:text-right'>
-            <a href='https://2018.rubyconf.tw/program#pastleo' target='_blank' rel='noreferrer'>
-              Not familiar with Elixir? Let me do a simple intro in 30 minutes
-            </a>
-          </h4>
-        </article>
-        <br />
-        <div className={styles.timeMark}>
-          <h5>2016/2</h5>
-        </div>
-        <article>
-          <h4>
-            <FontAwesomeIcon icon={faCommentDots} className='mr-1 print:hidden' />
-            <a href='http://sitcon.org/2016/' target='_blank' rel='noreferrer'>
-              SITCON 2016
-            </a>
-            Speaker
-          </h4>
-          <h4 className='ml-3 screen:text-right'>
-            <a href='http://sitcon.org/2016/#target-schedule' target='_blank' rel='noreferrer'>
-              Customize my development environment and make it open-source!
-            </a>
-          </h4>
-        </article>
-        <br />
-        <div className={styles.timeMark}>
-          <h5>2015/8 ~ <br className='inline sm:hidden' />2016/8</h5>
-        </div>
-        <article>
-          <h3 className='text-xl'>
-            Director of
-            <a href='http://nchuit.cc/' target='_blank' rel='noreferrer'>
-              National Chung Hsing University Information Technologies Club
-            </a>
-          </h3>
-          <h4 className='ml-3'>
-            Held several courses
-            <span>
-              about Web technologies such as HTML, Javascript, jQuery or even making games on web to promote IT knowledges to other students
-            </span>
-          </h4>
-        </article>
-        <br />
-        <div className={styles.timeMark}>
-          <h5>2013/8 ~ <br className='inline sm:hidden' />2015/8</h5>
-        </div>
-        <article>
-          <h3 className='text-xl'>
-            Information Technologies Department of
-            <a href='http://nchusg.org/' target='_blank' rel='noreferrer'>
-              National Chung Hsing University Student Association
-            </a>
-          </h3>
-          <h4 className='ml-3'>
-            Maintain Linux server
-            <span>
-              which runs student association services such as poster management system
-            </span>
-          </h4>
-        </article>
-      </div>
-      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
-        <h2 className='font-bold text-2xl ml-3'>
-          <FontAwesomeIcon icon={faGraduationCap} className='mr-1' />
-          Education
-        </h2>
-        <div className={styles.timeMark}>
-          <h5>2012 ~ <br className='inline sm:hidden' />2016</h5>
-        </div>
-        <article>
-          <h3 className='text-xl'>
-            <a href='https://www.nchu.edu.tw/' target='_blank' rel='noreferrer'>
-              National Chung Hsing University
-            </a>
-            <a href='http://www.cs.nchu.edu.tw/' target='_blank' rel='noreferrer'>
-              Department of Computer Science and Engineering
-            </a>
-          </h3>
-        </article>
-        <br />
-        <div className={styles.timeMark}>
-          <h5>2009 ~ <br className='inline sm:hidden' />2012</h5>
-        </div>
-        <article>
-          <h3 className='text-xl'>
-            <a href='http://www.pcsh.ntpc.edu.tw/' target='_blank' rel='noreferrer'>
-              New Taipei Municipal Panchiao Senior High School
-            </a>
-          </h3>
-        </article>
+            </div>
+
+            <article className='mb-4'>
+              <h4 className='mb-3'>
+                <span className='text-2xl font-bold'>
+                  <LinkToIfHref href={exp.href}>
+                    { exp.where }
+                  </LinkToIfHref>
+                </span>
+                <span className='ml-2 text-xl font-medium '>
+                  { exp.title }
+                </span>
+              </h4>
+
+              <div className='ml-3'>
+                { (exp.details || []).map((detail, i) => (
+                  <React.Fragment key={i}>
+                    <h5 className='text-xl'>
+                      <LinkToIfHref href={detail.href}>
+                        { detail.title }
+                      </LinkToIfHref>
+                    </h5>
+
+                    <div className='ml-3'>
+                      { detail.description.map(line => (
+                        <p key={line} className='text-sm my-1'>{ line }</p>
+                      )) }
+                    </div>
+                  </React.Fragment>
+                )) }
+              </div>
+            </article>
+            <br />
+          </React.Fragment>
+        )) }
       </div>
 
+      <div className={classnames(styles.pagebreak, 'w-4/5 print:w-9/10 ml-auto mb-4')}>
+        <h3 className='text-3xl font-bold ml-n3.5'>
+          <FontAwesomeIcon icon={faAward} className='ml-1 mr-2' />
+          { i18n.achievementTitle[locale] }
+        </h3>
+      </div>
+
+      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
+        { i18n.achievements[locale].map((ach, i) => (
+          <React.Fragment key={i}>
+            <div className={styles.timeMark}>
+              <span>
+                { ach.time }
+              </span>
+            </div>
+
+            <article className='mb-4'>
+              <h4 className='mb-3'>
+                <span className='text-2xl font-bold'>
+                  <LinkToIfHref href={ach.href}>
+                    { ach.what }
+                  </LinkToIfHref>
+                </span>
+                <span className='ml-2 text-xl font-medium '>
+                  { ach.title }
+                </span>
+              </h4>
+
+              <div className='ml-3'>
+                { ach.description.map(line => (
+                  <p key={line} className='text-sm my-1'>{ line }</p>
+                )) }
+              </div>
+            </article>
+            <br />
+          </React.Fragment>
+        )) }
+      </div>
 
       <div className={classnames('w-4/5 print:w-9/10 ml-auto mb-4')}>
-        <h1 className='text-3xl font-bold ml-n3.5'>
-          <FontAwesomeIcon icon={faBook} className='mr-2' />
-            Skills
-        </h1>
+        <h3 className='text-3xl font-bold ml-n3.5'>
+          <FontAwesomeIcon icon={faCommentDots} className='mr-2' />
+          { i18n.talkTitle[locale] }
+        </h3>
       </div>
+
       <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
-        <article>
-          <h3 className='text-xl'>
-            Languages Skills
-          </h3>
-          <div className='details ml-3'>
-            <h4>
-              <FontAwesomeIcon icon={faLanguage} className='mr-1 print:hidden' />
-              English: able to hold daily conversation and meeting
-            </h4>
-            <h4>
-              <FontAwesomeIcon icon={faLanguage} className='mr-1 print:hidden' />
-              Chinese: native
-            </h4>
+        { i18n.talks[locale].map((talk, i) => (
+          <React.Fragment key={i}>
+            <div className={styles.timeMark}>
+              <span>
+                { talk.time }
+              </span>
+            </div>
+
+            <article>
+              <div className='mb-3'>
+                <h4 className='text-xl font-bold'>
+                  <LinkToIfHref href={talk.href}>
+                    { talk.event }
+                  </LinkToIfHref>
+                </h4>
+                <p className='font-medium'>
+                  { talk.title }
+                </p>
+              </div>
+            </article>
+            <br />
+          </React.Fragment>
+        )) }
+      </div>
+
+      <div className={classnames('w-4/5 print:w-9/10 ml-auto mb-4')}>
+        <h3 className='text-3xl font-bold ml-n3.5'>
+          <FontAwesomeIcon icon={faGraduationCap} className='mr-2' />
+          { i18n.educationTitle[locale] }
+        </h3>
+      </div>
+
+      <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
+        { i18n.educations[locale].map((edu, i) => (
+          <React.Fragment key={i}>
+            <div className={styles.timeMark}>
+              <span>
+                { edu.from }
+                { edu.to && (
+                  <>
+                    { ' ~ ' }
+                    <br className='inline sm:hidden' />
+                    { edu.to }
+                  </>
+                ) }
+              </span>
+            </div>
+
+            <article className='mb-2'>
+              <h4 className='mb-3'>
+                <span className='text-2xl font-bold'>
+                  { edu.school }
+                </span>
+                <span className='ml-2 text-xl font-medium '>
+                  { edu.department }
+                </span>
+              </h4>
+
+              <div className='ml-3'>
+                { (edu.details || []).map(line => (
+                  <p key={line} className='text-sm my-1'>{ line }</p>
+                )) }
+              </div>
+            </article>
+            <br />
+          </React.Fragment>
+        )) }
+      </div>
+
+    </div>
+
+    <div className={classnames(styles.pagebreak, 'max-w-2xl mx-auto py-6 px-2')}>
+      <h3 className='text-3xl font-bold text-center mb-4'>
+        <FontAwesomeIcon icon={faBook} className='ml-1 mr-2' />
+        { i18n.skillTitle[locale] }
+      </h3>
+
+      <div className={classnames('grid grid-cols-2 justify-center')}>
+        { i18n.skills[locale].map((skill, i) => (
+          <div key={i} className='p-4'>
+            <h4 className='text-xl text-semibold text-center border-b'>{ skill.category }</h4>
+            <ul className='p-2 list-disc list-inside text-sm'>
+              { skill.details.map((detail, i) => (
+                <li key={i}>{ detail }</li>
+              )) }
+            </ul>
           </div>
-        </article>
-        <article>
-          <h3 className='text-xl'>
-            IT Skills / Knowledges
-          </h3>
-          <div className='details ml-3'>
-            <h4>
-              <FontAwesomeIcon icon={faTerminal} className='mr-1 print:hidden' />
-              Experienced Programming Languages: Javascript, Ruby, Elixir
-            </h4>
-            <p className='ml-3'>
-              Learning Rust, has written C/C++, Python, Java, PHP, Golang
-            </p>
-            <h4>
-              <FontAwesomeIcon icon={faHtml5} className='mr-1 print:hidden' />
-              Frontend: React, Redux (Thunk)
-            </h4>
-            <p className='ml-3'>
-              HTML, Vanilla Javascript, jQuery, CSS, Boostrap, Webpack, Babel
-            </p>
-            <h4>
-              <FontAwesomeIcon icon={faGem} className='mr-1 print:hidden' />
-              Ruby on Rails
-            </h4>
-            <p className='ml-3'>
-              Devise, Doorkeeper, CarrierWave, ActiveAdmin, Rspec
-            </p>
-            <h4>
-              <FontAwesomeIcon icon={faServer} className='mr-1 print:hidden' />
-              Linux, ArchLinux, Shell scripting, Docker, Git, PostgreSQL
-            </h4>
+        )) }
+      </div>
+
+      <h3 className='text-3xl font-bold text-center my-4'>
+        <FontAwesomeIcon icon={faFolderOpen} className='ml-1 mr-2' />
+        { i18n.showcastTitle[locale] }
+      </h3>
+      <div>
+        { i18n.showcasts[locale].map((showcase, i) => (
+          <div key={i}
+            className={classnames(styles.showcase, 'my-6')}
+          >
+            <img alt={showcase.title} src={showcase.thumbnail} className={classnames(styles.thumbnail, '')} />
+            <LinkToIfHref href={showcase.href} preventStyle>
+              <div className={classnames(styles.gradient, 'flex flex-col p-4')}>
+                <div className={classnames(styles.description, 'flex-1')}>
+                  <h4 className='text-2xl font-bold mb-3'>{ showcase.title }</h4>
+                  { showcase.details.map((d, i) => (
+                    <p key={i} className='text-sm mb-2'>{ d }</p>
+                  )) }
+                </div>
+
+                { showcase.href && (
+                  <p className={styles.action}>
+                    <FontAwesomeIcon icon={faAngleRight} className='ml-1 mr-2' />
+                    { showcase.href }
+                  </p>
+                ) }
+              </div>
+            </LinkToIfHref>
           </div>
-        </article>
+        )) }
       </div>
     </div>
+
   </section>
 );
 
 export default ResumeContent;
+
+const LinkToIfHref = ({ href, children, preventStyle }) => (
+  href ? (
+    <a
+      className={preventStyle ? '' : styles.link}
+      href={href}
+      target='_blank'
+      rel='noreferrer'
+    >{ children }</a>
+  ) : children
+);

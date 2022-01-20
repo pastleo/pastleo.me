@@ -12,6 +12,7 @@ import Back from '../components/Back.js';
 import Logo from '../components/Logo.js';
 import LocaleSwitch from '../components/about/LocaleSwitch.js';
 import Contacts from '../components/about/Contacts.js';
+import CodeTyper from '../components/about/CodeTyper.js';
 import Button from '../components/Button.js';
 
 import ResumeDetail from '../components/about/ResumeDetail.js';
@@ -102,22 +103,12 @@ const About = () => {
       <section className={classnames('p-6 flex-1', resumeModeHidden)}>
         <div className='max-w-lg mx-auto'>
           <div className={classnames(styles.contentBox, 'p-4')}>
-            <h3 className='text-xl'>{ i18n.briefCvTitle[locale] }</h3>
-            <div className='p-2 overflow-x-auto'>
-              <ul className='md:text-right whitespace-nowrap'>
-                { i18n.briefCv[locale].map(line => (
-                  <li key={line}>{ line }</li>
-                )) }
-              </ul>
-            </div>
-            <h3 className='text-xl'>{ i18n.briefSkillTitle[locale] }</h3>
-            <div className='p-2 overflow-x-auto'>
-              <ul className='md:text-right whitespace-nowrap'>
-                { i18n.briefSkill[locale].map(line => (
-                  <li key={line}>{ line }</li>
-                )) }
-              </ul>
-            </div>
+            <CodeTyper lines={[
+              ...i18n.quotes[locale],
+              '',
+              i18n.briefCvTitle[locale],
+              ...i18n.briefCv[locale],
+            ]} />
 
             <Button
               className='my-4 block text-center'

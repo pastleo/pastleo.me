@@ -1,4 +1,7 @@
 section.resumeContent {
+  position: relative;
+  z-index: 0;
+
   @media print {
     border-top: solid 1px black;
   }
@@ -6,15 +9,13 @@ section.resumeContent {
   @media screen {
     color: white;
     background: var(--background-color);
-  }
 
-  a {
-    color: white;
-    text-decoration: underline;
-
-    &:hover {
-      color: var(--theme-color);
+    a.link {
       text-decoration: underline;
+
+      &:hover {
+        color: var(--theme-color);
+      }
     }
   }
 
@@ -26,24 +27,6 @@ section.resumeContent {
       border-left: solid 1px black;
     }
 
-    h1 {
-      margin-top: 1.2rem;
-      margin-bottom: 1.2rem;
-    }
-    h2 {
-      margin-bottom: 0.8rem;
-    }
-    h3, h4 {
-      margin-bottom: 0.5rem;
-      & > span {
-        font-size: 0.8rem;
-        font-weight: 500;
-      }
-    }
-    h5, h6, p {
-      margin-bottom: 0.4rem;
-      font-size: 0.875rem;
-    }
     .timeMark, {
       display: inline-block;
       position: relative;
@@ -51,11 +34,11 @@ section.resumeContent {
       width: 0;
       height: 0;
       font-size: 0.8rem;
-
     }
     .timeMark > * {
       position: absolute;
       right: 0;
+      top: 4px;
       padding-right: 0.25rem;
       white-space: nowrap;
     }
@@ -63,10 +46,54 @@ section.resumeContent {
       display: inline-block;
       margin-left: .75rem;
       width: 93%;
+
     }
     @media screen and (min-width: 576px){
       article {
         width: 95%;
+      }
+    }
+  }
+
+  .showcase {
+    position: relative;
+    overflow: hidden;
+
+    img.thumbnail {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      height: 100%;
+    }
+    .gradient {
+      min-height: 14rem;
+      .action {
+        text-decoration: underline;
+      }
+    }
+
+    &:nth-child(odd) {
+      img.thumbnail {
+        left: 0;
+      }
+      .gradient {
+        background: linear-gradient(120deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
+        text-align: right;
+      }
+      .description {
+        padding-left: 30%;
+      }
+    }
+    &:nth-child(even) {
+      img.thumbnail {
+        right: 0;
+      }
+      .gradient {
+        background: linear-gradient(240deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
+      }
+
+      .description {
+        padding-right: 30%;
       }
     }
   }
