@@ -40,7 +40,7 @@ const Background = ({ className }) => (
       src={bgJpg}
       className={
         classnames(
-          'bg-background-avg print:hidden top-0 left-0 h-full w-full object-cover bg-cover -z-1',
+          'bg-background-avg print:hidden top-0 left-0 w-full object-cover bg-cover -z-1',
           className,
         )
       }

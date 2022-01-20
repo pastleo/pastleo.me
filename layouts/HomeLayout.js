@@ -1,5 +1,3 @@
-import classnames from 'classnames';
-
 import IndexNavbar from '../components/IndexNavbar.js';
 
 import styles from '../styles/layouts/layout.module.scss';

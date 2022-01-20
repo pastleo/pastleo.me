@@ -1,5 +1,3 @@
-import classnames from 'classnames';
-
 import Navbar from '../components/Navbar.js';
 
 import styles from '../styles/layouts/layout.module.scss';

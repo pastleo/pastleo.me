@@ -9,7 +9,7 @@ import avatarJpg from '../assets/logo/avatar.jpg';
 
 const Navbar = () => (
   <nav className={classnames(styles.navbar, 'relative h-16 p-1 flex justify-center items-center')}>
-    <Background className='absolute object-left-top' />
+    <Background className='absolute h-full object-left-top' />
     <Link href='/'>
       <a className='flex justify-center items-center p-1'>
         <img
