@@ -12,6 +12,7 @@ import Logo from '../components/Logo.js';
 import LocaleSwitch from '../components/about/LocaleSwitch.js';
 import CodeTyper from '../components/about/CodeTyper.js';
 import Contacts from '../components/about/Contacts.js';
+import ResumeContent from '../components/about/ResumeContent.js';
 
 import styles from '../styles/pages/about.module.scss';
 
@@ -48,6 +49,15 @@ const locales = [
 
 const About = () => {
   const [locale, setLocale] = useState('zh');
+  const [resumeMode, setResumeMode] = useState(false);
+
+  const keyupToggleResumeMode = useCallback(e => (
+    e.keyCode === 82 && setResumeMode(r => !r)
+  ), []);
+  useEffect(() => {
+    document.addEventListener('keyup', keyupToggleResumeMode);
+    return () => document.removeEventListener('keyup', keyupToggleResumeMode);
+  }, []);
 
   return (
     <div className='min-h-screen flex flex-col'>
@@ -58,9 +68,15 @@ const About = () => {
             <LocaleSwitch locales={locales} locale={locale} setLocale={setLocale} />
           </div>
         </div>
-        <h1 className='text-center font-bold text-2xl pt-4'>PastLeo | 西瓜</h1>
+        { resumeMode || <h1 className='text-center font-bold text-2xl pt-4'>PastLeo | 西瓜</h1> }
         <div className='max-w-2xl mx-auto py-5 flex justify-center items-center'>
-          <Logo width='216' />
+          <Logo width='216' forcedRvealed={resumeMode} />
+          { resumeMode && (
+            <div className='flex-1 flex flex-col content-center justify-center p-4 hidden md:block print:block'>
+              <h1 className='font-bold text-2xl pb-4'>PastLeo | 西瓜</h1>
+              <Contacts block />
+            </div>
+          ) }
         </div>
         <div className='max-w-lg mx-auto flex text-center print:hidden'>
           <div className='flex-1'>
@@ -82,8 +98,9 @@ const About = () => {
           <CodeTyper lines={i18n.quotes[locale]} />
         </div>
       </section>
+      { resumeMode && <ResumeContent locale={locale} /> }
       <section className='p-4'>
-        <Contacts className='max-w-md mx-auto p-4' />
+        { resumeMode || <Contacts className='max-w-md mx-auto p-4' /> }
         <div className='print:hidden text-center'>
           <BackToIndexLink className='p-2'>
             { i18n.back[locale] }

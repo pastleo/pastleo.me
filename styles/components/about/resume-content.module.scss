@@ -1,0 +1,82 @@
+section.resumeContent {
+  @media screen {
+    color: #000;
+    background: #ffffff32;
+    margin-top: 50px;
+
+    .gradient {
+      height: 50px;
+      margin-top: -50px;
+      background: rgb(255,255,255);
+      background: linear-gradient(0deg, #ffffff32 0%, #ffffff00 100%);
+    }
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--theme-color);
+      text-decoration: underline;
+    }
+  }
+
+  .resumeStory {
+    h1 {
+      margin-top: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+    h2 {
+      margin-bottom: 0.8rem;
+    }
+    h3, h4 {
+      margin-bottom: 0.5rem;
+      & > span {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+    h5, h6, p {
+      margin-bottom: 0.4rem;
+      font-size: 0.875rem;
+    }
+    .timeMark, .leftTitle {
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      width: 0;
+      height: 0;
+
+    }
+    .timeMark > *, .leftTitle > * {
+      position: absolute;
+      right: 0;
+      padding-right: 0.25rem;
+      white-space: nowrap;
+    }
+    .leftTitle {
+      right: 0.5rem;
+      top: 0.5rem;
+
+      & > * {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
+    }
+    article {
+      display: inline-block;
+      margin-left: .75rem;
+      width: 93%;
+    }
+    @media screen and (min-width: 576px){
+      article {
+        width: 95%;
+      }
+    }
+  }
+
+  .pagebreak {
+    page-break-before: always; 
+  }
+}
