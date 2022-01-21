@@ -2,16 +2,17 @@ import { useState, useEffect, useCallback } from 'react';
 
 const TYPING_INTERVAL = 48;
 
-const Line = ({ line, typingLineIndex, lineIndex, onLineFinished }) => {
+const Line = ({ line, reveal, typingLineIndex, lineIndex, onLineFinished }) => {
   const [length, setLength] = useState(0);
 
   useEffect(() => {
+    if (reveal) return setLength(line.length);
     if (lineIndex !== typingLineIndex) return;
     const interval = setInterval(() => {
       setLength(l => l + 1);
     }, TYPING_INTERVAL);
     return () => clearInterval(interval);
-  }, [lineIndex, typingLineIndex]);
+  }, [line, reveal, lineIndex, typingLineIndex]);
 
   useEffect(() => {
     if (length >= line.length) {
@@ -22,16 +23,17 @@ const Line = ({ line, typingLineIndex, lineIndex, onLineFinished }) => {
   return length > 0 && <pre className='whitespace-normal my-1'>{ line.substr(0, length) }</pre>;
 };
 
-const Space = ({ typingLineIndex, lineIndex, onLineFinished }) => {
+const Space = ({ typingLineIndex, reveal, lineIndex, onLineFinished }) => {
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
+    if (reveal) return setShown(true);
     if (lineIndex !== typingLineIndex) return;
     const timeout = setTimeout(() => {
       setShown(true);
     }, TYPING_INTERVAL);
     return () => clearInterval(timeout);
-  }, [lineIndex, typingLineIndex]);
+  }, [lineIndex, typingLineIndex, reveal]);
 
   useEffect(() => {
     if (shown) {
@@ -42,7 +44,8 @@ const Space = ({ typingLineIndex, lineIndex, onLineFinished }) => {
   return shown && <div className='h-8' />;
 };
 
-const CodeTyper = ({ lines }) => {
+const CodeTyper = ({ lines, reveal }) => {
+  const [key, setKey] = useState(0);
   const [typingLineIndex, setTypingLineIndex] = useState(0);
 
   const onLineFinished = useCallback(() => {
@@ -50,6 +53,7 @@ const CodeTyper = ({ lines }) => {
   }, []);
 
   useEffect(() => () => {
+    setKey(n => n + 1);
     setTypingLineIndex(0);
   }, [lines]);
 
@@ -58,18 +62,20 @@ const CodeTyper = ({ lines }) => {
       { lines.map((line, index) => (
         line ? (
           <Line
-            key={`${index}-${line}`}
+            key={`${key}-${index}`}
             line={line}
             typingLineIndex={typingLineIndex}
             lineIndex={index}
             onLineFinished={onLineFinished}
+            reveal={reveal}
           />
         ) : (
           <Space
-            key={`${index}-${line}`}
+            key={`${key}-${index}`}
             typingLineIndex={typingLineIndex}
             lineIndex={index}
             onLineFinished={onLineFinished}
+            reveal={reveal}
           />
         )
       )) }

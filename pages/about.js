@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,7 +15,7 @@ import Contacts from '../components/about/Contacts.js';
 import CodeTyper from '../components/about/CodeTyper.js';
 import Button from '../components/Button.js';
 
-import ResumeDetail from '../components/about/ResumeDetail.js';
+import ResumeContent from '../components/about/ResumeContent.js';
 
 import styles from '../styles/pages/about.module.scss';
 import {
@@ -45,6 +45,13 @@ const About = () => {
   useEffect(() => {
     setResumeMode(queryResume);
   }, [queryResume]);
+
+  const codeTyperLines = useMemo(() => [
+    ...i18n.quotes[locale],
+    '',
+    i18n.briefCvTitle[locale],
+    ...i18n.briefCv[locale],
+  ], [locale]);
 
   return (
     <div className={classnames('flex flex-col', normalModeMinHScreen)}>
@@ -103,12 +110,10 @@ const About = () => {
       <section className={classnames('p-6 flex-1', resumeModeHidden)}>
         <div className='max-w-lg mx-auto'>
           <div className={classnames(styles.contentBox, 'p-4')}>
-            <CodeTyper lines={[
-              ...i18n.quotes[locale],
-              '',
-              i18n.briefCvTitle[locale],
-              ...i18n.briefCv[locale],
-            ]} />
+            <CodeTyper
+              lines={codeTyperLines}
+              reveal={resumeMode}
+            />
 
             <Button
               className='my-4 block text-center'
@@ -130,7 +135,7 @@ const About = () => {
         </div>
       </section>
 
-      <ResumeDetail locale={locale} />
+      <ResumeContent locale={locale} />
     </div>
   );
 };

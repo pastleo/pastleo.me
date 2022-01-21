@@ -64,41 +64,86 @@ section.resumeContent {
       z-index: -1;
       top: 0;
       height: 100%;
+      object-fit: cover;
     }
-    .gradient {
+    img.printGradient {
+      display: none;
+
+      @media print {
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: -5px;
+        width: 100%;
+      }
+    }
+    .container {
       min-height: 14rem;
+
       .action {
         text-decoration: underline;
       }
     }
 
     &:nth-child(odd) {
-      img.thumbnail {
-        left: 0;
+      @media print {
+        border-right: 1px solid black;
       }
-      .gradient {
-        background: linear-gradient(120deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
-        text-align: right;
+      img.thumbnail {
+        @media (min-width: 480px) {
+          left: 0;
+        }
+      }
+      .container {
+        @media screen and (min-width: 480px) {
+          background: linear-gradient(115deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
+        }
+        @media (min-width: 480px) {
+          text-align: right;
+        }
       }
       .description {
-        padding-left: 30%;
+        @media (min-width: 480px) {
+          padding-left: 30%;
+        }
       }
     }
     &:nth-child(even) {
+      @media print {
+        border-left: 1px solid black;
+      }
       img.thumbnail {
         right: 0;
       }
-      .gradient {
-        background: linear-gradient(240deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
+      img.printGradient {
+        @media print {
+          transform: scaleX(-1);
+        }
       }
-
+      .container {
+        @media screen {
+          background: linear-gradient(245deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
+        }
+      }
       .description {
-        padding-right: 30%;
+        @media (min-width: 480px) {
+          padding-right: 30%;
+        }
       }
     }
-  }
 
-  .pagebreak {
-    page-break-before: always; 
+    @media (max-width: 479px) {
+      img.thumbnail {
+        right: 0;
+      }
+      .container {
+        @media screen {
+          background: linear-gradient(245deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
+        }
+        .action {
+          text-align: right;
+        }
+      }
+    }
   }
 }

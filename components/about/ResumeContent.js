@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,15 +8,19 @@ import {
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 
+import ExternalImage from '../../components/ExternalImage.js';
+
 import styles from '../../styles/components/about/resume-content.module.scss';
 import { resumeModeBlock } from '../../styles/resume.module.scss';
 
 import { i18n } from '../../lib/i18n.js';
 
+import showcasePrintGradientPng from '../../assets/showcase-print-gradient.png';
+
 const ResumeContent = ({ locale }) => (
   <section className={classnames(styles.resumeContent, resumeModeBlock)}>
-    <div className='max-w-3xl mx-auto pt-12 pb-6 px-2'>
-      <div className={classnames('w-4/5 print:w-9/10 ml-auto mb-4')}>
+    <div className='max-w-3xl mx-auto mb-2 pt-12 print:pt-6 pb-1 px-2 break-inside-avoid-page'>
+      <div className='w-4/5 print:w-9/10 ml-auto mb-4'>
         <h3 className='text-3xl font-bold ml-n3.5'>
           <FontAwesomeIcon icon={faSuitcase} className='mr-2' />
           { i18n.experienceTitle[locale] }
@@ -71,8 +76,10 @@ const ResumeContent = ({ locale }) => (
           </React.Fragment>
         )) }
       </div>
+    </div>
 
-      <div className={classnames(styles.pagebreak, 'w-4/5 print:w-9/10 ml-auto mb-4')}>
+    <div className='max-w-3xl mx-auto my-2 py-2 px-2 break-inside-avoid-page'>
+      <div className='w-4/5 print:w-9/10 ml-auto mb-4'>
         <h3 className='text-3xl font-bold ml-n3.5'>
           <FontAwesomeIcon icon={faAward} className='ml-1 mr-2' />
           { i18n.achievementTitle[locale] }
@@ -110,8 +117,10 @@ const ResumeContent = ({ locale }) => (
           </React.Fragment>
         )) }
       </div>
+    </div>
 
-      <div className={classnames('w-4/5 print:w-9/10 ml-auto mb-4')}>
+    <div className='max-w-3xl mx-auto my-2 py-2 px-2 break-inside-avoid-page'>
+      <div className='w-4/5 print:w-9/10 ml-auto mb-4'>
         <h3 className='text-3xl font-bold ml-n3.5'>
           <FontAwesomeIcon icon={faCommentDots} className='mr-2' />
           { i18n.talkTitle[locale] }
@@ -143,8 +152,10 @@ const ResumeContent = ({ locale }) => (
           </React.Fragment>
         )) }
       </div>
+    </div>
 
-      <div className={classnames('w-4/5 print:w-9/10 ml-auto mb-4')}>
+    <div className='max-w-3xl mx-auto my-2 py-2 px-2 break-inside-avoid-page'>
+      <div className='w-4/5 print:w-9/10 ml-auto mb-4'>
         <h3 className='text-3xl font-bold ml-n3.5'>
           <FontAwesomeIcon icon={faGraduationCap} className='mr-2' />
           { i18n.educationTitle[locale] }
@@ -187,16 +198,15 @@ const ResumeContent = ({ locale }) => (
           </React.Fragment>
         )) }
       </div>
-
     </div>
 
-    <div className={classnames(styles.pagebreak, 'max-w-2xl mx-auto py-6 px-2')}>
+    <div className='max-w-2xl mx-auto my-2 py-2 px-2 break-inside-avoid-page'>
       <h3 className='text-3xl font-bold text-center mb-4'>
         <FontAwesomeIcon icon={faBook} className='ml-1 mr-2' />
         { i18n.skillTitle[locale] }
       </h3>
 
-      <div className={classnames('grid grid-cols-2 justify-center')}>
+      <div className='xs:grid grid-cols-2 justify-center'>
         { i18n.skills[locale].map((skill, i) => (
           <div key={i} className='p-4'>
             <h4 className='text-xl text-semibold text-center border-b'>{ skill.category }</h4>
@@ -208,19 +218,21 @@ const ResumeContent = ({ locale }) => (
           </div>
         )) }
       </div>
+    </div>
 
+    <div className='max-w-2xl mx-auto py-1 px-2'>
       <h3 className='text-3xl font-bold text-center my-4'>
         <FontAwesomeIcon icon={faFolderOpen} className='ml-1 mr-2' />
-        { i18n.showcastTitle[locale] }
+        { i18n.showcasesTitle[locale] }
       </h3>
-      <div>
-        { i18n.showcasts[locale].map((showcase, i) => (
-          <div key={i}
-            className={classnames(styles.showcase, 'my-6')}
-          >
-            <img alt={showcase.title} src={showcase.thumbnail} className={classnames(styles.thumbnail, '')} />
+
+      <div className='p-2'>
+        { i18n.showcases[locale].map((showcase, i) => (
+          <div key={i} className={classnames(styles.showcase, 'my-6 break-inside-avoid-page')}>
+            <ExternalImage alt={showcase.title} src={showcase.thumbnail} className={styles.thumbnail} />
+            <img alt='' src={showcasePrintGradientPng} className={styles.printGradient} />
             <LinkToIfHref href={showcase.href} preventStyle>
-              <div className={classnames(styles.gradient, 'flex flex-col p-4')}>
+              <div className={classnames(styles.container, 'flex flex-col p-4')}>
                 <div className={classnames(styles.description, 'flex-1')}>
                   <h4 className='text-2xl font-bold mb-3'>{ showcase.title }</h4>
                   { showcase.details.map((d, i) => (
@@ -230,8 +242,13 @@ const ResumeContent = ({ locale }) => (
 
                 { showcase.href && (
                   <p className={styles.action}>
+                    <span className='xs:hidden'>
+                      { i18n.showcasesAction[locale] }
+                    </span>
                     <FontAwesomeIcon icon={faAngleRight} className='ml-1 mr-2' />
-                    { showcase.href }
+                    <span className='hidden xs:inline'>
+                      { showcase.href }
+                    </span>
                   </p>
                 ) }
               </div>
@@ -240,11 +257,36 @@ const ResumeContent = ({ locale }) => (
         )) }
       </div>
     </div>
-
   </section>
 );
 
-export default ResumeContent;
+const ResumeContentPortal = ({ locale }) => {
+  const [containerDom, setContainerDom] = useState(null);
+
+  useEffect(() => {
+    const dom = document.createElement('div');
+    dom.classList.add('resume-content-portal');
+    document.body.appendChild(dom);
+    setContainerDom(dom);
+
+    return () => {
+      dom.remove();
+    };
+  }, []);
+
+  /*
+   * Why portal?
+   * With this <ResumeContent /> inside App html layout DOM structure, break-inside-avoid-page can not prevent page break in the middle of element when printing
+   * instead we put resume outside of App html layout using ReactDOM.createPortal
+   */
+
+  return containerDom ? ReactDOM.createPortal(
+    <ResumeContent locale={locale} />,
+    containerDom,
+  ) : null;
+};
+
+export default ResumeContentPortal;
 
 const LinkToIfHref = ({ href, children, preventStyle }) => (
   href ? (

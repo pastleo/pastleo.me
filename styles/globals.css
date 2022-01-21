@@ -14,24 +14,6 @@
   }
 }
 
-@media print {
-  .print\:hidden {
-    display: none !important;
-  }
-
-  .print\:inline-block {
-    display: inline-block !important;
-  }
-
-  .print\:block {
-    display: block !important;
-  }
-
-  .print\:inline {
-    display: inline !important;
-  }
-}
-
 body {
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
