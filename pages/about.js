@@ -25,7 +25,8 @@ import {
 
 import taiwanSvg from '../assets/taiwan.svg';
 
-import { i18n, locales, defaultLocale } from '../lib/i18n.js';
+import { locales, defaultLocale } from '../lib/i18n/i18n';
+import t from '../lib/i18n/translations';
 
 const About = () => {
   const router = useRouter();
@@ -47,10 +48,10 @@ const About = () => {
   }, [queryResume]);
 
   const codeTyperLines = useMemo(() => [
-    ...i18n.quotes[locale],
+    ...t.quotes[locale],
     '',
-    i18n.briefCvTitle[locale],
-    ...i18n.briefCv[locale],
+    t.briefCvTitle[locale],
+    ...t.briefCv[locale],
   ], [locale]);
 
   return (
@@ -62,20 +63,20 @@ const About = () => {
             <LocaleSwitch locales={locales} locale={locale} setLocale={setLocale} />
           </div>
         </div>
-        <h1 className={classnames('text-center font-bold text-2xl pt-4', resumeModeHidden)}>{ i18n.name[locale] }</h1>
+        <h1 className={classnames('text-center font-bold text-2xl pt-4', resumeModeHidden)}>{ t.name[locale] }</h1>
         <div className='max-w-2xl mx-auto py-5 xs:flex justify-center'>
           <Logo width='216' className={classnames('mx-4', resumeModeHidden)} />
           <div className={classnames('flex-1 pt-4 px-4', resumeModeBlock)}>
-            <h1 className='font-bold text-4xl pb-1'>{ i18n.nameFormal[locale] }</h1>
-            <h2 className='font-bold text-xl pb-1'>{ i18n.name[locale] }</h2>
+            <h1 className='font-bold text-4xl pb-1'>{ t.nameFormal[locale] }</h1>
+            <h2 className='font-bold text-xl pb-1'>{ t.name[locale] }</h2>
           </div>
           <div className={classnames('pt-4 px-4 text-right', resumeModeBlock)}>
             <h3 className='mb-2'>
-              <span className=''>{ i18n.location[locale] }</span>
+              <span className=''>{ t.location[locale] }</span>
               <img alt='taiwan' className={classnames(styles.taiwan, styles.icon, 'inline-block')} src={taiwanSvg} />
             </h3>
             <h3 className='mb-2'>
-              <span className=''>{ i18n.jobTitle[locale] }</span>
+              <span className=''>{ t.jobTitle[locale] }</span>
               <FontAwesomeIcon icon={faLaptopCode} size='1x' className='mx-2' />
             </h3>
           </div>
@@ -83,7 +84,7 @@ const About = () => {
         <div className={classnames('max-w-2xl mx-auto', resumeModeBlock)}>
           <div className='xs:grid grid-cols-5'>
             <div className='col-span-2 pl-4 p-2'>
-              { i18n.quotes[locale].map(line => (
+              { t.quotes[locale].map(line => (
                 <p key={line} className='pb-2'>{ line }</p>
               )) }
             </div>
@@ -96,14 +97,14 @@ const About = () => {
           <div className='flex-1'>
             <a target='_blank' href='https://en.wikipedia.org/wiki/Taiwan' rel='noopener noreferrer'>
               <img alt='taiwan' className={classnames(styles.taiwan, 'mx-auto')} src={taiwanSvg} />
-              <h3>{ i18n.location[locale] }</h3>
+              <h3>{ t.location[locale] }</h3>
             </a>
           </div>
           <div className='flex-1'>
             <div className='py-2'>
               <FontAwesomeIcon icon={faLaptopCode} size='2x' />
             </div>
-            <h3>{ i18n.jobTitle[locale] }</h3>
+            <h3>{ t.jobTitle[locale] }</h3>
           </div>
         </div>
       </section>
@@ -121,7 +122,7 @@ const About = () => {
                 router.push('?resume');
               }}
             >
-              { i18n.showFullResume[locale] }
+              { t.showFullResume[locale] }
             </Button>
           </div>
         </div>
@@ -130,7 +131,7 @@ const About = () => {
         <Contacts className='max-w-md mx-auto p-4' />
         <div className='text-center'>
           <Back className='p-2'>
-            { i18n.back[locale] }
+            { t.back[locale] }
           </Back>
         </div>
       </section>

@@ -64,6 +64,7 @@ section.resumeContent {
       z-index: -1;
       top: 0;
       height: 100%;
+      min-width: 45%;
       object-fit: cover;
     }
     img.printGradient {
@@ -80,8 +81,16 @@ section.resumeContent {
     .container {
       min-height: 14rem;
 
-      .action {
-        text-decoration: underline;
+      .actions {
+        .actionItem {
+          .icon, .iconBefore {
+            width: 1rem;
+          }
+
+          .iconBefore {
+            display: none;
+          }
+        }
       }
     }
 
@@ -89,45 +98,53 @@ section.resumeContent {
       @media print {
         border-right: 1px solid black;
       }
-      img.thumbnail {
-        @media (min-width: 480px) {
+      @media (min-width: 480px) {
+        img.thumbnail {
           left: 0;
         }
-      }
-      .container {
-        @media screen and (min-width: 480px) {
-          background: linear-gradient(115deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
-        }
-        @media (min-width: 480px) {
+        .container {
           text-align: right;
         }
-      }
-      .description {
-        @media (min-width: 480px) {
+        .description {
           padding-left: 30%;
+        }
+      }
+      @media screen and (min-width: 480px) {
+        .container {
+          background: linear-gradient(115deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
         }
       }
     }
     &:nth-child(even) {
-      @media print {
-        border-left: 1px solid black;
-      }
       img.thumbnail {
         right: 0;
       }
-      img.printGradient {
-        @media print {
+      @media print {
+        border-left: 1px solid black;
+
+        img.printGradient {
           transform: scaleX(-1);
         }
       }
-      .container {
-        @media screen {
-          background: linear-gradient(245deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
+      @media (min-width: 480px) {
+        .description {
+          padding-right: 30%;
+        }
+
+        .actions {
+          .actionItem {
+            .iconBefore {
+              display: inline-block;
+            }
+            .icon {
+              display: none;
+            }
+          }
         }
       }
-      .description {
-        @media (min-width: 480px) {
-          padding-right: 30%;
+      @media screen and (min-width: 480px) {
+        .container {
+          background: linear-gradient(245deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
         }
       }
     }
@@ -138,10 +155,13 @@ section.resumeContent {
       }
       .container {
         @media screen {
-          background: linear-gradient(245deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
+          background: linear-gradient(270deg, rgba(0, 0, 0, 0.5) 0%, black 60%);
         }
-        .action {
+        .actions {
           text-align: right;
+          .actionItem {
+            margin-left: 0.5rem;
+          }
         }
       }
     }

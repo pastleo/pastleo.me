@@ -7,27 +7,30 @@ import {
   faSuitcase, faAward, faCommentDots, faGraduationCap, faBook, faFolderOpen,
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
+import { faGitAlt } from '@fortawesome/free-brands-svg-icons';
 
 import ExternalImage from '../../components/ExternalImage.js';
+
+import { isExternalUrl } from '../../lib/utils.js';
 
 import styles from '../../styles/components/about/resume-content.module.scss';
 import { resumeModeBlock } from '../../styles/resume.module.scss';
 
-import { i18n } from '../../lib/i18n.js';
+import t from '../../lib/resumeData';
 
 import showcasePrintGradientPng from '../../assets/showcase-print-gradient.png';
 
 const ResumeContent = ({ locale }) => (
   <section className={classnames(styles.resumeContent, resumeModeBlock)}>
-    <div className='max-w-3xl mx-auto mb-2 pt-12 print:pt-6 pb-1 px-2 break-inside-avoid-page'>
+    <div className='max-w-3xl mx-auto mb-2 pt-12 print:pt-9 pb-1 px-2 break-inside-avoid-page'>
       <div className='w-4/5 print:w-9/10 ml-auto mb-4'>
         <h3 className='text-3xl font-bold ml-n3.5'>
           <FontAwesomeIcon icon={faSuitcase} className='mr-2' />
-          { i18n.experienceTitle[locale] }
+          { t.experienceTitle[locale] }
         </h3>
       </div>
       <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
-        { i18n.experience[locale].map((exp, i) => (
+        { t.experience[locale].map((exp, i) => (
           <React.Fragment key={i}>
             <div className={styles.timeMark}>
               <span>
@@ -64,8 +67,8 @@ const ResumeContent = ({ locale }) => (
                     </h5>
 
                     <div className='ml-3'>
-                      { detail.description.map(line => (
-                        <p key={line} className='text-sm my-1'>{ line }</p>
+                      { (detail.description || []).map((line, i) => (
+                        <Line key={i} line={line} className='text-sm my-1' />
                       )) }
                     </div>
                   </React.Fragment>
@@ -82,12 +85,12 @@ const ResumeContent = ({ locale }) => (
       <div className='w-4/5 print:w-9/10 ml-auto mb-4'>
         <h3 className='text-3xl font-bold ml-n3.5'>
           <FontAwesomeIcon icon={faAward} className='ml-1 mr-2' />
-          { i18n.achievementTitle[locale] }
+          { t.achievementTitle[locale] }
         </h3>
       </div>
 
       <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
-        { i18n.achievements[locale].map((ach, i) => (
+        { t.achievements[locale].map((ach, i) => (
           <React.Fragment key={i}>
             <div className={styles.timeMark}>
               <span>
@@ -108,8 +111,8 @@ const ResumeContent = ({ locale }) => (
               </h4>
 
               <div className='ml-3'>
-                { ach.description.map(line => (
-                  <p key={line} className='text-sm my-1'>{ line }</p>
+                { (ach.description || []).map((line, i) => (
+                  <Line key={i} line={line} className='text-sm my-1' />
                 )) }
               </div>
             </article>
@@ -123,12 +126,12 @@ const ResumeContent = ({ locale }) => (
       <div className='w-4/5 print:w-9/10 ml-auto mb-4'>
         <h3 className='text-3xl font-bold ml-n3.5'>
           <FontAwesomeIcon icon={faCommentDots} className='mr-2' />
-          { i18n.talkTitle[locale] }
+          { t.talkTitle[locale] }
         </h3>
       </div>
 
       <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
-        { i18n.talks[locale].map((talk, i) => (
+        { t.talks[locale].map((talk, i) => (
           <React.Fragment key={i}>
             <div className={styles.timeMark}>
               <span>
@@ -146,6 +149,9 @@ const ResumeContent = ({ locale }) => (
                 <p className='font-medium'>
                   { talk.title }
                 </p>
+                { (talk.description || []).map((line, i) => (
+                  <Line key={i} line={line} className='text-sm' />
+                )) }
               </div>
             </article>
             <br />
@@ -158,12 +164,12 @@ const ResumeContent = ({ locale }) => (
       <div className='w-4/5 print:w-9/10 ml-auto mb-4'>
         <h3 className='text-3xl font-bold ml-n3.5'>
           <FontAwesomeIcon icon={faGraduationCap} className='mr-2' />
-          { i18n.educationTitle[locale] }
+          { t.educationTitle[locale] }
         </h3>
       </div>
 
       <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto mb-3')}>
-        { i18n.educations[locale].map((edu, i) => (
+        { t.educations[locale].map((edu, i) => (
           <React.Fragment key={i}>
             <div className={styles.timeMark}>
               <span>
@@ -189,8 +195,8 @@ const ResumeContent = ({ locale }) => (
               </h4>
 
               <div className='ml-3'>
-                { (edu.details || []).map(line => (
-                  <p key={line} className='text-sm my-1'>{ line }</p>
+                { (edu.description || []).map((line, i) => (
+                  <Line key={i} line={line} className='text-sm my-1' />
                 )) }
               </div>
             </article>
@@ -203,16 +209,16 @@ const ResumeContent = ({ locale }) => (
     <div className='max-w-2xl mx-auto my-2 py-2 px-2 break-inside-avoid-page'>
       <h3 className='text-3xl font-bold text-center mb-4'>
         <FontAwesomeIcon icon={faBook} className='ml-1 mr-2' />
-        { i18n.skillTitle[locale] }
+        { t.skillTitle[locale] }
       </h3>
 
       <div className='xs:grid grid-cols-2 justify-center'>
-        { i18n.skills[locale].map((skill, i) => (
+        { t.skills[locale].map((skill, i) => (
           <div key={i} className='p-4'>
-            <h4 className='text-xl text-semibold text-center border-b'>{ skill.category }</h4>
+            <h4 className='text-xl font-bold text-center border-b'>{ skill.category }</h4>
             <ul className='p-2 list-disc list-inside text-sm'>
-              { skill.details.map((detail, i) => (
-                <li key={i}>{ detail }</li>
+              { skill.items.map((line, i) => (
+                <Line key={i} tagName='li' line={line} />
               )) }
             </ul>
           </div>
@@ -223,36 +229,57 @@ const ResumeContent = ({ locale }) => (
     <div className='max-w-2xl mx-auto py-1 px-2'>
       <h3 className='text-3xl font-bold text-center my-4'>
         <FontAwesomeIcon icon={faFolderOpen} className='ml-1 mr-2' />
-        { i18n.showcasesTitle[locale] }
+        { t.showcasesTitle[locale] }
       </h3>
 
       <div className='p-2'>
-        { i18n.showcases[locale].map((showcase, i) => (
+        { t.showcases[locale].map((showcase, i) => (
           <div key={i} className={classnames(styles.showcase, 'my-6 break-inside-avoid-page')}>
             <ExternalImage alt={showcase.title} src={showcase.thumbnail} className={styles.thumbnail} />
             <img alt='' src={showcasePrintGradientPng} className={styles.printGradient} />
-            <LinkToIfHref href={showcase.href} preventStyle>
-              <div className={classnames(styles.container, 'flex flex-col p-4')}>
-                <div className={classnames(styles.description, 'flex-1')}>
+            <div className={classnames(styles.container, 'flex flex-col p-4')}>
+              <LinkToIfHref href={showcase.href} preventStyle className='flex-1'>
+                <div className={classnames(styles.description)}>
                   <h4 className='text-2xl font-bold mb-3'>{ showcase.title }</h4>
-                  { showcase.details.map((d, i) => (
-                    <p key={i} className='text-sm mb-2'>{ d }</p>
+                  { (showcase.description || []).map((line, i) => (
+                    <p key={i} className='text-sm mb-2'>
+                      { line }
+                    </p>
                   )) }
                 </div>
+              </LinkToIfHref>
 
+              <div className={classnames(styles.actions)}>
+                { showcase.git && (
+                  <LinkToIfHref href={showcase.git}>
+                    <span className={classnames(styles.actionItem, 'xs:block')}>
+                      <FontAwesomeIcon icon={faGitAlt} className={classnames(styles.iconBefore, 'mx-1')} />
+                      <span className='xs:hidden'>
+                        { t.showcasesGitAction[locale] }
+                      </span>
+                      <span className='hidden xs:inline'>
+                        { showcase.git }
+                      </span>
+                      <FontAwesomeIcon icon={faGitAlt} className={classnames(styles.icon, 'mx-1')} />
+                    </span>
+                  </LinkToIfHref>
+                ) }
                 { showcase.href && (
-                  <p className={styles.action}>
-                    <span className='xs:hidden'>
-                      { i18n.showcasesAction[locale] }
+                  <LinkToIfHref href={showcase.href}>
+                    <span className={classnames(styles.actionItem, 'xs:block')}>
+                      <FontAwesomeIcon icon={faAngleRight} className={classnames(styles.iconBefore, 'mx-1')} />
+                      <span className='xs:hidden'>
+                        { t.showcasesViewAction[locale] }
+                      </span>
+                      <span className='hidden xs:inline'>
+                        { showcase.href }
+                      </span>
+                      <FontAwesomeIcon icon={faAngleRight} className={classnames(styles.icon, 'mx-1')} />
                     </span>
-                    <FontAwesomeIcon icon={faAngleRight} className='ml-1 mr-2' />
-                    <span className='hidden xs:inline'>
-                      { showcase.href }
-                    </span>
-                  </p>
+                  </LinkToIfHref>
                 ) }
               </div>
-            </LinkToIfHref>
+            </div>
           </div>
         )) }
       </div>
@@ -288,13 +315,42 @@ const ResumeContentPortal = ({ locale }) => {
 
 export default ResumeContentPortal;
 
-const LinkToIfHref = ({ href, children, preventStyle }) => (
+const LinkToIfHref = ({ href, preventStyle, className, children }) => (
   href ? (
     <a
-      className={preventStyle ? '' : styles.link}
+      className={classnames(className, { [styles.link]: !preventStyle })}
       href={href}
       target='_blank'
       rel='noreferrer'
     >{ children }</a>
   ) : children
+);
+
+/**
+ * props line: import type { Line } from '../../lib/i18n/i18n.ts'
+ */
+const Line = ({ line, className, tagName }) => React.createElement(
+  tagName || 'p',
+  { className: classnames(className, { 'font-bold': line.bold === true }) },
+  typeof line.line === 'string' ? (
+    typeof line.href === 'string' ? (
+      <a
+        className={styles.link}
+        href={line.href}
+        target='_blank'
+        rel='noreferrer'
+      >{ line.line }</a>
+    ) : (
+      line.line
+    )
+  ) : (
+    isExternalUrl(line) ? (
+      <a
+        className={styles.link}
+        href={line}
+        target='_blank'
+        rel='noreferrer'
+      >{ line }</a>
+    ) : line
+  ),
 );

@@ -35,3 +35,6 @@ public/feed.xml
 
 # Sitemap artifact
 public/sitemap.xml
+
+# typescript
+*.tsbuildinfo
