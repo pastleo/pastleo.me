@@ -1,0 +1,169 @@
+section.resumeContent {
+  position: relative;
+  z-index: 0;
+
+  @media print {
+    border-top: solid 1px black;
+  }
+
+  @media screen {
+    color: white;
+    background: var(--background-color);
+
+    a.link {
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--theme-color);
+      }
+    }
+  }
+
+  .resumeStory {
+    @media screen {
+      border-left: solid 1px white;
+    }
+    @media print {
+      border-left: solid 1px black;
+    }
+
+    .timeMark, {
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      width: 0;
+      height: 0;
+      font-size: 0.8rem;
+    }
+    .timeMark > * {
+      position: absolute;
+      right: 0;
+      top: 4px;
+      padding-right: 0.25rem;
+      white-space: nowrap;
+    }
+    article {
+      display: inline-block;
+      margin-left: .75rem;
+      width: 93%;
+
+    }
+    @media screen and (min-width: 576px){
+      article {
+        width: 95%;
+      }
+    }
+  }
+
+  .showcase {
+    position: relative;
+    overflow: hidden;
+
+    img.thumbnail {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      height: 100%;
+      min-width: 45%;
+      object-fit: cover;
+    }
+    img.printGradient {
+      display: none;
+
+      @media print {
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: -5px;
+        width: 100%;
+      }
+    }
+    .container {
+      min-height: 14rem;
+
+      .actions {
+        .actionItem {
+          .icon, .iconBefore {
+            width: 1rem;
+          }
+
+          .iconBefore {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &:nth-child(odd) {
+      @media print {
+        border-right: 1px solid black;
+      }
+      @media (min-width: 480px) {
+        img.thumbnail {
+          left: 0;
+        }
+        .container {
+          text-align: right;
+        }
+        .description {
+          padding-left: 30%;
+        }
+      }
+      @media screen and (min-width: 480px) {
+        .container {
+          background: linear-gradient(115deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
+        }
+      }
+    }
+    &:nth-child(even) {
+      img.thumbnail {
+        right: 0;
+      }
+      @media print {
+        border-left: 1px solid black;
+
+        img.printGradient {
+          transform: scaleX(-1);
+        }
+      }
+      @media (min-width: 480px) {
+        .description {
+          padding-right: 30%;
+        }
+
+        .actions {
+          .actionItem {
+            .iconBefore {
+              display: inline-block;
+            }
+            .icon {
+              display: none;
+            }
+          }
+        }
+      }
+      @media screen and (min-width: 480px) {
+        .container {
+          background: linear-gradient(245deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 1) 40%);
+        }
+      }
+    }
+
+    @media (max-width: 479px) {
+      img.thumbnail {
+        right: 0;
+      }
+      .container {
+        @media screen {
+          background: linear-gradient(270deg, rgba(0, 0, 0, 0.5) 0%, black 60%);
+        }
+        .actions {
+          text-align: right;
+          .actionItem {
+            margin-left: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}

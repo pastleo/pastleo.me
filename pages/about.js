@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/router';
+import { useState, useEffect, useMemo } from 'react';
 
 import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,89 +8,135 @@ import { faLaptopCode } from '@fortawesome/free-solid-svg-icons';
 import withLayout from '../layouts/index.js';
 import BackgroundLayout from '../layouts/BackgroundLayout.js';
 
-import BackToIndexLink from '../components/BackToIndex.js';
+import Back from '../components/Back.js';
 import Logo from '../components/Logo.js';
 import LocaleSwitch from '../components/about/LocaleSwitch.js';
-import CodeTyper from '../components/about/CodeTyper.js';
 import Contacts from '../components/about/Contacts.js';
+import CodeTyper from '../components/about/CodeTyper.js';
+import Button from '../components/Button.js';
+
+import ResumeContent from '../components/about/ResumeContent.js';
 
 import styles from '../styles/pages/about.module.scss';
+import {
+  resumeMode as resumeModeClassName,
+  resumeModeBlock, normalModeMinHScreen, resumeModeHidden,
+} from '../styles/resume.module.scss';
 
-import taiwanSvgSrc from '../assets/taiwan.svg';
+import taiwanSvg from '../assets/taiwan.svg';
 
-const i18n = {
-  taiwanese: {
-    zh: '台灣人',
-    en: 'Taiwanese',
-  },
-  softwareEngineer: {
-    zh: '軟體工程師',
-    en: 'Software Engineer',
-  },
-  quotes: {
-    zh: [
-      '興趣使然的軟體工程師，對資訊科技的一切事物有興趣，從電腦硬體、作業系統、網路到網站前後端、應用程式之技術',
-      '喜歡有趣的互動體驗以及創造的過程，因此開發讓大家一起遊玩創造力的遊戲平台',
-    ],
-    en: [
-      'Interested in exploring things about computer, from hardware, operating system, Internet to technologies building frontend/backend of web and applications',
-      'Loving intriguing interactive experience and process of creating, I develop game where people explore creativity',
-    ],
-  },
-  back: {
-    zh: '回首頁',
-    en: 'Back to index',
-  },
-};
-const locales = [
-  { localeName: 'zh', displayName: '中' },
-  { localeName: 'en', displayName: 'EN' },
-];
+import { locales, defaultLocale } from '../lib/i18n/i18n';
+import t from '../lib/i18n/translations';
 
 const About = () => {
-  const [locale, setLocale] = useState('zh');
+  const router = useRouter();
+  const queryResume = typeof router.query.resume !== 'undefined';
+
+  const [locale, setLocale] = useState(defaultLocale);
+  const [resumeMode, setResumeMode] = useState(false);
+
+  useEffect(() => {
+    if (resumeMode) {
+      document.body.classList.add(resumeModeClassName);
+    } else {
+      document.body.classList.remove(resumeModeClassName);
+    }
+  }, [resumeMode]);
+
+  useEffect(() => {
+    setResumeMode(queryResume);
+  }, [queryResume]);
+
+  const codeTyperLines = useMemo(() => [
+    ...t.quotes[locale],
+    '',
+    t.briefCvTitle[locale],
+    ...t.briefCv[locale],
+  ], [locale]);
 
   return (
-    <div className='min-h-screen flex flex-col'>
+    <div className={classnames('flex flex-col', normalModeMinHScreen)}>
       <section id={styles.intro} className='p-6'>
         <div id={styles.controls} className='print:hidden flex justify-between p-2'>
-          <BackToIndexLink className='p-3' />
+          <Back className='p-3' />
           <div className='p-3 text-right'>
             <LocaleSwitch locales={locales} locale={locale} setLocale={setLocale} />
           </div>
         </div>
-        <h1 className='text-center font-bold text-2xl pt-4'>PastLeo | 西瓜</h1>
-        <div className='max-w-2xl mx-auto py-5 flex justify-center items-center'>
-          <Logo width='216' />
+        <h1 className={classnames('text-center font-bold text-2xl pt-4', resumeModeHidden)}>{ t.name[locale] }</h1>
+        <div className='max-w-2xl mx-auto py-5 xs:flex justify-center'>
+          <Logo width='216' className={classnames('mx-4', resumeModeHidden)} />
+          <div className={classnames('flex-1 pt-4 px-4', resumeModeBlock)}>
+            <h1 className='font-bold text-4xl pb-1'>{ t.nameFormal[locale] }</h1>
+            <h2 className='font-bold text-xl pb-1'>{ t.name[locale] }</h2>
+          </div>
+          <div className={classnames('pt-4 px-4 text-right', resumeModeBlock)}>
+            <h3 className='mb-2'>
+              <span className=''>{ t.location[locale] }</span>
+              <img alt='taiwan' className={classnames(styles.taiwan, styles.icon, 'inline-block')} src={taiwanSvg} />
+            </h3>
+            <h3 className='mb-2'>
+              <span className=''>{ t.jobTitle[locale] }</span>
+              <FontAwesomeIcon icon={faLaptopCode} size='1x' className='mx-2' />
+            </h3>
+          </div>
         </div>
-        <div className='max-w-lg mx-auto flex text-center print:hidden'>
+        <div className={classnames('max-w-2xl mx-auto', resumeModeBlock)}>
+          <div className='xs:grid grid-cols-5'>
+            <div className='col-span-2 pl-4 p-2'>
+              { t.quotes[locale].map(line => (
+                <p key={line} className='pb-2'>{ line }</p>
+              )) }
+            </div>
+            <div className='col-span-3 p-2 pr-3'>
+              <Contacts resume />
+            </div>
+          </div>
+        </div>
+        <div className={classnames('max-w-lg mx-auto flex text-center', resumeModeHidden)}>
           <div className='flex-1'>
             <a target='_blank' href='https://en.wikipedia.org/wiki/Taiwan' rel='noopener noreferrer'>
-              <img alt='taiwan' className={classnames(styles.taiwan, 'mx-auto')} src={taiwanSvgSrc} />
-              <h3>{ i18n.taiwanese[locale] }</h3>
+              <img alt='taiwan' className={classnames(styles.taiwan, 'mx-auto')} src={taiwanSvg} />
+              <h3>{ t.location[locale] }</h3>
             </a>
           </div>
           <div className='flex-1'>
             <div className='py-2'>
               <FontAwesomeIcon icon={faLaptopCode} size='2x' />
             </div>
-            <h3>{ i18n.softwareEngineer[locale] }</h3>
+            <h3>{ t.jobTitle[locale] }</h3>
           </div>
         </div>
       </section>
-      <section className='p-6 flex-1'>
+      <section className={classnames('p-6 flex-1', resumeModeHidden)}>
         <div className='max-w-lg mx-auto'>
-          <CodeTyper lines={i18n.quotes[locale]} />
+          <div className={classnames(styles.contentBox, 'p-4')}>
+            <CodeTyper
+              lines={codeTyperLines}
+              reveal={resumeMode}
+            />
+
+            <Button
+              className='my-4 block text-center'
+              onClick={() => {
+                router.push('?resume');
+              }}
+            >
+              { t.showFullResume[locale] }
+            </Button>
+          </div>
         </div>
       </section>
-      <section className='p-4'>
+      <section className={classnames('p-4', resumeModeHidden)}>
         <Contacts className='max-w-md mx-auto p-4' />
-        <div className='print:hidden text-center'>
-          <BackToIndexLink className='p-2'>
-            { i18n.back[locale] }
-          </BackToIndexLink>
+        <div className='text-center'>
+          <Back className='p-2'>
+            { t.back[locale] }
+          </Back>
         </div>
       </section>
+
+      <ResumeContent locale={locale} />
     </div>
   );
 };

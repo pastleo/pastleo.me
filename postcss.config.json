@@ -9,6 +9,15 @@
       ],
       "theme": {
         "extend": {
+          "screens": {
+            "xs": "480px"
+          },
+          "margin": {
+            "n3.5": "-0.875rem"
+          },
+          "maxWidth": {
+            "3/5-screen": "60vw"
+          },
           "zIndex": {
             "-1": "-1"
           },

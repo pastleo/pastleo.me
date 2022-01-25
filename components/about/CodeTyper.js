@@ -1,20 +1,18 @@
 import { useState, useEffect, useCallback } from 'react';
-import classnames from 'classnames';
 
 const TYPING_INTERVAL = 48;
 
-import styles from '../../styles/components/about/code-typer.module.scss';
-
-const Line = ({ line, typingLineIndex, lineIndex, onLineFinished }) => {
+const Line = ({ line, reveal, typingLineIndex, lineIndex, onLineFinished }) => {
   const [length, setLength] = useState(0);
 
   useEffect(() => {
+    if (reveal) return setLength(line.length);
     if (lineIndex !== typingLineIndex) return;
     const interval = setInterval(() => {
       setLength(l => l + 1);
     }, TYPING_INTERVAL);
     return () => clearInterval(interval);
-  }, [lineIndex, typingLineIndex]);
+  }, [line, reveal, lineIndex, typingLineIndex]);
 
   useEffect(() => {
     if (length >= line.length) {
@@ -25,7 +23,29 @@ const Line = ({ line, typingLineIndex, lineIndex, onLineFinished }) => {
   return length > 0 && <pre className='whitespace-normal my-1'>{ line.substr(0, length) }</pre>;
 };
 
-const CodeTyper = ({ lines }) => {
+const Space = ({ typingLineIndex, reveal, lineIndex, onLineFinished }) => {
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    if (reveal) return setShown(true);
+    if (lineIndex !== typingLineIndex) return;
+    const timeout = setTimeout(() => {
+      setShown(true);
+    }, TYPING_INTERVAL);
+    return () => clearInterval(timeout);
+  }, [lineIndex, typingLineIndex, reveal]);
+
+  useEffect(() => {
+    if (shown) {
+      onLineFinished();
+    }
+  }, [shown, onLineFinished]);
+
+  return shown && <div className='h-8' />;
+};
+
+const CodeTyper = ({ lines, reveal }) => {
+  const [key, setKey] = useState(0);
   const [typingLineIndex, setTypingLineIndex] = useState(0);
 
   const onLineFinished = useCallback(() => {
@@ -33,21 +53,33 @@ const CodeTyper = ({ lines }) => {
   }, []);
 
   useEffect(() => () => {
+    setKey(n => n + 1);
     setTypingLineIndex(0);
   }, [lines]);
 
   return (
-    <div className={classnames(styles.textTyper, 'p-4')}>
+    <>
       { lines.map((line, index) => (
-        <Line
-          key={`${index}-${line}`}
-          line={line}
-          typingLineIndex={typingLineIndex}
-          lineIndex={index}
-          onLineFinished={onLineFinished}
-        />
+        line ? (
+          <Line
+            key={`${key}-${index}`}
+            line={line}
+            typingLineIndex={typingLineIndex}
+            lineIndex={index}
+            onLineFinished={onLineFinished}
+            reveal={reveal}
+          />
+        ) : (
+          <Space
+            key={`${key}-${index}`}
+            typingLineIndex={typingLineIndex}
+            lineIndex={index}
+            onLineFinished={onLineFinished}
+            reveal={reveal}
+          />
+        )
       )) }
-    </div>
+    </>
   );
 };
 

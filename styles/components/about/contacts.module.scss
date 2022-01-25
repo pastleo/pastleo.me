@@ -1,17 +1,19 @@
 .contacts {
   .contactBtn {
-    &.block {
+    display: inline-block;
+
+    &.resume {
+      @media screen {
+        color: white;
+      }
       display: block;
-      text-align: left;
-    }
-    @media print {
-      display: block;
-      text-align: left;
-      text-decoration: underline;
+      background-color: transparent;
+      text-align: right;
+      margin-bottom: 0.1rem;
     }
 
     & > span {
-      margin-left: .35rem;
+      margin: 0 .35rem;
       font-weight: 600;
     }
   }

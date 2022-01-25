@@ -1,56 +1,63 @@
 import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faHome } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedinIn, faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedinIn, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 import Button from '../Button.js';
 
 import styles from '../../styles/components/about/contacts.module.scss';
 
-const Contacts = ({ className, block }) => (
+const EMAIL = 'chgu82837@gmail.com';
+const WEBSITE = 'https://pastleo.me';
+const GITHUB = 'https://github.com/pastleo';
+const LINKEDIN = 'https://www.linkedin.com/in/pastleo';
+const FACEBOOK = 'https://fb.me/pastleo';
+
+const Contacts = ({ className, resume }) => (
   <div className={classnames(styles.contacts, 'text-center', className)}>
-    <a title='email' href='mailto:chgu82837@gmail.com' target='_blank' rel='noopener noreferrer'>
-      <Button className={classnames(styles.contactBtn, { [styles.block]: block })}>
-        <FontAwesomeIcon icon={faEnvelope} size='lg' />
-        <span className='hidden sm:inline-block print:hidden'>chgu82837[at]gmail.com</span>
-        <span className='hidden print:inline'>chgu82837@gmail.com</span>
-      </Button>
-    </a>
-    <a title='website' href='https://pastleo.me/' target='_blank' rel='noopener noreferrer'>
-      <Button className={classnames(styles.contactBtn, 'hidden print:inline', { [styles.block]: block })}>
-        <FontAwesomeIcon icon={faHome} size='lg' />
-        <span className=''>https://pastleo.me</span>
-      </Button>
-    </a>
-    <a title='github' href='https://github.com/pastleo' target='_blank' rel='noopener noreferrer'>
-      <Button className={classnames(styles.contactBtn, { [styles.block]: block })}>
-        <FontAwesomeIcon icon={faGithub} size='lg' />
-        <span className='hidden sm:inline-block print:hidden'>Github</span>
-        <span className='hidden print:inline'>https://github.com/pastleo</span>
-      </Button>
-    </a>
-    <a title='linkedin' href='https://www.linkedin.com/in/pastleo/' target='_blank' rel='noopener noreferrer'>
-      <Button className={classnames(styles.contactBtn, { [styles.block]: block })}>
-        <FontAwesomeIcon icon={faLinkedinIn} size='lg' />
-        <span className='hidden sm:inline-block print:hidden'>LinkedIn</span>
-        <span className='hidden print:inline'>https://www.linkedin.com/in/pastleo/</span>
-      </Button>
-    </a>
-    <a title='twitter' href='https://twitter.com/PastLeo' target='_blank' rel='noopener noreferrer'>
-      <Button className={classnames(styles.contactBtn, { [styles.block]: block })}>
-        <FontAwesomeIcon icon={faTwitter} size='lg' />
-        <span className='hidden sm:inline-block print:hidden'>Twitter</span>
-        <span className='hidden print:inline'>https://twitter.com/PastLeo</span>
-      </Button>
-    </a>
-    <a title='facebook' href='https://fb.me/pastleo' target='_blank' rel='noopener noreferrer'>
-      <Button className={classnames(styles.contactBtn, { [styles.block]: block })}>
-        <FontAwesomeIcon icon={faFacebook} size='lg' />
-        <span className='hidden sm:inline-block print:hidden'>Facebook</span>
-        <span className='hidden print:inline'>https://fb.me/pastleo</span>
-      </Button>
-    </a>
+    <ContactButton
+      title='email' href={`mailto:${EMAIL}`} hrefUrl={EMAIL}
+      icon={faEnvelope} resume={resume}
+    >
+      chgu82837[at]gmail.com
+    </ContactButton>
+
+    { resume && (
+      <ContactButton title='website' href={WEBSITE} icon={faHome} resume={resume} />
+    ) }
+
+    <ContactButton title='github' href={GITHUB} icon={faGithub} resume={resume}>
+      Github
+    </ContactButton>
+
+    <ContactButton title='linkedin' href={LINKEDIN} icon={faLinkedinIn} resume={resume}>
+      LinkedIn
+    </ContactButton>
+
+    <ContactButton title='facebook' href={FACEBOOK} icon={faFacebook} resume={resume}>
+      Facebook
+    </ContactButton>
   </div>
 );
 
 export default Contacts;
+
+const ContactButton = ({ title, href, hrefUrl, icon, resume, children }) => (
+  <a title={title} href={href} target='_blank' rel='noopener noreferrer'>
+    <Button className={classnames(styles.contactBtn, { [styles.resume]: resume })}>
+      { resume ? (
+        <>
+          <span className='inline-block align-middle max-w-3/5-screen text-ellipsis overflow-hidden text-sm underline'>{ hrefUrl || href }</span>
+          <FontAwesomeIcon icon={icon} size='sm' />
+        </>
+      ) : (
+        <>
+          <FontAwesomeIcon icon={icon} size='lg' />
+          <span className='hidden sm:inline-block'>
+            { children }
+          </span>
+        </>
+      ) }
+    </Button>
+  </a>
+);

@@ -7,13 +7,15 @@
   "private": true,
   "scripts": {
     "dev": "next -p ${PORT:-3000}",
+    "tc": "tsc -w -noEmit",
+    "ci-tc": "tsc -noEmit",
+    "lintf": "eslint --fix .",
+    "lint": "eslint .",
     "build": "next build",
     "start": "next start",
-    "export": "next export",
     "rss": "node ./lib/node/genRSS.js",
     "sitemap": "node ./lib/node/genSiteMap.js",
-    "lintf": "eslint --fix .",
-    "lint": "eslint ."
+    "export": "next export"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",

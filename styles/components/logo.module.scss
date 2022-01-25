@@ -7,10 +7,7 @@
   .hacker {
     border: 1px solid #2d2d2d;
   }
-  .speaker {
-    border: 1px solid #ffffff;
-  }
-  .hacker, .speaker {
+  .hacker {
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.5s;
@@ -20,9 +17,6 @@
   }
 
   &:hover .hacker {
-    opacity: 1;
-  }
-  &.revealed .speaker {
     opacity: 1;
   }
 }

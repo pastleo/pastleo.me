@@ -14,24 +14,6 @@
   }
 }
 
-@media print {
-  .print\:hidden {
-    display: none;
-  }
-
-  .print\:inline-block {
-    display: inline-block;
-  }
-
-  .print\:block {
-    display: block;
-  }
-
-  .print\:inline {
-    display: inline;
-  }
-}
-
 body {
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
@@ -39,5 +21,9 @@ body {
 @media screen {
   html {
     font-size: 18px;
+  }
+  body {
+    color: white;
+    background: black;
   }
 }

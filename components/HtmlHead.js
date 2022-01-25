@@ -20,8 +20,10 @@ const HtmlHead = ({ options }) => (
     <title key='title'>{ options.title || 'PastLeo' }</title>
     <meta key='description' name='Description' content='Blog, Introduction and Homepage of PastLeo' />
     <link key='favicon' rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+    <link key='apple-touch-icon' rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
     <meta key='viewport' name='viewport' content='width=device-width, initial-scale=1' />
     <meta key='og:image' name='og:image' content={options.thumbnail || ogImageSrc} />
+    <link key='manifest' rel='manifest' href='/manifest.json' />
 
     <link rel='alternate' type='application/rss+xml' href='/feed.xml' />
   </Head>

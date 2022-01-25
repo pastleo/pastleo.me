@@ -7,6 +7,7 @@ import { faAnchor } from '@fortawesome/free-solid-svg-icons';
 import ExternalImage from './ExternalImage.js';
 
 import { extractTextContent, toYoutubeEmbedUrl } from '../lib/postContentUtils.js';
+import { isExternalUrl } from '../lib/utils.js';
 
 import styles from '../styles/components/post-content.module.scss';
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
@@ -37,9 +38,8 @@ const Heading = tag => {
   return component;
 };
 
-const EXTERNAL_URL_REGEX = new RegExp('^https?://');
 const Link = ({ children, href }) => {
-  if (href.match(EXTERNAL_URL_REGEX)) {
+  if (isExternalUrl(href)) {
     return (
       <a href={href} target='_blank' rel='noopener noreferrer'>
         { children }
