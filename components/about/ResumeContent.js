@@ -68,7 +68,7 @@ const ResumeContent = ({ locale }) => (
 
                     <div className='ml-3'>
                       { (detail.description || []).map((line, i) => (
-                        <Line key={i} line={line} className='text-sm my-1' />
+                        <Line key={i} line={line} className='text-sm print:text-xs my-1' />
                       )) }
                     </div>
                   </React.Fragment>

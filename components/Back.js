@@ -1,12 +1,14 @@
-import { useCallback } from 'react';
+import { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
-const Back = ({ className, children, size }) => {
+const Back = ({ to, className, children, size }) => {
   const router = useRouter();
-  const goBack = useCallback(() => {
+  const goBack = useMemo(() => to ? () => {
+    router.push(to);
+  } : () => {
     const href = location.href;
     router.back();
 
@@ -15,7 +17,7 @@ const Back = ({ className, children, size }) => {
         router.push('/'); // fallback to index
       }
     }, 200);
-  }, [router]);
+  }, [to, router]);
 
   return (
     <a

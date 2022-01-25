@@ -58,7 +58,7 @@ const About = () => {
     <div className={classnames('flex flex-col', normalModeMinHScreen)}>
       <section id={styles.intro} className='p-6'>
         <div id={styles.controls} className='print:hidden flex justify-between p-2'>
-          <Back className='p-3' />
+          <Back to={resumeMode ? '/about' : '/'} className='p-3' />
           <div className='p-3 text-right'>
             <LocaleSwitch locales={locales} locale={locale} setLocale={setLocale} />
           </div>
@@ -130,7 +130,7 @@ const About = () => {
       <section className={classnames('p-4', resumeModeHidden)}>
         <Contacts className='max-w-md mx-auto p-4' />
         <div className='text-center'>
-          <Back className='p-2'>
+          <Back to='/' className='p-2'>
             { t.back[locale] }
           </Back>
         </div>

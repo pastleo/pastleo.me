@@ -66,6 +66,12 @@ const experienceZhRecords: Experience[] = [{
       '專住在操作方式的開發，尤其是行動觸控裝置',
       '發揮創意在地板作畫，並能將繪製的場景建置成物件製作豐富的場景',
     ],
+  }, {
+    title: 'Cogini 接案',
+    href: 'https://www.cogini.com/',
+    description: [
+      '協助 Elixir / Phoenix 專案之開發',
+    ],
   }],
 }, {
   where: '五倍紅寶石',
@@ -208,7 +214,7 @@ const showcaseZhRecords: Showcase[] = [{
   href: 'https://pastleo.me',
   git: 'https://github.com/pastleo/pastleo.me',
   description: [
-    '你現在看到的這個網站，其 /about 頁面可以直接轉成 PDF 列印',
+    '你現在看到的這個網站，此 /about 頁面可以直接以直式 A4 列印成為這份履歷',
     '使用 Next.js / React 搭建，並使用靜態網站生成方式佈署',
   ],
 }, {
@@ -245,7 +251,7 @@ const showcaseZhRecords: Showcase[] = [{
   ],
 }, {
   title: '五十音練習小工具',
-  thumbnail: 'https://i.imgur.com/p3yWVz2h.png',
+  thumbnail: 'https://i.imgur.com/dAfiRheh.png',
   href: 'https://static.pastleo.me/kana-vue',
   git: 'https://github.com/pastleo/kana-vue',
   description: [
@@ -265,7 +271,7 @@ const showcaseZhRecords: Showcase[] = [{
   ],
 }, {
   title: 'unamed-network-demo',
-  thumbnail: 'https://i.imgur.com/svDITXsh.png',
+  thumbnail: 'https://i.imgur.com/2YibC9ph.png',
   href: 'https://static.pastleo.me/unamed-network-202201-demo',
   git: 'https://github.com/pastleo/unamed-network',
   description: [
