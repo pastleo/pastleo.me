@@ -18,6 +18,12 @@
   .resumeModeInline {
     display: inline;
   }
+
+  @media (max-width: 479px) {
+    .resumeModeBlockOnlyXs {
+      display: block;
+    }
+  }
 }
 
 @media print {

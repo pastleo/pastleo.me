@@ -40,6 +40,10 @@
 .contentBox {
   border-radius: 5px;
   @media screen {
+    transition: background 500ms;
     background: #00000064;
+    &:hover {
+      background: #000000FF;
+    }
   }
 }

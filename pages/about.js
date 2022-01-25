@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 
 import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,6 +21,7 @@ import styles from '../styles/pages/about.module.scss';
 import {
   resumeMode as resumeModeClassName,
   resumeModeBlock, normalModeMinHScreen, resumeModeHidden,
+  resumeModeBlockOnlyXs,
 } from '../styles/resume.module.scss';
 
 import taiwanSvg from '../assets/taiwan.svg';
@@ -29,8 +30,9 @@ import { locales, defaultLocale } from '../lib/i18n/i18n';
 import t from '../lib/i18n/translations';
 
 const About = () => {
-  const router = useRouter();
-  const queryResume = typeof router.query.resume !== 'undefined';
+  const router = useRef();
+  router.current = useRouter();
+  const queryResume = typeof router.current.query.resume !== 'undefined';
 
   const [locale, setLocale] = useState(defaultLocale);
   const [resumeMode, setResumeMode] = useState(false);
@@ -52,6 +54,17 @@ const About = () => {
     '',
     t.briefCvTitle[locale],
     ...t.briefCv[locale],
+    (
+      <Button
+        key='resume-btn'
+        className='my-4 block text-center'
+        onClick={() => {
+          router.current.push('?resume');
+        }}
+      >
+        { t.showFullResume[locale] }
+      </Button>
+    ),
   ], [locale]);
 
   return (
@@ -59,12 +72,12 @@ const About = () => {
       <section id={styles.intro} className='p-6'>
         <div id={styles.controls} className='print:hidden flex justify-between p-2'>
           <Back to={resumeMode ? '/about' : '/'} className='p-3' />
-          <div className='p-3 text-right'>
+          <div className={classnames('p-3 text-right', resumeModeHidden)}>
             <LocaleSwitch locales={locales} locale={locale} setLocale={setLocale} />
           </div>
         </div>
         <h1 className={classnames('text-center font-bold text-2xl pt-4', resumeModeHidden)}>{ t.name[locale] }</h1>
-        <div className='max-w-2xl mx-auto py-5 xs:flex justify-center'>
+        <div className={classnames('max-w-2xl mx-auto py-5 flex justify-center', resumeModeBlockOnlyXs)}>
           <Logo width='216' className={classnames('mx-4', resumeModeHidden)} />
           <div className={classnames('flex-1 pt-4 px-4', resumeModeBlock)}>
             <h1 className='font-bold text-4xl pb-1'>{ t.nameFormal[locale] }</h1>
@@ -83,7 +96,7 @@ const About = () => {
         </div>
         <div className={classnames('max-w-2xl mx-auto', resumeModeBlock)}>
           <div className='xs:grid grid-cols-5'>
-            <div className='col-span-2 pl-4 p-2'>
+            <div className='col-span-2 pl-4 p-2 print:text-sm'>
               { t.quotes[locale].map(line => (
                 <p key={line} className='pb-2'>{ line }</p>
               )) }
@@ -111,19 +124,12 @@ const About = () => {
       <section className={classnames('p-6 flex-1', resumeModeHidden)}>
         <div className='max-w-lg mx-auto'>
           <div className={classnames(styles.contentBox, 'p-4')}>
+
             <CodeTyper
               lines={codeTyperLines}
               reveal={resumeMode}
             />
 
-            <Button
-              className='my-4 block text-center'
-              onClick={() => {
-                router.push('?resume');
-              }}
-            >
-              { t.showFullResume[locale] }
-            </Button>
           </div>
         </div>
       </section>
