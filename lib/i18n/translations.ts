@@ -54,6 +54,10 @@ export default createI18n({
     zh: '顯示完整履歷',
     en: 'Show Resume in Chinese',
   },
+  resumeTitle: {
+    zh: 'PastLeo 履歷',
+    en: 'PastLeo Resume',
+  },
   back: {
     zh: '回首頁',
     en: 'Back to index',

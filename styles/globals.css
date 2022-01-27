@@ -27,3 +27,14 @@ body {
     background: black;
   }
 }
+
+@page {
+  size: A4 portrait;
+  margin: 1.5cm 0.4cm;
+}
+@media print {
+  html {
+    width: 640pt;
+    font-size: 13.5pt;
+  }
+}

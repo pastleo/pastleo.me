@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState, useRef, useEffect, useMemo } from 'react';
 
@@ -142,6 +143,11 @@ const About = () => {
         </div>
       </section>
 
+      { resumeMode && (
+        <Head>
+          <title key='title'>{ t.resumeTitle[locale] }</title>
+        </Head>
+      ) }
       <ResumeContent locale={locale} />
     </div>
   );

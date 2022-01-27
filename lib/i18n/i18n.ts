@@ -9,7 +9,7 @@ export const locales: { localeName: Locale, displayName: string }[] = [
 
 type TranslationRecord = Record<string, any>;
 type TranslationRecords = TranslationRecord[];
-type TranslationValue = string | string[] | TranslationRecords;
+type TranslationValue = string | boolean | string[] | TranslationRecords;
 
 type TranslationDataPartial<T = TranslationValue> = Partial<Record<Exclude<Locale, DefaultLocale>, T>>;
 type TranslationData = Record<DefaultLocale, TranslationValue> & TranslationDataPartial;

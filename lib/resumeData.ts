@@ -335,11 +335,17 @@ export default createI18n({
   experience: {
     zh: experienceZhRecords,
   },
+  pageBreakBeforeAchievement: {
+    zh: true,
+  },
   achievementTitle: {
     zh: '成就',
   },
   achievements: {
     zh: achievementZhRecords,
+  },
+  pageBreakBeforeTalk: {
+    zh: false,
   },
   talkTitle: {
     zh: '講座、課程',
@@ -347,17 +353,26 @@ export default createI18n({
   talks: {
     zh: talkZhRecords,
   },
+  pageBreakBeforeEducation: {
+    zh: false,
+  },
   educationTitle: {
     zh: '學歷',
   },
   educations: {
     zh: educationZhRecords,
   },
+  pageBreakBeforeSkill: {
+    zh: true,
+  },
   skillTitle: {
     zh: '技能',
   },
   skills: {
     zh: skillZhRecords,
+  },
+  pageBreakBeforeShowcases: {
+    zh: false,
   },
   showcasesTitle: {
     zh: '作品集',
