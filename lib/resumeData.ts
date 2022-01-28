@@ -55,8 +55,8 @@ interface Showcase {
 }
 
 const experienceZhRecords: Experience[] = [{
-  where: 'SOHO',
-  title: '兼職、進修、自我實現',
+  where: 'Freelancer',
+  title: '進修、自我實現',
   from: '2021/2',
   details: [{
     title: 'Unamed World',
@@ -100,7 +100,7 @@ const experienceZhRecords: Experience[] = [{
     href: 'https://goshopmatic.com',
     description: [
       '使用 React 改寫商店、管理編輯頁面，並改善使用體驗',
-      '使用 Elixir 製作並進行零下線時間的 DB migration 轉換近半百萬筆商店頁面',
+      '使用 Elixir 製作並進行零下線時間的 DB migration 轉換半百萬筆商店頁面',
       '職涯第一個長期維護、開發的 Ruby on Rails 專案',
     ],
   }],
@@ -108,25 +108,26 @@ const experienceZhRecords: Experience[] = [{
 }];
 
 const experienceEnRecords: Experience[] = [{
-  where: 'SOHO',
-  title: 'Part-time, Advanced studies, Self-fullfillment',
+  where: 'Freelancer',
+  title: 'Advanced studies, Self-fullfillment',
   from: '2021/2',
   details: [{
     title: 'Unamed World',
     href: 'https://intro.unamed.world/',
     description: [
-      'Fulfill the dream that guide me to CS field after having years of development experience',
-      'Indie game where people explore creativity together',
+      'Fulfilling the dream that guide me to CS field after having years of development experience',
+      'Have developed an indie game called "Unamed World", a Utopia of player\'s creativity aiming at providing friendly user interaction, especially for mobile devices',
+      'By transforming player\'s drawings on terrain into 3D objects, the game allows people to build a realm of inspiration of their own',
       'Using Typescript, Three.js for 3D rendering, React for UI',
-      'Aiming on providing friendly user interaction, especially for mobile devices',
-      'Get creative to draw terrain, build sprites and compose rich realm',
     ],
+    bottomSpace: 'md',
   }, {
     title: 'Cases from Cogini',
     href: 'https://www.cogini.com/',
     description: [
-      'Elixir / Phoenix web application development',
+      'Assisting in the development of Elixir / Phoenix web application',
     ],
+    bottomSpace: 'md',
   }],
   bottomSpace: 'lg',
 }, {
@@ -139,27 +140,25 @@ const experienceEnRecords: Experience[] = [{
     title: 'QuickBuy クイックバイ Mobile App and E-commerce Platform',
     href: 'https://play.google.com/store/apps/details?id=com.standardtransaction.quickbuy.rnapp',
     description: [
-      'Lead the team and work with foreign partner building MVP',
-      'Construct corss-platform mobile app using React Native for Android/iOS',
-      'Setup CI/CD to automate app builds and save time for the team',
-      'Ruby on Rails server with React frontend for management web interface',
+      'Led the team and work with foreign partner building MVP',
+      'Constructed corss-platform mobile app by using React Native for Android/iOS',
+      'Established CI/CD to automate app builds and improve efficiency for the team',
+      'Used Ruby on Rails server with React frontend for management web interface',
     ],
-    bottomSpace: 'md',
   }, {
     title: 'Landing page of Auntie Meiyu (checkcheck.me)',
     href: 'https://www.checkcheck.me/',
     description: [
       'Built with Gatsby, a react static-site generator',
-      'Collaborate with designer creating a nice-looking page with RWD and i18n support',
+      'Collaborated with designers creating an aesthetic page with RWD and i18n',
     ],
-    bottomSpace: 'md',
   }, {
     title: 'Shopmatic E-commerce Platform',
     href: 'https://goshopmatic.com',
     description: [
-      'Rewrite store and management pages using React and boost frontend maintainability and user experience',
-      'Modernize frontend assets bundling, making the team more efficient working with project',
-      'Perform database migration processing half million store pages with zero down-time by implementing a real-time migration service in Elixir',
+      'Rewrote pages of the store and management by React to improve frontend maintainability as well as user experience',
+      'Modernized frontend assets bundling and increased working efficiency of the team',
+      'Implemented a continuous migration service in Elixir to perform zero down-time database migration of a half million store pages',
       'First long-term supporting and development Ruby on Rails project of career',
     ],
   }],
@@ -516,7 +515,7 @@ const showcaseEnRecords: Showcase[] = [{
   description: [
     'A world where people explore creativity together',
     'Inspired by Minecraft, that player can create while playing in-game',
-    'A realm can be manipulated by drawing, adjusting terrain, then building into sprite, export and import. while more featuers are comming under development',
+    'A realm can be manipulated by drawing, adjusting terrain, then building into sprite, export and import. While more featuers are comming under development',
     'Using Three.js to render 3D scene, React to render UI and Typescript to enhance maintainability',
     'p2p network is established by WebSocket and WebRTC',
   ],

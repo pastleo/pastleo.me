@@ -21,11 +21,11 @@ export default createI18n({
   quotes: {
     zh: [
       '興趣使然的軟體工程師，對資訊科技的一切事物有興趣，從電腦硬體、作業系統、網路到網站前後端、應用程式之技術',
-      '喜歡有趣的互動體驗以及創造的過程，因此開發讓大家一起遊玩創造力的遊戲平台',
+      '喜歡有趣的互動體驗以及創造的過程，因此開發讓大家一起遊玩創造力的遊戲平台 — Unamed World',
     ],
     en: [
-      'Interested in exploring things about computer, from hardware, operating system, Internet to technologies building frontend/backend of web and applications',
-      'Loving intriguing interactive experience and process of creating, I develop game where people explore creativity',
+      'Interested in a wide range of IT and computer fields, including hardware, operating system, Internet as well as frontend and backend technologies of web and applications',
+      'Fond of intriguing interactive experience and process of creating. Have developed a game, \'Unamed World\', where people explore creativity',
     ],
   },
   briefCvTitle: {
