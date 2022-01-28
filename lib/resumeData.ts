@@ -7,12 +7,14 @@ interface Experience {
   from: string;
   to?: string;
   details?: ExperienceDetail[];
+  bottomSpace?: 'xs' | 'md' | 'lg';
 }
 
 interface ExperienceDetail {
   title: string;
   href?: string;
   description?: Line[];
+  bottomSpace?: 'xs' | 'md' | 'lg';
 }
 
 interface Achievement {
@@ -33,7 +35,7 @@ interface Talk {
 
 interface Education {
   school: string;
-  department: string;
+  department?: string;
   from: string;
   to: string;
   description?: Line[];
@@ -60,8 +62,7 @@ const experienceZhRecords: Experience[] = [{
     title: 'Unamed World',
     href: 'https://intro.unamed.world/',
     description: [
-      '累積一定工作經驗後，嘗試實現進入資訊科技領域時的夢想',
-      '獨立開發製作一個讓大家一起在遊戲中創造的遊戲',
+      '累積一定工作經驗後，獨立開發讓大家一起在遊戲中創造的遊戲，實現進入資訊科技領域時的夢想',
       '使用 Typescript 撰寫、Three.js 渲染 3D 畫面、React 作為 UI 框架',
       '專住在操作方式的開發，尤其是行動觸控裝置',
       '發揮創意在地板作畫，並能將繪製的場景建置成物件製作豐富的場景',
@@ -73,6 +74,7 @@ const experienceZhRecords: Experience[] = [{
       '協助 Elixir / Phoenix 專案之開發',
     ],
   }],
+  bottomSpace: 'xs',
 }, {
   where: '五倍紅寶石',
   href: 'https://5xruby.com',
@@ -84,18 +86,81 @@ const experienceZhRecords: Experience[] = [{
     href: 'https://play.google.com/store/apps/details?id=com.standardtransaction.quickbuy.rnapp',
     description: [
       '帶領團隊並協助國際客戶開發 MVP (最小可行性產品)',
-      '使用 React Native 製作 Android/iOS 跨平台應用程式',
-      '建立 CI/CD 自動化應用程式建置節省開發者時間',
+      '使用 React Native 製作 Android/iOS 跨平台應用程式，並建立 CI/CD 自動化應用程式建置節省開發者時間',
       '後端使用 Ruby on Rails、前端使用 React 作為管理界面前端框架',
+    ],
+  }, {
+    title: '『美玉姨』之入口介紹網站 (checkcheck.me)',
+    href: 'https://www.checkcheck.me/',
+    description: [
+      '透過 Gatsby — React 靜態網站產生器來建立，與設計師合作開發出美觀並具有 RWD, i18n 之網頁',
     ],
   }, {
     title: 'Shopmatic 電商平台',
     href: 'https://goshopmatic.com',
     description: [
       '使用 React 改寫商店、管理編輯頁面，並改善使用體驗',
-      '改善前端建置系統，加快團隊開發效率',
-      '職涯第一個長期維護、開發的 Ruby on Rails 專案',
       '使用 Elixir 製作並進行零下線時間的 DB migration 轉換近半百萬筆商店頁面',
+      '職涯第一個長期維護、開發的 Ruby on Rails 專案',
+    ],
+  }],
+  bottomSpace: 'xs',
+}];
+
+const experienceEnRecords: Experience[] = [{
+  where: 'SOHO',
+  title: 'Part-time, Advanced studies, Self-fullfillment',
+  from: '2021/2',
+  details: [{
+    title: 'Unamed World',
+    href: 'https://intro.unamed.world/',
+    description: [
+      'Fulfill the dream that guide me to CS field after having years of development experience',
+      'Indie game where people explore creativity together',
+      'Using Typescript, Three.js for 3D rendering, React for UI',
+      'Aiming on providing friendly user interaction, especially for mobile devices',
+      'Get creative to draw terrain, build sprites and compose rich realm',
+    ],
+  }, {
+    title: 'Cases from Cogini',
+    href: 'https://www.cogini.com/',
+    description: [
+      'Elixir / Phoenix web application development',
+    ],
+  }],
+  bottomSpace: 'lg',
+}, {
+  where: '5xRuby',
+  href: 'https://5xruby.com',
+  title: 'Full-stack Engineer',
+  from: '2017/2',
+  to: '2021/2',
+  details: [{
+    title: 'QuickBuy クイックバイ Mobile App and E-commerce Platform',
+    href: 'https://play.google.com/store/apps/details?id=com.standardtransaction.quickbuy.rnapp',
+    description: [
+      'Lead the team and work with foreign partner building MVP',
+      'Construct corss-platform mobile app using React Native for Android/iOS',
+      'Setup CI/CD to automate app builds and save time for the team',
+      'Ruby on Rails server with React frontend for management web interface',
+    ],
+    bottomSpace: 'md',
+  }, {
+    title: 'Landing page of Auntie Meiyu (checkcheck.me)',
+    href: 'https://www.checkcheck.me/',
+    description: [
+      'Built with Gatsby, a react static-site generator',
+      'Collaborate with designer creating a nice-looking page with RWD and i18n support',
+    ],
+    bottomSpace: 'md',
+  }, {
+    title: 'Shopmatic E-commerce Platform',
+    href: 'https://goshopmatic.com',
+    description: [
+      'Rewrite store and management pages using React and boost frontend maintainability and user experience',
+      'Modernize frontend assets bundling, making the team more efficient working with project',
+      'Perform database migration processing half million store pages with zero down-time by implementing a real-time migration service in Elixir',
+      'First long-term supporting and development Ruby on Rails project of career',
     ],
   }],
 }];
@@ -117,6 +182,23 @@ const achievementZhRecords: Achievement[] = [{
   ],
 }];
 
+const achievementEnRecords: Achievement[] = [{
+  what: 'Merit Award',
+  title: 'iThome Ironman (tech post marathon) 2021, Modern Web',
+  href: 'https://ithelp.ithome.com.tw/2021ironman/reward',
+  time: '2022/1',
+  description: [
+    {
+      href: 'https://ithelp.ithome.com.tw/2020-12th-ironman/articles/3929',
+      line: 'Topic: How to render 3D scene? starting from WebGL basic',
+      bold: true,
+    },
+    'Guide readers from WebGL fundamentals — triangles, 2D/3D transform, lighting and finally build a 3D scene with a sailboat on ocean',
+    '',
+    'Content of these 30 tech posts will be extended and publish as book, estimated to be release on fall in 2022',
+  ],
+}];
+
 const talkZhRecords: Talk[] = [{
   event: 'ASTRO Camp 7th',
   title: 'Javascript 課程講師',
@@ -132,6 +214,21 @@ const talkZhRecords: Talk[] = [{
   title: 'Javascript 課程講師',
   href: 'https://astro.5xruby.tw/',
   time: '2020/8',
+}, {
+  event: '快速打造專屬你的神手級工具：翻譯・單字卡',
+  title: 'Chrome 擴充套件工作坊講師',
+  href: 'https://www.accupass.com/event/2008061112286765080000',
+  time: '2020/8',
+}, {
+  event: 'COSCUP 2020',
+  title: 'ArchLinux installation workshop',
+  href: 'https://coscup.org/2020/zh-TW/agenda/KWEMNF',
+  time: '2020/8',
+}, {
+  event: 'COSCUP 2019',
+  title: '用 WebRTC 建立半分散式網路',
+  href: 'https://coscup.org/2019/en/programs/58fcc6a0-1e5c-4a17-af0a-3e3dfba381c4',
+  time: '2019/8',
 }, {
   event: 'MOPCON 2018',
   title: 'WebComponent & lit-html 前端開發新選擇',
@@ -154,6 +251,58 @@ const talkZhRecords: Talk[] = [{
   time: '2016/2',
 }];
 
+const talkEnRecords: Talk[] = [{
+  event: 'ASTRO Camp 7th',
+  title: 'Javascript Lecturer',
+  href: 'https://astro.5xruby.tw/',
+  time: '2021/4',
+}, {
+  event: 'ASTRO Camp 6th',
+  title: 'Javascript Lecturer',
+  href: 'https://astro.5xruby.tw/',
+  time: '2020/12',
+}, {
+  event: 'ASTRO Camp 5th',
+  title: 'Javascript Lecturer',
+  href: 'https://astro.5xruby.tw/',
+  time: '2020/8',
+}, {
+  event: 'Building your own tools: Word cards w/ Translation',
+  title: 'Chrome extension workshop lecturer',
+  href: 'https://www.accupass.com/event/2008061112286765080000',
+  time: '2020/8',
+}, {
+  event: 'COSCUP 2020',
+  title: 'ArchLinux installation workshop',
+  href: 'https://coscup.org/2020/zh-TW/agenda/KWEMNF',
+  time: '2020/8',
+}, {
+  event: 'COSCUP 2019',
+  title: 'Establish a semi-decentralized network using WebRTC',
+  href: 'https://coscup.org/2019/en/programs/58fcc6a0-1e5c-4a17-af0a-3e3dfba381c4',
+  time: '2019/8',
+}, {
+  event: 'MOPCON 2018',
+  title: 'WebComponent & lit-html: another option for frontend development',
+  href: 'https://mopcon.org/2018/speaker.php?id=4',
+  time: '2018/11',
+}, {
+  event: 'COSCUP 2018',
+  title: 'Daily-drive Archlinux',
+  href: 'https://coscup.org/2018/programs/full-archlinux/',
+  time: '2018/8',
+}, {
+  event: 'Ruby & Elixir Conf TW 2018',
+  title: 'Not familiar with Elixir? Let me do a simple intro in 30 minutes',
+  href: 'https://2018.rubyconf.tw/program#pastleo',
+  time: '2018/4',
+}, {
+  event: 'SITCON 2016',
+  title: 'Customize my development environment and make it open source!',
+  href: 'https://sitcon.org/2016/#target-schedule',
+  time: '2016/2',
+}];
+
 const educationZhRecords: Education[] = [{
   school: '國立中興大學',
   department: '資訊科學與工程學系',
@@ -169,31 +318,62 @@ const educationZhRecords: Education[] = [{
   to: '2012',
 }];
 
-const skillZhRecords: Skill[] = [{
-  category: '前端',
-  items: [
+const educationEnRecords: Education[] = [{
+  school: 'National Chung Hsing University',
+  department: 'Department of Computer Science and Engineering',
+  from: '2012',
+  to: '2016',
+  description: [
+    'Also work as director of IT club and minister of IT department in student association',
+  ],
+}, {
+  school: 'Panchiao Senior High School',
+  from: '2009',
+  to: '2012',
+}];
+
+const skills = {
+  frontend: [
     'Javascript / Typescript',
     'React / Next.js / React Native',
     'Three.js / WebGL',
     'DOM API / jQuery',
     'CSS / Tailwind CSS / Bootstrap',
   ],
-}, {
-  category: '後端、資料庫',
-  items: [
+  backend: [
     'Ruby / Rails',
     'Elixir / Phoenix',
     'Node.js',
     'PostgreSQL',
   ],
-}, {
-  category: 'DevOps',
-  items: [
+  devOps: [
     'Linux / ArchLinux / Ubuntu',
     'Git / Git flow CI/CD',
     'Docker / Kubernetes',
     'GCP / Heroku',
   ],
+};
+
+const skillZhRecords: Skill[] = [{
+  category: '前端',
+  items: skills.frontend,
+}, {
+  category: '後端、資料庫',
+  items: skills.backend,
+}, {
+  category: 'DevOps',
+  items: skills.devOps,
+}];
+
+const skillEnRecords: Skill[] = [{
+  category: 'Frontend',
+  items: skills.frontend,
+}, {
+  category: 'Backend, Database',
+  items: skills.backend,
+}, {
+  category: 'DevOps',
+  items: skills.devOps,
 }];
 
 const showcaseZhRecords: Showcase[] = [{
@@ -276,7 +456,7 @@ const showcaseZhRecords: Showcase[] = [{
   git: 'https://github.com/pastleo/unamed-network',
   description: [
     '使用 WebSocket + WebRTC 進行節點連線，透過 Kademlia DHT 演算法形成 p2p 網路',
-    '以房間名稱為 DHT hash 之 payload，不同使用者只要輸入相同房間名稱即可找到彼此',
+    '以房間名稱為 DHT hashing 之輸入值，不同使用者只要輸入相同房間名稱即可找到彼此',
     'DEMO 站運用 unamed-network 提供簡易的文字訊息傳輸功能',
   ],
 }, {
@@ -316,7 +496,7 @@ const showcaseZhRecords: Showcase[] = [{
   description: [
     '使用 Solidity 製作運作於 Ethereum 的 smart contract',
     '在鏈上以錢包帳號為 key、讀寫對應此帳號的字串資料，來嘗試以及測試智能合約所提供之功能',
-    '使用者只需 metamask 即可在網頁上進行操作',
+    '使用者只需 Metamask 即可在網頁上進行操作',
   ],
 }, {
   title: '讓 HowHow 替說你想說的話',
@@ -328,62 +508,213 @@ const showcaseZhRecords: Showcase[] = [{
   ],
 }];
 
+const showcaseEnRecords: Showcase[] = [{
+  title: 'Unamed World',
+  thumbnail: 'https://i.imgur.com/tEHlwPBh.png',
+  href: 'https://intro.unamed.world',
+  git: 'https://github.com/pastleo/unamed-world',
+  description: [
+    'A world where people explore creativity together',
+    'Inspired by Minecraft, that player can create while playing in-game',
+    'A realm can be manipulated by drawing, adjusting terrain, then building into sprite, export and import. while more featuers are comming under development',
+    'Using Three.js to render 3D scene, React to render UI and Typescript to enhance maintainability',
+    'p2p network is established by WebSocket and WebRTC',
+  ],
+}, {
+  title: 'PastLeo.me',
+  thumbnail: 'https://i.imgur.com/29LVG3uh.jpg',
+  href: 'https://pastleo.me',
+  git: 'https://github.com/pastleo/pastleo.me',
+  description: [
+    'The Website you are browsing, its /about page can be printed in A4 portrait as resume',
+    'Built with Next.js / React and deployed by static-site generation',
+  ],
+}, {
+  title: 'Sailboat on ocean',
+  thumbnail: 'https://i.imgur.com/5ZGLxyXh.png',
+  href: 'https://static.pastleo.me/webgl-ironman/06-boat-ocean.html',
+  description: [
+    'Final result of iThome Ironman 2021 tech posts',
+    'Implemented in WebGL, loading .obj 3D model with shadow, reflection effect',
+  ],
+}, {
+  title: '3D chinese checkers in space',
+  thumbnail: 'https://i.imgur.com/zKbyfs3h.png',
+  href: 'https://static.pastleo.me/webgl-practice/10-diamond-chinese-checkers.html',
+  description: [
+    'Using WebGL without library, allowing 3 players to play against each other',
+    'Program GPU by creating a special shader to render stars',
+  ],
+}, {
+  title: 'Sphere covered by scale with mirror and shadow effect',
+  thumbnail: 'https://i.imgur.com/RI4fRJzh.png',
+  href: 'https://static.pastleo.me/webgl-ironman/05-framebuffer-shadow.html',
+  description: [
+    'One of the results from iThome Ironman 2021 tech posts',
+    'Implemented in WebGL, loading image files as sphere texture and surface details',
+  ],
+}, {
+  title: 'Bazaar — multi-player platform game',
+  thumbnail: 'https://i.imgur.com/s31LuGPh.png',
+  href: 'https://bazaar-pre.pastleo.me/',
+  git: 'https://github.com/pastleo/bazaar',
+  description: [
+    'Started with college friend. Players connect to server via Websocket first, then connect to others via WebRTC',
+  ],
+}, {
+  title: 'Hiragana and katakana practice',
+  thumbnail: 'https://i.imgur.com/dAfiRheh.png',
+  href: 'https://static.pastleo.me/kana-vue',
+  git: 'https://github.com/pastleo/kana-vue',
+  description: [
+    'Made with frontend framework: Vue',
+    'Despite of Vue 2 implementation, there is also Vue 3 composotion API as well',
+  ],
+}, {
+  title: 'Squaring game',
+  thumbnail: 'https://i.imgur.com/J5tYKxfh.png',
+  href: 'https://static.pastleo.me/squaring-game',
+  git: 'https://github.com/pastleo/squaring-game',
+  description: [
+    'Using React, a remake of girlfriend\'s childhood game',
+    'Two players take turn occupying one edge (1 edge can be shared with 2 cells)',
+    'When a cell\'s last edge is occupied, the player gets 1 point',
+    'If all cell, edges are occupied, the player with more points wins',
+  ],
+}, {
+  title: 'unamed-network-demo',
+  thumbnail: 'https://i.imgur.com/2YibC9ph.png',
+  href: 'https://static.pastleo.me/unamed-network-202201-demo',
+  git: 'https://github.com/pastleo/unamed-network',
+  description: [
+    'Connection between nodes are established by WebSocket and WebRTC, forming p2p network via Kademlia DHT',
+    'Taking room name as input of DHT hashing, users with the same room name will find each other',
+    'DEMO site utilizes unamed-network and provides simple text messaging feature',
+  ],
+}, {
+  title: 'unnamed-network-chat-ysync',
+  thumbnail: 'https://i.imgur.com/VjtceVUh.jpg',
+  href: 'https://static.pastleo.me/unnamed-network-chat-ysync',
+  git: 'https://github.com/pastleo/unnamed-network-chat-ysync',
+  description: [
+    'Allow users to watch Youtube videos in sync and send text messages',
+    'Connection between nodes are established by WebSocket and WebRTC, forming semi-decentralized p2p network',
+    'For demostration of this semi-decentralized p2p network at COSCUP 2019 and tech post',
+  ],
+}, {
+  title: 'PopKube',
+  thumbnail: 'https://i.imgur.com/49amEAqh.png',
+  href: 'https://popkube.herokuapp.com/',
+  git: 'https://github.com/pastleo/k8s-challenge-2021',
+  description: [
+    'Using Elixir LiveView, making a webapp like POPCAT, counting all user\'s clicks with real-time counting sync',
+    'This project completed 2021 DigitalOcean Kubernetes challenge, which means whole system including webapp, database and load balancer is containerized and deployed to DigitalOcean Kubernetes cluster',
+    '(*) webapp container is re-deployed to Heroku to reduce cost',
+  ],
+}, {
+  title: 'Conway’s game of life, running on Webassembly',
+  thumbnail: 'https://i.imgur.com/QrQvXyUh.png',
+  href: 'https://static.pastleo.me/rs-wasm-glife-20201213',
+  git: 'https://github.com/pastleo/rs-wasm-glife',
+  description: [
+    'Conway’s game of life is a cellular automaton that each cell follow certain rules and form some pattern',
+    'Using Rust to implement and compile into Webassembly to run in browser, also integrated with Javascript DOM providing user interactions',
+  ],
+}, {
+  title: 'hello-solidity-web',
+  thumbnail: 'https://i.imgur.com/eaJMfdoh.png',
+  href: 'https://static.pastleo.me/hello-solidity-web',
+  git: 'https://github.com/pastleo/hello-solidity-web',
+  description: [
+    'Smart contract built with Solidity, running on Ethereum',
+    'By wallet account as key, read/write its string data accordingly to test out smart contract capabilities',
+    'The only thing required is Metamask, then user is able to interact with blockchain on web platform',
+  ],
+}, {
+  title: 'Make Youtuber HowHow say what you ask him to',
+  thumbnail: 'https://i.imgur.com/3W1iEdwh.png',
+  href: 'https://howhow-speak.herokuapp.com',
+  git: 'https://github.com/pastleo/howhow_speak',
+  description: [
+    'Implemented in Elixir / Phoenix, the webapp is deployed to Heroku',
+  ],
+}];
+
 export default createI18n({
   experienceTitle: {
     zh: '經歷',
+    en: 'Experience',
   },
   experience: {
     zh: experienceZhRecords,
+    en: experienceEnRecords,
   },
   pageBreakBeforeAchievement: {
     zh: true,
+    en: false,
   },
   achievementTitle: {
     zh: '成就',
+    en: 'Achievement',
   },
   achievements: {
     zh: achievementZhRecords,
+    en: achievementEnRecords,
   },
   pageBreakBeforeTalk: {
     zh: false,
+    en: false,
   },
   talkTitle: {
     zh: '講座、課程',
+    en: 'Talks, Lectures',
   },
   talks: {
     zh: talkZhRecords,
+    en: talkEnRecords,
   },
   pageBreakBeforeEducation: {
-    zh: false,
+    zh: true,
+    en: false,
   },
   educationTitle: {
     zh: '學歷',
+    en: 'Education',
   },
   educations: {
     zh: educationZhRecords,
+    en: educationEnRecords,
   },
   pageBreakBeforeSkill: {
-    zh: true,
+    zh: false,
+    en: false,
   },
   skillTitle: {
     zh: '技能',
+    en: 'Skills',
   },
   skills: {
     zh: skillZhRecords,
+    en: skillEnRecords,
   },
   pageBreakBeforeShowcases: {
     zh: false,
+    en: true,
   },
   showcasesTitle: {
     zh: '作品集',
+    en: 'Showcases',
   },
   showcasesViewAction: {
     zh: '查看',
+    en: 'View',
   },
   showcasesGitAction: {
     zh: '原始碼',
+    en: 'Source code',
   },
   showcases: {
     zh: showcaseZhRecords,
+    en: showcaseEnRecords,
   },
 });

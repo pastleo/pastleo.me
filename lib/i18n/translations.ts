@@ -52,7 +52,7 @@ export default createI18n({
   },
   showFullResume: {
     zh: '顯示完整履歷',
-    en: 'Show Resume in Chinese',
+    en: 'Show Resume',
   },
   resumeTitle: {
     zh: 'PastLeo 履歷',
