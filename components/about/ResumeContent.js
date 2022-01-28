@@ -30,51 +30,51 @@ const ResumeContent = ({ locale }) => (
         </h3>
       </div>
       { t.experience[locale].map((exp, i) => (
-        <div key={i} className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto pb-2 break-inside-avoid-page')}>
-          <div className={styles.timeMark}>
-            <span>
-              { exp.from }
-              { exp.to && (
-                <>
-                  { ' ~ ' }
-                  <br className='inline sm:hidden' />
-                  { exp.to }
-                </>
+        <React.Fragment key={i}>
+          <div className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto break-inside-avoid-page')}>
+            <div className={styles.timeMark}>
+              <span>
+                { exp.from }
+                { exp.to && (
+                  <>
+                    { ' ~ ' }
+                    <br className='inline sm:hidden' />
+                    { exp.to }
+                  </>
+                ) }
+              </span>
+            </div>
+
+            <article className={classnames(
+              { [EXP_BOTTOM_SPACE_CX[exp.bottomSpace || 'md']]: (exp.details || []).length <= 1 },
+            )}>
+              <h4 className='mb-1'>
+                <span className='text-2xl font-bold'>
+                  <LinkToIfHref href={exp.href}>
+                    { exp.where }
+                  </LinkToIfHref>
+                </span>
+                <span className='ml-2 text-xl font-medium '>
+                  { exp.title }
+                </span>
+              </h4>
+
+              { (exp.details || []).length > 0 && (
+                <ExperienceDetail detail={exp.details[0]} />
               ) }
-            </span>
+            </article>
           </div>
 
-          <article className='mb-4'>
-            <h4 className='mb-1'>
-              <span className='text-2xl font-bold'>
-                <LinkToIfHref href={exp.href}>
-                  { exp.where }
-                </LinkToIfHref>
-              </span>
-              <span className='ml-2 text-xl font-medium '>
-                { exp.title }
-              </span>
-            </h4>
-
-            <div className='ml-3'>
-              { (exp.details || []).map((detail, i) => (
-                <React.Fragment key={i}>
-                  <h5 className='text-xl'>
-                    <LinkToIfHref href={detail.href}>
-                      { detail.title }
-                    </LinkToIfHref>
-                  </h5>
-
-                  <div className='ml-3'>
-                    { (detail.description || []).map((line, i) => (
-                      <Line key={i} line={line} className='text-sm print:text-xs my-1' />
-                    )) }
-                  </div>
-                </React.Fragment>
-              )) }
+          { (exp.details || []).slice(1).map((detail, i) => (
+            <div key={i} className={classnames(styles.resumeStory, 'w-4/5 print:w-9/10 ml-auto break-inside-avoid-page')}>
+              <article className={classnames(
+                'ml-3', { [EXP_BOTTOM_SPACE_CX[exp.bottomSpace || 'md']]: i === exp.details.length - 2 },
+              )}>
+                <ExperienceDetail detail={detail} />
+              </article>
             </div>
-          </article>
-        </div>
+          )) }
+        </React.Fragment>
       )) }
     </div>
 
@@ -188,9 +188,11 @@ const ResumeContent = ({ locale }) => (
               <span className='text-2xl font-bold'>
                 { edu.school }
               </span>
-              <span className='ml-2 text-xl font-medium '>
-                { edu.department }
-              </span>
+              { edu.department && (
+                <span className='ml-2 text-xl font-medium '>
+                  { edu.department }
+                </span>
+              ) }
             </h4>
 
             <div className='ml-3'>
@@ -317,6 +319,25 @@ const ResumeContentPortal = ({ locale }) => {
 };
 
 export default ResumeContentPortal;
+
+const EXP_BOTTOM_SPACE_CX = {
+  xs: 'pb-1', md: 'pb-2', lg: 'pb-6',
+};
+const ExperienceDetail = ({ detail }) => (
+  <div className={classnames('ml-3', EXP_BOTTOM_SPACE_CX[detail.bottomSpace || 'xs'])}>
+    <h5 className='text-xl'>
+      <LinkToIfHref href={detail.href}>
+        { detail.title }
+      </LinkToIfHref>
+    </h5>
+
+    <div className='ml-3'>
+      { (detail.description || []).map((line, i) => (
+        <Line key={i} line={line} className='text-sm print:text-xs my-1' />
+      )) }
+    </div>
+  </div>
+);
 
 const LinkToIfHref = ({ href, preventStyle, className, children }) => (
   href ? (

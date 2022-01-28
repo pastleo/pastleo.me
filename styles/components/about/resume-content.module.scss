@@ -81,6 +81,10 @@ section.resumeContent {
     .container {
       min-height: 14rem;
 
+      @media print {
+        min-height: 165pt;
+      }
+
       .actions {
         .actionItem {
           .icon, .iconBefore {
