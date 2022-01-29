@@ -32,7 +32,7 @@ export function createI18n<T extends TranslationDatas>(translationsDatas: Transl
       {
         [defaultLocale]: defaultTranslation,
         ...Object.fromEntries(
-          otherLocales.map(l => ([l, otherTranslations[l] || defaultTranslation])),
+          otherLocales.map(l => ([l, otherTranslations[l] ?? defaultTranslation])),
         ),
       },
     ])),

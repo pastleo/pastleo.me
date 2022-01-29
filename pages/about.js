@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 
 import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -34,9 +34,22 @@ const About = () => {
   const router = useRef();
   router.current = useRouter();
   const queryResume = typeof router.current.query.resume !== 'undefined';
+  const queryLocale = router.current.query.locale;
 
   const [locale, setLocale] = useState(defaultLocale);
   const [resumeMode, setResumeMode] = useState(false);
+
+  const changeLocale = useCallback(newLocale => {
+    const url = new URL(window.location);
+    url.searchParams.set('locale', newLocale);
+    router.current.replace(url);
+  }, []);
+
+  const openResume = useCallback(() => {
+    const url = new URL(window.location);
+    url.searchParams.set('resume', 'open');
+    router.current.push(url);
+  }, []);
 
   useEffect(() => {
     if (resumeMode) {
@@ -50,6 +63,12 @@ const About = () => {
     setResumeMode(queryResume);
   }, [queryResume]);
 
+  useEffect(() => {
+    if (queryLocale) {
+      setLocale(queryLocale);
+    }
+  }, [queryLocale]);
+
   const codeTyperLines = useMemo(() => [
     ...t.quotes[locale],
     '',
@@ -59,22 +78,20 @@ const About = () => {
       <Button
         key='resume-btn'
         className='my-4 block text-center'
-        onClick={() => {
-          router.current.push('?resume');
-        }}
+        onClick={openResume}
       >
         { t.showFullResume[locale] }
       </Button>
     ),
-  ], [locale]);
+  ], [locale, openResume]);
 
   return (
     <div className={classnames('flex flex-col', normalModeMinHScreen)}>
       <section id={styles.intro} className='p-6'>
         <div id={styles.controls} className='print:hidden flex justify-between p-2'>
           <Back to={resumeMode ? '/about' : '/'} className='p-3' />
-          <div className={classnames('p-3 text-right', resumeModeHidden)}>
-            <LocaleSwitch locales={locales} locale={locale} setLocale={setLocale} />
+          <div className='p-3 text-right'>
+            <LocaleSwitch locales={locales} locale={locale} setLocale={changeLocale} />
           </div>
         </div>
         <h1 className={classnames('text-center font-bold text-2xl pt-4', resumeModeHidden)}>{ t.name[locale] }</h1>
