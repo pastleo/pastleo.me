@@ -393,7 +393,7 @@ const showcaseZhRecords: Showcase[] = [{
   href: 'https://pastleo.me',
   git: 'https://github.com/pastleo/pastleo.me',
   description: [
-    '你現在看到的這個網站，此 /about 頁面可以直接以直式 A4 列印成為這份履歷',
+    '個人網站及部落格，也就是你現在看到的這個網站，其 /about 頁面可以直接以直式 A4 列印成為履歷',
     '使用 Next.js / React 搭建，並使用靜態網站生成方式佈署',
   ],
 }, {
@@ -525,7 +525,7 @@ const showcaseEnRecords: Showcase[] = [{
   href: 'https://pastleo.me',
   git: 'https://github.com/pastleo/pastleo.me',
   description: [
-    'The Website you are browsing, its /about page can be printed in A4 portrait as resume',
+    'My blog and intro website that you may be browsing now, its /about page can be printed in A4 portrait as resume',
     'Built with Next.js / React and deployed by static-site generation',
   ],
 }, {
