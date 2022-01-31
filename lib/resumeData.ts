@@ -140,7 +140,7 @@ const experienceEnRecords: Experience[] = [{
     title: 'QuickBuy クイックバイ Mobile App and E-commerce Platform',
     href: 'https://play.google.com/store/apps/details?id=com.standardtransaction.quickbuy.rnapp',
     description: [
-      'Led the team and work with foreign partner building MVP',
+      'Led the team and worked with foreign partner building MVP',
       'Constructed corss-platform mobile app by using React Native for Android/iOS',
       'Established CI/CD to automate app builds and improve efficiency for the team',
       'Used Ruby on Rails server with React frontend for management web interface',
@@ -323,7 +323,7 @@ const educationEnRecords: Education[] = [{
   from: '2012',
   to: '2016',
   description: [
-    'Also work as director of IT club and minister of IT department in student association',
+    'Also worked as director of IT club and minister of IT department in student association',
   ],
 }, {
   school: 'Panchiao Senior High School',
