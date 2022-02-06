@@ -413,6 +413,15 @@ const showcaseZhRecords: Showcase[] = [{
     '使用 shader 技巧渲染星空',
   ],
 }, {
+  title: 'Unity 小遊戲 - Drifting Sailboat',
+  thumbnail: 'https://i.imgur.com/YgI3o5eh.png',
+  href: 'https://static.pastleo.me/DriftingSailboat/',
+  git: 'https://github.com/pastleo/DriftingSailboat',
+  description: [
+    '2022 過年期間進行的自我黑客松，深入使用 Unity 並做出此作品',
+    '使用空白鍵或是觸控螢幕開帆乘風前進，供玩家挑戰在觸礁之前能夠航行多遠',
+  ],
+}, {
   title: '鱗片球體與鏡面、陰影效果',
   thumbnail: 'https://i.imgur.com/RI4fRJzh.png',
   href: 'https://static.pastleo.me/webgl-ironman/05-framebuffer-shadow.html',
@@ -543,6 +552,16 @@ const showcaseEnRecords: Showcase[] = [{
   description: [
     'Using WebGL without library, allowing 3 players to play against each other',
     'Program GPU by creating a special shader to render stars',
+  ],
+}, {
+  title: 'Unity mini-game: Drifting Sailboat',
+  thumbnail: 'https://i.imgur.com/YgI3o5eh.png',
+  href: 'https://static.pastleo.me/DriftingSailboat/',
+  git: 'https://github.com/pastleo/DriftingSailboat',
+  description: [
+    'A deep-dive of Unity during 2022 chinese new year',
+    'Hold space key or touch screen to catch the wind',
+    'For players to challenge how much score they can get before hitting the rocks',
   ],
 }, {
   title: 'Sphere covered by scale with mirror and shadow effect',

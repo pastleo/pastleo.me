@@ -12,20 +12,33 @@ const GA_GTAG_SCRIPT = `
   gtag('config', '${GA_ID}');
 `;
 
+const DEFAULT_TITLE = 'PastLeo';
+const DEFAULT_DESCRIPTION = 'Blog, Introduction and Homepage of PastLeo';
+
 const HtmlHead = ({ options }) => (
   <Head>
     <script async src={GA_GTAG_SRC} />
     <script dangerouslySetInnerHTML={{ __html: GA_GTAG_SCRIPT }} />
 
-    <title key='title'>{ options.title || 'PastLeo' }</title>
-    <meta key='description' name='Description' content='Blog, Introduction and Homepage of PastLeo' />
+    <title key='title'>{ options.title || DEFAULT_TITLE }</title>
+    <meta key='description' name='Description' content={options.description || DEFAULT_DESCRIPTION} />
     <link key='favicon' rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-    <link key='apple-touch-icon' rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
-    <meta key='viewport' name='viewport' content='width=device-width, initial-scale=1' />
-    <meta key='og:image' name='og:image' content={options.thumbnail || ogImageSrc} />
     <link key='manifest' rel='manifest' href='/manifest.json' />
 
-    <link rel='alternate' type='application/rss+xml' href='/feed.xml' />
+    <meta key='viewport' name='viewport' content='width=device-width, initial-scale=1' />
+    <link key='alternate-rss' rel='alternate' type='application/rss+xml' href='/feed.xml' />
+
+    <meta key='og:title' property='og:title' content={options.title || DEFAULT_TITLE} />
+    <meta key='og:description' name='og:description' content={options.description || DEFAULT_DESCRIPTION} />
+    <meta key='og:image' name='og:image' content={options.thumbnail || ogImageSrc} />
+
+    <link key='apple-touch-icon' rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+
+    <meta key='twitter:title' name='twitter:title' content={options.title || DEFAULT_TITLE} />
+    <meta key='twitter:description' name='twitter:description' content={options.description || DEFAULT_DESCRIPTION} />
+    <meta key='twitter:image' name='twitter:image' content={options.thumbnail || ogImageSrc} />
+    <meta key='twitter:card' name='twitter:card' content='summary_large_image' />
+    <meta key='twitter:creator' name='twitter:creator' content='@PastLeo' />
   </Head>
 );
 

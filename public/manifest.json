@@ -1,10 +1,10 @@
 {
   "name": "PastLeo",
   "short_name": "PastLeo",
-  "description": "PastLeo's blog and intro website",
+  "description": "Blog, Introduction and Homepage of PastLeo",
   "theme_color": "#6bde99",
   "background_color": "#2c2c2c",
-  "display": "standalone",
+  "display": "browser",
   "orientation": "natural",
   "lang": "zh-TW",
   "icons": [
