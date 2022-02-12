@@ -23,7 +23,8 @@ type TranslationCollection<T extends TranslationDatas> = {
   ) : never;
 };
 
-const otherLocales = locales.filter(l => l.localeName !== defaultLocale).map(l => l.localeName);
+export type OtherLocale = Exclude<Locale, DefaultLocale>;
+export const otherLocales = locales.filter(l => l.localeName !== defaultLocale).map(l => l.localeName as OtherLocale);
 
 export function createI18n<T extends TranslationDatas>(translationsDatas: TranslationDatasNoExtraLocale<T>): TranslationCollection<T> {
   return Object.fromEntries(
