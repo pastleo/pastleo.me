@@ -1,4 +1,4 @@
-name: '[Main] lint, build_export and deploy'
+name: '[Main] check, build_export and deploy'
 
 on: push
 
@@ -7,7 +7,7 @@ on: push
 #   GCP_BUCKET_NAME: GCP bucket name (object storage)
 
 jobs:
-  lint:
+  check:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,10 +24,11 @@ jobs:
     - run: npm install
     - run: npm run ci-tc
     - run: npm run lint
+    - run: npm run ci-test
 
   build_export:
     runs-on: ubuntu-latest
-    needs: lint
+    needs: check
 
     steps:
     - uses: actions/checkout@v2
