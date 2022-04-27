@@ -167,7 +167,7 @@ const experienceEnRecords: Experience[] = [{
 const achievementZhRecords: Achievement[] = [{
   what: '優選',
   title: 'iThome 鐵人賽 2021 Modern Web 組',
-  href: 'https://ithelp.ithome.com.tw/2021ironman/reward',
+  href: 'https://ithelp.ithome.com.tw/2020-12th-ironman/articles/3929',
   time: '2022/1',
   description: [
     {
@@ -184,7 +184,7 @@ const achievementZhRecords: Achievement[] = [{
 const achievementEnRecords: Achievement[] = [{
   what: 'Merit Award',
   title: 'iThome Ironman (tech post marathon) 2021, Modern Web',
-  href: 'https://ithelp.ithome.com.tw/2021ironman/reward',
+  href: 'https://ithelp.ithome.com.tw/2020-12th-ironman/articles/3929',
   time: '2022/1',
   description: [
     {
