@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/future/image';
 import { useRouter } from 'next/router';
 import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 
@@ -104,7 +105,7 @@ const About = () => {
           <div className={classnames('pt-4 px-4 text-right', resumeModeBlock)}>
             <h3 className='mb-2'>
               <span className=''>{ t.location[locale] }</span>
-              <img alt='taiwan' className={classnames(styles.taiwan, styles.icon, 'inline-block')} src={taiwanSvg} />
+              <Image alt='taiwan' className={classnames(styles.taiwan, styles.icon, 'inline-block')} src={taiwanSvg} />
             </h3>
             <h3 className='mb-2'>
               <span className=''>{ t.jobTitle[locale] }</span>
@@ -127,7 +128,7 @@ const About = () => {
         <div className={classnames('max-w-lg mx-auto flex text-center', resumeModeHidden)}>
           <div className='flex-1'>
             <a target='_blank' href='https://en.wikipedia.org/wiki/Taiwan' rel='noopener noreferrer'>
-              <img alt='taiwan' className={classnames(styles.taiwan, 'mx-auto')} src={taiwanSvg} />
+              <Image alt='taiwan' className={classnames(styles.taiwan, 'mx-auto')} src={taiwanSvg} />
               <h3>{ t.location[locale] }</h3>
             </a>
           </div>

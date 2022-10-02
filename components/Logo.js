@@ -1,3 +1,4 @@
+import Image from 'next/future/image';
 import classnames from 'classnames';
 
 import styles from '../styles/components/logo.module.scss';
@@ -6,7 +7,8 @@ import avatarJpg from '../assets/logo/avatar.jpg';
 import hackerJpg from '../assets/logo/avatar-hacker.jpg';
 
 const NormalLogoImg = props => (
-  <img
+  <Image
+    placeholder='blur'
     src={avatarJpg}
     alt='avatar, logo'
     className={classnames(styles.normal, 'rounded-full')}
@@ -14,7 +16,8 @@ const NormalLogoImg = props => (
   />
 );
 const HackerLogoImg = props => (
-  <img
+  <Image
+    placeholder='blur'
     src={hackerJpg}
     alt='avatar, hacker'
     className={classnames(styles.hacker, 'rounded-full')}
