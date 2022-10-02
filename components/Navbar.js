@@ -1,3 +1,4 @@
+import Image from 'next/future/image';
 import Link from 'next/link';
 import classnames from 'classnames';
 
@@ -16,7 +17,8 @@ const Navbar = () => (
     </div>
     <Link href='/'>
       <a className='flex justify-center items-center p-1'>
-        <img
+        <Image
+          placeholder='blur'
           alt='logo'
           src={avatarJpg}
           className={classnames(styles.logo, 'rounded-full w-8 md:w-10')}

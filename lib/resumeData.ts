@@ -55,9 +55,19 @@ interface Showcase {
 }
 
 const experienceZhRecords: Experience[] = [{
+  where: 'Crypto.com',
+  title: 'Frontend Engineer',
+  from: '2022/3',
+  details: [{
+    title: 'Defi Apps Development',
+  }, {
+    title: 'NFT marketplace Development',
+  }],
+}, {
   where: 'Freelancer',
   title: '進修、自我實現',
   from: '2021/2',
+  to: '2022/3',
   details: [{
     title: 'Unamed World',
     href: 'https://intro.unamed.world/',
@@ -108,6 +118,15 @@ const experienceZhRecords: Experience[] = [{
 }];
 
 const experienceEnRecords: Experience[] = [{
+  where: 'Crypto.com',
+  title: 'Frontend Engineer',
+  from: '2022/3',
+  details: [{
+    title: 'Defi Apps Development',
+  }, {
+    title: 'NFT marketplace Development',
+  }],
+}, {
   where: 'Freelancer',
   title: 'Advanced studies, Self-fullfillment',
   from: '2021/2',

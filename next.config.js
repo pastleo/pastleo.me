@@ -1,23 +1,12 @@
-const withPlugins = require('next-compose-plugins');
-const optimizedImages = require('next-optimized-images');
+const withExportImages = require('next-export-optimize-images');
 
-module.exports = withPlugins([
-  [optimizedImages, {}],
-], {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  images: {
-    disableStaticImages: true,
+  swcMinify: true,
+  eslint: {
+    ignoreDuringBuilds: true,
   },
+};
 
-  // https://github.com/vercel/next.js/issues/17806#issuecomment-913437792
-  webpack: config => {
-    config.module.rules.push({
-      test: /\.js$/,
-      type: 'javascript/auto',
-      resolve: {
-        fullySpecified: false,
-      },
-    });
-    return config;
-  },
-});
+module.exports = withExportImages(nextConfig);

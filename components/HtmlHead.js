@@ -1,6 +1,7 @@
 import Head from 'next/head';
+import Script from 'next/script';
 
-import ogImageSrc from '../assets/og-image.jpg';
+import ogImageJpg from '../assets/og-image.jpg';
 
 const GA_ID = 'G-YTX00MDT79';
 const GA_GTAG_SRC = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
@@ -15,11 +16,10 @@ const GA_GTAG_SCRIPT = `
 const DEFAULT_TITLE = 'PastLeo';
 const DEFAULT_DESCRIPTION = 'Blog, Introduction and Homepage of PastLeo';
 
-const HtmlHead = ({ options }) => (
+const HtmlHead = ({ options }) => <>
+  <Script id='googletagmanager' strategy='beforeInteractive' src={GA_GTAG_SRC} />
+  <Script id='googletagmanager-id' strategy='beforeInteractive'>{ GA_GTAG_SCRIPT }</Script>
   <Head>
-    <script async src={GA_GTAG_SRC} />
-    <script dangerouslySetInnerHTML={{ __html: GA_GTAG_SCRIPT }} />
-
     <title key='title'>{ options.title || DEFAULT_TITLE }</title>
     <meta key='description' name='Description' content={options.description || DEFAULT_DESCRIPTION} />
     <link key='favicon' rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
@@ -30,16 +30,16 @@ const HtmlHead = ({ options }) => (
 
     <meta key='og:title' property='og:title' content={options.title || DEFAULT_TITLE} />
     <meta key='og:description' name='og:description' content={options.description || DEFAULT_DESCRIPTION} />
-    <meta key='og:image' name='og:image' content={options.thumbnail || ogImageSrc} />
+    <meta key='og:image' name='og:image' content={options.thumbnail || ogImageJpg.src} />
 
     <link key='apple-touch-icon' rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
 
     <meta key='twitter:title' name='twitter:title' content={options.title || DEFAULT_TITLE} />
     <meta key='twitter:description' name='twitter:description' content={options.description || DEFAULT_DESCRIPTION} />
-    <meta key='twitter:image' name='twitter:image' content={options.thumbnail || ogImageSrc} />
+    <meta key='twitter:image' name='twitter:image' content={options.thumbnail || ogImageJpg.src} />
     <meta key='twitter:card' name='twitter:card' content='summary_large_image' />
     <meta key='twitter:creator' name='twitter:creator' content='@PastLeo' />
   </Head>
-);
+</>;
 
 export default HtmlHead;

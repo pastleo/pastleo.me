@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Image from 'next/future/image';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 
@@ -241,7 +242,7 @@ const ResumeContent = ({ locale }) => (
         { t.showcases[locale].map((showcase, i) => (
           <div key={i} className={classnames(styles.showcase, 'mb-6 break-inside-avoid-page')}>
             <ExternalImage alt={showcase.title} src={showcase.thumbnail} className={styles.thumbnail} />
-            <img alt='' src={showcasePrintGradientPng} className={styles.printGradient} />
+            <img alt='' src={showcasePrintGradientPng.src} className={styles.printGradient} />
             <div className={classnames(styles.container, 'flex flex-col p-4')}>
               <LinkToIfHref href={showcase.href} preventStyle className='flex-1'>
                 <div className={classnames(styles.description)}>
