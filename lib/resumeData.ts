@@ -59,9 +59,9 @@ const experienceZhRecords: Experience[] = [{
   title: 'Frontend Engineer',
   from: '2022/3',
   details: [{
-    title: 'Defi Apps Development'
+    title: 'Defi Apps Development',
   }, {
-    title: 'NFT marketplace Development'
+    title: 'NFT marketplace Development',
   }],
 }, {
   where: 'Freelancer',
@@ -122,9 +122,9 @@ const experienceEnRecords: Experience[] = [{
   title: 'Frontend Engineer',
   from: '2022/3',
   details: [{
-    title: 'Defi Apps Development'
+    title: 'Defi Apps Development',
   }, {
-    title: 'NFT marketplace Development'
+    title: 'NFT marketplace Development',
   }],
 }, {
   where: 'Freelancer',

@@ -6,7 +6,7 @@ const nextConfig = {
   swcMinify: true,
   eslint: {
     ignoreDuringBuilds: true,
-  }
+  },
 };
 
 module.exports = withExportImages(nextConfig);

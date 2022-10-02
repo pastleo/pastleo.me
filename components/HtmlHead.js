@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Script from 'next/script'
+import Script from 'next/script';
 
 import ogImageJpg from '../assets/og-image.jpg';
 
@@ -17,8 +17,8 @@ const DEFAULT_TITLE = 'PastLeo';
 const DEFAULT_DESCRIPTION = 'Blog, Introduction and Homepage of PastLeo';
 
 const HtmlHead = ({ options }) => <>
-  <Script strategy='beforeInteractive' src={GA_GTAG_SRC} />
-  <Script strategy='beforeInteractive'>{ GA_GTAG_SCRIPT }</Script>
+  <Script id='googletagmanager' strategy='beforeInteractive' src={GA_GTAG_SRC} />
+  <Script id='googletagmanager-id' strategy='beforeInteractive'>{ GA_GTAG_SCRIPT }</Script>
   <Head>
     <title key='title'>{ options.title || DEFAULT_TITLE }</title>
     <meta key='description' name='Description' content={options.description || DEFAULT_DESCRIPTION} />
