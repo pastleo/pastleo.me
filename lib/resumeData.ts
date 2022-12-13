@@ -55,7 +55,7 @@ interface Showcase {
 }
 
 const experienceZhRecords: Experience[] = [{
-  where: 'Crypto.com',
+  where: 'Crypto.com & CronosLabs',
   title: 'Frontend Engineer',
   from: '2022/3',
   details: [{
@@ -118,7 +118,7 @@ const experienceZhRecords: Experience[] = [{
 }];
 
 const experienceEnRecords: Experience[] = [{
-  where: 'Crypto.com',
+  where: 'Crypto.com & CronosLabs',
   title: 'Frontend Engineer',
   from: '2022/3',
   details: [{
