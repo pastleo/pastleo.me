@@ -53,7 +53,7 @@ jobs:
         path: out
 
   deploy:
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     needs: build_export
     runs-on: ubuntu-latest
 
