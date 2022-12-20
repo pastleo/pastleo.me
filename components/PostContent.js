@@ -13,7 +13,7 @@ import styles from '../styles/components/post-content.module.scss';
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
 
 const PostContent = ({ children }) => (
-  <div className={styles.postContent}>
+  <div className={classnames(styles.postContent, 'px-4 pt-4 max-w-screen-md mx-auto')}>
     { children }
   </div>
 );

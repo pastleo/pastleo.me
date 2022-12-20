@@ -10,7 +10,7 @@ createdAt: 2022/12/20
 
 ![WebGL — 建構網頁中的 3D 遊戲，從基礎渲染原理、光影到應用 封面](https://i.imgur.com/EVgLDcIh.jpg)
 
-這本書除了延續系列文章使用大量範例帶領讀者之外，也大幅度改進了鐵人賽系列文章的內容，有些章節幾乎到重寫的程度，相較於鐵人賽系列文章而言，更詳細、精確地解釋了各個主題，也嘗試把知識梳理得更容易理解。除了 WebGL 畫面渲染的部份之外，在這本書還加入了『遊戲互動』，最後製作出這款『Catch The Wind!』航行遊戲：
+這本書除了延續系列文章使用大量範例帶領讀者學習 WebGL 之外，也大幅度改進了鐵人賽系列文章的內容，有些章節幾乎到重寫的程度，相較於鐵人賽系列文章而言，更詳細、精確地解釋了各個主題，也嘗試把知識梳理得更容易理解。除了 WebGL 畫面渲染的部份之外，在這本書還加入了『遊戲互動』，最後製作出這款『Catch The Wind!』航行遊戲：
 
 #### https://webgl-book.pastleo.me/demo.html
 
@@ -26,11 +26,11 @@ createdAt: 2022/12/20
 
 ---
 
-### WebGL1 vs WebGL2
+### WebGL2 vs WebGL1
 
 這本書在撰寫的時候，iOS 已經更新到 15 版正式支援 WebGL2，也就是說主流瀏覽器包含 Chrome、Firefox、Safari 以及 Edge 都已支援 WebGL2 （詳細支援狀況請見 [caniuse](https://caniuse.com/webgl2)），因此書中的範例使用 WebGL2 撰寫而成，而鐵人賽進行時 iOS 的 15 版還不是正式版本，因此當下使用了 WebGL1。
 
-WebGL2 相較於 WebGL1 有許多的改進，筆者覺得最有感的無非是 WebGL2 可以支援任意大小的圖片做為 texture，不像 WebGL1 的 texture 圖片長寬只能是 2 的次方，除此之外 WebGL1 支援的 framebuffer 組合也相當有限；不過也不得不說 WebGL1 的相容性還是比較好，例如筆者手上的 iPhone 6 就只支援 WebGL1，為此筆者在『Catch The Wind!』航行遊戲的 demo 連結中加入了簡單的功能檢查，如果瀏覽器不支援 WebGL2 則會轉跳到 [WebGL1 的版本](https://github.com/pastleo/webgl-book-examples/blob/main/game_catch_the_wind/webgl1/main.js)。
+WebGL2 相較於 WebGL1 有許多的改進，筆者覺得最有感的無非是 WebGL2 可以支援任意大小的圖片做為 texture，不像 WebGL1 的 texture 只有 2 次方長寬的圖片支援完整的功能，除此之外 WebGL1 支援的 framebuffer 組合也相當有限；不過也不得不說 WebGL1 的相容性還是比較好，例如筆者手上的 iPhone 6 就只支援 WebGL1，為此筆者在『Catch The Wind!』航行遊戲的 demo 連結中加入了簡單的功能檢查，如果瀏覽器不支援 WebGL2 則會轉跳到 [WebGL1 的版本](https://github.com/pastleo/webgl-book-examples/blob/main/game_catch_the_wind/webgl1/main.js)。
 
 『Catch The Wind!』航行遊戲的 WebGL1 跟 WebGL2 差異中，除了書中提到 GLSL 語法以及 VAO 差異之外，framebuffer 的支援差異更是得在 WebGL1 版本中想個辦法把浮點數以 RGB 形式傳送，幸好島嶼高度圖的值域不廣，使用 RGB 的 R channel 8bit 表示整數 -127 ~ +128，剩下 GB channel 共 16bit 表示小數，即可達到與 WebGL2 版本一樣的效果，有興趣的朋友可以參考此連結直接連到 WebGL1 版本：
 
