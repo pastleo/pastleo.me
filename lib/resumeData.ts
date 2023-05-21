@@ -58,8 +58,9 @@ const experienceZhRecords: Experience[] = [{
   where: 'Crypto.com & CronosLabs',
   title: 'Frontend Engineer',
   from: '2022/3',
+  to: '',
   details: [{
-    title: 'Defi Apps Development',
+    title: 'DEX, DeFi & GameFi Web Apps Development',
   }, {
     title: 'NFT marketplace Development',
   }],
@@ -121,8 +122,9 @@ const experienceEnRecords: Experience[] = [{
   where: 'Crypto.com & CronosLabs',
   title: 'Frontend Engineer',
   from: '2022/3',
+  to: '',
   details: [{
-    title: 'Defi Apps Development',
+    title: 'DEX, DeFi & GameFi Web Apps Development',
   }, {
     title: 'NFT marketplace Development',
   }],
@@ -184,6 +186,18 @@ const experienceEnRecords: Experience[] = [{
 }];
 
 const achievementZhRecords: Achievement[] = [{
+  what: '著作',
+  title: '『WebGL — 建構網頁中的 3D 遊戲，從基礎渲染原理、光影到應用』',
+  time: '2022/12',
+  description: [
+    {
+      href: 'https://www.tenlong.com.tw/products/9786267146828',
+      line: '深智數位(2022) / ISBN: 9786267146828',
+      bold: true,
+    },
+    '延續 iThome 2021 WebGL 系列文章，使用大量範例帶領讀者學習 WebGL。除了畫面渲染的部份之外，在這本書還加入了『遊戲互動』製作教學，設計出『Catch The Wind!』航行遊戲',
+  ],
+}, {
   what: '優選',
   title: 'iThome 鐵人賽 2021 Modern Web 組',
   href: 'https://ithelp.ithome.com.tw/2020-12th-ironman/articles/3929',
@@ -195,12 +209,23 @@ const achievementZhRecords: Achievement[] = [{
       bold: true,
     },
     '帶領讀者從 WebGL 的基礎 — 畫三角形開始，到 2D/3D transform、光影效果，最後製作出帆船與海的 3D 場景',
-    '',
-    '此系列文章內容將會擴增成冊出版，預計於 2022 秋推出',
   ],
 }];
 
 const achievementEnRecords: Achievement[] = [{
+  what: 'Author of',
+  title: '"WebGL — 建構網頁中的 3D 遊戲，從基礎渲染原理、光影到應用"',
+  time: '2022/12',
+  description: [
+    {
+      href: 'https://deepmind.com.tw/product/webgl%e5%bb%ba%e6%a7%8b%e7%b6%b2%e9%a0%81%e4%b8%ad%e7%9a%843d%e9%81%8a%e6%88%b2-%e5%be%9e%e5%9f%ba%e7%a4%8e%e6%b8%b2%e6%9f%93%e5%8e%9f%e7%90%86%e3%80%81%e5%85%89%e5%bd%b1%e5%88%b0%e6%87%89%e7%94%a8dm2/',
+      line: 'Deepmind Digital (2022) / ISBN: 9786267146828',
+      bold: true,
+    },
+    'Based on iThome 2021 WebGL tech posts, guiding readers to learn about WebGL with examples. Additionally, this book comes with tutorials for games development, building a sailing game "Catch The Wind!"',
+  ],
+
+}, {
   what: 'Merit Award',
   title: 'iThome Ironman (tech post marathon) 2021, Modern Web',
   href: 'https://ithelp.ithome.com.tw/2020-12th-ironman/articles/3929',
@@ -212,8 +237,6 @@ const achievementEnRecords: Achievement[] = [{
       bold: true,
     },
     'Guide readers from WebGL fundamentals — triangles, 2D/3D transform, lighting and finally build a 3D scene with a sailboat on ocean',
-    '',
-    'Content of these 30 tech posts will be extended and publish as book, estimated to be release on fall in 2022',
   ],
 }];
 
@@ -691,8 +714,8 @@ export default createI18n({
     en: false,
   },
   achievementTitle: {
-    zh: '成就',
-    en: 'Achievement',
+    zh: '成就 & 出版品',
+    en: 'Achievement & Publication',
   },
   achievements: {
     zh: achievementZhRecords,

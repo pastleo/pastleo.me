@@ -34,7 +34,8 @@ export default createI18n({
   },
   briefCv: {
     zh: [
-      '於 2021 iThome 鐵人賽撰寫 WebGL 文章獲得優選',
+      'DEX, DeFi & GameFi 前端開發',
+      '鑽研 GPU 渲染技術，撰寫 WebGL 技術文章，獲得 2021 iThome 鐵人賽優選，出版『WebGL — 建構網頁中的 3D 遊戲，從基礎渲染原理、光影到應用』書籍',
       'ASTRO Camp Javascript 兼任講師',
       '多年 React, React Native 以及 Next.js 前端開發經驗',
       '多年 Rails, Elixir 後端開發經驗',
@@ -42,6 +43,8 @@ export default createI18n({
       '多年 Linux 商轉、個人電腦使用經驗',
     ],
     en: [
+      'Frontend development of DEX, DeFi & GameFi',
+      'Author of Book "WebGL — 建構網頁中的 3D 遊戲，從基礎渲染原理、光影到應用"',
       'Merit award of iThome Ironman (tech post marathon) 2021 writing about WebGL',
       'Javascript lecturer of ASTRO Camp',
       'Years of React, React Native, Next.js, frontend development experience',

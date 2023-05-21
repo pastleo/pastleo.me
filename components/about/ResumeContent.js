@@ -5,7 +5,7 @@ import classnames from 'classnames';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faSuitcase, faAward, faCommentDots, faGraduationCap, faBook, faFolderOpen,
+  faSuitcase, faStar, faCommentDots, faGraduationCap, faBook, faFolderOpen,
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { faGitAlt } from '@fortawesome/free-brands-svg-icons';
@@ -36,7 +36,7 @@ const ResumeContent = ({ locale }) => (
             <div className={styles.timeMark}>
               <span>
                 { exp.from }
-                { exp.to && (
+                { exp.to !== undefined && (
                   <>
                     { ' ~ ' }
                     <br className='inline sm:hidden' />
@@ -85,7 +85,7 @@ const ResumeContent = ({ locale }) => (
     )}>
       <div className='w-4/5 print:w-9/10 ml-auto mb-4'>
         <h3 className='text-3xl font-bold ml-n3.5'>
-          <FontAwesomeIcon icon={faAward} className='ml-1 mr-2' />
+          <FontAwesomeIcon icon={faStar} className='ml-1 mr-2' />
           { t.achievementTitle[locale] }
         </h3>
       </div>
