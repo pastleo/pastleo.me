@@ -2,26 +2,27 @@ name: '[Main] check, build_export and deploy'
 
 on: push
 
-# secrets:
-#   GCP_SA_KEY: json of service account's to access the GCP bucket
-#   GCP_BUCKET_NAME: GCP bucket name (object storage)
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   check:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Setup Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
         node-version: 16.12.0
-    - name: Cache node modules
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: node-modules-${{ hashFiles('**/package-lock.json') }}
-    - run: npm install
+        cache: npm
+    - run: npm ci
     - run: npm run ci-tc
     - run: npm run lint
     - run: npm run ci-test
@@ -31,44 +32,33 @@ jobs:
     needs: check
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Setup Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
         node-version: 16.12.0
-    - name: Cache node modules
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: node-modules-${{ hashFiles('**/package-lock.json') }}
-    - run: npm install
+        cache: npm
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+    - run: npm ci
     - run: npm run build
     - run: npm run rss
     - run: npm run sitemap
     - run: npm run export
-    - name: upload exported build
-      uses: actions/upload-artifact@v1
+    - name: Upload exported build
+      uses: actions/upload-pages-artifact@v3
       with:
-        name: out
         path: out
 
   deploy:
     if: github.ref == 'refs/heads/main'
     needs: build_export
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-    - name: download exported build
-      uses: actions/download-artifact@v1
-      with:
-        name: out
-    - id: auth
-      name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v0'
-      with:
-        credentials_json: ${{ secrets.GCP_SA_KEY }}
-    - name: 'Set up Cloud SDK'
-      uses: 'google-github-actions/setup-gcloud@v0'
-    - run: gsutil -m -h "Cache-Control:no-cache, max-age=0" rsync -r -d out/ "gs://${GCP_BUCKET_NAME}/"
-      env:
-        GCP_BUCKET_NAME: ${{ secrets.GCP_BUCKET_NAME }}
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

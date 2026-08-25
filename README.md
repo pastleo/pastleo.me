@@ -30,11 +30,19 @@ And open `http://localhost:3000`
 
 This website is designed to be deployed using static-site generator mode of Next.js:
 
-```
+```sh
 npm run build
+npm run rss
+npm run sitemap
 npm run export
 ```
 
-#### Automation by Github Actions
+#### Automation by GitHub Actions
 
-see `.github/workflows/main.yml`
+Pushes run checks and create the static export through `.github/workflows/main.yml`.
+Pushes to `main` deploy the export to GitHub Pages at the custom domain
+`pastleo.me`.
+
+In the repository settings, configure Pages to use **GitHub Actions** as its
+source. The custom domain's DNS records must point to GitHub Pages; HTTPS can be
+enforced after GitHub verifies the domain and DNS records.
