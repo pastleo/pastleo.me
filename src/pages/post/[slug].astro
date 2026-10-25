@@ -1,0 +1,28 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts } from '../../lib/posts';
+import { blogImage } from '../../plugins/rehype-blog.mjs';
+import '../../styles/blog.css';
+
+export async function getStaticPaths() {
+  return (await getPosts()).map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+interface Props { post: CollectionEntry<'posts'> }
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<BaseLayout title={`${post.data.title} | PastLeo`} description={post.data.description ?? post.data.title}
+  image={post.data.thumbnail ? blogImage(post.data.thumbnail) : undefined}
+  imageAlt={post.data.thumbnail ? post.data.title : undefined}
+  publishedTime={`${post.data.createdAt}T00:00:00+08:00`}>
+  <article class="blog-page">
+    <a href="/blog/">← 部落格</a>
+    <header>
+      <h1>{post.data.title}</h1>
+      <time datetime={post.data.createdAt}>{post.data.createdAt.replaceAll('-', '/')}</time>
+    </header>
+    <div class="post-body"><Content /></div>
+    <a href="/blog/">← 所有文章</a>
+  </article>
+</BaseLayout>

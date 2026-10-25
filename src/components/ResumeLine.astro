@@ -1,0 +1,28 @@
+---
+import type { Line } from '../data/resume';
+
+interface Props {
+  line: Line;
+  as?: 'p' | 'li';
+  className?: string;
+}
+
+const { line, as = 'p', className } = Astro.props;
+const content = typeof line === 'string' ? line : line.line;
+const href = typeof line === 'string' ? undefined : line.href;
+const bold = typeof line !== 'string' && line.bold === true;
+const Tag = as;
+---
+
+<Tag class:list={[className, bold && 'bold']}>
+  {
+    href
+      ? <a href={href} target="_blank" rel="noopener noreferrer">{content}</a>
+      : content
+  }
+</Tag>
+
+<style>
+  .bold { font-weight: 700; }
+  a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

@@ -1,0 +1,23 @@
+{
+  "name": "PastLeo",
+  "short_name": "PastLeo",
+  "description": "PastLeo 的個人網站、履歷與部落格。",
+  "start_url": "/",
+  "theme_color": "#6bde99",
+  "background_color": "#0c0e0c",
+  "display": "browser",
+  "orientation": "natural",
+  "lang": "zh-TW",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

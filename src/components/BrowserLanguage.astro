@@ -1,0 +1,32 @@
+---
+import { translatedPages, localePreferenceKey } from '../i18n/config';
+---
+
+<script define:vars={{ paths: translatedPages.home, preferenceKey: localePreferenceKey }}>
+  // Only the neutral entry URL negotiates a language. Explicit locale URLs win.
+  if (window.location.pathname === '/') {
+    let preferred;
+    try {
+      const saved = localStorage.getItem(preferenceKey);
+      if (Object.hasOwn(paths, saved)) preferred = saved;
+    } catch {
+      // Storage can be disabled; browser detection and ordinary links still work.
+    }
+
+    if (!preferred) {
+      for (const language of navigator.languages ?? [navigator.language]) {
+        const candidate = language.toLowerCase().split('-')[0];
+        if (Object.hasOwn(paths, candidate)) {
+          preferred = candidate;
+          break;
+        }
+      }
+    }
+
+    if (preferred && paths[preferred] !== window.location.pathname) {
+      const destination = new URL(window.location.href);
+      destination.pathname = paths[preferred];
+      window.location.replace(destination.href);
+    }
+  }
+</script>

@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts, postsPerPage, postUrl, archiveUrl } from '../../lib/posts';
+import { blogImage } from '../../plugins/rehype-blog.mjs';
+import '../../styles/blog.css';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const total = Math.max(1, Math.ceil(posts.length / postsPerPage));
+  return Array.from({ length: total }, (_, index) => ({
+    params: { page: index === 0 ? undefined : String(index + 1) },
+    props: { posts: posts.slice(index * postsPerPage, (index + 1) * postsPerPage), current: index + 1, total },
+  }));
+}
+interface Props { posts: CollectionEntry<'posts'>[]; current: number; total: number }
+const { posts, current, total } = Astro.props;
+---
+<BaseLayout title={`部落格${current > 1 ? ` — 第 ${current} 頁` : ''} | PastLeo`} description="PastLeo 的技術文章與開發筆記。">
+  <section class="blog-page" aria-labelledby="blog-title">
+    <h1 id="blog-title">部落格</h1>
+    <p class="muted">技術文章與開發筆記</p>
+    <ul class="post-list">
+      {posts.map((post) => <li><article>
+        {post.data.thumbnail && <a href={postUrl(post.id)} tabindex="-1" aria-hidden="true"><img src={blogImage(post.data.thumbnail)} alt="" width="640" height="360" loading="lazy" /></a>}
+        <time datetime={post.data.createdAt}>{post.data.createdAt.replaceAll('-', '/')}</time>
+        <h2><a href={postUrl(post.id)}>{post.data.title}</a></h2>
+        {post.data.description && <p>{post.data.description}</p>}
+      </article></li>)}
+    </ul>
+    <nav class="pagination" aria-label="文章分頁">
+      {current > 1 && <a href={archiveUrl(current - 1)} rel="prev">← 較新的文章</a>}
+      <span aria-current="page">第 {current} / {total} 頁</span>
+      {current < total && <a href={archiveUrl(current + 1)} rel="next">較舊的文章 →</a>}
+    </nav>
+  </section>
+</BaseLayout>

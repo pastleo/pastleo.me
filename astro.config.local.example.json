@@ -1,0 +1,7 @@
+{
+  "vite": {
+    "server": {
+      "allowedHosts": ["dev.example.com"]
+    }
+  }
+}

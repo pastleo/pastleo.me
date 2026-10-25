@@ -1,0 +1,118 @@
+---
+import '../styles/global.css';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { nav, site } from '../data/site';
+import { defaultLocale, locales, localeInfo, translatedPages, type Locale, type TranslatedPage } from '../i18n/config';
+import { ui } from '../i18n/ui';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import BrowserLanguage from '../components/BrowserLanguage.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: Locale;
+  translatedPage?: TranslatedPage;
+  noindex?: boolean;
+  image?: string;
+  imageAlt?: string;
+  publishedTime?: string;
+}
+
+const {
+  locale = defaultLocale,
+  title = ui[locale].title,
+  description = ui[locale].description,
+  translatedPage,
+  noindex = false,
+  image = '/og-image.jpg',
+  imageAlt = site.name,
+  publishedTime,
+} = Astro.props;
+
+const { lang, ogLocale } = localeInfo[locale];
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+const t = ui[locale];
+const alternates = (translatedPage
+  ? locales.map((language) => ({ language, href: translatedPages[translatedPage][language] }))
+  : []
+).filter((entry): entry is { language: Locale; href: string } => Boolean(entry.href));
+const xDefault = translatedPage ? translatedPages[translatedPage][defaultLocale] : undefined;
+// Resolve named navigation only to routes registered for the current locale.
+const pagesByNavKey = translatedPages as Record<string, Partial<Record<Locale, string>>>;
+const navItems = nav[locale].flatMap((item) => {
+  const href = item.page === 'blog' ? '/blog/' : pagesByNavKey[item.page]?.[locale];
+  return href ? [{ ...item, href }] : [];
+});
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    {translatedPage === 'home' && <BrowserLanguage />}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    {alternates.map(({ language, href }) => (
+      <link rel="alternate" hreflang={localeInfo[language].lang}
+        href={new URL(href, Astro.site)} />
+    ))}
+    {xDefault && <link rel="alternate" hreflang="x-default"
+      href={new URL(xDefault, Astro.site)} />}
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="alternate" type="application/rss+xml" title="PastLeo' blog" href="/feed.xml" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0c0e0c" />
+    <meta property="og:type" content={publishedTime ? 'article' : 'website'} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:locale" content={ogLocale} />
+    {alternates.filter(({ language }) => language !== locale).map(({ language }) => (
+      <meta property="og:locale:alternate" content={localeInfo[language].ogLocale} />
+    ))}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    <meta name="twitter:creator" content="@PastLeo" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container nav" aria-label={t.mainNavigation}>
+        <a class="wordmark" href={getRelativeLocaleUrl(locale)} aria-label={`${site.name} — ${t.home}`}>{site.name}</a>
+        <ul class="site-nav">
+          {
+            navItems.map((item) => (
+              <li>
+                <a href={item.href} aria-current={item.page === translatedPage ? 'page' : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+          {translatedPage && <li><LanguageSwitcher locale={locale} page={translatedPage} /></li>}
+        </ul>
+      </nav>
+    </header>
+    <main id="main" class="container">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>© {new Date().getFullYear()} {site.name}</p>
+        <p>{t.footer}</p>
+      </div>
+    </footer>
+  </body>
+</html>

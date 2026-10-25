@@ -1,0 +1,98 @@
+---
+import { contacts, site } from '../data/site';
+import ContactIcon from './ContactIcon.astro';
+
+interface Props { variant?: 'default' | 'resume' }
+const { variant = 'default' } = Astro.props;
+const links = [
+  ...(variant === 'resume' ? [{ label: new URL(site.url).hostname, href: site.url, external: true }] : []),
+  ...contacts,
+].map((contact) => ({
+  ...contact,
+  screenLabel: 'display' in contact && contact.display ? contact.display : contact.label,
+  printLabel: contact.href.replace(/^https?:\/\//, '').replace(/^mailto:/, ''),
+}));
+---
+
+<ul class:list={['contact-links', variant === 'resume' && 'compact']}>
+  {
+    links.map((contact) => (
+      <li>
+        <a
+          href={contact.href}
+          {...(contact.external
+            ? { target: '_blank', rel: 'noopener noreferrer' }
+            : {})}
+        >
+          <ContactIcon href={contact.href} />
+          <span class="screen-label">{contact.screenLabel}</span>
+          <span class="print-label">{contact.printLabel}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2.75rem;
+    max-width: 100%;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.65rem;
+    background: var(--color-bg-soft);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text);
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+  }
+
+  .contact-links a :global(svg) {
+    flex: 0 0 auto;
+    width: 1.05rem;
+    height: 1.05rem;
+    color: var(--color-accent);
+  }
+
+  .contact-links a:hover,
+  .contact-links a:focus-visible {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .contact-links a:hover { background: var(--color-border); }
+  .contact-links li { min-width: 0; max-width: 100%; }
+  .compact { margin-top: 1.5rem; gap: 0.5rem; }
+  .compact a { font-size: 0.9rem; }
+  .print-label { display: none; }
+
+  @media print {
+    .contact-links, .compact { gap: 0.35rem 1.1rem; margin-top: 0.75rem; }
+    .contact-links a {
+      min-height: 0;
+      padding: 0;
+      gap: 0.35rem;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      color: #111;
+      font-size: 0.9rem;
+      font-weight: 400;
+      text-decoration: none;
+    }
+    .contact-links a :global(svg) { color: #111; width: 0.9rem; height: 0.9rem; }
+    .screen-label { display: none; }
+    .print-label { display: inline; }
+    li { break-inside: avoid; }
+  }
+</style>

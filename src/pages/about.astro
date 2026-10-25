@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Compatibility page for legacy /about URLs (including /about?resume and
+// /about?locale=en). Static hosting cannot branch on query parameters, so a
+// small script rewrites the legacy query URLs to the new static routes, and
+// visible links below cover clients without JavaScript.
+---
+
+<BaseLayout locale="zh" title="PastLeo | 頁面已遷移" noindex>
+  <section class="moved">
+    <h1>此頁面已遷移</h1>
+    <p>你造訪的是舊版網站的「關於我」頁面，其內容已搬到新的網址：</p>
+    <ul>
+      <li><a href="/resume/">完整履歷（繁體中文）</a></li>
+      <li><a href="/en/resume/">Full resume (English)</a></li>
+      <li><a href="/ja/resume/">職務経歴書（日本語）</a></li>
+      <li><a href="/">回到首頁</a></li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<script>
+  const homeByLocale: Record<string, string> = { zh: '/', en: '/en/', ja: '/ja/' };
+  const resumeByLocale: Record<string, string> = { zh: '/resume/', en: '/en/resume/', ja: '/ja/resume/' };
+  const params = new URLSearchParams(window.location.search);
+  const locale = params.get('locale') ?? '';
+  const destination = params.has('resume')
+    ? (resumeByLocale[locale] ?? resumeByLocale.zh)
+    : (homeByLocale[locale] ?? homeByLocale.zh);
+  window.location.replace(destination);
+</script>
+
+<style>
+  .moved {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .moved p {
+    margin-top: 0.75rem;
+  }
+
+  .moved ul {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .moved a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .moved a:hover {
+    color: var(--color-text);
+  }
+</style>

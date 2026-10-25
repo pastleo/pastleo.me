@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactLinks from './ContactLinks.astro';
+import { pageContent } from '../data/site';
+import { translatedPages, type Locale } from '../i18n/config';
+import { ui } from '../i18n/ui';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const c = pageContent[locale];
+const t = ui[locale];
+const resumeHref = translatedPages.resume?.[locale];
+---
+
+<BaseLayout locale={locale} translatedPage="home">
+  <section class="intro">
+    <p class="alias">{c.name}</p>
+    <h1 class="name">{c.nameFormal}</h1>
+    <p class="meta">
+      <span>{c.jobTitle}</span>
+      <span class="sep" aria-hidden="true">·</span>
+      <span>{c.location}</span>
+    </p>
+    <div class="quotes">
+      {
+        c.quotes.map((quote) => <p>{quote}</p>)
+      }
+    </div>
+  </section>
+
+  <section class="brief" aria-labelledby="brief-title">
+    <h2 id="brief-title">{c.briefCvTitle}</h2>
+    <ul class="brief-list">
+      {
+        c.briefCv.map((item) => <li>{item}</li>)
+      }
+    </ul>
+    {
+      resumeHref && (
+        <p class="resume-cta">
+          <a class="btn" href={resumeHref}>{c.showFullResume}</a>
+        </p>
+      )
+    }
+  </section>
+
+  <section id="contact" class="contact" aria-label={t.contacts}>
+    <h2 class="visually-hidden">{t.contacts}</h2>
+    <ContactLinks />
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    padding-top: clamp(3rem, 9vw, 5.5rem);
+  }
+
+  .alias {
+    color: var(--color-accent);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .name {
+    margin-top: 0.25rem;
+    font-size: clamp(2.25rem, 6vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    color: var(--color-muted);
+    font-size: 1.1rem;
+  }
+
+  .quotes {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 38rem;
+    margin-top: 1.75rem;
+  }
+
+  .brief {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .brief h2 {
+    color: var(--color-muted);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  .brief-list {
+    display: grid;
+    gap: 0.55rem;
+    max-width: 40rem;
+    margin-top: 1.1rem;
+  }
+
+  .brief-list li {
+    position: relative;
+    padding-left: 1.3rem;
+  }
+
+  .brief-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.78em;
+    width: 0.55rem;
+    height: 1px;
+    background-color: var(--color-accent);
+  }
+
+  .resume-cta {
+    margin-top: 1.75rem;
+  }
+
+  .contact {
+    margin-top: 3.5rem;
+    padding-bottom: 4.5rem;
+  }
+</style>

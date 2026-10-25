@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="找不到頁面 | PastLeo" description="這個網址不存在，請回到首頁或瀏覽部落格。" noindex>
+  <section class="not-found" aria-labelledby="not-found-title">
+    <p class="status">404</p>
+    <h1 id="not-found-title">找不到這個頁面</h1>
+    <p>網址可能有誤，或頁面已經搬移。你可以回到首頁，或到部落格尋找文章。</p>
+    <nav aria-label="返回網站">
+      <a class="btn" href="/">回到首頁</a>
+      <a class="btn" href="/blog/">瀏覽部落格</a>
+    </nav>
+    <p lang="en">Page not found. <a href="/en/">English home</a></p>
+    <p lang="ja">ページが見つかりません。<a href="/ja/">日本語ホーム</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found { padding-block: clamp(3rem, 10vw, 7rem); }
+  .status { color: var(--color-accent); font-size: 3rem; font-weight: 700; }
+  h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); }
+  p + p, h1 + p { margin-top: 1rem; }
+  nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-block: 2rem; }
+  p a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

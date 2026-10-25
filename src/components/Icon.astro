@@ -1,0 +1,13 @@
+---
+import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
+interface Props { icon: IconDefinition }
+const { icon } = Astro.props;
+const [width, height, , , path] = icon.icon;
+const paths = typeof path === 'string' ? [path] : path;
+---
+
+<!-- Icons: Font Awesome Free by Fonticons, Inc. https://fontawesome.com/license/free (CC BY 4.0) -->
+<svg viewBox={`0 0 ${width} ${height}`} width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false">
+  {paths.map((d) => <path d={d} />)}
+</svg>

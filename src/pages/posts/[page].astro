@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts, postsPerPage, archiveUrl } from '../../lib/posts';
+export async function getStaticPaths() {
+  const total = Math.max(1, Math.ceil((await getPosts()).length / postsPerPage));
+  return Array.from({ length: total }, (_, index) => ({
+    params: { page: `page-${index + 1}` }, props: { destination: archiveUrl(index + 1) },
+  }));
+}
+const { destination } = Astro.props;
+---
+<BaseLayout title="部落格已搬移 | PastLeo" noindex>
+  <script is:inline define:vars={{ destination }}>window.location.replace(destination + window.location.search + window.location.hash);</script>
+  <h1>部落格已搬移</h1>
+  <p><a href={destination}>前往文章列表 →</a></p>
+</BaseLayout>

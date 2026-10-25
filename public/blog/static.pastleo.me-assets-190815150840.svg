@@ -1,0 +1,22 @@
+<svg width="311" height="282" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="284" width="313" y="-1" x="-1"/>
+  <g display="none" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" id="svg_5"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#000000" id="svg_84" height="47" width="254.000007" y="181.5" x="27" fill="#ffffff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="18" id="svg_85" y="211.5" x="52.929688" stroke-opacity="null" stroke-width="0" stroke="#000000" fill="#000000">connection base interface</text>
+  <rect id="svg_86" height="57" width="110" y="112.5" x="27.5" stroke="#000000" fill="#ffffff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="18" id="svg_87" y="147" x="51.5" stroke-width="0" stroke="#000000" fill="#000000">wsConn</text>
+  <rect id="svg_88" height="57" width="110" y="112.5" x="172.5" stroke="#000000" fill="#ffffff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="18" id="svg_89" y="147" x="196.5" stroke-width="0" stroke="#000000" fill="#000000">rtcConn</text>
+  <rect id="svg_90" height="55" width="257" y="46.5" x="27" stroke="#000000" fill="#ffffff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="18" id="svg_91" y="82.5" x="111.96875" stroke-width="0" stroke="#000000" fill="#000000">peerConns</text>
+ </g>
+</svg>

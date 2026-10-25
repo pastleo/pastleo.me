@@ -1,0 +1,611 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ResumeLine from './ResumeLine.astro';
+import ContactLinks from './ContactLinks.astro';
+import { pageContent, type Locale as CareerLocale } from '../data/site';
+import { resume } from '../data/resume';
+
+interface Props { locale: CareerLocale }
+const { locale } = Astro.props;
+const data = resume[locale];
+const profile = pageContent[locale];
+
+const timeRange = (from: string, to?: string) => (to !== undefined ? `${from} ~ ${to}` : from);
+const printLabel = { zh: '列印 / 儲存 PDF', en: 'Print / Save PDF', ja: '印刷 / PDF 保存' }[locale];
+---
+
+<BaseLayout locale={locale} title={data.pageTitle} translatedPage="resume">
+  <article class="resume">
+    <div class="resume-tools"><button class="btn" type="button" data-print-resume hidden>{printLabel}</button></div>
+    <header class="resume-head" id="contact">
+      <h1>{profile.nameFormal}</h1>
+      <p class="alias">{profile.name}</p>
+      <p class="meta">
+        <span>{profile.location} <img src="/taiwan.svg" alt="" aria-hidden="true" /></span>
+        <span class="sep" aria-hidden="true">·</span>
+        <span>{profile.jobTitle}</span>
+      </p>
+      <div class="quotes">
+        {profile.quotes.map((quote) => <p>{quote}</p>)}
+      </div>
+      <ContactLinks variant="resume" />
+    </header>
+
+    <section class="section">
+      <h2>{data.experienceTitle}</h2>
+      <div class="entries">
+        {
+          data.experience.map((exp) => (
+            <div class="entry experience-entry">
+              <p class="time">{timeRange(exp.from, exp.to)}</p>
+              <div class="entry-body">
+                <h3>
+                  {
+                    exp.href
+                      ? <a href={exp.href} target="_blank" rel="noopener noreferrer">{exp.where}</a>
+                      : exp.where
+                  }
+                  <span class="role">{exp.title}</span>
+                </h3>
+                {(exp.details ?? []).map((detail) => (
+                  <div class="detail">
+                    <h4>
+                      {
+                        detail.href
+                          ? <a href={detail.href} target="_blank" rel="noopener noreferrer">{detail.title}</a>
+                          : detail.title
+                      }
+                    </h4>
+                    {(detail.description ?? []).map((line) => (
+                      <ResumeLine line={line} className="line" />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class:list={['section', data.breakBeforeAchievements && 'break-page']}>
+      <h2>{data.achievementTitle}</h2>
+      <div class="entries">
+        {
+          data.achievements.map((achievement) => (
+            <div class="entry">
+              <p class="time">{achievement.time}</p>
+              <div class="entry-body">
+                <h3>
+                  {
+                    achievement.href
+                      ? <a href={achievement.href} target="_blank" rel="noopener noreferrer">{achievement.what}</a>
+                      : achievement.what
+                  }
+                  <span class="role">{achievement.title}</span>
+                </h3>
+                {(achievement.description ?? []).map((line) => (
+                  <ResumeLine line={line} className="line" />
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class:list={['section', data.breakBeforeTalks && 'break-page']}>
+      <h2>{data.talkTitle}</h2>
+      <div class="entries">
+        {
+          data.talks.map((talk) => (
+            <div class="entry">
+              <p class="time">{talk.time}</p>
+              <div class="entry-body">
+                <h3>
+                  {
+                    talk.href
+                      ? <a href={talk.href} target="_blank" rel="noopener noreferrer">{talk.event}</a>
+                      : talk.event
+                  }
+                  <span class="role">{talk.title}</span>
+                </h3>
+                {(talk.description ?? []).map((line) => (
+                  <ResumeLine line={line} className="line" />
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class:list={['section', data.breakBeforeEducation && 'break-page']}>
+      <h2>{data.educationTitle}</h2>
+      <div class="entries">
+        {
+          data.educations.map((education) => (
+            <div class="entry">
+              <p class="time">{timeRange(education.from, education.to)}</p>
+              <div class="entry-body">
+                <h3>
+                  {education.school}
+                  {education.department && <span class="role">{education.department}</span>}
+                </h3>
+                {(education.description ?? []).map((line) => (
+                  <ResumeLine line={line} className="line" />
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class:list={['section', data.breakBeforeSkills && 'break-page']}>
+      <h2>{data.skillTitle}</h2>
+      <div class="skills">
+        {
+          data.skills.map((skillGroup) => (
+            <div class="skill-group">
+              <h3>{skillGroup.category}</h3>
+              <ul>
+                {skillGroup.items.map((item) => (
+                  <ResumeLine as="li" line={item} />
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class:list={['section', data.breakBeforeShowcases && 'break-page']}>
+      <h2>{data.showcasesTitle}</h2>
+      <div class="showcases">
+        {
+          data.showcases.map((showcase) => (
+            <article class="showcase">
+              <img class="thumb" src={showcase.thumbnail} alt={showcase.title} loading="eager" />
+              <img class="print-gradient" src="/showcase-print-gradient.png" alt="" aria-hidden="true" />
+              <div class="showcase-body">
+                <h3>
+                  {
+                    showcase.href
+                      ? <a href={showcase.href} target="_blank" rel="noopener noreferrer">{showcase.title}</a>
+                      : showcase.title
+                  }
+                </h3>
+                {(showcase.description ?? []).map((line) => <p class="line">{line}</p>)}
+                <p class="actions">
+                  {
+                    showcase.href && (
+                      <a class="action" href={showcase.href} target="_blank" rel="noopener noreferrer">
+                        {data.showcasesViewAction}
+                        <span class="url">{showcase.href}</span>
+                      </a>
+                    )
+                  }
+                  {
+                    showcase.git && (
+                      <a class="action" href={showcase.git} target="_blank" rel="noopener noreferrer">
+                        {data.showcasesGitAction}
+                        <span class="url">{showcase.git}</span>
+                      </a>
+                    )
+                  }
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-print-resume]').forEach((button) => {
+    button.hidden = false;
+    button.addEventListener('click', () => window.print());
+  });
+</script>
+
+<style>
+  :global(body) { --container: 52rem; }
+
+  .resume {
+    padding-top: 2.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .resume-tools { float: right; margin: 0 0 1rem 1rem; }
+  .resume-tools button { font: inherit; cursor: pointer; }
+  .resume-tools button[hidden] { display: none; }
+  .resume a { overflow-wrap: anywhere; }
+  .entry-body, .showcase-body { min-width: 0; }
+  .entry-body h3 a, .detail h4 a, .showcase-body h3 a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  .resume-head {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .resume-head h1 {
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .alias {
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-top: 0.25rem;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    color: var(--color-muted);
+    font-size: 1.05rem;
+  }
+
+  .meta img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1.1rem;
+    height: 1.1rem;
+    filter: grayscale(0.35) brightness(1.5);
+  }
+
+  .quotes {
+    display: grid;
+    gap: 0.55rem;
+    max-width: 40rem;
+    margin-top: 1.25rem;
+  }
+
+  .section {
+    margin-top: 2.75rem;
+  }
+
+  .section > h2 {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 1.4rem;
+  }
+
+  .entries {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .time {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    text-align: right;
+    padding-top: 0.4em;
+    white-space: nowrap;
+  }
+
+  .entry-body {
+    border-left: 1px solid var(--color-border);
+    padding-left: 1.1rem;
+  }
+
+  .entry-body > h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .role {
+    color: var(--color-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 0.6rem;
+  }
+
+  .detail {
+    margin-top: 0.9rem;
+  }
+
+  .detail h4 {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 600;
+  }
+
+  .detail :global(.line) {
+    margin-top: 0.3rem;
+  }
+
+  .resume :global(.line) {
+    font-size: 0.95rem;
+  }
+
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 1.4rem;
+  }
+
+  .skill-group h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 0.6rem;
+  }
+
+  .skill-group ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.9;
+  }
+
+  .showcases {
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .showcase {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-bg);
+  }
+
+  .thumb {
+    position: absolute;
+    z-index: -2;
+    inset: 0 auto 0 0;
+    width: 55%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .showcase-body {
+    min-height: 14rem;
+    padding: 1.25rem;
+    padding-left: 32%;
+    text-align: right;
+    background: linear-gradient(110deg, transparent, var(--color-bg) 43%);
+  }
+
+  .showcase:nth-child(even) .thumb { left: auto; right: 0; }
+  .showcase:nth-child(even) .showcase-body {
+    padding-left: 1.25rem;
+    padding-right: 32%;
+    text-align: left;
+    background: linear-gradient(250deg, transparent, var(--color-bg) 43%);
+  }
+
+  .print-gradient { display: none; }
+
+  .showcase-body h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .showcase-body .line {
+    margin-top: 0.35rem;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    justify-content: flex-end;
+  }
+
+  .showcase:nth-child(even) .actions { justify-content: flex-start; }
+
+  .action {
+    color: var(--color-accent);
+  }
+
+  .action .url {
+    display: none;
+  }
+
+  @media screen and (max-width: 520px) {
+    .resume-tools { float: none; margin: 0 0 1.25rem; }
+    .entry {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+
+    .time {
+      text-align: left;
+      padding-top: 0;
+    }
+
+    .showcase {
+      background: var(--color-bg-soft);
+    }
+    .thumb, .showcase:nth-child(even) .thumb {
+      position: static;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
+    .showcase-body, .showcase:nth-child(even) .showcase-body {
+      padding: 1rem;
+      min-height: 0;
+      background: none;
+      text-align: left;
+    }
+    .actions { justify-content: flex-start; }
+    .role { display: block; margin-left: 0; }
+  }
+
+  @page {
+    margin: 14mm 12mm;
+  }
+
+  @media print {
+    :global(html) { font-size: 10pt; }
+    :global(main.container) { max-width: none; padding: 0; }
+    .resume-tools { display: none; }
+    :global(.site-header),
+    :global(.site-footer) {
+      display: none !important;
+    }
+
+    /* Page breaks are not honored inside flex containers in Chromium, so
+       restore normal block flow for printing. */
+    :global(body) {
+      display: block !important;
+      background: #fff !important;
+      color: #111 !important;
+    }
+
+    .resume {
+      padding: 0;
+      color: #111;
+      line-height: 1.55;
+    }
+
+    .resume a {
+      color: #111 !important;
+    }
+
+    .resume-head {
+      border-bottom-color: #999;
+      break-inside: avoid;
+      padding-bottom: 1rem;
+    }
+
+    .resume-head h1 { font-size: 24pt; }
+    .quotes { max-width: none; gap: 0.25rem; margin-top: 0.75rem; }
+
+    .alias {
+      color: #333;
+    }
+
+    .meta,
+    .time,
+    .role {
+      color: #444;
+    }
+
+    .meta img {
+      filter: grayscale(1);
+    }
+
+    .section {
+      margin-top: 1.25rem;
+    }
+
+    .section > h2 {
+      color: #111;
+      border-bottom-color: #999;
+      margin-bottom: 0.8rem;
+    }
+
+    .entries { display: block; }
+    .entry { display: block; position: relative; margin-bottom: 0.8rem; }
+    .time { position: absolute; width: 8.5rem; top: 0; left: 0; }
+    .entry-body { margin-left: 9.5rem; }
+    .detail { margin-top: 0.5rem; break-inside: avoid; }
+    .skills { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .skill-group ul { line-height: 1.65; }
+    .showcases { display: block; }
+
+    .entry-body {
+      border-left-color: #999;
+    }
+
+    .skill-group h3 {
+      border-bottom-color: #999;
+    }
+
+    .showcase {
+      border-color: #bbb;
+      break-inside: avoid;
+      background: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    /* An image overlay survives printing with background graphics disabled,
+       preserving the legacy fade without sacrificing text contrast. */
+    .print-gradient {
+      display: block;
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .showcase:nth-child(even) .print-gradient { transform: scaleX(-1); }
+    .showcase-body, .showcase:nth-child(even) .showcase-body {
+      background: none;
+      min-height: 140pt;
+      padding-top: 0.8rem;
+      padding-bottom: 0.8rem;
+    }
+    .showcase-body h3 { font-size: 1.15rem; }
+    .showcase-body .line { font-size: 0.9rem; line-height: 1.55; }
+    .actions { display: block; margin-top: 0.5rem; font-size: 0; }
+    .action { display: block; }
+
+    .action {
+      color: #111;
+    }
+
+    .action .url {
+      display: inline;
+      color: #444;
+      font-size: 0.78rem;
+      word-break: break-all;
+    }
+
+    .break-page {
+      break-before: page;
+    }
+
+    .entry,
+    .skill-group {
+      break-inside: avoid;
+    }
+    .experience-entry { break-inside: auto; }
+
+    /* Printed entry lists use block flow above, allowing headings to stay
+       with the first entry without interfering with explicit section breaks. */
+    h2,
+    h3,
+    h4 {
+      break-after: avoid;
+    }
+    /* A talk may contain only its title. Do not let its keep-with-next rule
+       propagate through the entry and chain the entire talk list together. */
+    .entry-body > h3:last-child { break-after: auto; }
+
+    p {
+      orphans: 3;
+      widows: 3;
+    }
+  }
+</style>

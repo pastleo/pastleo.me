@@ -1,0 +1,20 @@
+---
+import { faGithub, faLinkedinIn, faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faGlobe } from '@fortawesome/free-solid-svg-icons';
+
+interface Props { href: string }
+const { href } = Astro.props;
+const host = new URL(href).hostname.replace(/^www\./, '');
+const definition = href.startsWith('mailto:') ? faEnvelope
+  : host === 'github.com' ? faGithub
+  : host === 'linkedin.com' ? faLinkedinIn
+  : ['facebook.com', 'fb.me'].includes(host) ? faFacebookF
+  : faGlobe;
+const [width, height, , , path] = definition.icon;
+const paths = typeof path === 'string' ? [path] : path;
+---
+
+<!-- Icons: Font Awesome Free by Fonticons, Inc. https://fontawesome.com/license/free (CC BY 4.0) -->
+<svg viewBox={`0 0 ${width} ${height}`} width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false">
+  {paths.map((d) => <path d={d} />)}
+</svg>

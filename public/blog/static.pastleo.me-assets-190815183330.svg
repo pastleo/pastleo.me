@@ -1,0 +1,31 @@
+<svg width="372" height="319" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="374" height="321" id="canvas_background" fill="none"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_5" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#000000" fill="#ffffff" x="218.5" y="164.5" width="52.000001" height="57" id="svg_13"/>
+  <rect stroke="#000000" fill="#ffffff" x="21" y="231.5" width="187.000009" height="64.999995" id="svg_84"/>
+  <text fill="#000000" stroke="#000000" stroke-width="0" stroke-opacity="null" x="31.929688" y="269.5" id="svg_85" font-size="18" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve">conn base interface</text>
+  <rect stroke="#000000" fill="#ffffff" x="20.5" y="163.5" width="86.000003" height="57" id="svg_86"/>
+  <text fill="#000000" stroke="#000000" stroke-width="0" x="31.5" y="200" id="svg_87" font-size="18" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve">wsConn</text>
+  <rect stroke="#000000" fill="#ffffff" x="20.5" y="99.5" width="330.999998" height="55" id="svg_90"/>
+  <text fill="#000000" stroke="#000000" stroke-width="0" x="130.453125" y="131.5" id="svg_91" font-size="18" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve">connManager</text>
+  <rect stroke="#000000" fill="#ffffff" x="218" y="231.5" width="134.000006" height="65.000004" id="svg_1"/>
+  <text fill="#000000" stroke="#000000" stroke-width="0" stroke-opacity="null" x="232.929688" y="259.5" id="svg_2" font-size="18" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve">connProvider</text>
+  <text stroke="#000000" fill="#000000" stroke-width="0" x="228.5" y="200" id="svg_4" font-size="18" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve">wss</text>
+  <rect stroke="#000000" fill="#ffffff" x="19.999985" y="22.5" width="332.00002" height="55" id="svg_8"/>
+  <text fill="#000000" stroke="#000000" stroke-width="0" x="164.984375" y="56.5" id="svg_9" font-size="18" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve">client</text>
+  <rect stroke="#000000" fill="#ffffff" x="120.5" y="164.5" width="86.000003" height="57" id="svg_10"/>
+  <text fill="#000000" stroke="#000000" stroke-width="0" x="130.5" y="201" id="svg_89" font-size="18" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve">rtcConn</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="18" id="svg_12" y="281" x="230.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000000" fill="#000000">base interface</text>
+  <rect stroke="#000000" fill="#ffffff" x="278.5" y="164.5" width="73.999999" height="57" id="svg_14"/>
+  <text fill="#000000" stroke="#000000" stroke-width="0" x="284.5" y="201" id="svg_7" font-size="18" font-family="Helvetica, Arial, sans-serif" text-anchor="start" xml:space="preserve">browser</text>
+ </g>
+</svg>

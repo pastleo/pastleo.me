@@ -1,0 +1,101 @@
+---
+import { locales, localeInfo, translatedPages, type Locale, type TranslatedPage } from '../i18n/config';
+import { ui } from '../i18n/ui';
+import { faLanguage, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import Icon from './Icon.astro';
+
+interface Props { locale: Locale; page: TranslatedPage }
+const { locale, page } = Astro.props;
+---
+
+<details class="language-switcher">
+  <summary aria-label={`${ui[locale].languageNavigation}: ${localeInfo[locale].label}`}>
+    <span class="language-symbol"><Icon icon={faLanguage} /></span>
+    <span>{locale === 'zh' ? '中文' : locale === 'en' ? 'EN' : '日本語'}</span>
+    <span class="chevron"><Icon icon={faChevronDown} /></span>
+  </summary>
+  <ul>
+    {locales
+      .filter((language) => translatedPages[page][language])
+      .map((language) => (
+        <li>
+          <a href={translatedPages[page][language]}
+            lang={localeInfo[language].lang}
+            hreflang={localeInfo[language].lang}
+            data-locale-choice={language}
+            aria-current={language === locale ? 'page' : undefined}>
+            {localeInfo[language].label}
+          </a>
+        </li>
+      ))}
+  </ul>
+</details>
+
+<script>
+  import { localePreferenceKey } from '../i18n/config';
+
+  document.querySelectorAll<HTMLDetailsElement>('.language-switcher').forEach((menu) => {
+    menu.querySelectorAll<HTMLAnchorElement>('[data-locale-choice]').forEach((link) => {
+      link.addEventListener('click', () => {
+        try {
+          localStorage.setItem(localePreferenceKey, link.dataset.localeChoice!);
+        } catch {
+          // A manual language link works even when storage is unavailable.
+        }
+      });
+    });
+    menu.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        menu.open = false;
+        menu.querySelector('summary')?.focus();
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+    });
+  });
+</script>
+
+<style>
+  .language-switcher { position: relative; font-size: 0.85rem; }
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+    padding: 0.4rem 0.65rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.65rem;
+    background: var(--color-bg-soft);
+    color: var(--color-muted);
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover,
+  summary:focus-visible,
+  details[open] summary { color: var(--color-text); border-color: var(--color-accent); }
+  .language-symbol, .chevron { display: flex; flex: 0 0 auto; }
+  .language-symbol { color: var(--color-accent); }
+  .language-symbol :global(svg) { width: 1.2rem; height: 1.2rem; }
+  .chevron :global(svg) { width: 0.6rem; height: 0.6rem; }
+  details[open] .chevron { transform: rotate(180deg); }
+  @media (prefers-reduced-motion: no-preference) {
+    .chevron { transition: transform 0.15s ease; }
+  }
+  ul {
+    position: absolute;
+    z-index: 10;
+    inset-inline-end: 0;
+    top: calc(100% + 0.5rem);
+    min-width: 9rem;
+    padding: 0.35rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg-soft);
+    box-shadow: 0 0.5rem 1.5rem #0004;
+  }
+  a { display: block; padding: 0.5rem 0.75rem; color: var(--color-muted); }
+  a[aria-current='page'] { color: var(--color-accent); text-decoration: underline; text-underline-offset: 0.3em; }
+  a:hover { color: var(--color-text); }
+</style>
