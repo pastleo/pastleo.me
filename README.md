@@ -73,3 +73,33 @@ Astro configuration and is not required for installation or builds.
   index, and `/robots.txt` advertises it. Compatibility pages and the custom 404
   are excluded from the sitemap. Social previews use article thumbnails or the
   default `public/og-image.jpg`.
+
+## Deployment
+
+The site deploys to GitHub Pages at **https://pastleo.me** through
+`.github/workflows/deploy.yml`.
+
+- Pull requests run `npm ci`, `npm run check`, `npm run test:resume`, and
+  `npm run build`.
+- Pushes to `main` run the same checks, upload `dist/` as a Pages artifact, and
+  deploy it using the `github-pages` environment. Failed checks prevent deployment.
+- **Actions → Check, build, and deploy Astro → Run workflow** can manually deploy
+  `main`. Manual runs on other branches only check and build.
+- Node.js is selected from `.tool-versions`; npm dependencies use the lockfile.
+  Deployment uses GitHub's built-in token and OIDC, with no personal token or
+  deployment secret required.
+
+Before the first deployment, in the GitHub repository settings:
+
+1. Under **Pages → Build and deployment**, select **GitHub Actions** as the source.
+2. Set or confirm the custom domain **pastleo.me**. Keep its DNS records pointing
+   to GitHub Pages, and enable **Enforce HTTPS** when domain verification and the
+   certificate are ready. `public/CNAME` is copied into `dist/`, but the custom
+   domain must also be configured in Pages settings.
+3. If the `github-pages` environment has deployment branch restrictions, allow
+   `main`. Any required reviewers must approve deployments before they proceed.
+
+Publishing this workflow to `main` triggers deployment and replaces the currently
+served Pages site. After deployment, verify the homepages, `/resume/`, `/blog/`,
+an existing `/post/<slug>/` URL, `/feed.xml`, `/sitemap.xml`, and a missing URL's
+404 page on the public domain.
